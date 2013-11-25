@@ -1,11 +1,23 @@
 core = 7.x
 api = 2
 
+; Ting Covers must be vejlebib version
+projects[ting_covers][type] = "module"
+projects[ting_covers][download][type] = "git"
+projects[ting_covers][download][url] = "git@github.com:vejlebib/ting_covers.git"
+projects[ting_covers][download][branch] = "extra-covers"
+
+; Ding User must be version with migrated users support
+projects[ding_user][type] = "module"
+projects[ding_user][download][type] = "git"
+projects[ding_user][download][url] = "git@github.com:ding2tal/ding_user.git"
+projects[ding_user][download][branch] = "support-user-migrations"
+
 ; Projects
 projects[alma][type] = "module"
 projects[alma][download][type] = "git"
 projects[alma][download][url] = "git@github.com:ding2tal/alma.git"
-projects[alma][download][branch] = "development"
+projects[alma][download][branch] = "support_user_migrations"
 
 projects[ding_devel][type] = "module"
 projects[ding_devel][download][type] = "git"
@@ -129,3 +141,45 @@ projects[memcache][version] = "1.0"
 
 projects[apc][subdir] = "contrib"
 projects[apc][version] = "1.0-beta4"
+
+; Vejlebib modules
+projects[ding_opening_hours][type] = "module"
+projects[ding_opening_hours][download][type] = "git"
+projects[ding_opening_hours][download][url] = "git@github.com:vejlebib/ding_opening_hours.git"
+projects[ding_opening_hours][download][branch] = "master"
+
+projects[vejlebib_views_panels][type] = "module"
+projects[vejlebib_views_panels][download][type] = "git"
+projects[vejlebib_views_panels][download][url] = "git@github.com:vejlebib/vejlebib_views_panels.git"
+projects[vejlebib_views_panels][download][branch] = "master"
+
+projects[ding_eresource][type] = "module"
+projects[ding_eresource][download][type] = "git"
+projects[ding_eresource][download][url] = "git@github.com:vejlebib/ding_eresource.git"
+projects[ding_eresource][download][branch] = "master"
+
+projects[ding_zerohit_form][type] = "module"
+projects[ding_zerohit_form][download][type] = "git"
+projects[ding_zerohit_form][download][url] = "git@github.com:vejlebib/ding_zerohit_form.git"
+projects[ding_zerohit_form][download][branch] = "7.x-1.x"
+
+projects[ting_extrasearch][type] = "module"
+projects[ting_extrasearch][download][type] = "git"
+projects[ting_extrasearch][download][url] = "git@github.com:vejlebib/ting_extrasearch.git"
+projects[ting_extrasearch][download][branch] = "7.x-0.x"
+
+projects[ding_tabroll][type] = "module"
+projects[ding_tabroll][download][type] = "git"
+projects[ding_tabroll][download][url] = "git@github.com:vejlebib/ding_tabroll.git"
+projects[ding_tabroll][download][branch] = "7.x-1.x"
+
+projects[ding_tabroll][type] = "module"
+projects[ding_tabroll][download][type] = "git"
+projects[ding_tabroll][download][url] = "git@github.com:vejlebib/ding_tabroll.git"
+projects[ding_tabroll][download][branch] = "7.x-1.x"
+
+; Vejlebib theme
+projects[wellejus][type] = "theme"
+projects[wellejus][download][type] = "git"
+projects[wellejus][download][url] = "git@github.com:vejlebib/wellejus.git"
+projects[wellejus][download][branch] = "7.x-1.x"
