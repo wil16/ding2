@@ -1,24 +1,7 @@
 core = 7.x
 api = 2
 
-; Ting Covers must be vejlebib version
-projects[ting_covers][type] = "module"
-projects[ting_covers][download][type] = "git"
-projects[ting_covers][download][url] = "git@github.com:vejlebib/ting_covers.git"
-projects[ting_covers][download][branch] = "extra-covers"
-
-; Ding User must be version with migrated users support
-projects[ding_user][type] = "module"
-projects[ding_user][download][type] = "git"
-projects[ding_user][download][url] = "git@github.com:ding2tal/ding_user.git"
-projects[ding_user][download][branch] = "support-user-migrations"
-
 ; Projects
-projects[alma][type] = "module"
-projects[alma][download][type] = "git"
-projects[alma][download][url] = "git@github.com:ding2tal/alma.git"
-projects[alma][download][branch] = "support_user_migrations"
-
 projects[ding_devel][type] = "module"
 projects[ding_devel][download][type] = "git"
 projects[ding_devel][download][url] = "git@github.com:ding2tal/ding_devel.git"
@@ -183,3 +166,22 @@ projects[wellejus][type] = "theme"
 projects[wellejus][download][type] = "git"
 projects[wellejus][download][url] = "git@github.com:vejlebib/wellejus.git"
 projects[wellejus][download][branch] = "7.x-1.x"
+
+;-- OVERRIDDEN / FORKED FOR VEJLEBIB --
+; Ting Covers must be vejlebib version
+projects[ting_covers][type] = "module"
+projects[ting_covers][download][type] = "git"
+projects[ting_covers][download][url] = "git@github.com:vejlebib/ting_covers.git"
+projects[ting_covers][download][branch] = "extra-covers"
+
+; Ding User must be version with migrated users support
+projects[ding_user][type] = "module"
+projects[ding_user][download][type] = "git"
+projects[ding_user][download][url] = "git@github.com:ding2tal/ding_user.git"
+projects[ding_user][download][branch] = "support-user-migrations"
+
+; alma must be version with migrated users support
+projects[alma][type] = "module"
+projects[alma][download][type] = "git"
+projects[alma][download][url] = "git@github.com:ding2tal/alma.git"
+projects[alma][download][branch] = "support_user_migrations"
