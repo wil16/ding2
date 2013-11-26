@@ -22,11 +22,6 @@ projects[ding_groups][download][type] = "git"
 projects[ding_groups][download][url] = "git@github.com:ding2tal/ding_groups.git"
 projects[ding_groups][download][branch] = "development"
 
-projects[ding_user_frontend][type] = "module"
-projects[ding_user_frontend][download][type] = "git"
-projects[ding_user_frontend][download][url] = "git@github.com:ding2tal/ding_user_frontend.git"
-projects[ding_user_frontend][download][branch] = "development"
-
 projects[ding_ting_frontend][type] = "module"
 projects[ding_ting_frontend][download][type] = "git"
 projects[ding_ting_frontend][download][url] = "git@github.com:ding2tal/ding_ting_frontend.git"
@@ -173,6 +168,12 @@ projects[ting_covers][type] = "module"
 projects[ting_covers][download][type] = "git"
 projects[ting_covers][download][url] = "git@github.com:vejlebib/ting_covers.git"
 projects[ting_covers][download][branch] = "extra-covers"
+
+; Ding user frontend must be bump-securepages version
+projects[ding_user_frontend][type] = "module"
+projects[ding_user_frontend][download][type] = "git"
+projects[ding_user_frontend][download][url] = "git@github.com:vejlebib/ding_user_frontend.git"
+projects[ding_user_frontend][download][branch] = "bump-securepages"
 
 ; Ding User must be version with migrated users support
 projects[ding_user][type] = "module"
