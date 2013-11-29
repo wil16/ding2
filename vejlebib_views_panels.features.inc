@@ -13,3 +13,10 @@ function vejlebib_views_panels_ctools_plugin_api() {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_views_api().
+ */
+function vejlebib_views_panels_views_api() {
+  return array("api" => "3.0");
+}
