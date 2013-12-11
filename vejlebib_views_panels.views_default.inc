@@ -164,12 +164,12 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['ui_name'] = 'Day, date and month';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="event-list-date-wrapper">
-    <span class="event-list-day">[field_ding_event_date]</span>
-    <div class="event-list-inner-wrapper">
-      <span class="event-list-date">[field_ding_event_date_1]</span>
-      <span class="event-list-month">[field_ding_event_date_2]</span>
-    </div>
-  </div>';
+      <span class="event-list-day">[field_ding_event_date]</span>
+      <div class="event-list-inner-wrapper">
+        <span class="event-list-date">[field_ding_event_date_1]</span>
+        <span class="event-list-month">[field_ding_event_date_2]</span>
+      </div>
+    </div>';
   $handler->display->display_options['fields']['nothing_1']['element_type'] = '0';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing_1']['element_wrapper_type'] = '0';
@@ -181,10 +181,10 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['fields']['nothing']['ui_name'] = 'Location, time and price';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="event-list-info">
-    <span class="event-list-location">[field_ding_event_location]</span>
-    <span class="event-list-time">[field_ding_event_date_3]</span>
-    <span class="event-list-price">[field_ding_event_price]</span>
-  </div>';
+      <span class="event-list-location">[field_ding_event_location]</span>
+      <span class="event-list-time">[field_ding_event_date_3]</span>
+      <span class="event-list-price">[field_ding_event_price]</span>
+    </div>';
   $handler->display->display_options['fields']['nothing']['element_type'] = '0';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = '0';
@@ -260,14 +260,9 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'Last »';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'field_ding_event_date_1',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
-  $handler->display->display_options['style_options']['row_class'] = 'list-item';
+  $handler->display->display_options['style_options']['row_class'] = 'event-list-item event-list-leaf';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['style_options']['class'] = 'list event-list';
   $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -288,100 +283,28 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['relationships']['og_membership_related_node_group']['relationship'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['label'] = 'OG node group';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Date (for group header) (excluded) */
+  /* Felt: slug (for CSS class) */
+  $handler->display->display_options['fields']['field_ding_library_slug']['id'] = 'field_ding_library_slug';
+  $handler->display->display_options['fields']['field_ding_library_slug']['table'] = 'field_data_field_ding_library_slug';
+  $handler->display->display_options['fields']['field_ding_library_slug']['field'] = 'field_ding_library_slug';
+  $handler->display->display_options['fields']['field_ding_library_slug']['relationship'] = 'og_membership_related_node_group';
+  $handler->display->display_options['fields']['field_ding_library_slug']['ui_name'] = 'slug (for CSS class)';
+  $handler->display->display_options['fields']['field_ding_library_slug']['label'] = '';
+  $handler->display->display_options['fields']['field_ding_library_slug']['element_label_colon'] = FALSE;
+  /* Felt: Date */
   $handler->display->display_options['fields']['field_ding_event_date_1']['id'] = 'field_ding_event_date_1';
   $handler->display->display_options['fields']['field_ding_event_date_1']['table'] = 'field_data_field_ding_event_date';
   $handler->display->display_options['fields']['field_ding_event_date_1']['field'] = 'field_ding_event_date';
-  $handler->display->display_options['fields']['field_ding_event_date_1']['ui_name'] = 'Date (for group header) (excluded)';
+  $handler->display->display_options['fields']['field_ding_event_date_1']['ui_name'] = 'Date';
   $handler->display->display_options['fields']['field_ding_event_date_1']['label'] = '';
-  $handler->display->display_options['fields']['field_ding_event_date_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_ding_event_date_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_ding_event_date_1']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_ding_event_date_1']['type'] = 'calendar_header';
   $handler->display->display_options['fields']['field_ding_event_date_1']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
-  );
-  /* Felt: List image */
-  $handler->display->display_options['fields']['field_ding_event_list_image']['id'] = 'field_ding_event_list_image';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['table'] = 'field_data_field_ding_event_list_image';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['field'] = 'field_ding_event_list_image';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['ui_name'] = 'List image';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['label'] = '';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ding_event_list_image']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['element_wrapper_class'] = 'event-image-wrapper';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_ding_event_list_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['type'] = 'cs_adaptive_image';
-  $handler->display->display_options['fields']['field_ding_event_list_image']['settings'] = array(
-    'relationship' => 'none',
-    'ui_name' => 'List image',
-    'custom_label' => 0,
-    'label' => '',
-    'element_label_colon' => 0,
-    'exclude' => 0,
-    'element_type_enable' => 1,
-    'element_type' => '0',
-    'element_class_enable' => 0,
-    'element_class' => '',
-    'element_label_type_enable' => 0,
-    'element_label_type' => '',
-    'element_label_class_enable' => 0,
-    'element_label_class' => '',
-    'element_wrapper_type_enable' => 1,
-    'element_wrapper_type' => 'div',
-    'element_wrapper_class_enable' => 1,
-    'element_wrapper_class' => 'event-image-wrapper',
-    'element_default_classes' => 0,
-    'alter' => array(
-      'alter_text' => 0,
-      'text' => '',
-      'make_link' => 0,
-      'path' => '',
-      'absolute' => 0,
-      'replace_spaces' => 0,
-      'external' => 0,
-      'path_case' => 'none',
-      'link_class' => '',
-      'alt' => '',
-      'rel' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'target' => '',
-      'trim' => 0,
-      'max_length' => '',
-      'word_boundary' => 1,
-      'ellipsis' => 1,
-      'more_link' => 0,
-      'more_link_text' => '',
-      'more_link_path' => '',
-      'html' => 0,
-      'strip_tags' => 0,
-      'preserve_tags' => '',
-      'trim_whitespace' => 0,
-      'nl2br' => 0,
-    ),
-    'empty' => '',
-    'empty_zero' => 0,
-    'hide_empty' => 0,
-    'hide_alter_empty' => 1,
-    'click_sort_column' => 'fid',
-    'type' => 'cs_adaptive_image',
-    'field_api_classes' => 0,
-    'image_link' => 'content',
-    'styles' => array(
-      'breakpoint_1' => '768',
-      'style_1' => 'ding_list_medium',
-      'breakpoint_2' => '500',
-      'style_2' => 'ding_list_small',
-      'max_style' => 'ding_list_large',
-      'fallback_style' => 'ding_list_large',
-    ),
   );
   /* Felt: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -398,16 +321,6 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Felt: Description (content) */
-  $handler->display->display_options['fields']['field_ding_event_lead']['id'] = 'field_ding_event_lead';
-  $handler->display->display_options['fields']['field_ding_event_lead']['table'] = 'field_data_field_ding_event_lead';
-  $handler->display->display_options['fields']['field_ding_event_lead']['field'] = 'field_ding_event_lead';
-  $handler->display->display_options['fields']['field_ding_event_lead']['ui_name'] = 'Description (content)';
-  $handler->display->display_options['fields']['field_ding_event_lead']['label'] = '';
-  $handler->display->display_options['fields']['field_ding_event_lead']['element_type'] = 'p';
-  $handler->display->display_options['fields']['field_ding_event_lead']['element_class'] = 'event-list-description';
-  $handler->display->display_options['fields']['field_ding_event_lead']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ding_event_lead']['element_default_classes'] = FALSE;
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
@@ -464,28 +377,17 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['fields']['field_ding_event_price']['field'] = 'field_ding_event_price';
   $handler->display->display_options['fields']['field_ding_event_price']['ui_name'] = 'Price';
   $handler->display->display_options['fields']['field_ding_event_price']['label'] = '';
-  $handler->display->display_options['fields']['field_ding_event_price']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_ding_event_price']['alter']['text'] = '[field_ding_event_price-value]';
+  $handler->display->display_options['fields']['field_ding_event_price']['element_type'] = '0';
   $handler->display->display_options['fields']['field_ding_event_price']['element_class'] = 'event-list-price';
   $handler->display->display_options['fields']['field_ding_event_price']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_ding_event_price']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_ding_event_price']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_ding_event_price']['type'] = 'number_unformatted';
   $handler->display->display_options['fields']['field_ding_event_price']['settings'] = array(
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Felt: Link (arrow) */
-  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['ui_name'] = 'Link (arrow)';
-  $handler->display->display_options['fields']['view_node']['label'] = '';
-  $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['view_node']['alter']['text'] = '<i class="icon-chevron-right"></i>';
-  $handler->display->display_options['fields']['view_node']['element_type'] = 'div';
-  $handler->display->display_options['fields']['view_node']['element_class'] = 'event-arrow-link';
-  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['view_node']['text'] = 'Læs mere';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Kontekstuelt filter: Indhold: Har taksonomiterm ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
@@ -2266,7 +2168,7 @@ function vejlebib_views_panels_views_default_views() {
       'label' => 'Content: Has taxonomy term ID',
     ),
   );
-  $translatables['vejlebib2_ding_event'] = array(
+  $translatables['vejlebib_ding_event'] = array(
     t('Master'),
     t('Read more..'),
     t('Indsend'),
@@ -2278,17 +2180,17 @@ function vejlebib_views_panels_views_default_views() {
     t('No events where found.'),
     t('OG membership from node'),
     t('<div class="event-list-date-wrapper">
-    <span class="event-list-day">[field_ding_event_date]</span>
-    <div class="event-list-inner-wrapper">
-      <span class="event-list-date">[field_ding_event_date_1]</span>
-      <span class="event-list-month">[field_ding_event_date_2]</span>
-    </div>
-  </div>'),
+      <span class="event-list-day">[field_ding_event_date]</span>
+      <div class="event-list-inner-wrapper">
+        <span class="event-list-date">[field_ding_event_date_1]</span>
+        <span class="event-list-month">[field_ding_event_date_2]</span>
+      </div>
+    </div>'),
     t('<div class="event-list-info">
-    <span class="event-list-location">[field_ding_event_location]</span>
-    <span class="event-list-time">[field_ding_event_date_3]</span>
-    <span class="event-list-price">[field_ding_event_price]</span>
-  </div>'),
+      <span class="event-list-location">[field_ding_event_location]</span>
+      <span class="event-list-time">[field_ding_event_date_3]</span>
+      <span class="event-list-price">[field_ding_event_price]</span>
+    </div>'),
     t('Alle'),
     t('Event list'),
     t('mere'),
@@ -2300,10 +2202,11 @@ function vejlebib_views_panels_views_default_views() {
     t('Next ›'),
     t('Last »'),
     t('OG node group'),
-    t('<i class="icon-chevron-right"></i>'),
-    t('Læs mere'),
+    t('[field_ding_event_price-value]'),
     t('View panes'),
     t('Library event list'),
+    t('<i class="icon-chevron-right"></i>'),
+    t('Læs mere'),
     t('Event list (library)'),
     t('Simple event list'),
     t('RSS event list'),
