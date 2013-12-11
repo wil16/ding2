@@ -417,7 +417,7 @@ function vejlebib_views_panels_views_default_views() {
     'tid' => array(
       'type' => 'context',
       'context' => 'entity:taxonomy_term.tid',
-      'context_optional' => 0,
+      'context_optional' => 1,
       'panel' => '0',
       'fixed' => '%tid',
       'label' => 'Content: Has taxonomy term ID',
@@ -694,18 +694,10 @@ function vejlebib_views_panels_views_default_views() {
     'gid' => array(
       'type' => 'context',
       'context' => 'entity:node.nid',
-      'context_optional' => 0,
+      'context_optional' => 1,
       'panel' => '0',
       'fixed' => '',
       'label' => 'OG membership: Group ID',
-    ),
-    'tid' => array(
-      'type' => 'context',
-      'context' => 'entity:taxonomy_term.tid',
-      'context_optional' => 1,
-      'panel' => '1',
-      'fixed' => '%tid',
-      'label' => 'Content: Has taxonomy term ID',
     ),
   );
 
@@ -982,7 +974,7 @@ function vejlebib_views_panels_views_default_views() {
     'gid' => array(
       'type' => 'context',
       'context' => 'entity:node.nid',
-      'context_optional' => 0,
+      'context_optional' => 1,
       'panel' => '0',
       'fixed' => '75',
       'label' => 'OG membership: Group ID',
@@ -1812,7 +1804,7 @@ function vejlebib_views_panels_views_default_views() {
     'gid' => array(
       'type' => 'context',
       'context' => 'entity:node.nid',
-      'context_optional' => 0,
+      'context_optional' => 1,
       'panel' => '0',
       'fixed' => '',
       'label' => 'OG membership: Group ID',
@@ -2154,7 +2146,7 @@ function vejlebib_views_panels_views_default_views() {
     'gid' => array(
       'type' => 'context',
       'context' => 'entity:node.nid',
-      'context_optional' => 0,
+      'context_optional' => 1,
       'panel' => '0',
       'fixed' => '',
       'label' => 'OG membership: Group ID',
@@ -2162,7 +2154,7 @@ function vejlebib_views_panels_views_default_views() {
     'tid' => array(
       'type' => 'context',
       'context' => 'entity:taxonomy_term.tid',
-      'context_optional' => 0,
+      'context_optional' => 1,
       'panel' => '0',
       'fixed' => '',
       'label' => 'Content: Has taxonomy term ID',
