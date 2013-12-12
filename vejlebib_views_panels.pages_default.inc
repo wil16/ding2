@@ -529,12 +529,15 @@ function vejlebib_views_panels_default_page_manager_handlers() {
     $pane->pid = 'new-4';
     $pane->panel = 'tertiary';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ding_event-ding_event_list';
+    $pane->subtype = 'vejlebib_ding_event-vejlebib_ding_event_list';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Events',
+      'context' => array(
+        0 => 'empty',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
