@@ -291,12 +291,14 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['fields']['field_ding_library_slug']['ui_name'] = 'slug (for CSS class)';
   $handler->display->display_options['fields']['field_ding_library_slug']['label'] = '';
   $handler->display->display_options['fields']['field_ding_library_slug']['element_label_colon'] = FALSE;
-  /* Felt: Date */
+  /* Felt: Date (raw value) */
   $handler->display->display_options['fields']['field_ding_event_date_1']['id'] = 'field_ding_event_date_1';
   $handler->display->display_options['fields']['field_ding_event_date_1']['table'] = 'field_data_field_ding_event_date';
   $handler->display->display_options['fields']['field_ding_event_date_1']['field'] = 'field_ding_event_date';
-  $handler->display->display_options['fields']['field_ding_event_date_1']['ui_name'] = 'Date';
+  $handler->display->display_options['fields']['field_ding_event_date_1']['ui_name'] = 'Date (raw value)';
   $handler->display->display_options['fields']['field_ding_event_date_1']['label'] = '';
+  $handler->display->display_options['fields']['field_ding_event_date_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ding_event_date_1']['alter']['text'] = '[field_ding_event_date_1-value]';
   $handler->display->display_options['fields']['field_ding_event_date_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_ding_event_date_1']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_ding_event_date_1']['settings'] = array(
@@ -371,12 +373,13 @@ function vejlebib_views_panels_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Price */
+  /* Felt: Price (raw value) */
   $handler->display->display_options['fields']['field_ding_event_price']['id'] = 'field_ding_event_price';
   $handler->display->display_options['fields']['field_ding_event_price']['table'] = 'field_data_field_ding_event_price';
   $handler->display->display_options['fields']['field_ding_event_price']['field'] = 'field_ding_event_price';
-  $handler->display->display_options['fields']['field_ding_event_price']['ui_name'] = 'Price';
+  $handler->display->display_options['fields']['field_ding_event_price']['ui_name'] = 'Price (raw value)';
   $handler->display->display_options['fields']['field_ding_event_price']['label'] = '';
+  $handler->display->display_options['fields']['field_ding_event_price']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_ding_event_price']['alter']['text'] = '[field_ding_event_price-value]';
   $handler->display->display_options['fields']['field_ding_event_price']['element_type'] = '0';
   $handler->display->display_options['fields']['field_ding_event_price']['element_class'] = 'event-list-price';
@@ -2194,6 +2197,7 @@ function vejlebib_views_panels_views_default_views() {
     t('Next ›'),
     t('Last »'),
     t('OG node group'),
+    t('[field_ding_event_date_1-value]'),
     t('[field_ding_event_price-value]'),
     t('View panes'),
     t('Library event list'),
