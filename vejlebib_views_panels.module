@@ -5,3 +5,137 @@
  */
 
 include_once 'vejlebib_views_panels.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function vejlebib_views_panels_block_info() {
+  $blocks = array();
+
+  $blocks['vejlebib-ding-userinfo'] = array(
+    'info' => t('Vejlebib Ding user info'),
+    'cache' => DRUPAL_CACHE_PER_USER,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function vejlebib_views_panels_theme($existing, $type, $theme, $path) {
+  return array(
+    'vejlebib_views_panels_ding_userinfo' => array(
+      'variables' => array('name' => NULL, 'pickup' => array(), 'reservation' => array(), 'debt' => array(), 'loan' => array(), 'bookmark' => array()),
+      'template' => 'vejlebib_views_panels_ding_userinfo',
+      'path' => $path . '/templates',
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function vejlebib_views_panels_block_view($delta) {
+  $block = array();
+  $content = array();
+  global $user;
+
+  switch ($delta) {
+    case 'vejlebib-ding-userinfo':
+      if (user_is_logged_in()) {
+        $name = (!empty($user->data['display_name'])) ? $user->data['display_name'] : $user->name;
+      }
+
+      try {
+        // We don't really need the credentials here, but getting them
+        // causes an exception to be thrown if user is not
+        // authenticated, exiting this block of code, which is what we
+        // want. No credentials, no user status. (The creds are store in the
+        // session, so it's a fast check, where ding_user_is_provider_user would
+        // use the database.)
+        ding_user_get_creds($user);
+      }
+      catch (Exception $e) {
+        if (user_is_logged_in()) {
+          // Return minimal info and return
+          $content[] = array(
+            '#type' => 'markup',
+            '#markup' => l('logout', 'user/logout', array('attributes' => array('class' => 'button'))),
+          );
+        }
+        else {
+          // Return if no user is logged in
+          return;
+        }
+
+        // build the block
+        $block['subject'] = t('Your user info');
+        $block['content'] = $content;
+        return $block;
+      }
+
+      // Get user base link
+      $uri = entity_uri('user', $user);
+
+      // Get reservations ready for pick-up.
+      $pickup_count = count(ding_provider_invoke_page('reservation', 'list', $user, DING_RESERVATION_READY));
+
+      // Get debts count.
+      $debt_count = count(ding_provider_invoke_page('debt', 'list', $user));
+
+      // Get loans.
+      $loan_count = count(ding_provider_invoke_page('loan', 'list', $user));
+
+      // Get total reservation count.
+      $types = ding_provider_invoke_page('reservation', 'list', $user);
+      $res_count = 0;
+      foreach ($types as $type) {
+        $res_count += count($type);
+      }
+
+      // Build complete user info for the block
+      $content[] = array(
+        '#theme' => 'vejlebib_views_panels_ding_userinfo',
+        '#name' => $name,
+        '#pickup' => array(
+          'class' => 'user-status-ready-pickup',
+          'label' => format_plural($pickup_count, 'Reservation ready for pick-up', 'Reservations ready for pick-up'),
+          'count' => $pickup_count,
+          'link' => $uri['path'] . '/status/reservations',
+        ),
+        '#reservation' => array(
+          'class' => 'user-status-reservation',
+          'label' => format_plural($res_count, 'Reservation', 'Reservations'),
+          'count' => $res_count,
+          'link' => $uri['path'] . '/status/reservations',
+        ),
+        '#debt' => array(
+          'class' => 'user-status-debt',
+          'label' => format_plural($debt_count, 'Debt', 'Debts'),
+          'count' => $debt_count,
+          'link' => $uri['path'] . '/status/debts',
+        ),
+        '#loan' => array(
+          'class' => 'user-status-loan',
+          'label' => format_plural($loan_count, 'Loan', 'Loans'),
+          'count' => $loan_count,
+          'link' => $uri['path'] . '/status/',
+        ),
+        '#bookmark' => array(
+          'class' => 'user-status-bookmark',
+          'label' => 'Bookmarks',
+          'count' => '#',
+          'link' => $uri['path'] . '/bookmarks',
+        ),
+      );
+
+      // Define the block.
+      $block['subject'] = t('Your user info');
+      $block['content'] = $content;
+      break;
+
+  }
+
+  return $block;
+}
