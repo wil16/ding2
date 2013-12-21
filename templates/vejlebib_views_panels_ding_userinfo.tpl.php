@@ -17,7 +17,7 @@
 $notice_pickup = ($pickup['count'] > 0 ? ' notice-pickup' : '');
 $notice_debt = ($debt['count'] > 0 ? ' notice-debt' : '');
 ?>
-<div class="vejlebib-user-info">
+<div class="user vejlebib-user-info">
   <div class="username"><?php print l($name, 'user'); ?></div>
   <ul>
     <li><?php print l(t('Status/loans') . ' (' . $loan['count'] . ')', $loan['link'], array('attributes' => array('class' => 'button' . $notice_debt))); ?></li>
