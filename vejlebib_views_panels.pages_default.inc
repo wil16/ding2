@@ -17,7 +17,7 @@ function vejlebib_views_panels_default_page_manager_handlers() {
   $handler->task = 'site_template';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -3;
+  $handler->weight = -30;
   $handler->conf = array(
     'title' => 'vejlebib Ding site template',
     'no_blocks' => 1,
@@ -370,6 +370,27 @@ function vejlebib_views_panels_default_page_manager_handlers() {
     $display->panels['header'][2] = 'new-13';
     $pane = new stdClass();
     $pane->pid = 'new-14';
+    $pane->panel = 'header';
+    $pane->type = 'block';
+    $pane->subtype = 'vejlebib_views_panels-vejlebib-ding-userinfo';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-14'] = $pane;
+    $display->panels['header'][3] = 'new-14';
+    $pane = new stdClass();
+    $pane->pid = 'new-15';
     $pane->panel = 'navigation';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-1';
@@ -388,10 +409,10 @@ function vejlebib_views_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-14'] = $pane;
-    $display->panels['navigation'][0] = 'new-14';
+    $display->content['new-15'] = $pane;
+    $display->panels['navigation'][0] = 'new-15';
     $pane = new stdClass();
-    $pane->pid = 'new-15';
+    $pane->pid = 'new-16';
     $pane->panel = 'navigation';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-2';
@@ -410,8 +431,8 @@ function vejlebib_views_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-15'] = $pane;
-    $display->panels['navigation'][1] = 'new-15';
+    $display->content['new-16'] = $pane;
+    $display->panels['navigation'][1] = 'new-16';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
