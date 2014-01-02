@@ -31,6 +31,11 @@ function alma_user_authenticate($uid, $pass) {
     'pass' => $pass,
   );
 
+  // Set user id from library system.
+  if (isset($res['user_id'])) {
+    $return['user_id'] = $res['user_id'];
+  }
+
   // Set user information.
   $return['user'] = array(
     'data' => array(
