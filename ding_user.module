@@ -418,23 +418,94 @@ function ding_user_auth_page() {
  * As logins may be CPR numbers, which is really sensitive information, we use
  * a hash of the name and the Drupal private key as authname.
  */
-function ding_user_default_authname($name) {
+function ding_user_default_authname($name, $user_id = NULL) {
   // If another password.inc is in use, that doesn't define
   // _password_base64_encode(), we'll fail horribly. We'll probably need to
   // define our own base64 function, but we'll cross that bridge when we reach
   // it.
   require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
 
-  // A sha512 is 64 bytes, which becomes 128 hexadecimal chars, which is
-  // exactly the size of the authname field in the database. So we ask hash
-  // for binary data and lets _password_base64_encode base64 encode it to 86
-  // characters, leaving enough room for our suffix.
   $hash = hash('sha512', drupal_get_private_key() . $name, TRUE);
 
   // The string length of the hash have been changed in the line below and we
   // need to update the accounts with new hash values, hence this function call.
   _ding_user_update_old_accounts($hash);
-  return _password_base64_encode($hash, drupal_strlen($hash)) . '@ding_user';
+
+  /**
+   * A sha512 is 64 bytes, which becomes 128 hexadecimal chars, which is
+   * exactly the size of the authname field in the database. So we ask hash
+   * for binary data and lets _password_base64_encode base64 encode it to 86
+   * characters, leaving enough room for our suffix.
+   */
+  $hash_encoded = _password_base64_encode($hash, drupal_strlen($hash)) . '@ding_user';
+  
+  if ($user_id) {
+    // Check if user has been migrated from earlier ding versions
+    $uid = _ding_user_user_needs_new_hash_username($user_id);
+    
+    if ($uid) {
+      // Update username to new username hash scheme
+      _ding_user_update_migrated_accounts($hash_encoded, $uid);
+    }
+  }
+
+  return $hash_encoded;
+}
+
+/**
+ * Check whether a user has been migrated from previous ding version and needs to be replaced with a new hash.
+ * 
+ * @param string $name
+ *   The plain text username as entered by user during login.
+ *
+ * @return
+ *   An uid if old authname hash value exists in authmap table or FALSE if not found.
+ */
+function _ding_user_user_needs_new_hash_username($user_id) {
+  // Generates HASH-value the old Ding1/D6 way
+  // TODO: make the check support other providers than ALMA
+  // $user_id is an User ID returned from the provider, ex. ID53377
+  $auth_name_migrated = md5(drupal_get_private_key() . $user_id) . '@alma_user';
+
+  // check to see if we find the old hash in authmap-table 
+  $uid = db_select('authmap', 'a')
+    ->fields('a', array('uid'))
+    ->condition('authname', $auth_name_migrated)
+    ->execute()
+    ->fetchField();
+
+  return ($uid ? $uid : FALSE);
+}
+
+/**
+ * Updates user with new authname hash.
+ * 
+ * @param string $auth_name_new
+ *   The new hashed and encoded username
+ * @param string $uid
+ *   The user on which to update authname
+ *
+ */
+function _ding_user_update_migrated_accounts($auth_name_new, $uid) {
+  // Update tables with new authname hash
+  $updated = db_update('authmap')
+    ->fields(array(
+      'authname' => $auth_name_new,
+    ))
+    ->condition('uid', $uid)
+    ->execute();
+
+  $updated = db_update('users')
+    ->fields(array(
+      'name' => hash('sha1', $auth_name_new), // Use a shorter SHA1 hash for the name field, as in _ding_user_create_account 
+      'init' => $auth_name_new,
+    ))
+    ->condition('uid', $uid)
+    ->execute();
+
+  watchdog('ding_user', 'Updated user migrated from previous ding (uid @uid) with authname @auth_name_new', array('@auth_name_new' => $auth_name_new, '@uid' => $uid), WATCHDOG_DEBUG);
+
+  return;
 }
 
 /**
@@ -511,6 +582,10 @@ function ding_user_user_login_validate($form, &$form_state) {
       if (isset($auth_res['authname']) && !empty($auth_res['authname'])) {
         // If provider supplied an authname, use it.
         $auth_name = $auth_res['authname'];
+      }
+      else if (isset($auth_res['user_id']) && !empty($auth_res['user_id'])) {
+        // If provider supplied an user id, include it when getting standard authname.
+        $auth_name = ding_user_default_authname($form_state['values']['name'], $auth_res['user_id']);
       }
       else {
         // Else use a standard authname.
