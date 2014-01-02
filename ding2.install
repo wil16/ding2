@@ -153,6 +153,7 @@ function ding2_install() {
     'ding_event',
     'ding_library',
     'ding_news',
+    'ding_groups',
     'ding_campaign_ctype',
     'ding_frontpage',
   );
@@ -296,4 +297,24 @@ function ding2_update_7001() {
   $form_state['values'] = array();
   $form_state['values']['scheme'] = 'classic';
   drupal_form_submit('system_theme_settings', $form_state);
+}
+
+/**
+ * Import our own translations.
+ */
+function ding_2_update_7002() {
+  $file = new stdClass();
+  $file->uri = DRUPAL_ROOT . '/profiles/ding2/translations/ding2tal_da.po';
+  $file->filename = basename($file->uri);
+  _locale_import_po($file, 'da', LOCALE_IMPORT_OVERWRITE, 'default');
+}
+
+/**
+ * Update translations.
+ */
+function ding_2_update_7003() {
+  $file = new stdClass();
+  $file->uri = DRUPAL_ROOT . '/profiles/ding2/translations/ding2tal_da.po';
+  $file->filename = basename($file->uri);
+  _locale_import_po($file, 'da', LOCALE_IMPORT_OVERWRITE, 'default');
 }
