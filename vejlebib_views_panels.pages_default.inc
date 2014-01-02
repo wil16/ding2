@@ -511,7 +511,7 @@ function vejlebib_views_panels_default_page_manager_handlers() {
     $pane->pid = 'new-2';
     $pane->panel = 'primary';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ding_tabroll-panel_pane_1';
+    $pane->subtype = 'ding_tabroll-ding_frontpage_tabroll';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
