@@ -166,8 +166,8 @@ projects[ding_user][download][type] = "git"
 projects[ding_user][download][url] = "git@github.com:ding2tal/ding_user.git"
 projects[ding_user][download][branch] = "support-user-migrations"
 
-; alma must be version with migrated users support
+; alma must be vejlebib version with migrated users support
 projects[alma][type] = "module"
 projects[alma][download][type] = "git"
-projects[alma][download][url] = "git@github.com:ding2tal/alma.git"
-projects[alma][download][branch] = "support_user_migrations"
+projects[alma][download][url] = "git@github.com:vejlebib-ding2/alma.git"
+projects[alma][download][branch] = "support-user-migrations"
