@@ -160,10 +160,10 @@ projects[ting_covers][download][type] = "git"
 projects[ting_covers][download][url] = "git@github.com:vejlebib/ting_covers.git"
 projects[ting_covers][download][branch] = "extra-covers"
 
-; Ding User must be version with migrated users support
+; Ding User must be vejlebib version with migrated users support
 projects[ding_user][type] = "module"
 projects[ding_user][download][type] = "git"
-projects[ding_user][download][url] = "git@github.com:ding2tal/ding_user.git"
+projects[ding_user][download][url] = "git@github.com:vejlebib/ding_user.git"
 projects[ding_user][download][branch] = "support-user-migrations"
 
 ; alma must be vejlebib version with migrated users support
