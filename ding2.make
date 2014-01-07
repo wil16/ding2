@@ -109,6 +109,11 @@ libraries[profiler][download][url] = "http://git.drupal.org/project/profiler.git
 libraries[profiler][download][branch] = "7.x-2.0-beta1"
 libraries[profiler][patch][0] = "http://drupal.org/files/profiler-reverse.patch"
 
+libraries[mailchimp][download][type] = "get"
+libraries[mailchimp][download][url] = "http://apidocs.mailchimp.com/api/downloads/mailchimp-api-class.zip"
+libraries[mailchimp][directory_name] = "mailchimp"
+libraries[mailchimp][destination] = "libraries"
+
 ; Contrib modules
 projects[entitycache][subdir] = "contrib"
 projects[entitycache][version] = "1.1"
@@ -125,6 +130,9 @@ projects[memcache][version] = "1.0"
 
 projects[apc][subdir] = "contrib"
 projects[apc][version] = "1.0-beta4"
+
+projects[mailchimp][subdir] = "contrib"
+projects[mailchimp][version] = "2.12"
 
 ; Vejlebib modules
 projects[ding_opening_hours][type] = "module"
