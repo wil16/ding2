@@ -20,9 +20,9 @@ $notice_debt = ($debt['count'] > 0 ? ' notice-debt' : '');
 <div class="user vejlebib-user-info">
   <div class="username"><?php print l($name, 'user'); ?></div>
   <ul>
-    <li><?php print l(t('Status/loans') . ' (' . $loan['count'] . ')', $loan['link'], array('attributes' => array('class' => 'button' . $notice_debt))); ?></li>
-    <li><?php print l('logout', 'user/logout', array('attributes' => array('class' => 'button'))); ?></li>
-    <li><?php print l($reservation['label'] . ' (' . $reservation['count'] . ')', $reservation['link'], array('attributes' => array('class' => 'button' . $notice_pickup))); ?></li>
-    <li><?php print l($bookmark['label'] . ' (' . $bookmark['count'] . ')', $bookmark['link'], array('attributes' => array('class' => 'button'))); ?></li>
+    <li><?php print l(t('Status/loans') . ' (' . $loan['count'] . ')', $loan['link'], array('attributes' => array('class' => array('button' . $notice_debt)))); ?></li>
+    <li><?php print l('logout', 'user/logout', array('attributes' => array('class' => array('button')))); ?></li>
+    <li><?php print l($reservation['label'] . ' (' . $reservation['count'] . ')', $reservation['link'], array('attributes' => array('class' => array('button' . $notice_pickup)))); ?></li>
+    <li><?php print l($bookmark['label'] . ' (' . $bookmark['count'] . ')', $bookmark['link'], array('attributes' => array('class' => array('button')))); ?></li>
   </ul>
 </div>
