@@ -142,6 +142,11 @@ projects[ding_eresource][download][type] = "git"
 projects[ding_eresource][download][url] = "git@github.com:vejlebib/ding_eresource.git"
 projects[ding_eresource][download][branch] = "master"
 
+projects[ding_redia_bapp][type] = "module"
+projects[ding_redia_bapp][download][type] = "git"
+projects[ding_redia_bapp][download][url] = "git@github.com:vejlebib/ding_redia_bapp.git"
+projects[ding_redia_bapp][download][branch] = "7.x-1.x"
+
 projects[ding_zerohit_form][type] = "module"
 projects[ding_zerohit_form][download][type] = "git"
 projects[ding_zerohit_form][download][url] = "git@github.com:vejlebib/ding_zerohit_form.git"
