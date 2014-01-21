@@ -131,7 +131,10 @@ projects[memcache][version] = "1.0"
 projects[apc][subdir] = "contrib"
 projects[apc][version] = "1.0-beta4"
 
-<<<<<<< HEAD
+projects[cookiecontrol][subdir] = "contrib"
+projects[cookiecontrol][version] = "1.6"
+projects[cookiecontrol][patch][0] = "http://drupal.org/files/issues/translatable_link_title-2174955-1.patch"
+
 projects[mailchimp][subdir] = "contrib"
 projects[mailchimp][version] = "2.12"
 
@@ -190,9 +193,3 @@ projects[alma][type] = "module"
 projects[alma][download][type] = "git"
 projects[alma][download][url] = "git@github.com:vejlebib-ding2/alma.git"
 projects[alma][download][branch] = "support-user-migrations"
-=======
-projects[cookiecontrol][subdir] = "contrib"
-projects[cookiecontrol][version] = "1.6"
-projects[cookiecontrol][patch][0] = "http://drupal.org/files/issues/translatable_link_title-2174955-1.patch"
-
->>>>>>> refs/remotes/upstream/release
