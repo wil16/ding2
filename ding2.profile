@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * The installation profile which is called after the profile have been enabled
+ * so .install is called first.
+ */
 
 // Initialise profiler.
 !function_exists('profiler_v2') ? require_once 'libraries/profiler/profiler.inc' : FALSE;
@@ -48,6 +53,18 @@ function ding2_form_alter(&$form, &$form_state, $form_id) {
   if (defined('MAINTENANCE_MODE') && MAINTENANCE_MODE == 'install' &&
       $form_id != 'install_configure_form') {
     array_walk_recursive($form, '_ding2_remove_form_requirements');
+
+    // Set default values in ting search form to help aegir/bulk installations.
+    if ($form_id == 'ting_admin_ting_settings') {
+      $form['ting']['ting_search_url']['#default_value'] = 'http://opensearch.addi.dk/3.0/';
+      $form['ting']['ting_scan_url']['#default_value'] = 'http://openscan.addi.dk/2.0/';
+      $form['ting']['ting_spell_url']['#default_value'] = 'http://openspell.addi.dk/1.2/';
+      $form['ting']['ting_recommendation_url']['#default_value'] = 'http://openadhl.addi.dk/1.1/';
+    }
+
+    if ($form_id == 'ting_covers_admin_addi_settings_form') {
+      $form['addi']['addi_wsdl_url']['#default_value'] = 'http://moreinfo.addi.dk/2.1/';
+    }
   }
 }
 
@@ -72,6 +89,8 @@ function ding2_install_tasks(&$install_state) {
   // Clean up if were finished.
   if ($install_state['installation_finished']) {
     variable_del('ding_install_tasks');
+
+    ding2_final_settings();
   }
 
   include_once 'libraries/profiler/profiler_api.inc';
@@ -124,10 +143,16 @@ function ding2_import_translation(&$install_state) {
   locale_add_language('da', NULL, NULL, NULL, '', NULL, TRUE, FALSE);
 
   // Import our own translations.
-  $file = new stdClass;
-  $file->uri = DRUPAL_ROOT . '/profiles/ding2/translations/ding2tal_da.po';
+  $file = new stdClass();
+  $file->uri = DRUPAL_ROOT . '/profiles/ding2/translations/da.po';
   $file->filename = basename($file->uri);
   _locale_import_po($file, 'da', LOCALE_IMPORT_OVERWRITE, 'default');
+
+  // Import field translation group.
+  $file = new stdClass();
+  $file->uri = DRUPAL_ROOT . '/profiles/ding2/translations/fields_da.po';
+  $file->filename = basename($file->uri);
+  _locale_import_po($file, 'da', LOCALE_IMPORT_OVERWRITE, 'field');
 
   // Build batch with l10n_update module.
   $history = l10n_update_get_history();
@@ -164,9 +189,9 @@ function ding2_locale_selection(&$install_state) {
 }
 
 /**
- * Install task fetching ding install tasks from modules implementing
- * hook_ding_install_tasks. This install task is invoked when Drupal is
- * fully functional.
+ * Fetch ding install tasks from modules implementing hook_ding_install_tasks().
+ *
+ * This install task is invoked when Drupal is fully functional.
  */
 function ding2_fetch_ding_install_tasks(&$install_state) {
   $ding_tasks = module_invoke_all('ding_install_tasks');
@@ -184,11 +209,7 @@ function _ding2_remove_form_requirements(&$value, $key) {
 }
 
 /**
- * Installation task that handle selection of provider and modules to extend
- * default ding2 installation.
- *
- * @return array
- *   Form with selection of different modules.
+ * Installation task that handle selection of provider and modules.
  */
 function ding2_module_selection_form($form, &$form_state) {
   // Available providers.
@@ -208,14 +229,13 @@ function ding2_module_selection_form($form, &$form_state) {
     '#title' => '',
     '#type' => 'radios',
     '#options' => $providers,
+    '#default_value' => 'alma',
   );
 
   //
   // Optional modules.
   //
   $modules = array(
-//    'ding_adhl_frontend' => st('ADHL (Other that have borrowed)'),
-//    'ding_campaign' => st('Add ding campaigns'),
     'ding_contact' => st('Contact module'),
     'ding_example_content' => st('Add example content'),
     'ting_new_materials' => st('Ting New Materials'),
@@ -232,6 +252,9 @@ function ding2_module_selection_form($form, &$form_state) {
     '#title' => '',
     '#type' => 'checkboxes',
     '#options' => $modules,
+    '#default_value' => array(
+      'ding_contact',
+    ),
   );
 
   //
@@ -247,6 +270,7 @@ function ding2_module_selection_form($form, &$form_state) {
     '#description' => st('If toggled on, the following logo will be displayed.'),
     '#attributes' => array('class' => array('theme-settings-bottom')),
   );
+
   $form['logo']['default_logo'] = array(
     '#type' => 'checkbox',
     '#title' => st('Use the default logo'),
@@ -254,6 +278,7 @@ function ding2_module_selection_form($form, &$form_state) {
     '#tree' => FALSE,
     '#description' => st('Check here if you want the theme to use the logo supplied with it.'),
   );
+
   $form['logo']['settings'] = array(
     '#type' => 'container',
     '#states' => array(
@@ -263,12 +288,14 @@ function ding2_module_selection_form($form, &$form_state) {
       ),
     ),
   );
+
   $form['logo']['settings']['logo_path'] = array(
     '#type' => 'textfield',
     '#title' => st('Path to custom logo'),
     '#description' => st('The path to the file you would like to use as your logo file instead of the default logo.'),
     '#default_value' => '',
   );
+
   $form['logo']['settings']['logo_upload'] = array(
     '#type' => 'file',
     '#title' => st('Upload logo image'),
@@ -282,12 +309,14 @@ function ding2_module_selection_form($form, &$form_state) {
     '#title' => st('Shortcut icon settings'),
     '#description' => st("Your shortcut icon, or 'favicon', is displayed in the address bar and bookmarks of most browsers."),
   );
+
   $form['favicon']['default_favicon'] = array(
     '#type' => 'checkbox',
     '#title' => st('Use the default shortcut icon.'),
     '#default_value' => TRUE,
     '#description' => st('Check here if you want the theme to use the default shortcut icon.'),
   );
+
   $form['favicon']['settings'] = array(
     '#type' => 'container',
     '#states' => array(
@@ -297,12 +326,14 @@ function ding2_module_selection_form($form, &$form_state) {
       ),
     ),
   );
+
   $form['favicon']['settings']['favicon_path'] = array(
     '#type' => 'textfield',
     '#title' => st('Path to custom icon'),
     '#description' => st('The path to the image file you would like to use as your custom shortcut icon.'),
     '#default_value' => '',
   );
+
   $form['favicon']['settings']['favicon_upload'] = array(
     '#type' => 'file',
     '#title' => st('Upload icon image'),
@@ -315,12 +346,14 @@ function ding2_module_selection_form($form, &$form_state) {
     '#title' => st('iOS icon settings'),
     '#description' => st("Your iOS icon, is displayed at the homescreen."),
   );
+
   $form['iosicon']['default_iosicon'] = array(
     '#type' => 'checkbox',
     '#title' => st('Use the default iOS icon.'),
     '#default_value' => TRUE,
     '#description' => st('Check here if you want the theme to use the default iOS icon.'),
   );
+
   $form['iosicon']['settings'] = array(
     '#type' => 'container',
     '#states' => array(
@@ -330,11 +363,13 @@ function ding2_module_selection_form($form, &$form_state) {
       ),
     ),
   );
+
   $form['iosicon']['settings']['iosicon_path'] = array(
     '#type' => 'textfield',
     '#title' => st('Path to custom iOS icon'),
     '#description' => st('The path to the image file you would like to use as your custom iOS icon.'),
   );
+
   $form['iosicon']['settings']['iosicon_upload'] = array(
     '#type' => 'file',
     '#title' => st('Upload iOS icon image'),
@@ -440,4 +475,149 @@ function ding2_module_selection_form_submit($form, &$form_state) {
 
   // Enable the provider (if selected) and modules.
   module_enable($module_list, TRUE);
+}
+
+function ding2_final_settings() {
+  // Revert features to ensure they are all installed as default.
+  $features = array(
+    'ting_reference',
+    'ting_material_details',
+    'ding_base',
+    'ding_user_frontend',
+    'ding_path_alias',
+    'ding_content',
+    'ding_page',
+    'ding_frontend',
+    'ding_ting_frontend',
+    'ding_event',
+    'ding_library',
+    'ding_news',
+    'ding_groups',
+    'ding_campaign_ctype',
+    'ding_frontpage',
+  );
+  ding2_features_revert($features);
+
+  // Set page not found.
+  ding2_set_page_not_found();
+
+  // Set cookie page.
+  ding2_set_cookie_page();
+}
+
+/**
+ * Reverts a given set of feature modules.
+ *
+ * @param array $modules
+ *   Names of the modules to revert.
+ */
+function ding2_features_revert($modules = array()) {
+  foreach ($modules as $module) {
+    // Load the feature.
+    if (($feature = features_load_feature($module, TRUE)) && module_exists($module)) {
+      // Get all components of the feature.
+      foreach (array_keys($feature->info['features']) as $component) {
+        if (features_hook($component, 'features_revert')) {
+          // Revert each component (force).
+          features_revert(array($module => array($component)));
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Adds a new static page to the site and set it as the default 404 page.
+ */
+function ding2_set_page_not_found() {
+  $node = new stdClass();
+  $node->uid = 1;
+
+  $node->title = 'Siden blev ikke fundet';
+  $node->type = 'ding_page';
+  $node->language = 'und';
+  $node->field_ding_page_body = array(
+    'und' => array(
+      array(
+        'value' => '<div class="field-teaser">UPS! Vi kan ikke finde den side du søger.</div><p><strong>Hvad gik galt?</strong><br />Der kan være flere årsager til, at vi ikke kan finde det du leder efter:</p><p>- Stavefejl: Måske har du stavet forkert, da du skrev søgeordet. Eller der er en stavefejl i det link, du har fulgt.</p><p>- Siden er flyttet/slettet: Måske findes siden ikke længere eller den er blevet&nbsp;flyttet.</p><p><br /><strong>Bibliotek.dk</strong><br />Prøv den landsdækkende base <a href="http://bibliotek.dk/" target="_blank" title="Bibliotek.dk">bibliotek.dk</a>. Bibliotek.dk er en gratis service, hvor du kan se, hvad der er blevet udgivet i Danmark, og hvad der findes på danske biblioteker. Databasen opdateres dagligt.<br />Du kan bestille materialer til afhentning på dit lokale bibliotek. Du skal være registreret bruger på Odense Centralbibliotek.</p><p><br /><strong>Kom videre -&nbsp;kontakt&nbsp;dit bibliotek</strong><br />Vælg <a href="http://oc.fynbib.dk/biblioteker">&#39;Biblioteker&#39;</a> i menuen ovenfor og find kontakt oplysninger på den ønskede afdeling.</p>',
+        'format' => 'ding_wysiwyg',
+        'safe_value' => '<div class="field-teaser">UPS! Vi kan ikke finde den side du søger.</div><p><strong>Hvad gik galt?</strong><br />Der kan være flere årsager til, at vi ikke kan finde det du leder efter:</p><p>- Stavefejl: Måske har du stavet forkert, da du skrev søgeordet. Eller der er en stavefejl i det link, du har fulgt.</p><p>- Siden er flyttet/slettet: Måske findes siden ikke længere eller den er blevet flyttet.</p><p><br /><strong>Bibliotek.dk</strong><br />Prøv den landsdækkende base <a href="http://bibliotek.dk/" target="_blank" title="Bibliotek.dk">bibliotek.dk</a>. Bibliotek.dk er en gratis service, hvor du kan se, hvad der er blevet udgivet i Danmark, og hvad der findes på danske biblioteker. Databasen opdateres dagligt.<br />Du kan bestille materialer til afhentning på dit lokale bibliotek. Du skal være registreret bruger på Odense Centralbibliotek.</p><p><br /><strong>Kom videre - kontakt dit bibliotek</strong><br />Vælg <a href="http://oc.fynbib.dk/biblioteker">\'Biblioteker\'</a> i menuen ovenfor og find kontakt oplysninger på den ønskede afdeling.</p>',
+      ),
+    ),
+  );
+  $node->field_ding_page_lead = array(
+    'und' => array(
+      array(
+        'value' => '- men denne side kan måske hjælpe dig videre',
+        'format' => NULL,
+        'safe_value' => '- men denne side kan måske hjælpe dig videre',
+      ),
+    ),
+  );
+  $node->path = array(
+    'alias' => 'siden-ikke-fundet',
+    'language' => 'und',
+  );
+
+  node_save($node);
+
+  // Set the 404 page.
+  variable_set('site_404', 'siden-ikke-fundet');
+}
+
+/**
+ * Add page with std. cookie information.
+ */
+function ding2_set_cookie_page() {
+  $node = new stdClass();
+  $node->uid = 1;
+
+  $node->title = 'Cookie- og privatlivspolitik';
+  $node->type = 'ding_page';
+  $node->language = 'und';
+  $node->field_ding_page_body = array(
+    'und' => array(
+      array(
+        'value' => '<p><strong>Hvad er en cookie?</strong></p><p>En cookie er en lille tekstfil, der lagres i din browser for at kunne genkende din computer ved tilbagevendende besøg. Cookies er ikke aktive filer; de kan altså ikke udvikle virus eller spore indhold på din computer. Det eneste, de gør, er at sende anonyme oplysninger tilbage til os om fx besøgstidspunkt, -varighed osv.</p><p><strong>På denne hjemmeside bruger vi cookies til følgende formål:</strong></p><ul><li>Statistik: Vi bruger Google Analytics og Webtrends til at føre statistik over trafikken på siden, sådan at vi bedst muligt kan tilpasse den brugernes behov. Vi får blandt andet oplysninger om antal besøg, gennemsnitlig besøgsvarighed og færden rundt på siden.</li><li>Login: Når du logger ind for at se lånerstatus, reservere m.m. sættes en sessions-cookie. Denne cookie forsvinder når du lukker browseren.</li></ul><p><strong>Hvis du ikke vil tillade cookies</strong></p><p>Hvis du ikke vil tillade brugen af cookies på din computer, kan du ændre i indstillingerne i din browser, så den husker det fremover. Du kan også slette cookies, der allerede er lagret.<br />Se vejledning og læs mere om cookies på <a href="http://minecookies.org/cookiehandtering" target="_blank" title="Cookiehåndtering">http://minecookies.org/cookiehandtering</a>.<br />Vær opmærksom på, at du ved at spærre for cookies besværliggør brugen af hjemmesiden.</p><p><strong>Brug af personoplysninger</strong><br />Personoplysninger bliver på intet tidspunkt videregivet eller solgt til tredjepart, og vi indsamler ikke personoplysninger, uden du selv har givet os disse.</p>',
+        'format' => 'ding_wysiwyg',
+        'safe_value' => '<p><strong>Hvad er en cookie?</strong></p><p>En cookie er en lille tekstfil, der lagres i din browser for at kunne genkende din computer ved tilbagevendende besøg. Cookies er ikke aktive filer; de kan altså ikke udvikle virus eller spore indhold på din computer. Det eneste, de gør, er at sende anonyme oplysninger tilbage til os om fx besøgstidspunkt, -varighed osv.</p><p><strong>På denne hjemmeside bruger vi cookies til følgende formål:</strong></p><ul><li>Statistik: Vi bruger Google Analytics og Webtrends til at føre statistik over trafikken på siden, sådan at vi bedst muligt kan tilpasse den brugernes behov. Vi får blandt andet oplysninger om antal besøg, gennemsnitlig besøgsvarighed og færden rundt på siden.</li><li>Login: Når du logger ind for at se lånerstatus, reservere m.m. sættes en sessions-cookie. Denne cookie forsvinder når du lukker browseren.</li></ul><p><strong>Hvis du ikke vil tillade cookies</strong></p><p>Hvis du ikke vil tillade brugen af cookies på din computer, kan du ændre i indstillingerne i din browser, så den husker det fremover. Du kan også slette cookies, der allerede er lagret.<br />Se vejledning og læs mere om cookies på <a href="http://minecookies.org/cookiehandtering" target="_blank" title="Cookiehåndtering">http://minecookies.org/cookiehandtering</a>.<br />Vær opmærksom på, at du ved at spærre for cookies besværliggør brugen af hjemmesiden.</p><p><strong>Brug af personoplysninger</strong><br />Personoplysninger bliver på intet tidspunkt videregivet eller solgt til tredjepart, og vi indsamler ikke personoplysninger, uden du selv har givet os disse.</p>',
+      ),
+    ),
+  );
+  $node->field_ding_page_lead = array(
+    'und' => array(
+      array(
+        'value' => 'Vi vil gerne tilbyde vores brugere en overskuelig og brugervenlig hjemmeside. For at sikre os, at indholdet på siden er relevant og til at finde rundt i, benytter vi os af cookies. Cookies giver os vigtige informationer om, hvordan vores side bliver brugt, hvilke sider der bliver set mest, hvor længe vores brugere bliver på siderne osv.',
+        'format' => NULL,
+        'safe_value' => 'Vi vil gerne tilbyde vores brugere en overskuelig og brugervenlig hjemmeside. For at sikre os, at indholdet på siden er relevant og til at finde rundt i, benytter vi os af cookies. Cookies giver os vigtige informationer om, hvordan vores side bliver brugt, hvilke sider der bliver set mest, hvor længe vores brugere bliver på siderne osv.',
+      ),
+    ),
+  );
+  $node->path = array(
+    'alias' => 'cookies',
+    'language' => 'und',
+  );
+
+  // Create the node.
+  node_save($node);
+
+  // Set the node as read more node.
+  variable_set('cookiecontrol_privacynode', $node->nid);
+
+  // Set short texts (cookie popup).
+  variable_set('cookiecontrol_text', '<p>Dette site bruger cookies til at gemme oplysninger på din computer.</p>');
+  variable_set('cookiecontrol_fulltext', '<p>Vi vil gerne tilbyde vores brugere en overskuelig og brugervenlig hjemmeside. For at sikre os, at indholdet på siden er relevant og til at finde rundt i, benytter vi os af cookies. Cookies giver os vigtige informationer om, hvordan vores side bliver brugt, hvilke sider der bliver set mest, hvor længe vores brugere bliver på siderne osv.</p>');
+
+  // Add node as link to menu.
+  $uri = entity_uri('node', $node);
+  $link = array(
+    'menu_name' => 'menu-secondary-menu',
+    'weight' => 50,
+    'link_title' => 'Cookies',
+    'link_path' => $uri['path'],
+    'language' => LANGUAGE_NONE,
+  );
+
+  // Save the item to database.
+  menu_link_save($link);
 }
