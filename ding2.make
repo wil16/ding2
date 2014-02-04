@@ -164,6 +164,11 @@ projects[ding_zerohit_form][download][type] = "git"
 projects[ding_zerohit_form][download][url] = "git@github.com:vejlebib/ding_zerohit_form.git"
 projects[ding_zerohit_form][download][branch] = "7.x-1.x"
 
+projects[ding_wagnerguide][type] = "module"
+projects[ding_wagnerguide][download][type] = "git"
+projects[ding_wagnerguide][download][url] = "git@github.com:vejlebib/ding_wagnerguide.git"
+projects[ding_wagnerguide][download][branch] = "7.x-1.x"
+
 projects[ting_extrasearch][type] = "module"
 projects[ting_extrasearch][download][type] = "git"
 projects[ting_extrasearch][download][url] = "git@github.com:vejlebib/ting_extrasearch.git"
