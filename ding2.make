@@ -169,10 +169,10 @@ projects[ding_wagnerguide][download][type] = "git"
 projects[ding_wagnerguide][download][url] = "git@github.com:vejlebib/ding_wagnerguide.git"
 projects[ding_wagnerguide][download][branch] = "7.x-1.x"
 
-projects[ting_extrasearch][type] = "module"
-projects[ting_extrasearch][download][type] = "git"
-projects[ting_extrasearch][download][url] = "git@github.com:vejlebib/ting_extrasearch.git"
-projects[ting_extrasearch][download][branch] = "7.x-0.x"
+projects[ting_covers_plus][type] = "module"
+projects[ting_covers_plus][download][type] = "git"
+projects[ting_covers_plus][download][url] = "git@github.com:vejlebib/ting_covers_plus.git"
+projects[ting_covers_plus][download][branch] = "7.x-1.x"
 
 ; Vejlebib theme
 projects[wellejus][type] = "theme"
@@ -181,12 +181,6 @@ projects[wellejus][download][url] = "git@github.com:vejlebib/wellejus.git"
 projects[wellejus][download][branch] = "7.x-1.x"
 
 ;-- OVERRIDDEN / FORKED FOR VEJLEBIB --
-; Ting Covers must be vejlebib version
-projects[ting_covers][type] = "module"
-projects[ting_covers][download][type] = "git"
-projects[ting_covers][download][url] = "git@github.com:vejlebib/ting_covers.git"
-projects[ting_covers][download][branch] = "extra-covers"
-
 ; Ding User must be vejlebib version with migrated users support
 projects[ding_user][type] = "module"
 projects[ding_user][download][type] = "git"
