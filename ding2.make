@@ -174,6 +174,11 @@ projects[ting_covers_plus][download][type] = "git"
 projects[ting_covers_plus][download][url] = "git@github.com:vejlebib/ting_covers_plus.git"
 projects[ting_covers_plus][download][branch] = "7.x-1.x"
 
+projects[ting_extrasearch][type] = "module"
+projects[ting_extrasearch][download][type] = "git"
+projects[ting_extrasearch][download][url] = "git@github.com:vejlebib/ting_extrasearch.git"
+projects[ting_extrasearch][download][branch] = "7.x-0.x"
+
 ; Vejlebib theme
 projects[wellejus][type] = "theme"
 projects[wellejus][download][type] = "git"
