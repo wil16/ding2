@@ -17,6 +17,11 @@ function vejlebib_views_panels_block_info() {
     'cache' => DRUPAL_CACHE_PER_USER,
   );
 
+  $blocks['vejlebib-nav-helpers'] = array(
+    'info' => t('Vejlebib nav help links'),
+    'cache' => '', // What type cache to use?
+  );
+
   return $blocks;
 }
 
@@ -135,6 +140,16 @@ function vejlebib_views_panels_block_view($delta) {
       $block['content'] = $content;
       break;
 
+    case 'vejlebib-nav-helpers':
+      // Nav helper links markup
+      $content[] = array(
+          '#type' => 'markup',
+          '#markup' => '<ul class="nav-helpers"><li><a class="english" href="/in-english">English</a></li><li><a class="read" href="http://adgangforalle.dk">Læs op</a></li><li><a class="print" href="javascript:window.print();">Print</a></li></ul>',
+        );
+
+      // Define the block.
+      $block['content'] = $content;
+      break;
   }
 
   return $block;
