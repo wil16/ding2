@@ -105,7 +105,7 @@ projects[ding_contact][download][tag] = "7.x-1.0-rc6"
 projects[bpi][type] = "module"
 projects[bpi][download][type] = "git"
 projects[bpi][download][url] = "git@github.com:ding2tal/bpi.git"
-projects[bpi][download][branch] = "development"
+projects[bpi][download][tag] = "7.x-1.0-rc6"
 
 ; Base theme
 projects[ddbasic][type] = "theme"
