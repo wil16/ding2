@@ -3,11 +3,17 @@ backend default {
   .port = "80";
 }
 
+# List of upstream proxies we trust to set X-Forwarded-For correctly.
+acl upstream_proxy {
+  "127.0.0.1";
+  "172.21.0.0"/24;
+}
+
 # Respond to incoming requests.
 sub vcl_recv {
   # Make sure that the client ip is forward to the client.
   if (req.restarts == 0) {
-    if (req.http.x-forwarded-for) {
+    if (client.ip ~ upstream_proxy && req.http.x-forwarded-for) {
       set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
     }
     else {
@@ -73,7 +79,7 @@ sub vcl_recv {
   # cookie will cause the request to pass-through to Apache. For the most part
   # we always set the NO_CACHE cookie after any POST request, disabling the
   # Varnish cache temporarily. Cookies are only removed for not logged in users
-  # theme with role 1.
+  # theme with role 1 (anonymous user).
   if (req.http.Cookie && req.http.X-Drupal-Roles == "1") {
     set req.http.Cookie = ";" + req.http.Cookie;
     set req.http.Cookie = regsuball(req.http.Cookie, "; +", ";");

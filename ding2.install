@@ -29,7 +29,6 @@ function ding2_install() {
 
   // Enable $default_theme.
   variable_set('theme_default', $default_theme);
-  variable_set('theme_' . $default_theme . '_settings', ding2_theme_settings());
 
   // Enable $admin_theme.
   variable_set('admin_theme', $admin_theme);
@@ -107,12 +106,8 @@ function ding2_install() {
   }
 
   // Submit theme settings.
-  module_load_include('inc', 'system', 'system.admin');
-  $form_state = form_state_defaults();
-  $form_state['build_info']['args'][0] = 'ddbasic';
-  $form_state['values'] = array();
-  $form_state['values']['scheme'] = 'classic';
-  drupal_form_submit('system_theme_settings', $form_state);
+  variable_set('theme_' . $default_theme . '_settings', ding2_theme_settings());
+  ding_base_rewrite_color_stylesheet();
 
   // Ignore any rebuild messages.
   node_access_needs_rebuild(FALSE);
@@ -132,11 +127,11 @@ function ding2_install() {
  */
 function ding2_theme_settings() {
   return array(
-    'toggle_logo' => 0,
-    'toggle_name' => 1,
-    'toggle_slogan' => 1,
-    'toggle_node_user_picture' => 1,
-    'toggle_comment_user_picture' => 1,
+    'toggle_logo' => 1,
+    'toggle_name' => 0,
+    'toggle_slogan' => 0,
+    'toggle_node_user_picture' => 0,
+    'toggle_comment_user_picture' => 0,
     'toggle_comment_user_verification' => 1,
     'toggle_favicon' => 1,
     'toggle_main_menu' => 1,
@@ -229,4 +224,20 @@ function ding2_update_7003() {
 function ding2_update_7004() {
   // Fixed month translation.
   ding2_translation_update();
+}
+
+/**
+ * Enable and configure SSL proxy variables.
+ */
+function ding2_update_7005() {
+  module_enable(array('sslproxy'), TRUE);
+  variable_set('sslproxy_var', 'X-FORWARDED-PROTO');
+  variable_set('sslproxy_var_value', 'https');
+}
+
+/**
+ * Add "administrators" role to admin user.
+ */
+function ding2_update_7006() {
+  ding2_add_administrators_role(1);
 }
