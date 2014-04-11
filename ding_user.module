@@ -179,7 +179,8 @@ function ding_user_form_alter(&$form, $form_state, $form_id) {
         $pos += 1;
       }
       array_splice($form['#validate'], $pos, 0, 'ding_user_user_login_validate');
-      break;
+    // Falling through on purpose (if not reservation and login via ajax will
+    // fail.).
 
     case 'ding_user_authenticate_form':
       if (isset($form_state['ajaxify'])) {
@@ -812,7 +813,9 @@ function ding_user_get_creds($user = NULL) {
           // Logout the user and switch to anonymous.
           user_module_invoke('logout', $user, 'user');
           session_destroy();
-          drupal_anonymous_user();
+
+          // Set the global user to anonymous.
+          $user = drupal_anonymous_user();
 
           // Handle ajax requests.
           if (isset($_REQUEST['js']) && $_REQUEST['js'] == 'true') {
