@@ -89,8 +89,6 @@ function ding2_install_tasks(&$install_state) {
   // Clean up if were finished.
   if ($install_state['installation_finished']) {
     variable_del('ding_install_tasks');
-
-    ding2_final_settings();
   }
 
   include_once 'libraries/profiler/profiler_api.inc';
@@ -120,6 +118,14 @@ function ding2_install_tasks(&$install_state) {
       'display' => TRUE,
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'type' => 'batch',
+    ),
+
+    // Configure and revert features.
+    'ding2_add_settings' => array(
+      'display_name' => st('Add default page and settings'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'normal',
     ),
   ) + $tasks + array('profiler_install_profile_complete' => array());
   return $ret;
@@ -165,6 +171,53 @@ function ding2_import_translation(&$install_state) {
   $updates = _l10n_update_prepare_updates($updates, NULL, array());
   $batch = l10n_update_batch_multiple($updates, LOCALE_IMPORT_KEEP);
   return $batch;
+}
+
+/**
+ * Helper function to configure the last parts.
+ *
+ * Reverts features and adds some basic pages.
+ */
+function ding2_add_settings(&$install_state) {
+  // Revert features to ensure they are all installed as default.
+  $features = array(
+    'ting_reference',
+    'ting_material_details',
+    'ding_base',
+    'ding_user_frontend',
+    'ding_path_alias',
+    'ding_content',
+    'ding_page',
+    'ding_frontend',
+    'ding_ting_frontend',
+    'ding_event',
+    'ding_library',
+    'ding_news',
+    'ding_groups',
+    'ding_campaign_ctype',
+    'ding_frontpage',
+  );
+  ding2_features_revert($features);
+
+  // Set page not found.
+  ding2_set_page_not_found();
+
+  // Set cookie page.
+  ding2_set_cookie_page();
+
+  // Add menu item to secondary menu.
+  $link = array(
+    'menu_name' => 'menu-secondary-menu',
+    'weight' => 50,
+    'link_title' => 'Kontakt',
+    'link_path' => 'contact',
+    'language' => LANGUAGE_NONE,
+  );
+  menu_link_save($link);
+
+  // Give admin user the administrators role to fix varnish cache of logged in
+  // users.
+  ding2_add_administrators_role(1);
 }
 
 /**
@@ -233,6 +286,36 @@ function ding2_module_selection_form($form, &$form_state) {
   );
 
   //
+  // SSL proxy settings.
+  //
+  $form['proxy'] = array(
+    '#title' => st('SSL proxy'),
+    '#type' => 'fieldset',
+    '#description' => st('If the sysytem is running behind an SSL reverse proxy such as nginx.'),
+  );
+
+  $form['proxy']['sslproxy_enable'] = array(
+    '#type' => 'checkbox',
+    '#title' => 'Enable SSL proxy',
+    '#description' => 'Enable the SSL proxy module.',
+    '#default_value' => TRUE,
+  );
+
+  $form['proxy']['sslproxy_var'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SSL Proxy Variable'),
+    '#description' => t('The variable being set by the SSL proxy server.'),
+    '#default_value' => 'X-FORWARDED-PROTO',
+  );
+
+  $form['proxy']['sslproxy_var_value'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SSL Proxy Variable Value'),
+    '#description' => t('The value of the variable being set by the SSL proxy server.'),
+    '#default_value' => 'https',
+  );
+
+  //
   // Optional modules.
   //
   $modules = array(
@@ -260,8 +343,6 @@ function ding2_module_selection_form($form, &$form_state) {
   //
   // Favicon, logo & iOS icon upload.
   //
-  // Setup a hidden field, that system_setting_form knows.
-  $form['var'] = array('#type' => 'hidden', '#value' => 'theme_ddbasic_settings');
 
   // Logo settings.
   $form['logo'] = array(
@@ -387,9 +468,7 @@ function ding2_module_selection_form($form, &$form_state) {
 
   // Validate and submit logo, iOS logo and favicon.
   $form['#validate'][] = 'ding2_module_selection_form_validate';
-  $form['#validate'][] = 'system_theme_settings_validate';
   $form['#submit'][] = 'ding2_module_selection_form_submit';
-  $form['#submit'][] = 'system_theme_settings_submit';
 
   return $form;
 }
@@ -439,10 +518,8 @@ function ding2_module_selection_form_submit($form, &$form_state) {
   $values = $form_state['values'];
   $module_list = array();
 
-  // Extract the name of the theme from the submitted form values, then remove
-  // it from the array so that it is not saved as part of the variable.
-  $key = $values['var'];
-  unset($values['var']);
+  // Load existing theme settings and update theme with extra information.
+  $settings = variable_get('theme_ddbasic_settings', array());
 
   // If the user uploaded a iOS icon, save it to a permanent location
   // and use it in place of the default theme-provided file.
@@ -461,7 +538,7 @@ function ding2_module_selection_form_submit($form, &$form_state) {
   }
 
   // Save iOS logo to theme settings.
-  variable_set($key, $values);
+  variable_set('theme_ddbasic_settings', array_merge($settings, $values));
 
   // Get selected provider.
   if (!empty($values['providers_selection'])) {
@@ -475,34 +552,31 @@ function ding2_module_selection_form_submit($form, &$form_state) {
 
   // Enable the provider (if selected) and modules.
   module_enable($module_list, TRUE);
+
+  // Enable ssl proxy.
+  if (isset($values['sslproxy_enable']) && $values['sslproxy_enable']) {
+    module_enable(array('sslproxy'), TRUE);
+    variable_set('sslproxy_var', $values['sslproxy_var']);
+    variable_set('sslproxy_var_value', $values['sslproxy_var_value']);
+  }
 }
 
-function ding2_final_settings() {
-  // Revert features to ensure they are all installed as default.
-  $features = array(
-    'ting_reference',
-    'ting_material_details',
-    'ding_base',
-    'ding_user_frontend',
-    'ding_path_alias',
-    'ding_content',
-    'ding_page',
-    'ding_frontend',
-    'ding_ting_frontend',
-    'ding_event',
-    'ding_library',
-    'ding_news',
-    'ding_groups',
-    'ding_campaign_ctype',
-    'ding_frontpage',
+/**
+ * Add administrators role to a user.
+ *
+ * @param int $uid
+ *   Users Drupal id.
+ */
+function ding2_add_administrators_role($uid) {
+  $roles = user_roles(TRUE);
+  $rid = array_search('administrators', $roles);
+
+  $account = user_load($uid);
+  $edit['roles'] = array(
+    DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+    $rid => 'administrators',
   );
-  ding2_features_revert($features);
-
-  // Set page not found.
-  ding2_set_page_not_found();
-
-  // Set cookie page.
-  ding2_set_cookie_page();
+  user_save($account, $edit);
 }
 
 /**
@@ -607,17 +681,4 @@ function ding2_set_cookie_page() {
   // Set short texts (cookie popup).
   variable_set('cookiecontrol_text', '<p>Dette site bruger cookies til at gemme oplysninger på din computer.</p>');
   variable_set('cookiecontrol_fulltext', '<p>Vi vil gerne tilbyde vores brugere en overskuelig og brugervenlig hjemmeside. For at sikre os, at indholdet på siden er relevant og til at finde rundt i, benytter vi os af cookies. Cookies giver os vigtige informationer om, hvordan vores side bliver brugt, hvilke sider der bliver set mest, hvor længe vores brugere bliver på siderne osv.</p>');
-
-  // Add node as link to menu.
-  $uri = entity_uri('node', $node);
-  $link = array(
-    'menu_name' => 'menu-secondary-menu',
-    'weight' => 50,
-    'link_title' => 'Cookies',
-    'link_path' => $uri['path'],
-    'language' => LANGUAGE_NONE,
-  );
-
-  // Save the item to database.
-  menu_link_save($link);
 }
