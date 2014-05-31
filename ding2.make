@@ -5,7 +5,7 @@ api = 2
 projects[ding_devel][type] = "module"
 projects[ding_devel][download][type] = "git"
 projects[ding_devel][download][url] = "git@github.com:ding2tal/ding_devel.git"
-projects[ding_devel][download][tag] = "7.x-1.0-rc5"
+projects[ding_devel][download][tag] = "7.x-1.0-rc6"
 
 projects[openruth][type] = "module"
 projects[openruth][download][type] = "git"
