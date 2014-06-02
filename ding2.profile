@@ -96,10 +96,42 @@ function ding2_install_tasks(&$install_state) {
   $ret = array(
     // Add task to select provider and extra ding modules.
     'ding2_module_selection_form' => array(
-      'display_name' => 'Module selection',
+      'display_name' => st('Module selection'),
       'display' => TRUE,
       'type' => 'form',
-      'run' => empty($tasks) ? INSTALL_TASK_RUN_IF_REACHED : INSTALL_TASK_SKIP,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    ),
+
+    // Enable modules.
+    'ding2_module_enable' => array(
+      'display_name' => st('Enable modules'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'batch',
+    ),
+
+    // Import ding2 translations.
+    'ding2_import_ding2_translations' => array(
+      'display_name' => st('Import translations'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'batch',
+    ),
+
+    // Configure and revert features.
+    'ding2_add_settings' => array(
+      'display_name' => st('Add default page and settings'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'batch',
+    ),
+
+    // Configure and revert features.
+    'ding2_render_og_menus' => array(
+      'display_name' => st('OG Menus'),
+      'display' => module_exists('ding_example_content'),
+      'run' => module_exists('ding_example_content') ? INSTALL_TASK_RUN_IF_NOT_COMPLETED : INSTALL_TASK_SKIP,
+      'type' => 'batch',
     ),
 
     // Add extra tasks based on hook_ding_install_task, which may be provided by
@@ -111,25 +143,11 @@ function ding2_install_tasks(&$install_state) {
       'run' => empty($tasks) ? INSTALL_TASK_RUN_IF_REACHED : INSTALL_TASK_SKIP,
       'display' => empty($tasks),
     ),
-
-    // Update translations.
-    'ding2_import_translation' => array(
-      'display_name' => st('Set up translations'),
-      'display' => TRUE,
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-      'type' => 'batch',
-    ),
-
-    // Configure and revert features.
-    'ding2_add_settings' => array(
-      'display_name' => st('Add default page and settings'),
-      'display' => TRUE,
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-      'type' => 'normal',
-    ),
   ) + $tasks + array('profiler_install_profile_complete' => array());
+
   return $ret;
 }
+
 
 /**
  * Translation callback.
@@ -140,36 +158,35 @@ function ding2_install_tasks(&$install_state) {
  * @return array
  *   List of batches.
  */
-function ding2_import_translation(&$install_state) {
-  // Enable l10n_update.
-  module_enable(array('l10n_update'), TRUE);
-
+function ding2_import_ding2_translations(&$install_state) {
   // Enable danish language.
   include_once DRUPAL_ROOT . '/includes/locale.inc';
   locale_add_language('da', NULL, NULL, NULL, '', NULL, TRUE, FALSE);
 
-  // Import our own translations.
-  $file = new stdClass();
-  $file->uri = DRUPAL_ROOT . '/profiles/ding2/translations/da.po';
-  $file->filename = basename($file->uri);
-  _locale_import_po($file, 'da', LOCALE_IMPORT_OVERWRITE, 'default');
+  // Add import of ding2 translations.
+  $operations = array();
+  $operations[] = array(
+    '_ding2_insert_translation',
+    array(
+      'default',
+      '/profiles/ding2/translations/da.po',
+    ),
+  );
 
-  // Import field translation group.
-  $file = new stdClass();
-  $file->uri = DRUPAL_ROOT . '/profiles/ding2/translations/fields_da.po';
-  $file->filename = basename($file->uri);
-  _locale_import_po($file, 'da', LOCALE_IMPORT_OVERWRITE, 'field');
+  $operations[] = array(
+    '_ding2_insert_translation',
+    array(
+      'field',
+      '/profiles/ding2/translations/fields_da.po',
+    ),
+  );
 
-  // Build batch with l10n_update module.
-  $history = l10n_update_get_history();
-  module_load_include('check.inc', 'l10n_update');
-  $available = l10n_update_available_releases();
-  $updates = l10n_update_build_updates($history, $available);
+  $batch = array(
+    'title' => st('Installing ding translations'),
+    'operations' => $operations,
+    'file' => drupal_get_path('profile', 'ding2') . '/ding2.install_callbacks.inc',
+  );
 
-  // Fire of the batch!
-  module_load_include('batch.inc', 'l10n_update');
-  $updates = _l10n_update_prepare_updates($updates, NULL, array());
-  $batch = l10n_update_batch_multiple($updates, LOCALE_IMPORT_KEEP);
   return $batch;
 }
 
@@ -179,26 +196,6 @@ function ding2_import_translation(&$install_state) {
  * Reverts features and adds some basic pages.
  */
 function ding2_add_settings(&$install_state) {
-  // Revert features to ensure they are all installed as default.
-  $features = array(
-    'ting_reference',
-    'ting_material_details',
-    'ding_base',
-    'ding_user_frontend',
-    'ding_path_alias',
-    'ding_content',
-    'ding_page',
-    'ding_frontend',
-    'ding_ting_frontend',
-    'ding_event',
-    'ding_library',
-    'ding_news',
-    'ding_groups',
-    'ding_campaign_ctype',
-    'ding_frontpage',
-  );
-  ding2_features_revert($features);
-
   // Set page not found.
   ding2_set_page_not_found();
 
@@ -218,6 +215,63 @@ function ding2_add_settings(&$install_state) {
   // Give admin user the administrators role to fix varnish cache of logged in
   // users.
   ding2_add_administrators_role(1);
+
+  // Add features to a batch job to get them reverted.
+  $operations = array();
+  $features = array(
+    'ting_reference',
+    'ting_material_details',
+    'ding_base',
+    'ding_user_frontend',
+    'ding_path_alias',
+    'ding_content',
+    'ding_page',
+    'ding_frontend',
+    'ding_ting_frontend',
+    'ding_event',
+    'ding_library',
+    'ding_news',
+    'ding_groups',
+    'ding_campaign_ctype',
+    'ding_frontpage',
+  );
+
+  // Revert features.
+  foreach ($features as $feature) {
+    $operations[] = array(
+      '_ding2_features_revert',
+      array($feature),
+    );
+  }
+
+  $batch = array(
+    'title' => st('Reverting features'),
+    'operations' => $operations,
+    'file' => drupal_get_path('profile', 'ding2') . '/ding2.install_callbacks.inc',
+  );
+
+  return $batch;
+}
+
+/**
+ * Install task to build default og menu values for example content.
+ */
+function ding2_render_og_menus(&$install_state) {
+  $menus = array();
+  $results = db_query("select menu_name as menu_name from {og_menu}");
+  foreach ($results as $row) {
+    $menus[] = $row->menu_name;
+  }
+
+  $batch = array(
+    'title' => t('Updating Default link'),
+    'operations' => array(
+      array('og_menu_default_links_batch_default_links_process', array($menus)),
+    ),
+    'file' => drupal_get_path('module', 'og_menu_default_links') . '/og_menu_default_links.batch.inc',
+  );
+
+  return $batch;
 }
 
 /**
@@ -322,6 +376,7 @@ function ding2_module_selection_form($form, &$form_state) {
     'ding_contact' => st('Contact module'),
     'ding_example_content' => st('Add example content'),
     'ting_new_materials' => st('Ting New Materials'),
+    'bpi' => st('BPI'),
   );
 
   $form['modules'] = array(
@@ -343,7 +398,6 @@ function ding2_module_selection_form($form, &$form_state) {
   //
   // Favicon, logo & iOS icon upload.
   //
-
   // Logo settings.
   $form['logo'] = array(
     '#type' => 'fieldset',
@@ -505,6 +559,7 @@ function ding2_module_selection_form_validate($form, &$form_state) {
     }
   }
 }
+
 /**
  * Submit handler that enables the modules.
  *
@@ -550,15 +605,95 @@ function ding2_module_selection_form_submit($form, &$form_state) {
     $module_list += array_filter($values['modules_selection']);
   }
 
-  // Enable the provider (if selected) and modules.
-  module_enable($module_list, TRUE);
-
   // Enable ssl proxy.
   if (isset($values['sslproxy_enable']) && $values['sslproxy_enable']) {
-    module_enable(array('sslproxy'), TRUE);
+    // Set configuration.
     variable_set('sslproxy_var', $values['sslproxy_var']);
     variable_set('sslproxy_var_value', $values['sslproxy_var_value']);
+
+    // Enable module.
+    $module_list['sslproxy'] = 'sslproxy';
   }
+
+  // Store selection to batch them in the next task.
+  variable_set('ding_module_selected', $module_list);
+}
+
+/**
+ * Builds an batch module enable operations list based on module list.
+ *
+ * @param array $module_list
+ *   List of module names to change to operations.
+ *
+ * @return array
+ *   Batch operation list.
+ */
+function ding2_module_list_as_operations($module_list) {
+  // Resolve the dependencies now, so that module_enable() doesn't need
+  // to do it later for each individual module (which kills performance).
+  // @See http://drupalcontrib.org/api/drupal/contributions!commerce_kickstart!commerce_kickstart.install/function/commerce_kickstart_install_additional_modules/7
+  $files = system_rebuild_module_data();
+  $modules_sorted = array();
+  foreach ($module_list as $module) {
+    if ($files[$module]->requires) {
+      // Create a list of dependencies that haven't been installed yet.
+      $dependencies = array_keys($files[$module]->requires);
+      $dependencies = array_filter($dependencies, 'ding2_filter_dependencies');
+      // Add them to the module list.
+      $module_list = array_merge($module_list, $dependencies);
+    }
+  }
+  $module_list = array_unique($module_list);
+  foreach ($module_list as $module) {
+    $modules_sorted[$module] = $files[$module]->sort;
+  }
+  arsort($modules_sorted);
+
+  $operations = array();
+  foreach ($modules_sorted as $module => $weight) {
+    $operations[] = array(
+      '_ding2_enable_module',
+      array(
+        $module,
+        $files[$module]->info['name'],
+      ),
+    );
+  }
+
+  return $operations;
+}
+
+/**
+ * Enable selected ding2 modules as a batch process.
+ */
+function ding2_module_enable(&$install_state) {
+  $modules = variable_get('ding_module_selected', array());
+  $modules[] = 'l10n_update';
+
+  $operations = ding2_module_list_as_operations($modules);
+
+  $batch = array(
+    'title' => st('Installing additional functionality'),
+    'operations' => $operations,
+    'file' => drupal_get_path('profile', 'ding2') . '/ding2.install_callbacks.inc',
+  );
+
+  variable_del('ding_module_selected');
+
+  return $batch;
+}
+
+/**
+ * Helper function to filter out already enabled modules.
+ *
+ * @param string $dependency
+ *   Name of the module that we want to check.
+ *
+ * @return bool
+ *   If module exists and is enabled FALSE else TRUE.
+ */
+function ding2_filter_dependencies($dependency) {
+  return !module_exists($dependency);
 }
 
 /**
@@ -577,27 +712,6 @@ function ding2_add_administrators_role($uid) {
     $rid => 'administrators',
   );
   user_save($account, $edit);
-}
-
-/**
- * Reverts a given set of feature modules.
- *
- * @param array $modules
- *   Names of the modules to revert.
- */
-function ding2_features_revert($modules = array()) {
-  foreach ($modules as $module) {
-    // Load the feature.
-    if (($feature = features_load_feature($module, TRUE)) && module_exists($module)) {
-      // Get all components of the feature.
-      foreach (array_keys($feature->info['features']) as $component) {
-        if (features_hook($component, 'features_revert')) {
-          // Revert each component (force).
-          features_revert(array($module => array($component)));
-        }
-      }
-    }
-  }
 }
 
 /**
