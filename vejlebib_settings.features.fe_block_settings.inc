@@ -21,6 +21,12 @@ function vejlebib_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
       'ddbasic' => array(
         'region' => '',
         'status' => 0,
@@ -53,6 +59,12 @@ function vejlebib_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
       'ddbasic' => array(
         'region' => '',
         'status' => 0,
@@ -85,134 +97,12 @@ function vejlebib_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'ddbasic' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'ddbasic',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'wellejus' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'wellejus',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['menu-menu-footer-menu-1'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'menu-footer-menu-1',
-    'module' => 'menu',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'ddbasic' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'ddbasic',
-        'weight' => 0,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'wellejus' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'wellejus',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['menu-menu-footer-menu-2'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'menu-footer-menu-2',
-    'module' => 'menu',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'ddbasic' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'ddbasic',
-        'weight' => 0,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'wellejus' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'wellejus',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['menu-menu-footer-menu-3'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'menu-footer-menu-3',
-    'module' => 'menu',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'ddbasic' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'ddbasic',
-        'weight' => 0,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'wellejus' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'wellejus',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['menu-menu-footer-menu-4'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'menu-footer-menu-4',
-    'module' => 'menu',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
       'ddbasic' => array(
         'region' => '',
         'status' => 0,

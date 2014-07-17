@@ -69,28 +69,96 @@ function vejlebib_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ding_wagnerguide_transformation_array_Bor';
-  $strongarm->value = '{}';
+  $strongarm->value = '{
+    "department_id":{},
+    "location_id":{
+      "bus":{},
+      "dagpleje":{},
+      "depot":{
+        "popup":"Some text or HTML to popup"
+      },
+      "kontor":{},
+      "magasin":{
+        "popup":"Some text or HTML to popup"
+      },
+      "magasin1":{},
+      "magasin2":{},
+      "magasin3":{}
+    },
+    "sublocation_id":{}
+  }';
   $export['ding_wagnerguide_transformation_array_Bor'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ding_wagnerguide_transformation_array_Egt';
-  $strongarm->value = '{}';
+  $strongarm->value = '{
+    "department_id":{},
+    "location_id":{
+      "bus":{},
+      "dagpleje":{},
+      "depot":{
+        "popup":"Some text or HTML to popup"
+      },
+      "kontor":{},
+      "magasin":{
+        "popup":"Some text or HTML to popup"
+      },
+      "magasin1":{},
+      "magasin2":{},
+      "magasin3":{}
+    },
+    "sublocation_id":{}
+  }';
   $export['ding_wagnerguide_transformation_array_Egt'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ding_wagnerguide_transformation_array_Giv';
-  $strongarm->value = '{}';
+  $strongarm->value = '{
+    "department_id":{},
+    "location_id":{
+      "bus":{},
+      "dagpleje":{},
+      "depot":{
+        "popup":"Some text or HTML to popup"
+      },
+      "kontor":{},
+      "magasin":{
+        "popup":"Some text or HTML to popup"
+      },
+      "magasin1":{},
+      "magasin2":{},
+      "magasin3":{}
+    },
+    "sublocation_id":{}
+  }';
   $export['ding_wagnerguide_transformation_array_Giv'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ding_wagnerguide_transformation_array_Jel';
-  $strongarm->value = '{}';
+  $strongarm->value = '{
+    "department_id":{},
+    "location_id":{
+      "bus":{},
+      "dagpleje":{},
+      "depot":{
+        "popup":"Some text or HTML to popup"
+      },
+      "kontor":{},
+      "magasin":{
+        "popup":"Some text or HTML to popup"
+      },
+      "magasin1":{},
+      "magasin2":{},
+      "magasin3":{}
+    },
+    "sublocation_id":{}
+  }';
   $export['ding_wagnerguide_transformation_array_Jel'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -133,8 +201,8 @@ function vejlebib_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'ding_zerohit_form';
   $strongarm->value = array(
-    'installed_webform_id' => '5663',
-    'webform_id' => '5663',
+    'installed_webform_id' => '4',
+    'webform_id' => '4',
   );
   $export['ding_zerohit_form'] = $strongarm;
 
@@ -142,7 +210,7 @@ function vejlebib_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'file_temporary_path';
-  $strongarm->value = 'sites/default/files/temp';
+  $strongarm->value = '/tmp';
   $export['file_temporary_path'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -207,10 +275,9 @@ function vejlebib_settings_strongarm() {
   $strongarm->name = 'search_active_modules';
   $strongarm->value = array(
     'node' => 'node',
-    'ting_extrasearch' => 'ting_extrasearch',
     'ting_search' => 'ting_search',
-    'file_entity' => 0,
     'user' => 0,
+    'mkdru' => 'mkdru',
   );
   $export['search_active_modules'] = $strongarm;
 
@@ -227,8 +294,7 @@ Når beløbet er indbetalt, er det ikke muligt at annullere overførslen.';
   $strongarm->api_version = 1;
   $strongarm->name = 'terms_of_sale_en';
   $strongarm->value = 'The debt is paid in full to: Vejle Bibliotekerne, Willy Sørensens Plads 1, 7100 Vejle. E-mail: vejlebib@vejlebib.dk, CVR no: 29189900.
-Once the fee is paid, it is not possible to cancel the payment.
-';
+Once the fee is paid, it is not possible to cancel the payment.';
   $export['terms_of_sale_en'] = $strongarm;
 
   $strongarm = new stdClass();

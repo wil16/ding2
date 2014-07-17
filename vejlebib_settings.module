@@ -5,3 +5,10 @@
  */
 
 include_once 'vejlebib_settings.features.inc';
+
+/**
+ * Implements hook_init().
+ */
+function vejlebib_settings_init() {
+	
+}
