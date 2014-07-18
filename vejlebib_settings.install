@@ -9,7 +9,8 @@
 /**
  * Implements hook_install().
  *
- * Updates the database with settings for Vejlebib version of DDB CMS.
+ * Updates the database with settings specific to Vejle's instance of the 
+ * DDB CMS.
  */
 function vejlebib_settings_install() {
 	// Update the Footer adresse block with Vejle bib's address and contact info.
@@ -21,18 +22,14 @@ function vejlebib_settings_install() {
 	  	->execute();
 	  if ($count) {
 	  	watchdog('vejlebib_settings', 
-	  		'Succesfully updated Footer adresse block with Vejle bib\'s adress', 
+	  		'Succesfully updated Footer adresse block with Vejle bib\'s address', 
 	  		array(), 
 	  		WATCHDOG_INFO);
 	  }
-	  watchdog('vejlebib_settings', 
-	  	'Footer adresse block to hold library adress not found. No update was performed.', 
-	  	array(), 
-	  	WATCHDOG_NOTICE);		
 	}
 	catch (Exception $e) {
 	  watchdog('vejlebib_settings', 
-	  	'An error occured while trying to update Footer adresse block with Vejle bib\'s adress', 
+	  	'An error occured while trying to update Footer adresse block with Vejle bib\'s address', 
 	  	array(), 
 	  	WATCHDOG_ERROR);				
 	}
