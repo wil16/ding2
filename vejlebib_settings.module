@@ -74,6 +74,7 @@ function vejlebib_settings_opening_hours_crud_api_page() {
     foreach ($output as $opening_hour_instance) {
     	$new_nid = $opening_hour_instance->nid;
     	if (in_array($new_nid, $map_back)) {
+    		// Map back from new id to the old id.
     		$old_nid = array_search($new_nid, $nid_mappings);
     		$opening_hour_instance->nid = $old_nid;
     	}
