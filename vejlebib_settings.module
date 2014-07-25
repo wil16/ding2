@@ -18,37 +18,37 @@ function vejlebib_settings_init() {
  * Implements hook_menu_alter().
  */
 function vejlebib_settings_menu_alter(&$items) {
-	// The library app uses this path to collect data about opening hours. During
-	// the transition from ding1 to ding2, all the libraries got new nids. At this
-	// point in time, we are not able to correct the values in the app, so here we
-	// employ a temporary hack, that maps the library nids to the correct ones.
-	// This should be removed, once the values is corrected in the library app or 
-	// when the new library app is launched.
-	if (isset($items['opening_hours/instances'])) {
-		$item = &$items['opening_hours/instances'];
-		$item['page callback'] = 'vejlebib_settings_opening_hours_crud_api_page';
-	} 
+  // The library app uses this path to collect data about opening hours. During
+  // the transition from ding1 to ding2, all the libraries got new nids. At this
+  // point in time, we are not able to correct the values in the app, so here we
+  // employ a temporary hack, that maps the library nids to the correct ones.
+  // This should be removed, once the values is corrected in the library app or 
+  // when the new library app is launched.
+  if (isset($items['opening_hours/instances'])) {
+    $item = &$items['opening_hours/instances'];
+	  $item['page callback'] = 'vejlebib_settings_opening_hours_crud_api_page';	
+  }
 }
 
 /**
  * Wrapper function for the opening hours page callback.
  */
 function vejlebib_settings_opening_hours_crud_api_page() {
-	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-		// Hard coded mappings from the old library nids to the new ones.
-		$nid_mappings = array(
-			1 => 13,  // Vejle
-			2 => 16,  // Egtved
-			3 => 17,  // Jelling
-			35 => 15, // Børkop
-			36 => 14, // Give
-			37 => 18, // Biblioteksbussen
-		);
-		// Seperate the old nids now for usage further down.
-		$old_nids = array_keys($nid_mappings);
-		// Remember what we mapped, so we can map it back in the output, to make it
-		// look like the library's id is what the caller think.
-		$map_back = array();
+  if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // Hard coded mappings from the old library nids to the new ones.
+    $nid_mappings = array(
+  	  1 => 13,  // Vejle
+  	  2 => 16,  // Egtved
+  	  3 => 17,  // Jelling
+  	  35 => 15, // Børkop
+  	  36 => 14, // Give
+  	  37 => 18, // Biblioteksbussen
+    );
+    // Seperate the old nids now for usage further down.
+    $old_nids = array_keys($nid_mappings);
+    // Remember what we mapped, so we can map it back in the output, to make it
+    // look like the library's id is what the caller think.
+    $map_back = array();
     // The nid parameter might be an array. If it's a single value, it
     // should still pass these filters with no trouble.
     // In any case, we want to elimitate bogus values, to see if
@@ -57,10 +57,10 @@ function vejlebib_settings_opening_hours_crud_api_page() {
     array_filter($nids, 'is_numeric');
     array_filter($nids);
     foreach ($nids as $key => $nid) {
-    	if (in_array($nid, $old_nids)) {
-    		$nids[$key] = $nid_mappings[$nid];
-    		$map_back[] = $nid_mappings[$nid];
-    	}
+      if (in_array($nid, $old_nids)) {
+        $nids[$key] = $nid_mappings[$nid];
+    	  $map_back[] = $nid_mappings[$nid];
+      }
     }
     if (!empty($_REQUEST['from_date']) && !empty($_REQUEST['to_date']) && !empty($nids)) {
       $output = opening_hours_instance_load_multiple($nids, $_REQUEST['from_date'], $_REQUEST['to_date']);
@@ -70,19 +70,18 @@ function vejlebib_settings_opening_hours_crud_api_page() {
     // in the key order, which in turns causes json_encode to return a
     // JavaScript object instead of an array in some cases.
     $output = array_values(array_filter($output, '_opening_hours_exclude_blocked'));
-    // Map to the correct nids in the json ouput.
     foreach ($output as $opening_hour_instance) {
-    	$new_nid = $opening_hour_instance->nid;
-    	if (in_array($new_nid, $map_back)) {
-    		// Map back from new id to the old id.
-    		$old_nid = array_search($new_nid, $nid_mappings);
-    		$opening_hour_instance->nid = $old_nid;
-    	}
+    $new_nid = $opening_hour_instance->nid;
+  	  if (in_array($new_nid, $map_back)) {
+  	    // If the id was mapped, map it back in the output.
+  	    $old_nid = array_search($new_nid, $nid_mappings);
+  	    $opening_hour_instance->nid = $old_nid;
+      }
     }
     return drupal_json_output($output);
-	}
-	// If it wasn't a GET request we fallback to the original page callback.
-	opening_hours_crud_api_page();
+  }
+  // If it wasn't a GET request we fallback to the original page callback.
+  opening_hours_crud_api_page();
 }
 
 
