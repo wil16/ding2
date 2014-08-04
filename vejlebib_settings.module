@@ -81,7 +81,7 @@ function vejlebib_settings_opening_hours_crud_api_page() {
     return drupal_json_output($output);
   }
   // If it wasn't a GET request we fallback to the original page callback.
-  opening_hours_crud_api_page();
+  return opening_hours_crud_api_page();
 }
 
 
