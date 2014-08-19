@@ -475,7 +475,7 @@ search/ting
     $pane->access = array();
     $pane->configuration = array(
       'type' => 'ting_search',
-      'webform_id' => '5663',
+      'webform_id' => '',
       'override_title' => 1,
       'override_title_text' => '',
     );
