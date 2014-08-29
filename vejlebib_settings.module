@@ -136,3 +136,16 @@ function vejlebib_settings_page_build(&$page) {
     '#markup' => $html,
   );  
 }
+
+/**
+ * Implements hook_user_login().
+ *
+ * Removes 'ding_frontpage' from the URL, when the user is loggin in from the
+ * frontpage.
+ */
+function vejlebib_settings_user_login(&$edit, $account) {
+  $destination = drupal_get_destination();
+  if ($destination['destination'] == 'ding_frontpage') {
+    $_GET['destination'] = '';
+  }
+}
