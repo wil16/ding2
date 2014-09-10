@@ -124,12 +124,12 @@ libraries[profiler][patch][0] = "http://drupal.org/files/profiler-reverse.patch"
 projects[ding_redirect][type] = "module"
 projects[ding_redirect][download][type] = "git"
 projects[ding_redirect][download][url] = "git@github.com:ding2tal/ding_redirect.git"
-projects[ding_redirect][download][branch] = "development"
+projects[ding_redirect][download][tag] = "7.x-1.0"
 
 projects[ding_dummy_provider][type] = "module"
 projects[ding_dummy_provider][download][type] = "git"
 projects[ding_dummy_provider][download][url] = "git@github.com:ding2tal/ding_dummy_provider.git"
-projects[ding_dummy_provider][download][branch] = "development"
+projects[ding_dummy_provider][download][tag] = "7.x-1.0"
 
 ; Contrib modules
 projects[apc][subdir] = "contrib"
