@@ -110,14 +110,10 @@ function vejlebib_settings_opening_hours_crud_api_page() {
 
 /**
  * Implements hook_preprocess_html().
- *
- * Adds meta-tags for webtrends search statistics. This could be done in a lot 
- * of ways (both in the client or on the server), but it's done here because it
- * concerns the rendering of the html-template.
  */
 function vejlebib_settings_preprocess_html(&$vars) {
   $args = explode('/', current_path());
-  // Determine if this is a search.
+  // If this is a search page: Add meta-tags for webtrends on-site search.
   if (!empty($args) && $args[0] == 'search' && count($args) > 2) {
     $search_engine = $args[1];
     $search_query = $args[2];
@@ -148,6 +144,20 @@ function vejlebib_settings_preprocess_html(&$vars) {
       'content' => $search_count,
     );
     drupal_add_html_head($meta_tag, 'search_count_meta_tag');     
+  }
+  if (drupal_is_front_page()) {
+    $enable = variable_get('google_site_verification_enable', FALSE);
+    $key = variable_get('google_site_verification_key', '');
+    if ($enable && !empty($key)) {
+      $meta_tag = array(
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'content' => $key,
+          'name' => 'google-site-verification',
+        ),
+      );
+      drupal_add_html_head($meta_tag, 'google-site-verification-meta-tag');
+    }
   }
 }
 
