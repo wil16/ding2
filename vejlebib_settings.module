@@ -11,6 +11,34 @@
 include_once 'vejlebib_settings.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function vejlebib_settings_menu() {
+  $items = array();
+
+  $items['admin/config/vejlebib-settings'] = array(
+    'title' => 'Vejlebib settings',
+    'description' => 'Various settings related to the vejlebib instance of DDB CMS.',
+    'position' => 'right',
+    'weight' => 20,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  $items['admin/config/vejlebib-settings/google-site-verification'] = array(
+    'title' => 'Google site verification',
+    'description' => 'Manage settings for Google site verification',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('vejlebib_settings_google_site_verification_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'vejlebib_settings.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_menu_alter().
  */
 function vejlebib_settings_menu_alter(&$items) {
