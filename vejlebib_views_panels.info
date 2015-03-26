@@ -19,7 +19,6 @@ features[menu_blocks][] = information_menu_block
 features[menu_custom][] = menu-information-menu
 features[page_manager_handlers][] = node_view_panel_context_6
 features[page_manager_handlers][] = node_view_panel_context_7
-features[page_manager_handlers][] = search_ting_search_panel_context_2
 features[page_manager_handlers][] = page_ding_frontpage_panel_context_2
 features[page_manager_handlers][] = site_template_panel_context_2
 features[page_manager_pages][] = ding_staff
