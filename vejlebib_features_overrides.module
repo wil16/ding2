@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Vejlebib features overrides feature.
+ */
+
+include_once 'vejlebib_features_overrides.features.inc';
