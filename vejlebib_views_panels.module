@@ -7,6 +7,17 @@
 include_once 'vejlebib_views_panels.features.inc';
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ *
+ * Tells panels where to find plugins.
+ */
+function vejlebib_views_panels_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}
+
+/**
  * Implements hook_block_info().
  */
 function vejlebib_views_panels_block_info() {
