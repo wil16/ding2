@@ -22,44 +22,39 @@ $plugin = array(
  */
 function vejlebib_views_panels_bibliotek_dk_link_render($subtype, $conf, $args, $context) {
 	$block = new stdClass();
-	// Determine if this is a search page.
-	$is_search = (arg(0) == 'search' && arg(1) == 'ting');	
-	if ($is_search && !empty($context) && isset($context->data)) {
+	if (!empty($context) && isset($context->data)) {
 		$search_result = drupal_static('ting_search_results');
 		// We dont show anything if there's zero results.
 		if (isset($search_result) && $search_result->numTotalObjects) {
-			$query = arg(2);
-			$block->content = array(
-				'header' => array(
-					'#theme' => 'html_tag',
-					'#tag' => 'strong',
-					'#value' => t('Did you not find what you where looking for?'),
-					'#suffix' => '<br>',
-				),
-				'link' => array(
-					'#theme' => 'html_tag',
-					'#tag' => 'p',
-					'#value' => t('Try to search for !phrase on biblotek.dk', array(
-						'!phrase' => l($query, 'http://bibliotek.dk/search/work/' . $query, array(
-							'attributes' => array(
-								'target' => '_blank',
-							),
-						)),
+			// Get the search-string from the context object
+			$query = $context->data;
+			$block->content['lead'] = array(
+				'#theme' => 'html_tag',
+				'#tag' => 'strong',
+				'#value' => t('Did you not find what you where looking for?'),
+			);
+			$block->content['link'] = array(
+				'#theme' => 'html_tag',
+				'#tag' => 'p',
+				'#value' => t('Try to search for !phrase on biblotek.dk', array(
+					'!phrase' => l($query, 'http://bibliotek.dk/search/work/' . $query, array(
+						'attributes' => array(
+							'target' => '_blank',
+						),
 					)),
-				),
-				'image' => array(
-					'#prefix' => '<a href="http://biblotek.dk">',
-					'#sufffix' => '</a>',
-					'#theme' => 'image',
-					'#path' => drupal_get_path('module', 'vejlebib_views_panels') . '/images/bibliotek_dk.png',
-					'#title' => 'Bibliotek.dk logo',
-					'#alt' => 'Bibliotek.dk logo',
-					'#width' => 260,
-					'#height' => 80,
-				),
+				)),
+			);
+			$block->content['image'] = array(
+				'#prefix' => '<a href="http://biblotek.dk">',
+				'#sufffix' => '</a>',
+				'#theme' => 'image',
+				'#path' => drupal_get_path('module', 'vejlebib_views_panels') . '/images/bibliotek_dk.png',
+				'#title' => 'Bibliotek.dk logo',
+				'#alt' => 'Bibliotek.dk logo',
+				'#width' => 260,
+				'#height' => 80,
 			);
 		}
-		// Only show biblotek.dk link if there was a search result.
 	}
 	return $block;
 }
