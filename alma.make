@@ -22,6 +22,7 @@ projects[virtual_field][version] = "1.2"
 
 projects[ding_provider][type] = "module"
 projects[ding_provider][download][type] = "git"
+
 projects[ding_provider][download][url] = "git@github.com:ding2tal/ding_provider.git"
 projects[ding_provider][download][tag] = "7.x-1.0"
 
@@ -29,3 +30,4 @@ projects[ding_reservation][type] = "module"
 projects[ding_reservation][download][type] = "git"
 projects[ding_reservation][download][url] = "git@github.com:ding2tal/ding_reservation.git"
 projects[ding_reservation][download][tag] = "7.x-1.0"
+

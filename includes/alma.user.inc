@@ -63,8 +63,15 @@ function alma_user_authenticate($uid, $pass) {
     );
   }
 
+  // Set the users categories.
+  if (!empty($res['category'])) {
+    $return['user']['category'] = $res['category'];
+  }
+
   $return['user']['blocked'] = FALSE;
   if (!empty($res['blocks'])) {
+    // Send block codes back with the user.
+    $return['user']['blocks'] = $res['blocks'];
     $return['user']['blocked'] = TRUE;
   }
 
@@ -131,4 +138,30 @@ function alma_user_update_pincode($account, $new_pincode) {
  */
 function alma_user_clear_cache($account) {
   // As the ALMA currently only uses a static cache for debt... do nothing.
+}
+
+/**
+ * Create new user through self registration.
+ *
+ * @param string $cpr
+ *   The users CPR/borrow id.
+ * @param string $pin_code
+ *   Selected pin code.
+ * @param string $name
+ *   The borrowers name.
+ * @param string $mail
+ *   The borrowers e-mail.
+ * @param string $branch
+ *   The selected default branch.
+ *
+ * @throws \Exception
+ */
+function alma_user_create($cpr, $pin_code, $name, $mail, $branch) {
+  try {
+    alma_client_invoke('self_register', $cpr, $pin_code, $name, $mail, $branch);
+  }
+  catch (AlmaClientUserAlreadyExistsError $exception) {
+    // Throw new exception that is not provider dependent.
+    throw new Exception('User account already exists');
+  }
 }
