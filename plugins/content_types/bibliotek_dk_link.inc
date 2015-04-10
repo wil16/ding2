@@ -44,15 +44,21 @@ function vejlebib_views_panels_bibliotek_dk_link_render($subtype, $conf, $args, 
 					)),
 				)),
 			);
-			$block->content['image'] = array(
-				'#prefix' => '<a href="http://biblotek.dk">',
-				'#sufffix' => '</a>',
-				'#theme' => 'image',
-				'#path' => drupal_get_path('module', 'vejlebib_views_panels') . '/images/bibliotek_dk.png',
-				'#title' => 'Bibliotek.dk logo',
-				'#alt' => 'Bibliotek.dk logo',
-				'#width' => 260,
-				'#height' => 80,
+			$block->content['image_link'] = array(
+				'prefix' => array(
+					'#markup' => '<a href="http://bibliotek.dk">'
+				),
+				'image' => array(
+					'#theme' => 'image',
+					'#path' => drupal_get_path('module', 'vejlebib_views_panels') . '/images/bibliotek_dk.png',
+					'#title' => 'Bibliotek.dk logo',
+					'#alt' => 'Bibliotek.dk logo',
+					'#width' => 260,
+					'#height' => 80,
+				),
+				'suffix' => array(
+					'#markup' => '</a>',
+				),
 			);
 		}
 	}
