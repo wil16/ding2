@@ -221,6 +221,11 @@ projects[ting_extrasearch][download][type] = "git"
 projects[ting_extrasearch][download][url] = "git@github.com:vejlebib/ting_extrasearch.git"
 projects[ting_extrasearch][download][branch] = "7.x-0.x"
 
+projects[ask_vopros][type] = "module"
+projects[ask_vopros][download][type] = "git"
+projects[ask_vopros][download][url] = "https://github.com/Biblioteksvagten/ask_vopros.git"
+projects[ask_vopros][download][branch] = "master"
+
 ; Vejlebib theme
 projects[wellejus][type] = "theme"
 projects[wellejus][download][type] = "git"
