@@ -226,6 +226,11 @@ projects[ask_vopros][download][type] = "git"
 projects[ask_vopros][download][url] = "https://github.com/Biblioteksvagten/ask_vopros.git"
 projects[ask_vopros][download][branch] = "master"
 
+projects[ting_marc][type] = "module"
+projects[ting_marc][download][type] = "git"
+projects[ting_marc][download][url] = "https://github.com/easyddb/ting_marc"
+projects[ting_marc][download][branch] = "master"
+
 ; Vejlebib theme
 projects[wellejus][type] = "theme"
 projects[wellejus][download][type] = "git"
