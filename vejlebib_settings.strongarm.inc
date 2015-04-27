@@ -9,7 +9,7 @@
  */
 function vejlebib_settings_strongarm() {
   $export = array();
-  
+
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -40,30 +40,6 @@ function vejlebib_settings_strongarm() {
     'Getitcard' => 0,
   );
   $export['cards_supported'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ding_place2book_category_mappings';
-  $strongarm->value = array(
-    6 => 'Andet',
-    7 => 'Andet',
-    8 => 'Undervisning',
-    9 => 'Blandet/Ukendt',
-  );
-  $export['ding_place2book_category_mappings'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ding_place2book_target_mappings';
-  $strongarm->value = array(
-    10 => 'Børn',
-    11 => 'Børn',
-    13 => 'Børn',
-    12 => 'Voksne',
-  );
-  $export['ding_place2book_target_mappings'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

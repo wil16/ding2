@@ -187,3 +187,4 @@ function vejlebib_settings_user_login(&$edit, $account) {
     $_GET['destination'] = '';
   }
 }
+
