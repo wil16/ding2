@@ -2,7 +2,6 @@ name = Vejlebib features overrides
 description = Defines Vejlebib's overrides of core DDB CMS features
 core = 7.x
 package = Ding!
-dependencies[] = ding_ting_frontend
 dependencies[] = vejlebib_views_panels
 dependencies[] = ding_zerohit_form
 features[features_api][] = api:2
