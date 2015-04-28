@@ -2,11 +2,6 @@ core = 7.x
 api = 2
 
 ; Projects
-projects[alma][type] = "module"
-projects[alma][download][type] = "git"
-projects[alma][download][url] = "git@github.com:ding2/alma.git"
-projects[alma][download][tag] = "7.x-2.0.0"
-
 projects[ding_devel][type] = "module"
 projects[ding_devel][download][type] = "git"
 projects[ding_devel][download][url] = "git@github.com:ding2/ding_devel.git"
