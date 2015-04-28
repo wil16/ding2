@@ -89,7 +89,7 @@ projects[ding_staff][download][branch] = "fix-drush-make-patch-error"
 
 projects[ding_varnish][type] = "module"
 projects[ding_varnish][download][type] = "git"
-projects[ding_varnish][download][url] = "https://github.com/vejlebib/ding_staff.git"
+projects[ding_varnish][download][url] = "git@github.com:ding2/ding_varnish.git"
 projects[ding_varnish][download][tag] = "7.x-2.0.0"
 
 projects[ding_contact][type] = "module"
