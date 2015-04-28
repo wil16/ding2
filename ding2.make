@@ -191,6 +191,11 @@ projects[vejlebib_settings][download][type] = "git"
 projects[vejlebib_settings][download][url] = "git@github.com:vejlebib/vejlebib_settings.git"
 projects[vejlebib_settings][download][branch] = "7.x-1.x"
 
+projects[vejlebib_features_overrides][type] = "module"
+projects[vejlebib_features_overrides][download][type] = "git"
+projects[vejlebib_features_overrides][download][url] = "git@github.com:vejlebib/vejlebib_features_overrides.git"
+projects[vejlebib_features_overrides][download][branch] = "master"
+
 projects[ding_opening_hours][type] = "module"
 projects[ding_opening_hours][download][type] = "git"
 projects[ding_opening_hours][download][url] = "git@github.com:vejlebib/ding_opening_hours.git"
