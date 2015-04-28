@@ -196,11 +196,6 @@ projects[ding_opening_hours][download][type] = "git"
 projects[ding_opening_hours][download][url] = "git@github.com:vejlebib/ding_opening_hours.git"
 projects[ding_opening_hours][download][branch] = "master"
 
-projects[vejlebib_views_panels][type] = "module"
-projects[vejlebib_views_panels][download][type] = "git"
-projects[vejlebib_views_panels][download][url] = "git@github.com:vejlebib/vejlebib_views_panels.git"
-projects[vejlebib_views_panels][download][branch] = "master"
-
 projects[ding_eresource][type] = "module"
 projects[ding_eresource][download][type] = "git"
 projects[ding_eresource][download][url] = "git@github.com:vejlebib/ding_eresource.git"
@@ -210,11 +205,6 @@ projects[ding_redia_bapp][type] = "module"
 projects[ding_redia_bapp][download][type] = "git"
 projects[ding_redia_bapp][download][url] = "git@github.com:vejlebib/ding_redia_bapp.git"
 projects[ding_redia_bapp][download][branch] = "7.x-1.x"
-
-projects[ding_zerohit_form][type] = "module"
-projects[ding_zerohit_form][download][type] = "git"
-projects[ding_zerohit_form][download][url] = "git@github.com:vejlebib/ding_zerohit_form.git"
-projects[ding_zerohit_form][download][branch] = "7.x-1.x"
 
 projects[ding_wagnerguide][type] = "module"
 projects[ding_wagnerguide][download][type] = "git"
