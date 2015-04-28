@@ -248,18 +248,6 @@ function vejlebib_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'search_active_modules';
-  $strongarm->value = array(
-    'node' => 'node',
-    'ting_search' => 'ting_search',
-    'user' => 0,
-    'mkdru' => 'mkdru',
-  );
-  $export['search_active_modules'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'terms_of_sale_da';
   $strongarm->value = 'Gebyrer bliver betalt til: Vejle Bibliotekerne, Willy Sørensens Plads 1, 7100 Vejle. E-mail: vejlebib@vejlebib.dk, CVR nr: 29189900.
 Når beløbet er indbetalt, er det ikke muligt at annullere overførslen.';
