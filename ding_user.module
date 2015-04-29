@@ -7,7 +7,7 @@
 include_once 'ding_user_comments.inc';
 
 /**
- * Implements hook_preprocess_page().
+ * Implements hook_preprocess_html().
  */
 function ding_user_preprocess_html(&$variables) {
   $args = arg();
@@ -214,6 +214,7 @@ function ding_user_form_user_admin_settings_alter(&$form, &$form_state, $form_id
     '#options' => array(
       4 => t('Max @number chars', array('@number' => 4)),
       5 => t('Max @number chars', array('@number' => 5)),
+      6 => t('Max @number chars', array('@number' => 6)),
     ),
     '#default_value' => ding_user_get_pincode_length(),
   );
