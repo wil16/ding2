@@ -21,6 +21,22 @@ sub vcl_recv {
     }
   }
 
+  # Redirect from http to https (nginx)
+  if ( (req.http.host ~ "^(?i)vejlebib.dk" || req.http.host ~ "^(?i)www.vejlebib.dk")  && req.http.X-Forwarded-Proto !~ "(?i)https") {
+    set req.http.x-Redir-Url = "https://vejlebib.dk" + req.url;
+    error 750 req.http.x-Redir-Url;
+  }
+
+  if ( (req.http.host ~ "^dev.vejlebib.dk") && req.http.X-Forwarded-Proto !~ "(?i)https") {
+    set req.http.x-Redir-Url = "https://dev.vejlebib.dk" + req.url;
+    error 750 req.http.x-Redir-Url;
+  }
+
+  if ( (req.http.host ~ "^stg.vejlebib.dk") && req.http.X-Forwarded-Proto !~ "(?i)https") {
+    set req.http.x-Redir-Url = "https://stg.vejlebib.dk" + req.url;
+    error 750 req.http.x-Redir-Url;
+  }
+
   if (req.request != "GET" && req.request != "HEAD") {
     /* We only deal with GET and HEAD by default */
     return (pass);
