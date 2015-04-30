@@ -259,3 +259,15 @@ projects[alma][type] = "module"
 projects[alma][download][type] = "git"
 projects[alma][download][url] = "git@github.com:vejlebib-ding2/alma.git"
 projects[alma][download][branch] = "support-user-migrations"
+
+; Some strongarmed variables from DDB CMS is dependent on auto increment ids,
+; thus resulting in a permanent overriden features, preventing us from doing
+; reverts without also reverting the auto increment dependent variables. 
+; An example of this is the role specific settings for autologout moduel from
+; ding_base (why not use machine-name?).
+; So we have to maintain our own forked version without these problematic 
+; strongarmed variables.
+projects[ding_base][type] = "module"
+projects[ding_base][download][type] = "git"
+projects[ding_base][download][url] = "git@github:vejlebib/ding_base.git"
+projects[ding_base][download][branch] = "vejlebib"
