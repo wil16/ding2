@@ -44,6 +44,26 @@ function vejlebib_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'ding_wagnerguide_debug';
+  $strongarm->value = 0;
+  $export['ding_wagnerguide_debug'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ding_wagnerguide_linkbase';
+  $strongarm->value = '{
+    "Vej":"http://web.wagnerguide.com/vejleLibrary.aspx",
+    "Bor":"http://web.wagnerguide.com/BorkopLibrary.aspx",
+    "Jel":"http://web.wagnerguide.com/JellingLibrary.aspx",
+    "Egt":"http://web.wagnerguide.com/EgtvedLibrary.aspx",
+    "Giv":"http://web.wagnerguide.com/GiveLibrary.aspx"
+}';
+  $export['ding_wagnerguide_linkbase'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'ding_wagnerguide_transformation_array_Bor';
   $strongarm->value = '{
     "department_id":{},
