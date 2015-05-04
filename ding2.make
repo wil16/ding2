@@ -259,7 +259,7 @@ projects[alma][download][branch] = "support-user-migrations"
 ; strongarmed variables.
 projects[ding_base][type] = "module"
 projects[ding_base][download][type] = "git"
-projects[ding_base][download][url] = "git@github:vejlebib/ding_base.git"
+projects[ding_base][download][url] = "git@github.com:vejlebib/ding_base.git"
 projects[ding_base][download][branch] = "vejlebib"
 
 projects[ding_permissions][type] = "module"
