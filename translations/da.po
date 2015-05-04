@@ -25608,9 +25608,6 @@ msgstr ""
 msgid "The e-mail address %mail is not valid."
 msgstr "E-mail-adressen %mail er ugyldig."
 
-msgid "authenticated user"
-msgstr "godkendt bruger"
-
 msgid "Any"
 msgstr "Nogen"
 
@@ -26232,9 +26229,6 @@ msgid ""
 msgstr ""
 "Vejledning som vises til brugeren under dette felt på "
 "redigeringsformularen.<br />Tilladte HTML-tags: @tags"
-
-msgid "anonymous user"
-msgstr "anonym bruger"
 
 msgid "@module (<span class=\"admin-disabled\">disabled</span>)"
 msgstr "@module (<span class=\"admin-disabled\">deaktiveret</span>)"
