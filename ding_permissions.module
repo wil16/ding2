@@ -34,9 +34,9 @@ function ding_permissions_permission() {
   $roles = user_roles(TRUE);
 
   // Add edit permission for each role.
-  foreach ($roles as $rid => $role) {
+  foreach ($roles as $role) {
     // Create a new permission for each user role.
-    $permissions['administer user role ' . $rid] = array(
+    $permissions['administer user role ' . $role] = array(
       'title' => t('Administer user with role: %role', array('%role' => $role)),
       'description' => t('Edit user with this role.'),
     );
@@ -88,13 +88,11 @@ function ding_permissions_user_access_level($account) {
 function ding_permission_check_roles_access($account) {
   // Check that the user have "administer users" permission.
   if (user_access('administer users')) {
-    // Get the roles of the account we are trying to edit.
-    $rids = array_keys($account->roles);
-    foreach ($rids as $rid) {
+    foreach ($account->roles as $role) {
       // Check if the user logged in has permission to edit the accounts
       // role. If we are allowed to edit just one of the roles access is
       // granted.
-      if (user_access('administer user role ' . $rid)) {
+      if (user_access('administer user role ' . $role)) {
         return TRUE;
       }
     }
