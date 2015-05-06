@@ -11,6 +11,9 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
+  // Exported overrides for: field_group
+  $overrides["field_group.group_holdings_available|ting_object|ting_object|default.data|format_settings|formatter"] = 'collapsible';
+
   // Exported overrides for: page_manager_handlers
   $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|content|new-be085b97-4329-4521-8dba-fe6a07fe59b0"] = (object) array(
       'pid' => 'new-be085b97-4329-4521-8dba-fe6a07fe59b0',

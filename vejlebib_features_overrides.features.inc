@@ -5,6 +5,15 @@
  */
 
 /**
+ * Implements hook_field_group_info_alter().
+ */
+function vejlebib_features_overrides_field_group_info_alter(&$data) {
+  if (isset($data['group_holdings_available|ting_object|ting_object|default'])) {
+    $data['group_holdings_available|ting_object|ting_object|default']->data['format_settings']['formatter'] = 'collapsible'; /* WAS: 'collapsed' */
+  }
+}
+
+/**
  * Implements hook_default_page_manager_handlers_alter().
  */
 function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data) {
