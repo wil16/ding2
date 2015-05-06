@@ -12,6 +12,28 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides = array();
 
   // Exported overrides for: page_manager_handlers
+  $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|content|new-be085b97-4329-4521-8dba-fe6a07fe59b0"] = (object) array(
+      'pid' => 'new-be085b97-4329-4521-8dba-fe6a07fe59b0',
+      'panel' => 'main_content',
+      'type' => 'bibliotek_dk_link',
+      'subtype' => 'bibliotek_dk_link',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(
+        'context' => 'argument_string_1',
+        'override_title' => 0,
+        'override_title_text' => '',
+      ),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(),
+      'extras' => array(),
+      'position' => 6,
+      'locks' => array(),
+      'uuid' => 'be085b97-4329-4521-8dba-fe6a07fe59b0',
+    );
   $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|content|new-e2418d10-4e53-4050-b1dd-fa8275589cc9"] = (object) array(
       'pid' => 'new-e2418d10-4e53-4050-b1dd-fa8275589cc9',
       'panel' => 'main_content',
@@ -31,34 +53,25 @@ function vejlebib_features_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 6,
+      'position' => 7,
       'locks' => array(),
       'uuid' => 'e2418d10-4e53-4050-b1dd-fa8275589cc9',
     );
-  $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|content|new-be085b97-4329-4521-8dba-fe6a07fe59b0"] = (object) array(
-      'pid' => 'new-be085b97-4329-4521-8dba-fe6a07fe59b0',
-      'panel' => 'main_content',
-      'type' => 'bibliotek_dk_link',
-      'subtype' => 'bibliotek_dk_link',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'context' => 'argument_string_1',
-        'override_title' => 0,
-        'override_title_text' => '',
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 7,
-      'locks' => array(),
-      'uuid' => 'be085b97-4329-4521-8dba-fe6a07fe59b0',
-    );
-  $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|panels|main_content|6"] = 'new-e2418d10-4e53-4050-b1dd-fa8275589cc9';
-  $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|panels|main_content|7"] = 'new-be085b97-4329-4521-8dba-fe6a07fe59b0';
+  $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|panels|main_content|6"] = 'new-be085b97-4329-4521-8dba-fe6a07fe59b0';
+  $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|panels|main_content|7"] = 'new-e2418d10-4e53-4050-b1dd-fa8275589cc9';
+
+  // Exported overrides for: variable
+  $overrides["variable.ding_varnish_content_types.value|ding_eresource"] = 0;
+  $overrides["variable.ding_varnish_content_types.value|ding_event"] = 0;
+  $overrides["variable.ding_varnish_content_types.value|ding_group"] = 0;
+  $overrides["variable.ding_varnish_content_types.value|ding_inspiration_list"] = 0;
+  $overrides["variable.ding_varnish_content_types.value|ding_library"] = 0;
+  $overrides["variable.ding_varnish_content_types.value|ding_news"] = 0;
+  $overrides["variable.ding_varnish_content_types.value|ding_page"] = 0;
+  $overrides["variable.ding_varnish_content_types.value|genre_page"] = 0;
+  $overrides["variable.ding_varnish_content_types.value|new_materials"] = 0;
+  $overrides["variable.ding_varnish_content_types.value|webform"] = 0;
+  $overrides["variable.ding_varnish_paths.value"] = '';
 
  return $overrides;
 }
