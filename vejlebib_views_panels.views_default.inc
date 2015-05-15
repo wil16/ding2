@@ -242,7 +242,7 @@ function vejlebib_views_panels_views_default_views() {
   /* Display: Event list */
   $handler = $view->new_display('panel_pane', 'Event list', 'vejlebib_ding_event_list');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Arrangementer';
+  $handler->display->display_options['title'] = 'Group events';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
@@ -372,7 +372,7 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['fields']['field_ding_event_date']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_ding_event_date']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_ding_event_date']['settings'] = array(
-    'format_type' => 'time_only',
+    'format_type' => 'ding_time_only',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -2321,7 +2321,7 @@ function vejlebib_views_panels_views_default_views() {
     </div>'),
     t('Alle'),
     t('Event list'),
-    t('Arrangementer'),
+    t('Group events'),
     t('mere'),
     t('RSS feed link'),
     t('<div class="feed">
@@ -2348,7 +2348,6 @@ function vejlebib_views_panels_views_default_views() {
     t('Andre spændende arrangementer'),
     t('RSS library event list'),
     t('Groups event list'),
-    t('Group events'),
     t('No events where found in the group.'),
     t('OG membership group'),
     t('OG group'),
@@ -2592,7 +2591,7 @@ function vejlebib_views_panels_views_default_views() {
   /* Display: Frontpage news list */
   $handler = $view->new_display('panel_pane', 'Frontpage news list', 'ding_news_frontpage_list');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Nyheder';
+  $handler->display->display_options['title'] = 'Group news';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
@@ -4154,7 +4153,7 @@ function vejlebib_views_panels_views_default_views() {
     t('<span class="news-label">[field_ding_news_category]</span> <span class="news-date">[created]</span>  |  <span class="news-author">af [name]</span>'),
     t('Alle'),
     t('Frontpage news list'),
-    t('Nyheder'),
+    t('Group news'),
     t('mere'),
     t('Antal elementer'),
     t('- Alle -'),
@@ -4185,7 +4184,6 @@ function vejlebib_views_panels_views_default_views() {
     t('User news list'),
     t('news list by user'),
     t('Groups news list'),
-    t('Group news'),
     t('No news where found for this group.'),
     t('Groups panes'),
     t('News list (groups)'),
