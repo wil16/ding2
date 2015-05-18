@@ -18,8 +18,6 @@ function vejlebib_settings_ctools_plugin_api($module = NULL, $api = NULL) {
 
 /**
  * Implements hook_field_group_info_alter().
- *
- * TODO: Try to unfeature this - Not working on dev.vejlebib.dk
  */
 function vejlebib_settings_field_group_info_alter(&$data) {
   if (isset($data['group_material_details|ting_object|ting_object|default'])) {
