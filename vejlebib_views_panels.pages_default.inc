@@ -300,7 +300,7 @@ function vejlebib_views_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -26;
+  $handler->weight = -27;
   $handler->conf = array(
     'title' => 'Page (inspiration)',
     'no_blocks' => 0,
