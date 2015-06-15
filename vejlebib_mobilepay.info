@@ -1,0 +1,11 @@
+name = Vejlebib MobilePay
+description = Display mobile logo on user debt pages
+core = 7.x
+package = Ding!
+version = 7.x-1.0
+files[] = vejlebib_mobilepay.module
+dependencies[] = ding_user_frontend
+features[features_api][] = api:2
+features[features_override_items][] = page_manager_pages.user_debts
+features[features_overrides][] = page_manager_pages.user_debts.default_handlers|page_user_debts_panel_context|conf|display|content|new-d585c901-9325-4fb7-a03c-9e80ba097509
+features[features_overrides][] = page_manager_pages.user_debts.default_handlers|page_user_debts_panel_context|conf|display|panels|main_content|3
