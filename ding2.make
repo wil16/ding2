@@ -107,7 +107,7 @@ projects[ddbasic][download][tag] = "7.x-2.0.0"
 libraries[profiler][download][type] = "git"
 libraries[profiler][download][url] = "http://git.drupal.org/project/profiler.git"
 libraries[profiler][download][branch] = "7.x-2.0-beta1"
-# https://drupal.org/node/1328796, keep dependency order of base profile.
+; https://drupal.org/node/1328796, keep dependency order of base profile.
 libraries[profiler][patch][0] = "http://drupal.org/files/profiler-reverse.patch"
 
 libraries[mailchimp][download][type] = "get"
@@ -132,7 +132,7 @@ projects[apc][version] = "1.0-beta4"
 
 projects[entitycache][subdir] = "contrib"
 projects[entitycache][version] = "1.2"
-# https://drupal.org/node/2146543, profile 2 blank fields.
+; https://drupal.org/node/2146543, profile 2 blank fields.
 projects[entitycache][patch][0] = "http://drupal.org/files/issues/2146543-ensure-entity-inserts-clears-caches.1.patch"
 
 projects[fontyourface][subdir] = "contrib"
@@ -152,19 +152,19 @@ projects[redirect][version] = "1.0-rc1"
 
 projects[cookiecontrol][subdir] = "contrib"
 projects[cookiecontrol][version] = "1.6"
-# https://drupal.org/node/2174955, fix translatable link.
+; https://drupal.org/node/2174955, fix translatable link.
 projects[cookiecontrol][patch][0] = "http://drupal.org/files/issues/translatable_link_title-2174955-1.patch"
 
 projects[mailchimp][subdir] = "contrib"
 projects[mailchimp][version] = "2.12"
 
-# Using dev release, as the "stable" version is making errors in the install profile.
+; Using dev release, as the "stable" version is making errors in the install profile.
 projects[uuid][subdir] = "contrib"
 projects[uuid][download][type] = "git"
 projects[uuid][download][url] = "http://git.drupal.org/project/uuid.git"
 projects[uuid][download][revision] = "3f4d9fb"
 
-# Development version where the "unpublished" status have been fixed on the content edit page.
+; Development version where the "unpublished" status have been fixed on the content edit page.
 projects[view_unpublished][subdir] = "contrib"
 projects[view_unpublished][download][type] = "git"
 projects[view_unpublished][download][url] = "http://git.drupal.org/project/view_unpublished.git"
