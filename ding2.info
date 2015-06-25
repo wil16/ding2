@@ -24,6 +24,7 @@ dependencies[] = menu_position
 dependencies[] = cookiecontrol
 dependencies[] = view_unpublished
 dependencies[] = redirect
+dependencies[] = admin_views
 
 ; Ding modules.
 dependencies[] = ding_base
