@@ -155,9 +155,10 @@ function vejlebib_views_panels_block_view($delta) {
       // Nav helper links markup
       $content[] = array(
           '#type' => 'markup',
-          '#markup' => '<ul class="nav-helpers"><li><a class="english" href="/in-english">English</a></li><li><a class="read" href="http://adgangforalle.dk">Læs op</a></li><li><a class="print" href="javascript:window.print();">Print</a></li><li><a class="facebook" href="https://www.facebook.com/vejlebibliotekerne" target="_blank">Facebook</a></li></ul>',
+          '#markup' => '<ul class="nav-helpers"><li><a class="english" href="/in-english">English</a></li><li><a class="read" href="http://adgangforalle.dk">Læs op</a></li><li><a class="facebook" href="https://www.facebook.com/vejlebibliotekerne" target="_blank">Facebook</a></li></ul>',
         );
-
+      // Temporary disabled print menu:
+      /*<li><a class="print" href="javascript:window.print();">Print</a></li>*/
       // Define the block.
       $block['content'] = $content;
       break;
