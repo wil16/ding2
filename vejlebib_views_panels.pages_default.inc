@@ -1066,12 +1066,12 @@ function vejlebib_views_panels_default_page_manager_handlers() {
     $pane->pid = 'new-0db9e683-fa70-40f9-85ce-5d6e61068c91';
     $pane->panel = 'secondary';
     $pane->type = 'views_panes';
-    $pane->subtype = 'vejlebib_ding_news-ding_news_frontpage_list';
+    $pane->subtype = 'ding_news-ding_news_frontpage_list';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'News',
     );
     $pane->cache = array();
     $pane->style = array(
