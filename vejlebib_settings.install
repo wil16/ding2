@@ -37,11 +37,12 @@ function vejlebib_settings_install() {
 
 function vejlebib_settings_update_7001(&$sandbox) {
   // Load user uid's.
-  $uids = db_select('users', 'u')
-    ->fields('u', array('uid'))
-    ->condition('init', '%@ding_user', 'LIKE')
-    ->condition('init', '%@alma_user', 'LIKE')
-    ->execute();
+  $query = db_select('users', 'u')
+  	->fields('u', array('uid'));
+  $or_condition = db_or();
+  $or_condition->condition('init', '%@ding_user', 'LIKE');
+  $or_condition->condition('init', '%@alma_user', 'LIKE');
+  $uids = $query->condition($or_condition)->execute();
 
   // Find provider role id.
   $roles = user_roles(TRUE);
