@@ -35,4 +35,29 @@ function vejlebib_settings_install() {
 	}
 }
 
+function vejlebib_settings_update_7001(&$sandbox) {
+  // Load user uid's.
+  $uids = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->condition('init', '%@ding_user', 'LIKE')
+    ->condition('init', '%@alma_user', 'LIKE')
+    ->execute();
+
+  // Find provider role id.
+  $roles = user_roles(TRUE);
+  $rid = array_search('provider', $roles);
+
+  // Loop over the accounts and set new roles.
+  foreach ($uids as $uid) {
+    $account = user_load($uid->uid);
+    if (ding_user_is_provider_user($account)) {
+      $edit['roles'] = array(
+        DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+        $rid => 'provider',
+      );
+      user_save($account, $edit);
+    }
+  }
+}
+
 
