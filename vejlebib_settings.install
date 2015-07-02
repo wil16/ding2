@@ -35,6 +35,9 @@ function vejlebib_settings_install() {
 	}
 }
 
+/**
+ * Add the provider role to all provider users.
+ */
 function vejlebib_settings_update_7001(&$sandbox) {
   // Load user uid's.
   $query = db_select('users', 'u')
