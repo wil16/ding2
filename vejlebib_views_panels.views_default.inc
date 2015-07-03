@@ -2793,29 +2793,6 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Image (list image) */
-  $handler->display->display_options['fields']['field_ding_news_list_image']['id'] = 'field_ding_news_list_image';
-  $handler->display->display_options['fields']['field_ding_news_list_image']['table'] = 'field_data_field_ding_news_list_image';
-  $handler->display->display_options['fields']['field_ding_news_list_image']['field'] = 'field_ding_news_list_image';
-  $handler->display->display_options['fields']['field_ding_news_list_image']['ui_name'] = 'Image (list image)';
-  $handler->display->display_options['fields']['field_ding_news_list_image']['label'] = '';
-  $handler->display->display_options['fields']['field_ding_news_list_image']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_ding_news_list_image']['element_class'] = 'news-image-wrapper';
-  $handler->display->display_options['fields']['field_ding_news_list_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ding_news_list_image']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_ding_news_list_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ding_news_list_image']['type'] = 'cs_adaptive_image';
-  $handler->display->display_options['fields']['field_ding_news_list_image']['settings'] = array(
-    'image_link' => 'content',
-    'styles' => array(
-      'breakpoint_1' => '768',
-      'style_1' => 'ding_list_medium',
-      'breakpoint_2' => '500',
-      'style_2' => 'ding_list_small',
-      'max_style' => 'ding_list_large',
-      'fallback_style' => 'ding_list_large',
-    ),
-  );
   /* Felt: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
