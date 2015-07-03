@@ -14,6 +14,18 @@ function vejlebib_features_overrides_field_group_info_alter(&$data) {
 }
 
 /**
+ * Implements hook_field_default_field_instances_alter().
+ */
+function vejlebib_features_overrides_field_default_field_instances_alter(&$data) {
+  if (isset($data['node-ding_news-field_ding_news_list_image'])) {
+    $data['node-ding_news-field_ding_news_list_image']['required'] = 1; /* WAS: 0 */
+  }
+  if (isset($data['node-ding_news-field_ding_news_title_image'])) {
+    $data['node-ding_news-field_ding_news_title_image']['required'] = 1; /* WAS: 0 */
+  }
+}
+
+/**
  * Implements hook_default_page_manager_handlers_alter().
  */
 function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data) {

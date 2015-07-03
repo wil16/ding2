@@ -14,6 +14,10 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   // Exported overrides for: field_group
   $overrides["field_group.group_holdings_available|ting_object|ting_object|default.data|format_settings|formatter"] = 'collapsible';
 
+  // Exported overrides for: field_instance
+  $overrides["field_instance.node-ding_news-field_ding_news_list_image.required"] = 1;
+  $overrides["field_instance.node-ding_news-field_ding_news_title_image.required"] = 1;
+
   // Exported overrides for: page_manager_handlers
   $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|content|new-be085b97-4329-4521-8dba-fe6a07fe59b0"] = (object) array(
       'pid' => 'new-be085b97-4329-4521-8dba-fe6a07fe59b0',
