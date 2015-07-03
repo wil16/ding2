@@ -31,6 +31,38 @@ function vejlebib_settings_field_group_info_alter(&$data) {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function vejlebib_settings_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: vejlebib_list.
+  $styles['vejlebib_list'] = array(
+    'name' => 'vejlebib_list',
+    'label' => 'Vejlebib list',
+    'effects' => array(
+      1 => array(
+        'label' => 'Skalér og beskær',
+        'help' => 'Skalering og beskæring bevarer billedets højde-bredde-forhold og beskærer derefter den største dimension. Det er nyttigt til at generere kvadratiske thumbnails uden at forvrænge billedet.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 150,
+          'height' => 150,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_default_mailchimp_list().
  */
 function vejlebib_settings_default_mailchimp_list() {
