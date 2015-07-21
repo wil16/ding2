@@ -926,6 +926,52 @@ function vejlebib_views_panels_default_page_manager_handlers() {
     $display->content['new-adb013cb-19a9-45fe-bc2d-699dccd3e846'] = $pane;
     $display->panels['header'][4] = 'new-adb013cb-19a9-45fe-bc2d-699dccd3e846';
     $pane = new stdClass();
+    $pane->pid = 'new-e4aa88cb-d6cd-4321-80fe-fc899fbf4f40';
+    $pane->panel = 'header';
+    $pane->type = 'wayf_dk_login';
+    $pane->subtype = 'wayf_dk_login';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'icon' => 'UK_01.png',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
+    $pane->uuid = 'new-e4aa88cb-d6cd-4321-80fe-fc899fbf4f40';
+    $display->content['new-e4aa88cb-d6cd-4321-80fe-fc899fbf4f40'] = $pane;
+    $display->panels['header'][5] = 'new-e4aa88cb-d6cd-4321-80fe-fc899fbf4f40';
+    $pane = new stdClass();
+    $pane->pid = 'new-dd51975a-1325-4d14-b15c-3c14cace232e';
+    $pane->panel = 'header';
+    $pane->type = 'ding_wayf_dk_create_user';
+    $pane->subtype = 'ding_wayf_dk_create_user';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'icon' => NULL,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 6;
+    $pane->locks = array();
+    $pane->uuid = 'new-dd51975a-1325-4d14-b15c-3c14cace232e';
+    $display->content['new-dd51975a-1325-4d14-b15c-3c14cace232e'] = $pane;
+    $display->panels['header'][6] = 'new-dd51975a-1325-4d14-b15c-3c14cace232e';
+    $pane = new stdClass();
     $pane->pid = 'new-d981e7f7-c2ce-4142-adbc-29dc52526d5d';
     $pane->panel = 'navigation';
     $pane->type = 'block';
