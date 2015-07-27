@@ -241,12 +241,12 @@ EOT;
     'weight' => -18,
   ));
 
-  $html = '<img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/dcs2223b10932ca7afu0mksma_6t5f/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.1&amp;dcssip=www.vejlebib.dk"/>';
+  $html = '<img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/dcs2223b10932ca7afu0mksma_6t5f/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.1&amp;dcssip=vejlebib.dk"/>';
   $page['page_bottom']['webtrends'] = array(
-    '#prefix' => '<noscript>',
-    '#suffix' => '</noscript>',
+    '#prefix' => '<noscript><div>',
+    '#suffix' => '</div></noscript>',
     '#markup' => $html,
-  );  
+  );
 }
 
 /**
