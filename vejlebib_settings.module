@@ -223,22 +223,26 @@ window.webtrendsAsyncInit=function(){
       facebook:{src:"//s.webtrends.com/js/webtrends.fb.js"},
       yt:{src:"//s.webtrends.com/js/webtrends.yt.js"}
     }
-  }).track();
+  });
+
+  var count = jQuery('.js-count');
+  if(count.length > 0) {
+    dcs.WT.oss = jQuery('.form-type-textfield input').val();  // search query
+    dcs.WT.oss_r = count.attr('data-js-count'); // search hits
+  }
+  
+  dcs.track();
 };
 EOT;
 
   drupal_add_js($script, array(
     'type' => 'inline',
     'scope' => 'footer',
-    'every_page' => TRUE,
-    'weight' => -19,
   ));
 
   // Load webtrend script after inline configuration with a higher weight.
   drupal_add_js(drupal_get_path('module', 'vejlebib_settings') . '/js/webtrends.min.js', array(
     'scope' => 'footer',
-    'every_page' => TRUE,
-    'weight' => -18,
   ));
 
   $html = '<img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/dcs2223b10932ca7afu0mksma_6t5f/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.1&amp;dcssip=vejlebib.dk"/>';
