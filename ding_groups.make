@@ -4,7 +4,7 @@ api = 2
 projects[ding_base][type] = "module"
 projects[ding_base][download][type] = "git"
 projects[ding_base][download][url] = "git@github.com:ding2/ding_base.git"
-projects[ding_base][download][tag] = "7.x-2.3.0-rc2"
+projects[ding_base][download][tag] = "7.x-2.3.0-rc3"
 
 ; Projects
 projects[ctools][subdir] = "contrib"
