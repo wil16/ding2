@@ -239,6 +239,11 @@ projects[ting_marc][download][type] = "git"
 projects[ting_marc][download][url] = "git@github.com:easyddb/ting_marc"
 projects[ting_marc][download][branch] = "master"
 
+projects[ding_wayf_dk][type] = "module"
+projects[ding_wayf_dk][download][type] = "git"
+projects[ding_wayf_dk][download][url] = "git@github.com:vejlebib/ding_wayf_dk.git"
+projects[ding_wayf_dk][download][branch] = "vejlebib"
+
 ; Vejlebib theme
 projects[wellejus][type] = "theme"
 projects[wellejus][download][type] = "git"
