@@ -37,11 +37,6 @@ projects[ding_ting_frontend][download][tag] = "7.x-2.2.0"
 #projects[mkdru_ding_frontend][download][url] = "git@github.com:ding2/mkdru_ding_frontend.git"
 #projects[mkdru_ding_frontend][download][tag] = "7.x-2.2.0"
 
-projects[ding_content][type] = "module"
-projects[ding_content][download][type] = "git"
-projects[ding_content][download][url] = "git@github.com:ding2/ding_content.git"
-projects[ding_content][download][tag] = "7.x-2.2.0"
-
 projects[ding_example_content][type] = "module"
 projects[ding_example_content][download][type] = "git"
 projects[ding_example_content][download][url] = "git@github.com:ding2/ding_example_content.git"
@@ -289,3 +284,10 @@ projects[ding_staff][type] = "module"
 projects[ding_staff][download][type] = "git"
 projects[ding_staff][download][url] = "git@github.com:vejlebib/ding_staff.git"
 projects[ding_staff][download][branch] = "fix-drush-make-patch-error"
+
+; Include our patch on the Wysiwig module
+; https://www.drupal.org/node/1962848
+projects[ding_content][type] = "module"
+projects[ding_content][download][type] = "git"
+projects[ding_content][download][url] = "git@github.com:vejlebib/ding_content.git"
+projects[ding_content][download][branch] = "vejlebib"
