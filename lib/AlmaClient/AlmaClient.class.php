@@ -355,7 +355,7 @@ class AlmaClient {
       }
 
       if ($reservation['status'] == 'fetchable') {
-        $reservation['pickup_number'] = (integer) $item->getAttribute('pickUpNo');
+        $reservation['pickup_number'] = $item->getAttribute('pickUpNo');
         $reservation['pickup_expire_date'] = $item->getAttribute('pickUpExpireDate');
       }
 
