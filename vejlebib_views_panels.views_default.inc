@@ -47,7 +47,7 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'Empty text';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No events where found.';
+  $handler->display->display_options['empty']['area']['content'] = 'Ingen arrangementer';
   $handler->display->display_options['empty']['area']['format'] = 'ding_wysiwyg';
   /* Forbindelse: OG membership: OG membership from Indholdselement */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
@@ -242,7 +242,7 @@ function vejlebib_views_panels_views_default_views() {
   /* Display: Event list */
   $handler = $view->new_display('panel_pane', 'Event list', 'vejlebib_ding_event_list');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Group events';
+  $handler->display->display_options['title'] = 'Arrangementer';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
@@ -437,6 +437,14 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
     'field_data_field_ding_event_date.field_ding_event_date_value' => 'field_data_field_ding_event_date.field_ding_event_date_value',
     'field_data_field_ding_event_date.field_ding_event_date_value2' => 'field_data_field_ding_event_date.field_ding_event_date_value2',
+  );
+  /* Filterkriterie: Indhold: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'node';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['relationship'] = 'og_membership_related_node_group';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'ding_library' => 'ding_library',
   );
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -1473,7 +1481,7 @@ function vejlebib_views_panels_views_default_views() {
   /* Display: Groups event list */
   $handler = $view->new_display('panel_pane', 'Groups event list', 'vejlebib_ding_event_groups_list');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Group events';
+  $handler->display->display_options['title'] = 'Arrangementer';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
@@ -1506,7 +1514,7 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'Empty text';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No events where found in the group.';
+  $handler->display->display_options['empty']['area']['content'] = 'Ingen arrangementer til temaet';
   $handler->display->display_options['empty']['area']['format'] = 'ding_wysiwyg';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Forbindelse: OG membership group */
@@ -1806,7 +1814,7 @@ function vejlebib_views_panels_views_default_views() {
   /* Display: Event list (groups) */
   $handler = $view->new_display('panel_pane', 'Event list (groups)', 'vejlebib_ding_event_groups_list_group');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Group events';
+  $handler->display->display_options['title'] = 'Arrangementer';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
@@ -1839,7 +1847,7 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'Empty text';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No events where found in the group.';
+  $handler->display->display_options['empty']['area']['content'] = 'Ingen arrangementer til temaet';
   $handler->display->display_options['empty']['area']['format'] = 'ding_wysiwyg';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Forbindelse: OG membership group */
@@ -2305,7 +2313,7 @@ function vejlebib_views_panels_views_default_views() {
     t('Stigende'),
     t('Faldende'),
     t('Empty text'),
-    t('No events where found.'),
+    t('Ingen arrangementer'),
     t('OG membership from node'),
     t('<div class="event-list-date-wrapper">
       <span class="event-list-day">[field_ding_event_date]</span>
@@ -2321,7 +2329,7 @@ function vejlebib_views_panels_views_default_views() {
     </div>'),
     t('Alle'),
     t('Event list'),
-    t('Group events'),
+    t('Arrangementer'),
     t('mere'),
     t('RSS feed link'),
     t('<div class="feed">
@@ -2348,7 +2356,7 @@ function vejlebib_views_panels_views_default_views() {
     t('Andre spændende arrangementer'),
     t('RSS library event list'),
     t('Groups event list'),
-    t('No events where found in the group.'),
+    t('Ingen arrangementer til temaet'),
     t('OG membership group'),
     t('OG group'),
     t('OG membership from node (Library)'),
@@ -2400,7 +2408,7 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'Empty text';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No news where found.';
+  $handler->display->display_options['empty']['area']['content'] = 'Ingen nyheder';
   $handler->display->display_options['empty']['area']['format'] = 'ding_wysiwyg';
   /* Forbindelse: Indhold: Forfatter */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -2591,7 +2599,7 @@ function vejlebib_views_panels_views_default_views() {
   /* Display: Frontpage news list */
   $handler = $view->new_display('panel_pane', 'Frontpage news list', 'ding_news_frontpage_list');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Group news';
+  $handler->display->display_options['title'] = 'Nyheder';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
@@ -3685,7 +3693,7 @@ function vejlebib_views_panels_views_default_views() {
   /* Display: Groups news list */
   $handler = $view->new_display('panel_pane', 'Groups news list', 'ding_news_groups_list');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Group news';
+  $handler->display->display_options['title'] = 'Nyheder';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
@@ -3711,7 +3719,7 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'Empty text';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No news where found for this group.';
+  $handler->display->display_options['empty']['area']['content'] = 'Ingen nyheder til temaet';
   $handler->display->display_options['empty']['area']['format'] = 'ding_wysiwyg';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Forbindelse: OG membership: OG membership from Indholdselement */
@@ -3867,7 +3875,7 @@ function vejlebib_views_panels_views_default_views() {
   /* Display: News list (groups) */
   $handler = $view->new_display('panel_pane', 'News list (groups)', 'panel_pane_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Group news';
+  $handler->display->display_options['title'] = 'Nyheder';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
@@ -4125,12 +4133,12 @@ function vejlebib_views_panels_views_default_views() {
     t('Stigende'),
     t('Faldende'),
     t('Empty text'),
-    t('No news where found.'),
+    t('Ingen nyheder'),
     t('forfatter'),
     t('<span class="news-label">[field_ding_news_category]</span> <span class="news-date">[created]</span>  |  <span class="news-author">af [name]</span>'),
     t('Alle'),
     t('Frontpage news list'),
-    t('Group news'),
+    t('Nyheder'),
     t('mere'),
     t('Antal elementer'),
     t('- Alle -'),
@@ -4161,7 +4169,7 @@ function vejlebib_views_panels_views_default_views() {
     t('User news list'),
     t('news list by user'),
     t('Groups news list'),
-    t('No news where found for this group.'),
+    t('Ingen nyheder til temaet'),
     t('Groups panes'),
     t('News list (groups)'),
   );
@@ -4201,7 +4209,7 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'Empty text';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No staff was found related to the library selected.';
+  $handler->display->display_options['empty']['area']['content'] = 'Der er ingen medarbejdere tilknyttet biblioteket';
   $handler->display->display_options['empty']['area']['format'] = 'ding_wysiwyg';
   /* Felt: User uid (excluded) */
   $handler->display->display_options['fields']['user']['id'] = 'user';
@@ -4665,7 +4673,7 @@ function vejlebib_views_panels_views_default_views() {
     t('Stigende'),
     t('Faldende'),
     t('Empty text'),
-    t('No staff was found related to the library selected.'),
+    t('Der er ingen medarbejdere tilknyttet biblioteket'),
     t('.'),
     t(','),
     t('Navn'),
