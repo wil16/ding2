@@ -190,7 +190,7 @@ projects[vejlebib_features_overrides][download][url] = "git@github.com:vejlebib/
 projects[vejlebib_features_overrides][download][branch] = "master"
 
 projects[vejlebib_mobilepay][type] = "module"
-projects[vejlebib_mobilepay][download][type] = "module"
+projects[vejlebib_mobilepay][download][type] = "git"
 projects[vejlebib_mobilepay][download][url] = "git@github.com:vejlebib/vejlebib_mobilepay.git"
 projects[vejlebib_mobilepay][download][branch] = "master"
 
