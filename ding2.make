@@ -283,7 +283,7 @@ projects[ding_permissions][download][branch] = "vejlebib"
 projects[ding_staff][type] = "module"
 projects[ding_staff][download][type] = "git"
 projects[ding_staff][download][url] = "git@github.com:vejlebib/ding_staff.git"
-projects[ding_staff][download][branch] = "fix-drush-make-patch-error"
+projects[ding_staff][download][branch] = "vejlebib"
 
 ; Include our patch on the Wysiwig module
 ; https://www.drupal.org/node/1962848
