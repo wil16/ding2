@@ -77,11 +77,6 @@ projects[ding_varnish][download][type] = "git"
 projects[ding_varnish][download][url] = "git@github.com:ding2/ding_varnish.git"
 projects[ding_varnish][download][tag] = "7.x-2.2.0"
 
-projects[ding_contact][type] = "module"
-projects[ding_contact][download][type] = "git"
-projects[ding_contact][download][url] = "git@github.com:ding2/ding_contact.git"
-projects[ding_contact][download][tag] = "7.x-2.2.0"
-
 projects[bpi][type] = "module"
 projects[bpi][download][type] = "git"
 projects[bpi][download][url] = "git@github.com:ding2/bpi.git"
@@ -294,3 +289,10 @@ projects[ding_content][type] = "module"
 projects[ding_content][download][type] = "git"
 projects[ding_content][download][url] = "git@github.com:vejlebib/ding_content.git"
 projects[ding_content][download][branch] = "vejlebib"
+
+; Fork the ding_contact module so we can get control over the added categories
+; on install.
+projects[ding_contact][type] = "module"
+projects[ding_contact][download][type] = "git"
+projects[ding_contact][download][url] = "git@github.com:vejlebib/ding_contact.git"
+projects[ding_contact][download][tag] = "vejlebib"
