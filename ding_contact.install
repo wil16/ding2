@@ -133,12 +133,6 @@ function ding_contact_info() {
       'weight' => -10,
     ),
     array(
-      'category' => 'Ubuntu - publikumspc\'ere',
-      'recipients' => $site_email,
-      'reply' => '',
-      'weight' => -10,
-    ),
-    array(
       'category' => 'Ingen af overstående',
       'recipients' => $site_email,
       'reply' => '',
@@ -200,12 +194,6 @@ function ding_contact_info() {
     ),
     array(
       'category' => 'Website',
-      'recipients' => $site_email,
-      'reply' => '',
-      'weight' => 9,
-    ),
-    array(
-      'category' => 'Ubuntu - user PCs',
       'recipients' => $site_email,
       'reply' => '',
       'weight' => 9,
