@@ -275,6 +275,7 @@ function ding2_update_7009() {
 /**
  * Disable the cookiecontrol module.
  * Enable and configure the eu-cookie-compliance module.
+ * Enable ding_contact module.
  */
 function ding2_update_7010() {
   if (module_exists('cookiecontrol')) {
@@ -284,7 +285,7 @@ function ding2_update_7010() {
     variable_del('cookiecontrol_text');
     variable_del('cookiecontrol_fulltext');
   }
-  module_enable(array('eu_cookie_compliance'));
+  module_enable(array('eu_cookie_compliance', 'ding_contact'));
   ding2_set_cookie_page();
   if (module_exists('secure_permissions')) {
     secure_permissions_build_permissions();
