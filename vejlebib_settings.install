@@ -9,7 +9,7 @@
 /**
  * Implements hook_install().
  *
- * Updates the database with settings specific to Vejle's instance of the 
+ * Updates the database with settings specific to Vejle's instance of the
  * DDB CMS.
  */
 function vejlebib_settings_install() {
@@ -21,17 +21,17 @@ function vejlebib_settings_install() {
 	  	->fields(array('body' => $block_body))
 	  	->execute();
 	  if ($count) {
-	  	watchdog('vejlebib_settings', 
-	  		'Succesfully updated Footer adresse block with Vejle bib\'s address', 
-	  		array(), 
+	  	watchdog('vejlebib_settings',
+	  		'Succesfully updated Footer adresse block with Vejle bib\'s address',
+	  		array(),
 	  		WATCHDOG_INFO);
 	  }
 	}
 	catch (Exception $e) {
-	  watchdog('vejlebib_settings', 
-	  	'An error occured while trying to update Footer adresse block with Vejle bib\'s address', 
-	  	array(), 
-	  	WATCHDOG_ERROR);				
+	  watchdog('vejlebib_settings',
+	  	'An error occured while trying to update Footer adresse block with Vejle bib\'s address',
+	  	array(),
+	  	WATCHDOG_ERROR);
 	}
 }
 
@@ -63,6 +63,30 @@ function vejlebib_settings_update_7001(&$sandbox) {
       user_save($account, $edit);
     }
   }
+}
+
+/**
+ * Setup the secondary menu
+ */
+function vejlebib_settings_update_7002(&$sandbox) {
+	foreach (menu_link_load('menu-secondary-menu') as $mlid => $menu_link) {
+		menu_link_delete($mlid);
+	}
+	$link = array(
+    'menu_name' => 'menu-secondary-menu',
+    'weight' => 50,
+    'link_title' => 'Kontakt',
+    'link_path' => 'contact',
+    'language' => LANGUAGE_NONE,
+  );
+  menu_link_save($link);
+	$link = array(
+    'menu_name' => 'menu-secondary-menu',
+    'link_title' => 'Facebook',
+    'link_path' => 'https://www.facebook.com/vejlebibliotekerne',
+    'language' => LANGUAGE_NONE,
+  );
+  menu_link_save($link);
 }
 
 
