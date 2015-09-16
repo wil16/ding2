@@ -69,8 +69,8 @@ function vejlebib_settings_update_7001(&$sandbox) {
  * Setup the secondary menu
  */
 function vejlebib_settings_update_7002(&$sandbox) {
-	foreach (menu_link_load('menu-secondary-menu') as $mlid => $menu_link) {
-		menu_link_delete($mlid);
+	foreach (menu_load_links('menu-secondary-menu') as $menu_link) {
+		menu_link_delete($menu_link['mlid']);
 	}
 	$link = array(
     'menu_name' => 'menu-secondary-menu',
@@ -88,5 +88,3 @@ function vejlebib_settings_update_7002(&$sandbox) {
   );
   menu_link_save($link);
 }
-
-

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * 
+ *
  * Module file for the Vejlebib settings module.
  *
  * Contains fixes and settings for the vejlebib instance of DDB CMS.
@@ -54,17 +54,17 @@ function vejlebib_settings_menu_alter(&$items) {
   // the transition from ding1 to ding2, all the libraries got new nids. At this
   // point in time, we are not able to correct the values in the app, so here we
   // employ a temporary hack, that maps the library nids to the correct ones.
-  // This should be removed, once the values is corrected in the library app or 
+  // This should be removed, once the values is corrected in the library app or
   // when the new library app is launched.
   if (isset($items['opening_hours/instances'])) {
     $item = &$items['opening_hours/instances'];
-	  $item['page callback'] = 'vejlebib_settings_opening_hours_crud_api_page';	
+	  $item['page callback'] = 'vejlebib_settings_opening_hours_crud_api_page';
   }
 
   // Change node clone menu item to a tab instead of an action
   if(isset($items['node/%node/clone/%clone_token'])) {
     $items['node/%node/clone/%clone_token']['type'] = MENU_LOCAL_TASK;
-  } 
+  }
   else if (isset($items['node/%node/clone'])) {
     $items['node/%node/clone']['type'] = MENU_LOCAL_TASK;
   }
@@ -164,7 +164,7 @@ function vejlebib_settings_preprocess_html(&$vars) {
         'name' => 'WT.oss_r',
         'content' => $search_count,
       );
-      drupal_add_html_head($meta_tag, 'search_count_meta_tag');     
+      drupal_add_html_head($meta_tag, 'search_count_meta_tag');
     }
 
   }
@@ -201,7 +201,7 @@ function vejlebib_settings_page_build(&$page) {
   if (!$domain || !$dcs_id) {
     watchdog('vejlebib_settings', 'Vejlebib Webtrends not configured.', array(), WATCHDOG_NOTICE);
     return;
-  }  
+  }
 
   // Create custom inline script.
   $script = <<<EOT
@@ -230,7 +230,7 @@ window.webtrendsAsyncInit=function(){
     dcs.WT.oss = jQuery('.form-type-textfield input').val();  // search query
     dcs.WT.oss_r = count.attr('data-js-count'); // search hits
   }
-  
+
   dcs.track();
 };
 EOT;
@@ -257,7 +257,7 @@ EOT;
  * Implements hook_username_alter().
  *
  * Look for a staff profile when displaying usernames. If both forename and
- * surname is set, we change the display to use these instead of the default 
+ * surname is set, we change the display to use these instead of the default
  * behavior that just uses the unique username.
  *
  * @see template_preprocess_username().
