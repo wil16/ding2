@@ -245,7 +245,7 @@ function ding_permissions_secure_permissions($role) {
       'administer tipsy',
       'administer url aliases',
       'administer user role anonymous user',
-      'administer user role authenticated user'
+      'administer user role authenticated user',
       'administer user role administrators',
       'administer user role editor',
       'administer user role guest blogger',
