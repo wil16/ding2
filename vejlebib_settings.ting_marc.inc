@@ -18,6 +18,8 @@ function vejlebib_settings_default_ting_marc() {
   $field->marc_field = '517';
   $field->marc_subfield = 'a';
   $field->marc_label = 'Anvendelighed';
+  $field->field_clickable = FALSE;
+  $field->link_index = '';
   $export['all_anvendelighed'] = $field;
 
   $field = new stdClass();
@@ -28,6 +30,8 @@ function vejlebib_settings_default_ting_marc() {
   $field->marc_field = '565';
   $field->marc_subfield = 'a';
   $field->marc_label = 'Hvor';
+  $field->field_clickable = FALSE;
+  $field->link_index = '';
   $export['all_hvor'] = $field;
 
   $field = new stdClass();
@@ -38,6 +42,8 @@ function vejlebib_settings_default_ting_marc() {
   $field->marc_field = '046';
   $field->marc_subfield = 'c';
   $field->marc_label = 'Let-tal';
+  $field->field_clickable = FALSE;
+  $field->link_index = '';
   $export['all_let_tal'] = $field;
 
   $field = new stdClass();
@@ -48,6 +54,8 @@ function vejlebib_settings_default_ting_marc() {
   $field->marc_field = '042';
   $field->marc_subfield = 'a';
   $field->marc_label = 'Lix-tal';
+  $field->field_clickable = FALSE;
+  $field->link_index = '';
   $export['all_lix_tal'] = $field;
 
   $field = new stdClass();
@@ -58,6 +66,8 @@ function vejlebib_settings_default_ting_marc() {
   $field->marc_field = '856';
   $field->marc_subfield = 'z';
   $field->marc_label = 'Note';
+  $field->field_clickable = FALSE;
+  $field->link_index = '';
   $export['all_note'] = $field;
 
   $field = new stdClass();
@@ -68,6 +78,8 @@ function vejlebib_settings_default_ting_marc() {
   $field->marc_field = '529';
   $field->marc_subfield = 'u';
   $field->marc_label = '529.u';
+  $field->field_clickable = FALSE;
+  $field->link_index = '';
   $export['cd_musik_529u'] = $field;
 
   return $export;
