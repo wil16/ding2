@@ -32,11 +32,11 @@ function ding_groups_views_api($module = NULL, $api = NULL) {
 function ding_groups_node_info() {
   $items = array(
     'ding_group' => array(
-      'name' => t('Group'),
+      'name' => t('Gruppe'),
       'base' => 'node_content',
       'description' => t('Create and new group that can be used to group related content together (temapages)'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
   );
