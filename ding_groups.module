@@ -245,7 +245,7 @@ function ding_groups_install_menu_position($op = 'install') {
     // Find the parent element.
     $plid = db_select('menu_links', 'ml')
       ->fields('ml', array('mlid'))
-      ->condition('link_path', 'temaer', '=')
+      ->condition('link_path', 'inspiration', '=')
       ->execute()->fetchField();
 
     // Add the rule.
@@ -331,7 +331,7 @@ function ding_groups_preprocess_views_view_responsive_grid(&$vars) {
  * optimized in relation to the number of promoted groups.
  */
 function ding_groups_preprocess_views_view_fields(&$vars) {
-  if ($vars['view']->name == 'ding_groups' && $vars['view']->current_display == 'panel_pane_1') {
+  if ($vars['view']->name == 'ding_groups' && $vars['view']->current_display == 'panel_pane_2') {
     $total = (int) $vars['view']->total_rows;
     $rows = ceil($total / 4);
     $current = $vars['id'];
