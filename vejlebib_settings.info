@@ -101,4 +101,3 @@ features_exclude[features_overrides][field_group.group_material_details|ting_obj
 features_exclude[features_overrides][field_group.group_material_details|ting_object|ting_object|default.data|children|26] = field_group.group_material_details|ting_object|ting_object|default.data|children|26
 features_exclude[features_overrides][field_group.group_material_details|ting_object|ting_object|default.data|format_settings|instance_settings|classes] = field_group.group_material_details|ting_object|ting_object|default.data|format_settings|instance_settings|classes
 features_exclude[features_overrides][field_group.group_material_details|ting_object|ting_object|default.data|format_settings|instance_settings|id] = field_group.group_material_details|ting_object|ting_object|default.data|format_settings|instance_settings|id
-mtime = 1442939039
