@@ -159,6 +159,9 @@ projects[mailchimp][version] = "2.12"
 projects[admin_views][subdir] = "contrib"
 projects[admin_views][version] = "1.4"
 
+projects[panelizer][subdir] = "contrib"
+projects[panelizer][version] = "3.1"
+
 ; Using dev release, as the "stable" version is making errors in the install profile.
 projects[uuid][subdir] = "contrib"
 projects[uuid][download][type] = "git"
