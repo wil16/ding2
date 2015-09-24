@@ -92,7 +92,7 @@ function ding_groups_node_update($node) {
     // Update/create alias for the current ding groups news and events.
     foreach (array('nyheder', 'arrangementer') as $slug) {
       if (!path_load(array('alias' => $alias . '/' . $slug))) {
-        $source = 'temaer/' . $node->nid . '/' . $slug;
+        $source = 'inspiration/' . $node->nid . '/' . $slug;
         $existing_alias = _pathauto_existing_alias_data($source, LANGUAGE_NONE);
         $path = array(
           'source' => $source,
@@ -162,7 +162,7 @@ function ding_groups_taxonomy_term_update($term) {
     }
 
     foreach ($nodes as $node) {
-      ding_base_updated_taxonomy_aliases($node, 'temaer', array($term), array($type));
+      ding_base_updated_taxonomy_aliases($node, 'inspiration', array($term), array($type));
     }
   }
 }
@@ -184,7 +184,7 @@ function ding_groups_taxonomy_term_delete($term) {
     module_load_include('inc', 'pathauto');
 
     foreach ($nodes as $node) {
-      pathauto_path_delete_all('temaer/' . $node->nid . '/' . $type . '/' . $term->tid);
+      pathauto_path_delete_all('inspiration/' . $node->nid . '/' . $type . '/' . $term->tid);
     }
   }
 }
