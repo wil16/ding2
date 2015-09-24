@@ -18,6 +18,7 @@ dependencies[] = strongarm
 dependencies[] = ting_marc
 dependencies[] = ting_material_details
 dependencies[] = virtual_field
+dependencies[] = ding_groups
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = ting_marc:ting_marc:1
 features[features_api][] = api:2
