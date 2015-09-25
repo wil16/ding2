@@ -112,7 +112,7 @@ function ding_groups_node_update($node) {
         $vocabulary = taxonomy_vocabulary_machine_name_load('event_category');
       }
       $terms = taxonomy_term_load_multiple(array(), array('vid' => $vocabulary->vid));
-      ding_base_updated_taxonomy_aliases($node, 'temaer', $terms, array($slug));
+      ding_base_updated_taxonomy_aliases($node, 'inspiration', $terms, array($slug));
     }
 
     // Update OG_menu title if group title is changed.
