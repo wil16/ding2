@@ -17,11 +17,6 @@ projects[ding_frontend][download][type] = "git"
 projects[ding_frontend][download][url] = "git@github.com:ding2/ding_frontend.git"
 projects[ding_frontend][download][tag] = "7.x-2.2.0"
 
-projects[ding_groups][type] = "module"
-projects[ding_groups][download][type] = "git"
-projects[ding_groups][download][url] = "git@github.com:ding2/ding_groups.git"
-projects[ding_groups][download][tag] = "7.x-2.2.0"
-
 projects[ding_user_frontend][type] = "module"
 projects[ding_user_frontend][download][type] = "git"
 projects[ding_user_frontend][download][url] = "git@github.com:ding2/ding_user_frontend.git"
@@ -299,3 +294,9 @@ projects[ding_contact][type] = "module"
 projects[ding_contact][download][type] = "git"
 projects[ding_contact][download][url] = "git@github.com:vejlebib/ding_contact.git"
 projects[ding_contact][download][branch] = "vejlebib"
+
+; Fork the ding_groups module to integrate it with our inspiration pages.
+projects[ding_groups][type] = "module"
+projects[ding_groups][download][type] = "git"
+projects[ding_groups][download][url] = "git@github.com:ding2/ding_groups.git"
+projects[ding_groups][download][branch] = "vejlebib"
