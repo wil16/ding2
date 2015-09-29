@@ -245,7 +245,7 @@ function ding_groups_install_menu_position($op = 'install') {
     // Find the parent element.
     $plid = db_select('menu_links', 'ml')
       ->fields('ml', array('mlid'))
-      ->condition('link_path', 'inspiration', '=')
+      ->condition('link_path', drupal_get_normal_path('inspiration'), '=')
       ->execute()->fetchField();
 
     // Add the rule.
