@@ -621,7 +621,7 @@ function ding_groups_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Groups listing';
   $page->admin_description = '';
-  $page->path = 'temaer';
+  $page->path = 'inspiration-list';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
