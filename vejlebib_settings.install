@@ -68,6 +68,7 @@ function vejlebib_settings_update_7001(&$sandbox) {
 /**
  * Setup the secondary menu
  * Setup menu position rule with 'inspiration' path.
+ * Reverts new menu position rule with pages condition
  * Removed old temaer/[nid]/* aliases and create new with inspiration path.
  */
 function vejlebib_settings_update_7002(&$sandbox) {
