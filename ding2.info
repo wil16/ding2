@@ -26,6 +26,7 @@ dependencies[] = eu_cookie_compliance
 dependencies[] = view_unpublished
 dependencies[] = redirect
 dependencies[] = admin_views
+dependencies[] = panelizer
 
 ; Ding modules.
 dependencies[] = ding_base
