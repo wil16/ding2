@@ -94,6 +94,9 @@ function vejlebib_settings_update_7002(&$sandbox) {
   // Menu position rule
   ding_groups_install_menu_position();
 
+  // Revert new menu position rule with pages condition
+  ding_groups_install_menu_position('revert');
+
   // We require some of our feature components to be reverted with some of our
   // new changes in this update, so we revert here to be safe.
   features_revert(array('ding_groups' => array('page_manager_pages', 'variable')));
