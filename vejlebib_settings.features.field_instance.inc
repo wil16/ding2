@@ -69,6 +69,8 @@ function vejlebib_settings_field_default_field_instances() {
     'label' => 'Anvendelighed',
     'required' => FALSE,
     'settings' => array(
+      'field_clickable' => 0,
+      'link_index' => '',
       'marc_field' => 517,
       'marc_subfield' => 'a',
       'text_processing' => FALSE,
@@ -142,6 +144,8 @@ function vejlebib_settings_field_default_field_instances() {
     'label' => 'Hvor',
     'required' => FALSE,
     'settings' => array(
+      'field_clickable' => 0,
+      'link_index' => '',
       'marc_field' => 565,
       'marc_subfield' => 'a',
       'text_processing' => FALSE,
@@ -215,6 +219,8 @@ function vejlebib_settings_field_default_field_instances() {
     'label' => 'Let-tal',
     'required' => FALSE,
     'settings' => array(
+      'field_clickable' => 0,
+      'link_index' => '',
       'marc_field' => '046',
       'marc_subfield' => 'c',
       'text_processing' => FALSE,
@@ -288,6 +294,8 @@ function vejlebib_settings_field_default_field_instances() {
     'label' => 'Lix-tal',
     'required' => FALSE,
     'settings' => array(
+      'field_clickable' => 0,
+      'link_index' => '',
       'marc_field' => '042',
       'marc_subfield' => 'a',
       'text_processing' => FALSE,
@@ -361,6 +369,8 @@ function vejlebib_settings_field_default_field_instances() {
     'label' => 'Note',
     'required' => FALSE,
     'settings' => array(
+      'field_clickable' => 0,
+      'link_index' => '',
       'marc_field' => 856,
       'marc_subfield' => 'z',
       'text_processing' => FALSE,
@@ -434,6 +444,8 @@ function vejlebib_settings_field_default_field_instances() {
     'label' => '529.u',
     'required' => FALSE,
     'settings' => array(
+      'field_clickable' => 0,
+      'link_index' => '',
       'marc_field' => 529,
       'marc_subfield' => 'u',
       'text_processing' => FALSE,
