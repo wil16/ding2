@@ -53,109 +53,9 @@ function vejlebib_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'ding_wagnerguide_linkbase';
   $strongarm->value = '{
-    "Vej":"http://web.wagnerguide.com/vejleLibrary.aspx",
-    "Bor":"http://web.wagnerguide.com/BorkopLibrary.aspx",
-    "Jel":"http://web.wagnerguide.com/JellingLibrary.aspx",
-    "Egt":"http://web.wagnerguide.com/EgtvedLibrary.aspx",
-    "Giv":"http://web.wagnerguide.com/GiveLibrary.aspx"
+    "Vej":"http://web.wagnerguide.com/2.0/vejleLibrary.aspx"
 }';
   $export['ding_wagnerguide_linkbase'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ding_wagnerguide_transformation_array_Bor';
-  $strongarm->value = '{
-    "department_id":{},
-    "location_id":{
-      "bus":{},
-      "dagpleje":{},
-      "depot":{
-        "popup":"Some text or HTML to popup"
-      },
-      "kontor":{},
-      "magasin":{
-        "popup":"Some text or HTML to popup"
-      },
-      "magasin1":{},
-      "magasin2":{},
-      "magasin3":{}
-    },
-    "sublocation_id":{}
-  }';
-  $export['ding_wagnerguide_transformation_array_Bor'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ding_wagnerguide_transformation_array_Egt';
-  $strongarm->value = '{
-    "department_id":{},
-    "location_id":{
-      "bus":{},
-      "dagpleje":{},
-      "depot":{
-        "popup":"Some text or HTML to popup"
-      },
-      "kontor":{},
-      "magasin":{
-        "popup":"Some text or HTML to popup"
-      },
-      "magasin1":{},
-      "magasin2":{},
-      "magasin3":{}
-    },
-    "sublocation_id":{}
-  }';
-  $export['ding_wagnerguide_transformation_array_Egt'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ding_wagnerguide_transformation_array_Giv';
-  $strongarm->value = '{
-    "department_id":{},
-    "location_id":{
-      "bus":{},
-      "dagpleje":{},
-      "depot":{
-        "popup":"Some text or HTML to popup"
-      },
-      "kontor":{},
-      "magasin":{
-        "popup":"Some text or HTML to popup"
-      },
-      "magasin1":{},
-      "magasin2":{},
-      "magasin3":{}
-    },
-    "sublocation_id":{}
-  }';
-  $export['ding_wagnerguide_transformation_array_Giv'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ding_wagnerguide_transformation_array_Jel';
-  $strongarm->value = '{
-    "department_id":{},
-    "location_id":{
-      "bus":{},
-      "dagpleje":{},
-      "depot":{
-        "popup":"Some text or HTML to popup"
-      },
-      "kontor":{},
-      "magasin":{
-        "popup":"Some text or HTML to popup"
-      },
-      "magasin1":{},
-      "magasin2":{},
-      "magasin3":{}
-    },
-    "sublocation_id":{}
-  }';
-  $export['ding_wagnerguide_transformation_array_Jel'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -177,8 +77,8 @@ function vejlebib_settings_strongarm() {
         "popup":"Materialet er i MAGASIN - du kan få personalet på Vejle Bibliotek til at hente det til dig"
       },
       "magasin1":{
-        "ignore_mtype":"cd,data,videoGame",
-        "popup":"Materialet er i MAGASIN - du kan få personalet på Vejle Bibliotek til at hente det til dig"
+        "ignore_mtype":"data,videoGame",
+        "popup":"Se i skuffen under CD-krybben eller spørg personalet"
       },
       "magasin2":{
         "ignore_mtype":"cdrom,dvd,data",
@@ -188,8 +88,12 @@ function vejlebib_settings_strongarm() {
         "popup":"Materialet er i MAGASIN - du kan få personalet på Vejle Bibliotek til at hente det til dig"
       }
     },
-    "sublocation_id":{}
-  }';
+    "sublocation_id":{
+      "sprog":{
+        "popup":"Henvend dig til personalet"
+      }
+   }
+}';
   $export['ding_wagnerguide_transformation_array_Vej'] = $strongarm;
 
   $strongarm = new stdClass();
