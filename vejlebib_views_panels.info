@@ -23,4 +23,3 @@ features[page_manager_pages][] = ding_staff
 features[views_view][] = vejlebib_ding_event
 features[views_view][] = vejlebib_ding_news
 features[views_view][] = vejlebib_ding_staff
-mtime = 1442921690
