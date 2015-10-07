@@ -19,6 +19,35 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["field_instance.node-ding_news-field_ding_news_title_image.required"] = 1;
 
   // Exported overrides for: page_manager_handlers
+  $overrides["page_manager_handlers.node_view_panel_context_5.conf|display|content|new-162f6ba7-45ad-44f3-8ef6-5302990b1842"] = (object) array(
+      'pid' => 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842',
+      'panel' => 'main_content',
+      'type' => 'views_panes',
+      'subtype' => 'vejlebib_ding_event-vejlebib_ding_event_groups_list',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(
+        'context' => array(
+          0 => 'argument_entity_id:node_1',
+        ),
+        'override_title' => 0,
+        'override_title_text' => '',
+      ),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(
+        'css_id' => '',
+        'css_class' => 'ding-group-events',
+      ),
+      'extras' => array(),
+      'position' => 2,
+      'locks' => array(),
+      'uuid' => '162f6ba7-45ad-44f3-8ef6-5302990b1842',
+    );
+  $overrides["page_manager_handlers.node_view_panel_context_5.conf|display|content|new-3bc42ce7-ca5f-4e5c-9176-2bcbaecc961a"]["DELETED"] = TRUE;
+  $overrides["page_manager_handlers.node_view_panel_context_5.conf|display|panels|main_content|2"] = 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842';
   $overrides["page_manager_handlers.search_ting_search_panel_context.conf|display|content|new-be085b97-4329-4521-8dba-fe6a07fe59b0"] = (object) array(
       'pid' => 'new-be085b97-4329-4521-8dba-fe6a07fe59b0',
       'panel' => 'main_content',

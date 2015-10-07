@@ -29,6 +29,37 @@ function vejlebib_features_overrides_field_default_field_instances_alter(&$data)
  * Implements hook_default_page_manager_handlers_alter().
  */
 function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data) {
+  if (isset($data['node_view_panel_context_5'])) {
+    $data['node_view_panel_context_5']->conf['display']->content['new-162f6ba7-45ad-44f3-8ef6-5302990b1842'] = (object) array(
+          'pid' => 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842',
+          'panel' => 'main_content',
+          'type' => 'views_panes',
+          'subtype' => 'vejlebib_ding_event-vejlebib_ding_event_groups_list',
+          'shown' => TRUE,
+          'access' => array(),
+          'configuration' => array(
+            'context' => array(
+              0 => 'argument_entity_id:node_1',
+            ),
+            'override_title' => 0,
+            'override_title_text' => '',
+          ),
+          'cache' => array(),
+          'style' => array(
+            'settings' => NULL,
+          ),
+          'css' => array(
+            'css_id' => '',
+            'css_class' => 'ding-group-events',
+          ),
+          'extras' => array(),
+          'position' => 2,
+          'locks' => array(),
+          'uuid' => '162f6ba7-45ad-44f3-8ef6-5302990b1842',
+        ); /* WAS: '' */
+    $data['node_view_panel_context_5']->conf['display']->panels['main_content'][2] = 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842'; /* WAS: 'new-3bc42ce7-ca5f-4e5c-9176-2bcbaecc961a' */
+    unset($data['node_view_panel_context_5']->conf['display']->content['new-3bc42ce7-ca5f-4e5c-9176-2bcbaecc961a']);
+  }
   if (isset($data['search_ting_search_panel_context'])) {
     $data['search_ting_search_panel_context']->conf['display']->content['new-be085b97-4329-4521-8dba-fe6a07fe59b0'] = (object) array(
           'pid' => 'new-be085b97-4329-4521-8dba-fe6a07fe59b0',
