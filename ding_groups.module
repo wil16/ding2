@@ -309,7 +309,7 @@ function ding_groups_preprocess_views_view_responsive_grid(&$vars) {
       // Add column classes to the current row.
       $column_id = 0;
       foreach ($row as $column_id => $column) {
-        $vars['rows'][$row_number][$column_id]['classes'] .= $columns_classes[$column_id];
+        $vars['rows'][$row_number][$column_id]['classes'] .= $columns_classes[$column_id] . ' group-block';
       }
 
       // Add last class to last column.
