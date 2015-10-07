@@ -273,7 +273,7 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['footer']['area']['label'] = 'RSS feed link';
   $handler->display->display_options['footer']['area']['empty'] = TRUE;
   $handler->display->display_options['footer']['area']['content'] = '<div class="feed">
-    <a class="feed-icon" title="Arrangementer forside feed" href="/arrangementer/feed"><span>RSS</span></a>  
+    <a class="feed-icon" title="Arrangementer forside feed" href="/arrangementer/feed"><span>RSS</span></a>
 </div>';
   $handler->display->display_options['footer']['area']['format'] = 'ding_wysiwyg';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -2237,7 +2237,7 @@ function vejlebib_views_panels_views_default_views() {
     t('mere'),
     t('RSS feed link'),
     t('<div class="feed">
-    <a class="feed-icon" title="Arrangementer forside feed" href="/arrangementer/feed"><span>RSS</span></a>  
+    <a class="feed-icon" title="Arrangementer forside feed" href="/arrangementer/feed"><span>RSS</span></a>
 </div>'),
     t('OG node group'),
     t('[field_ding_event_date_1-value]'),
@@ -2538,7 +2538,7 @@ function vejlebib_views_panels_views_default_views() {
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['label'] = 'RSS feed link';
   $handler->display->display_options['footer']['area']['content'] = '<div class="feed">
-    <a class="feed-icon" title="Nyheder forside feed" href="/news/feed"><span>RSS</span></a>  
+    <a class="feed-icon" title="Nyheder forside feed" href="/news/feed"><span>RSS</span></a>
 </div>';
   $handler->display->display_options['footer']['area']['format'] = 'ding_wysiwyg';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -4053,7 +4053,7 @@ function vejlebib_views_panels_views_default_views() {
     t('sidste »'),
     t('RSS feed link'),
     t('<div class="feed">
-    <a class="feed-icon" title="Nyheder forside feed" href="/news/feed"><span>RSS</span></a>  
+    <a class="feed-icon" title="Nyheder forside feed" href="/news/feed"><span>RSS</span></a>
 </div>'),
     t('af '),
     t('> '),
