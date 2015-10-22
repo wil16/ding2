@@ -5,13 +5,19 @@
  */
 
 /**
+ * Implements hook_entityqueue_api().
+ */
+function vejlebib_settings_entityqueue_api($module = NULL, $api = NULL) {
+  if ($module == "entityqueue" && $api == "entityqueue_default") {
+    return array("version" => "1");
+  }
+}
+
+/**
  * Implements hook_ctools_plugin_api().
  */
 function vejlebib_settings_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
-    return array("version" => "1");
-  }
-  if ($module == "ting_marc" && $api == "ting_marc") {
     return array("version" => "1");
   }
 }
