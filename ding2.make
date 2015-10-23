@@ -157,6 +157,9 @@ projects[admin_views][version] = "1.4"
 projects[panelizer][subdir] = "contrib"
 projects[panelizer][version] = "3.1"
 
+projects[entityqueue][subdir] = "contrib"
+projects[entityqueue][version] = "1.1"
+
 ; Using dev release, as the "stable" version is making errors in the install profile.
 projects[uuid][subdir] = "contrib"
 projects[uuid][download][type] = "git"
