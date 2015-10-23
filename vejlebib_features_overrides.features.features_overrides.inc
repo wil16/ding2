@@ -239,6 +239,30 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|content|new-b14f0ccc-f81c-4267-b843-2fd333f260f8"]["DELETED"] = TRUE;
   $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|panels|tertiary|0"] = 'new-803af3cd-d614-46cf-98ba-6b21fb5ad7ac';
   $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|panels|tertiary|1"]["DELETED"] = TRUE;
+  $overrides["page_manager_pages.ding_staff_library.default_handlers|page_ding_staff_library_panel_context|conf|display|content|new-6171a17a-4789-4aac-86de-eb9c76dee003"]["DELETED"] = TRUE;
+  $overrides["page_manager_pages.ding_staff_library.default_handlers|page_ding_staff_library_panel_context|conf|display|content|new-ea6b2837-b81a-4750-bb37-0fd27ab49e8e"] = (object) array(
+      'pid' => 'new-ea6b2837-b81a-4750-bb37-0fd27ab49e8e',
+      'panel' => 'main_content',
+      'type' => 'views_panes',
+      'subtype' => 'vejlebib_ding_staff-ding_staff_list_library',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(
+        'override_title' => 1,
+        'override_title_text' => '%slug:title: Staff',
+      ),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(),
+      'extras' => array(),
+      'position' => 1,
+      'locks' => array(),
+      'uuid' => 'ea6b2837-b81a-4750-bb37-0fd27ab49e8e',
+    );
+  $overrides["page_manager_pages.ding_staff_library.default_handlers|page_ding_staff_library_panel_context|conf|display|panels|main_content|1"] = 'new-ea6b2837-b81a-4750-bb37-0fd27ab49e8e';
+  $overrides["page_manager_pages.ding_staff_library.default_handlers|page_ding_staff_library_panel_context|conf|display|title_pane"] = 'new-ea6b2837-b81a-4750-bb37-0fd27ab49e8e';
 
   // Exported overrides for: variable
   $overrides["variable.ding_varnish_content_types.value|ding_eresource"] = 0;
