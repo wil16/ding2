@@ -601,10 +601,10 @@ function vejlebib_views_panels_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-f93e59da-0a67-46a9-a74d-e333b3f8e7e7';
+    $pane->pid = 'new-274c6b83-7a18-49ed-acfa-1f22bbd23e96';
     $pane->panel = 'main_content';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ding_staff-ding_staff_list_all';
+    $pane->subtype = 'vejlebib_ding_staff-ding_staff_list_all';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -616,9 +616,9 @@ function vejlebib_views_panels_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = 'f93e59da-0a67-46a9-a74d-e333b3f8e7e7';
-    $display->content['new-f93e59da-0a67-46a9-a74d-e333b3f8e7e7'] = $pane;
-    $display->panels['main_content'][0] = 'new-f93e59da-0a67-46a9-a74d-e333b3f8e7e7';
+    $pane->uuid = '274c6b83-7a18-49ed-acfa-1f22bbd23e96';
+    $display->content['new-274c6b83-7a18-49ed-acfa-1f22bbd23e96'] = $pane;
+    $display->panels['main_content'][0] = 'new-274c6b83-7a18-49ed-acfa-1f22bbd23e96';
   $display->hide_title = PANELS_TITLE_PANE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
