@@ -4,11 +4,11 @@ api = 2
 projects[ding_base][type] = "module"
 projects[ding_base][download][type] = "git"
 projects[ding_base][download][url] = "git@github.com:ding2/ding_base.git"
-projects[ding_base][download][tag] = "7.x-2.2.0"
+projects[ding_base][download][tag] = "7.x-2.3.0"
 
 ; Projects
 projects[ctools][subdir] = "contrib"
-projects[ctools][version] = "1.5"
+projects[ctools][version] = "1.9"
 
 projects[features_extra][subdir] = "contrib"
 projects[features_extra][version] = "1.0-beta1"
