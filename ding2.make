@@ -248,6 +248,12 @@ projects[ding_wayf_dk][download][type] = "git"
 projects[ding_wayf_dk][download][url] = "git@github.com:vejlebib/ding_wayf_dk.git"
 projects[ding_wayf_dk][download][branch] = "vejlebib"
 
+; Using the Beta from Randers' github for now.
+projects[ting_search_context][type] = "module"
+projects[ting_search_context][download][type] = "git"
+projects[ting_search_context][download][url] = "git@github.com:Arni/ting_search_context.git"
+projects[ting_search_context][download][branch] = "beta"
+
 ; Vejlebib theme
 projects[wellejus][type] = "theme"
 projects[wellejus][download][type] = "git"
