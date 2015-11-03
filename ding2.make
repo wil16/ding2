@@ -254,6 +254,12 @@ projects[ting_search_context][download][type] = "git"
 projects[ting_search_context][download][url] = "git@github.com:Arni/ting_search_context.git"
 projects[ting_search_context][download][branch] = "beta"
 
+; This is an early dev version, but we would like to include it now to start testing
+projects[ting_field_search][type] = "module"
+projects[ting_field_search][download][type] = "git"
+projects[ting_field_search][download][url] = "git@github.com:vejlebib/ting_field_search.git"
+projects[ting_field_search][download][branch] = "master"
+
 ; Vejlebib theme
 projects[wellejus][type] = "theme"
 projects[wellejus][download][type] = "git"
