@@ -160,6 +160,13 @@ projects[panelizer][version] = "3.1"
 projects[entityqueue][subdir] = "contrib"
 projects[entityqueue][version] = "1.1"
 
+projects[panels][subdir] = "contrib"
+projects[panels][version] = "3.4"
+; https://www.drupal.org/node/1179034 Enable translation of panels title.
+; There's an i18n integration module but it doesn't work with tiltes and that's all we need.
+; See link above for more information.
+projects[panels][patch][0] = "https://www.drupal.org/files/issues/1179034-106.patch"
+
 ; Using dev release, as the "stable" version is making errors in the install profile.
 projects[uuid][subdir] = "contrib"
 projects[uuid][download][type] = "git"
