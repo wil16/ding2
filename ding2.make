@@ -5,93 +5,93 @@ api = 2
 projects[ding_devel][type] = "module"
 projects[ding_devel][download][type] = "git"
 projects[ding_devel][download][url] = "git@github.com:ding2/ding_devel.git"
-projects[ding_devel][download][tag] = "7.x-2.2.0"
+projects[ding_devel][download][tag] = "7.x-2.3.0"
 
 projects[openruth][type] = "module"
 projects[openruth][download][type] = "git"
 projects[openruth][download][url] = "git@github.com:ding2/openruth.git"
-projects[openruth][download][tag] = "7.x-2.2.0"
+projects[openruth][download][tag] = "7.x-2.3.0"
 
 projects[ding_frontend][type] = "module"
 projects[ding_frontend][download][type] = "git"
 projects[ding_frontend][download][url] = "git@github.com:ding2/ding_frontend.git"
-projects[ding_frontend][download][tag] = "7.x-2.2.0"
+projects[ding_frontend][download][tag] = "7.x-2.3.0"
 
 projects[ding_user_frontend][type] = "module"
 projects[ding_user_frontend][download][type] = "git"
 projects[ding_user_frontend][download][url] = "git@github.com:ding2/ding_user_frontend.git"
-projects[ding_user_frontend][download][tag] = "7.x-2.2.0"
+projects[ding_user_frontend][download][tag] = "7.x-2.3.0"
 
 projects[ding_ting_frontend][type] = "module"
 projects[ding_ting_frontend][download][type] = "git"
 projects[ding_ting_frontend][download][url] = "git@github.com:ding2/ding_ting_frontend.git"
-projects[ding_ting_frontend][download][tag] = "7.x-2.2.0"
+projects[ding_ting_frontend][download][tag] = "7.x-2.3.0"
 
 #projects[mkdru_ding_frontend][type] = "module"
 #projects[mkdru_ding_frontend][download][type] = "git"
 #projects[mkdru_ding_frontend][download][url] = "git@github.com:ding2/mkdru_ding_frontend.git"
-#projects[mkdru_ding_frontend][download][tag] = "7.x-2.2.0"
+#projects[mkdru_ding_frontend][download][tag] = "7.x-2.3.0"
 
 projects[ding_example_content][type] = "module"
 projects[ding_example_content][download][type] = "git"
 projects[ding_example_content][download][url] = "git@github.com:ding2/ding_example_content.git"
-projects[ding_example_content][download][tag] = "7.x-2.2.0"
+projects[ding_example_content][download][tag] = "7.x-2.3.0"
 
 projects[ding_frontpage][type] = "module"
 projects[ding_frontpage][download][type] = "git"
 projects[ding_frontpage][download][url] = "git@github.com:ding2/ding_frontpage.git"
-projects[ding_frontpage][download][tag] = "7.x-2.2.0"
+projects[ding_frontpage][download][tag] = "7.x-2.3.0"
 
 projects[ding_library][type] = "module"
 projects[ding_library][download][type] = "git"
 projects[ding_library][download][url] = "git@github.com:ding2/ding_library.git"
-projects[ding_library][download][tag] = "7.x-2.2.0"
+projects[ding_library][download][tag] = "7.x-2.3.0"
 
 projects[ding_news][type] = "module"
 projects[ding_news][download][type] = "git"
 projects[ding_news][download][url] = "git@github.com:ding2/ding_news.git"
-projects[ding_news][download][tag] = "7.x-2.2.0"
+projects[ding_news][download][tag] = "7.x-2.3.0"
 
 projects[ding_event][type] = "module"
 projects[ding_event][download][type] = "git"
 projects[ding_event][download][url] = "git@github.com:ding2/ding_event.git"
-projects[ding_event][download][tag] = "7.x-2.2.0"
+projects[ding_event][download][tag] = "7.x-2.3.0"
 
 projects[ding_webtrends][type] = "module"
 projects[ding_webtrends][download][type] = "git"
 projects[ding_webtrends][download][url] = "git@github.com:ding2/ding_webtrends.git"
-projects[ding_webtrends][download][tag] = "7.x-2.2.0"
+projects[ding_webtrends][download][tag] = "7.x-2.3.0"
 
 projects[ding_session_cache][type] = "module"
 projects[ding_session_cache][download][type] = "git"
 projects[ding_session_cache][download][url] = "git@github.com:ding2/ding_session_cache.git"
-projects[ding_session_cache][download][tag] = "7.x-2.2.0"
+projects[ding_session_cache][download][tag] = "7.x-2.3.0"
 
 projects[ding_varnish][type] = "module"
 projects[ding_varnish][download][type] = "git"
 projects[ding_varnish][download][url] = "git@github.com:ding2/ding_varnish.git"
-projects[ding_varnish][download][tag] = "7.x-2.2.0"
+projects[ding_varnish][download][tag] = "7.x-2.3.0"
 
 projects[bpi][type] = "module"
 projects[bpi][download][type] = "git"
 projects[bpi][download][url] = "git@github.com:ding2/bpi.git"
-projects[bpi][download][tag] = "7.x-2.2.0"
+projects[bpi][download][tag] = "7.x-2.3.0"
 
 projects[ddb_cp][type] = "module"
 projects[ddb_cp][download][type] = "git"
 projects[ddb_cp][download][url] = "git@github.com:ding2/ddb_cp.git"
-projects[ddb_cp][download][tag] = "7.x-2.2.0"
+projects[ddb_cp][download][tag] = "7.x-2.3.0"
 
 projects[fbs][type] = "module"
 projects[fbs][download][type] = "git"
 projects[fbs][download][url] = "git@github.com:ding2/fbs.git"
-projects[fbs][download][branch] = "master"
+projects[fbs][download][tag] = "7.x-2.3.0"
 
 ; Base theme
 projects[ddbasic][type] = "theme"
 projects[ddbasic][download][type] = "git"
 projects[ddbasic][download][url] = "git@github.com:ding2/ddbasic.git"
-projects[ddbasic][download][tag] = "7.x-2.2.0"
+projects[ddbasic][download][tag] = "7.x-2.3.0"
 
 ; Libraries
 libraries[profiler][download][type] = "git"
@@ -109,12 +109,12 @@ libraries[mailchimp][destination] = "libraries"
 projects[ding_redirect][type] = "module"
 projects[ding_redirect][download][type] = "git"
 projects[ding_redirect][download][url] = "git@github.com:ding2/ding_redirect.git"
-projects[ding_redirect][download][tag] = "7.x-2.2.0"
+projects[ding_redirect][download][tag] = "7.x-2.3.0"
 
 projects[ding_dummy_provider][type] = "module"
 projects[ding_dummy_provider][download][type] = "git"
 projects[ding_dummy_provider][download][url] = "git@github.com:ding2/ding_dummy_provider.git"
-projects[ding_dummy_provider][download][tag] = "7.x-2.2.0"
+projects[ding_dummy_provider][download][tag] = "7.x-2.3.0"
 
 ; Contrib modules
 projects[apc][subdir] = "contrib"
@@ -159,6 +159,9 @@ projects[panelizer][version] = "3.1"
 
 projects[entityqueue][subdir] = "contrib"
 projects[entityqueue][version] = "1.1"
+
+projects[maintenance_mode_api][subdir] = "contrib"
+projects[maintenance_mode_api][version] = "1.0-beta1"
 
 projects[panels][subdir] = "contrib"
 projects[panels][version] = "3.4"
