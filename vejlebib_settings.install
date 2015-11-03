@@ -176,7 +176,13 @@ function vejlebib_settings_update_7002(&$sandbox) {
 
 /**
  * Enable the Profile2 i18n integration module.
+ * Enable Ting search context.
+ * Enable Ting field search.
  */
 function vejlebib_settings_update_7003(&$sandbox) {
-  module_enable(array('profile2_i18n'));
+  module_enable(array(
+    'profile2_i18n',
+    'ting_search_context',
+    'ting_field_search',
+  ));
 }
