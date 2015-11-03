@@ -20,6 +20,7 @@ dependencies[] = strongarm
 dependencies[] = ting_marc
 dependencies[] = ting_material_details
 dependencies[] = virtual_field
+dependencies[] = profile2_i18n
 features[ctools][] = entityqueue:entityqueue_default:1
 features[ctools][] = strongarm:strongarm:1
 features[entityqueue_queue][] = vejlebib_all_staff_list

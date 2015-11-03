@@ -173,3 +173,10 @@ function vejlebib_settings_update_7002(&$sandbox) {
     }
   }
 }
+
+/**
+ * Enable the Profile2 i18n integration module.
+ */
+function vejlebib_settings_update_7003(&$sandbox) {
+  module_enable(array('profile2_i18n'));
+}
