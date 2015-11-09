@@ -170,6 +170,12 @@ projects[panels][version] = "3.4"
 ; See link above for more information.
 projects[panels][patch][0] = "https://www.drupal.org/files/issues/1179034-106.patch"
 
+projects[ctools][subdir] = "contrib"
+projects[ctools][version] = "1.9"
+; https://www.drupal.org/node/2195211
+; Fix missing argument in taxonomy access callback.
+projects[ctools][patch][0] = "https://www.drupal.org/files/issues/2195211-38-ctools-access-callback-fix.patch"
+
 ; Using dev release, as the "stable" version is making errors in the install profile.
 projects[uuid][subdir] = "contrib"
 projects[uuid][download][type] = "git"
