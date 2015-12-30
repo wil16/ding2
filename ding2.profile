@@ -672,6 +672,7 @@ function ding2_module_list_as_operations($module_list) {
 function ding2_module_enable(&$install_state) {
   $modules = variable_get('ding_module_selected', array());
   $modules[] = 'l10n_update';
+  $modules[] = 'ting_infomedia';
 
   $operations = ding2_module_list_as_operations($modules);
 
@@ -766,7 +767,7 @@ function ding2_set_cookie_page() {
   $eu_cookie_compliance_da['popup_info']['value'] = '<p>Vi bruger cookies på hjemmesiden for at forbedre din oplevelse.</p><p>Læs mere her: <a href="' . url('cookies') . '">Hvad er cookies?</a></p>';
   $eu_cookie_compliance_da['popup_info']['format'] = 'ding_wysiwyg';
   $eu_cookie_compliance_da['popup_agree_button_message'] = 'Jeg accepterer brugen af cookies';
-  $eu_cookie_compliance_da['popup_disagree_button_message'] = 'Nej tak';
+  $eu_cookie_compliance_da['popup_disagree_button_message'] = 'Læs mere';
   $eu_cookie_compliance_da['popup_find_more_button_message'] = 'Mere info';
   $eu_cookie_compliance_da['popup_hide_button_message'] = 'Luk';
   $eu_cookie_compliance_da['popup_agreed'][value] = '<p>Tak fordi du accepterer cookies</p><p>Du kan nu lukke denne besked, eller læse mere om cookies.</p>';
@@ -780,7 +781,7 @@ function ding2_set_cookie_page() {
   $eu_cookie_compliance_da['popup_height'] = '';
   $eu_cookie_compliance_da['popup_width'] = '100%';
   $eu_cookie_compliance_da['popup_delay'] = 1;
-  
+
   // Set cookie compliance variables
   variable_set('eu_cookie_compliance_da', $eu_cookie_compliance_da);
   variable_set('eu_cookie_compliance_cookie_lifetime', 365);

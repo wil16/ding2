@@ -1,4 +1,4 @@
-/modules
+/modules/contrib
 /libraries
-/themes
-
+themes/ddbasic/node_modules
+config.php
