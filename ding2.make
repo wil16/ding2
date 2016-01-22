@@ -499,11 +499,6 @@ projects[wellejus][download][type] = "git"
 projects[wellejus][download][url] = "git@github.com:vejlebib/wellejus.git"
 projects[wellejus][download][branch] = "7.x-1.x"
 
-projects[ding_permissions][type] = "module"
-projects[ding_permissions][download][type] = "git"
-projects[ding_permissions][download][url] = "git@github.com:vejlebib/ding_permissions.git"
-projects[ding_permissions][download][branch] = "vejlebib"
-
 projects[ding_staff][type] = "module"
 projects[ding_staff][download][type] = "git"
 projects[ding_staff][download][url] = "git@github.com:vejlebib/ding_staff.git"
