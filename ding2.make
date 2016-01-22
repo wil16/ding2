@@ -510,10 +510,3 @@ projects[ding_content][type] = "module"
 projects[ding_content][download][type] = "git"
 projects[ding_content][download][url] = "git@github.com:vejlebib/ding_content.git"
 projects[ding_content][download][branch] = "vejlebib"
-
-; Fork the ding_contact module so we can get control over the added categories
-; on install.
-projects[ding_contact][type] = "module"
-projects[ding_contact][download][type] = "git"
-projects[ding_contact][download][url] = "git@github.com:vejlebib/ding_contact.git"
-projects[ding_contact][download][branch] = "vejlebib"
