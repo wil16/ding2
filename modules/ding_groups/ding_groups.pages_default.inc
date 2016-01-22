@@ -227,7 +227,7 @@ function ding_groups_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Groups news';
   $page->admin_description = '';
-  $page->path = 'temaer/%gid/nyheder/!tid';
+  $page->path = 'inspiration/%gid/nyheder/!tid';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
@@ -371,7 +371,7 @@ function ding_groups_default_page_manager_pages() {
       ),
       'override_title' => 0,
       'override_title_text' => '',
-      'base' => 'temaer',
+      'base' => 'inspiration',
       'vocabulary' => 'news_category',
     );
     $pane->cache = array();
@@ -424,7 +424,7 @@ function ding_groups_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Groups events';
   $page->admin_description = '';
-  $page->path = 'temaer/%gid/arrangementer/!tid';
+  $page->path = 'inspiration/%gid/arrangementer/!tid';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
@@ -436,6 +436,7 @@ function ding_groups_default_page_manager_pages() {
       'identifier' => 'Node: ID',
       'name' => 'entity_id:node',
       'settings' => array(),
+      'keyword' => 'gid',
     ),
     'tid' => array(
       'id' => 1,
@@ -567,7 +568,7 @@ function ding_groups_default_page_manager_pages() {
       ),
       'override_title' => 0,
       'override_title_text' => '',
-      'base' => 'temaer',
+      'base' => 'inspiration',
       'vocabulary' => 'event_category',
     );
     $pane->cache = array();
@@ -620,23 +621,12 @@ function ding_groups_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Groups listing';
   $page->admin_description = '';
-  $page->path = 'temaer';
+  $page->path = 'inspiration-list';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
   );
-  $page->menu = array(
-    'type' => 'normal',
-    'title' => 'Themes',
-    'name' => 'main-menu',
-    'weight' => '0',
-    'parent' => array(
-      'type' => 'none',
-      'title' => '',
-      'name' => 'navigation',
-      'weight' => '0',
-    ),
-  );
+  $page->menu = array();
   $page->arguments = array();
   $page->conf = array(
     'admin_paths' => FALSE,

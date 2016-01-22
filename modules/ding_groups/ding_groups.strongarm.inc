@@ -152,15 +152,15 @@ function ding_groups_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'og_menu_default_links_node_ding_group';
-  $strongarm->value = 'Nyheder|temaer/[node:nid]/nyheder
-Arrangementer|temaer/[node:nid]/arrangementer';
+  $strongarm->value = 'Nyheder|inspiration/[node:nid]/nyheder
+Arrangementer|inspiration/[node:nid]/arrangementer';
   $export['og_menu_default_links_node_ding_group'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_ding_group_pattern';
-  $strongarm->value = 'temaer/[node:title]';
+  $strongarm->value = 'inspiration/[node:title]';
   $export['pathauto_node_ding_group_pattern'] = $strongarm;
 
   return $export;
