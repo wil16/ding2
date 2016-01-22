@@ -500,12 +500,6 @@ projects[wellejus][download][url] = "git@github.com:vejlebib/wellejus.git"
 projects[wellejus][download][branch] = "7.x-1.x"
 
 ;-- OVERRIDDEN / FORKED FOR VEJLEBIB --
-; Ding User must be vejlebib version with migrated users support
-projects[ding_user][type] = "module"
-projects[ding_user][download][type] = "git"
-projects[ding_user][download][url] = "git@github.com:vejlebib/ding_user.git"
-projects[ding_user][download][branch] = "support-user-migrations"
-
 ; alma must be vejlebib version with migrated users support
 projects[alma][type] = "module"
 projects[alma][download][type] = "git"
