@@ -500,12 +500,6 @@ projects[wellejus][download][url] = "git@github.com:vejlebib/wellejus.git"
 projects[wellejus][download][branch] = "7.x-1.x"
 
 ;-- OVERRIDDEN / FORKED FOR VEJLEBIB --
-; alma must be vejlebib version with migrated users support
-projects[alma][type] = "module"
-projects[alma][download][type] = "git"
-projects[alma][download][url] = "git@github.com:vejlebib-ding2/alma.git"
-projects[alma][download][branch] = "support-user-migrations"
-
 ; Some strongarmed variables from DDB CMS is dependent on auto increment ids,
 ; thus resulting in a permanent overriden features, preventing us from doing
 ; reverts without also reverting the auto increment dependent variables.
