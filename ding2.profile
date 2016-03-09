@@ -837,6 +837,7 @@ function ding2_admin_menu_shortcuts() {
     $content = variable_get('admin_menu_components', array());
 
     if (empty($content)) {
+      module_load_include('inc', 'admin_menu', 'admin_menu');
       admin_menu_theme_settings();
     }
 
