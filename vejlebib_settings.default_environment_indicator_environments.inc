@@ -19,7 +19,7 @@ function vejlebib_settings_default_environment_indicator_environment() {
   $environment->settings = array(
     'color' => '#D600D6',
     'text_color' => '#ffffff',
-    'weight' => '3',
+    'weight' => '0',
     'position' => 'top',
     'fixed' => 0,
   );
@@ -49,7 +49,7 @@ function vejlebib_settings_default_environment_indicator_environment() {
   $environment->settings = array(
     'color' => '#000000',
     'text_color' => '#ffffff',
-    'weight' => '0',
+    'weight' => '2',
     'position' => 'top',
     'fixed' => 0,
   );
@@ -64,7 +64,7 @@ function vejlebib_settings_default_environment_indicator_environment() {
   $environment->settings = array(
     'color' => '#a38700',
     'text_color' => '#ffffff',
-    'weight' => '2',
+    'weight' => '1',
     'position' => 'top',
     'fixed' => 0,
   );
