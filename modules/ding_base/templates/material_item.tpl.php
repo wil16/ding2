@@ -8,8 +8,14 @@
   <div class="left-column">
     <div class="item-checkbox"><?php print $checkbox; ?></div>
     <?php print $cover; ?>
+    <?php if (!empty($material_type)) : ?>
+      <h4 class="item-material-type"><?php print $material_type; ?></h4>
+    <?php endif; ?>
   </div>
   <div class="right-column">
+    <?php if (!empty($creators)) : ?>
+      <h4 class="item-creators"><?php print $creators; ?></h4>
+    <?php endif; ?>
     <h3 id="<?php print $availability_id; ?>" class="item-title"><?php print $title; ?></h3>
     <?php if (isset($material_message)) : ?>
     <div class="<?php print $material_message['class']; ?>"><?php print $material_message['message']; ?></div>
@@ -20,7 +26,9 @@
           <?php if (isset($info['label'])) : ?>
             <div class="item-information-label"><?php print $info['label']; ?>:</div>
           <?php endif; ?>
-          <div class="item-information-data"><?php print $info['data']; ?></div>
+          <?php if (isset($info['data'])) : ?>
+            <div class="item-information-data"><?php print $info['data']; ?></div>
+          <?php endif; ?>
         </li>
       <?php endforeach; ?>
     </ul>

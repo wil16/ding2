@@ -10,6 +10,7 @@ dependencies[] = features
 dependencies[] = field_group
 dependencies[] = image
 dependencies[] = list
+dependencies[] = manualcrop
 dependencies[] = media
 dependencies[] = menu_position
 dependencies[] = node
