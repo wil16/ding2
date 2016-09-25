@@ -476,6 +476,9 @@ libraries[jquery-ui-carousel][directory_name] = "jquery-ui-carousel"
 libraries[jquery-ui-carousel][destination] = "libraries"
 
 ; Vejlebib modules
+projects[d3][subdir] = "contrib"
+projects[d3][version] = "1.x-dev"
+
 projects[environment_indicator][subdir] = "contrib"
 projects[environment_indicator][version] = "2.8"
 
@@ -490,6 +493,11 @@ projects[mailchimp][version] = "2.12"
 
 projects[panelizer][subdir] = "contrib"
 projects[panelizer][version] = "3.1"
+
+libraries[d3][download][type] = "get"
+libraries[d3][download][url] = "https://github.com/mbostock/d3/zipball/master"
+libraries[d3][directory_name] = "d3"
+libraries[d3][destination] = "libraries"
 
 projects[ding_zerohit_form][type] = "module"
 projects[ding_zerohit_form][download][type] = "git"
