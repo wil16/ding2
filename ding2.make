@@ -557,15 +557,3 @@ projects[wellejus][type] = "theme"
 projects[wellejus][download][type] = "git"
 projects[wellejus][download][url] = "git@github.com:vejlebib/wellejus.git"
 projects[wellejus][download][branch] = "7.x-1.x"
-
-projects[ding_staff][type] = "module"
-projects[ding_staff][download][type] = "git"
-projects[ding_staff][download][url] = "git@github.com:vejlebib/ding_staff.git"
-projects[ding_staff][download][branch] = "vejlebib"
-
-; Include our patch on the Wysiwig module
-; https://www.drupal.org/node/1962848
-projects[ding_content][type] = "module"
-projects[ding_content][download][type] = "git"
-projects[ding_content][download][url] = "git@github.com:vejlebib/ding_content.git"
-projects[ding_content][download][branch] = "vejlebib"
