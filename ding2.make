@@ -490,46 +490,55 @@ projects[ding_zerohit_form][type] = "module"
 projects[ding_zerohit_form][download][type] = "git"
 projects[ding_zerohit_form][download][url] = "git@github.com:vejlebib/ding_zerohit_form.git"
 projects[ding_zerohit_form][download][branch] = "7.x-1.x"
+projects[ding_zerohit_form][subdir] = "vejlebib_modules"
 
 projects[ding_opening_hours][type] = "module"
 projects[ding_opening_hours][download][type] = "git"
 projects[ding_opening_hours][download][url] = "git@github.com:vejlebib/ding_opening_hours.git"
 projects[ding_opening_hours][download][branch] = "master"
+projects[ding_opening_hours][subdir] = "vejlebib_modules"
 
 projects[ding_eresource][type] = "module"
 projects[ding_eresource][download][type] = "git"
 projects[ding_eresource][download][url] = "git@github.com:vejlebib/ding_eresource.git"
 projects[ding_eresource][download][branch] = "master"
+projects[ding_eresource][subdir] = "vejlebib_modules"
 
 projects[ding_redia_bapp][type] = "module"
 projects[ding_redia_bapp][download][type] = "git"
 projects[ding_redia_bapp][download][url] = "git@github.com:vejlebib/ding_redia_bapp.git"
 projects[ding_redia_bapp][download][branch] = "7.x-1.x"
+projects[ding_redia_bapp][subdir] = "vejlebib_modules"
 
 projects[ding_wagnerguide][type] = "module"
 projects[ding_wagnerguide][download][type] = "git"
 projects[ding_wagnerguide][download][url] = "git@github.com:vejlebib/ding_wagnerguide.git"
 projects[ding_wagnerguide][download][branch] = "7.x-1.x"
+projects[ding_wagnerguide][subdir] = "vejlebib_modules"
 
 projects[ting_covers_plus][type] = "module"
 projects[ting_covers_plus][download][type] = "git"
 projects[ting_covers_plus][download][url] = "git@github.com:vejlebib/ting_covers_plus.git"
 projects[ting_covers_plus][download][branch] = "7.x-1.x"
+projects[ting_covers_plus][subdir] = "vejlebib_modules"
 
 projects[ting_visual_relation][type] = "module"
 projects[ting_visual_relation][download][type] = "git"
 projects[ting_visual_relation][download][url] = "git@github.com:vejlebib/ting_visual_relation.git"
 projects[ting_visual_relation][download][branch] = "master"
+projects[ting_visual_relation][subdir] = "vejlebib_modules"
 
 projects[ting_marc][type] = "module"
 projects[ting_marc][download][type] = "git"
 projects[ting_marc][download][url] = "git@github.com:easyddb/ting_marc"
 projects[ting_marc][download][branch] = "master"
+projects[ting_marc][subdir] = "vejlebib_modules"
 
 projects[ding_wayf_dk][type] = "module"
 projects[ding_wayf_dk][download][type] = "git"
 projects[ding_wayf_dk][download][url] = "git@github.com:vejlebib/ding_wayf_dk.git"
 projects[ding_wayf_dk][download][branch] = "vejlebib"
+projects[ding_wayf_dk][subdir] = "vejlebib_modules"
 
 ; Using the Beta from Randers' github for now.
 projects[ting_search_context][type] = "module"
@@ -542,6 +551,7 @@ projects[ting_field_search][type] = "module"
 projects[ting_field_search][download][type] = "git"
 projects[ting_field_search][download][url] = "git@github.com:vejlebib/ting_field_search.git"
 projects[ting_field_search][download][branch] = "master"
+projects[ting_field_search][subdir] = "vejlebib_modules"
 
 ; Vejlebib theme
 projects[wellejus][type] = "theme"
