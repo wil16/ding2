@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ *
+ * Module file for the Vejlebib Mobilepay module.
+ */
+
+include_once 'vejlebib_mobilepay.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function vejlebib_mobilepay_block_info() {
+	$blocks = array();
+	$blocks['vejlebib_mobilepay_info'] = array(
+		'info' => t('Vejlebib MobilePay'),
+		'cache' => DRUPAL_CACHE_GLOBAL,
+	);
+	return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function vejlebib_mobilepay_block_view($delta) {
+	$block = array();
+	switch ($delta) {
+		case 'vejlebib_mobilepay_info':
+			$block['subject'] = t('Pay with MobilePay');
+			$block['content'] = array(
+				'prefix' => array(
+					// Just use the predefined DDB CMS classes, also used in the supported
+					// cards block, for easy and consistent styling.
+					'#markup' => '<div id="dibs-cards-supported">',
+				),
+				'image' => array(
+					'#theme' => 'image',
+					'#path' => drupal_get_path('module', 'vejlebib_mobilepay') . '/images/vejlebib-mobilepay-logo.jpg',
+					'#title' => 'MobilePay logo',
+					'#alt' => 'MobilePay logo',
+					'#height' => 33,
+					'#attributes' => array('class' => 'card-logo')
+				),
+				'name' => array(
+					'#theme' => 'html_tag',
+					'#tag' => 'span',
+					'#value' => t('MobilePay'),
+					'#attributes' => array('class' => 'card-name'),
+				),
+				'suffix' => array(
+					'#markup' => '</div>',
+				),
+			);
+			break;
+	}
+	return $block;
+}

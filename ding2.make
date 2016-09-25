@@ -485,11 +485,6 @@ projects[ding_zerohit_form][download][type] = "git"
 projects[ding_zerohit_form][download][url] = "git@github.com:vejlebib/ding_zerohit_form.git"
 projects[ding_zerohit_form][download][branch] = "7.x-1.x"
 
-projects[vejlebib_mobilepay][type] = "module"
-projects[vejlebib_mobilepay][download][type] = "git"
-projects[vejlebib_mobilepay][download][url] = "git@github.com:vejlebib/vejlebib_mobilepay.git"
-projects[vejlebib_mobilepay][download][branch] = "master"
-
 projects[ding_opening_hours][type] = "module"
 projects[ding_opening_hours][download][type] = "git"
 projects[ding_opening_hours][download][url] = "git@github.com:vejlebib/ding_opening_hours.git"
