@@ -471,6 +471,9 @@ libraries[jquery.imagesloaded][directory_name] = "jquery.imagesloaded"
 libraries[jquery.imagesloaded][destination] = "libraries"
 
 ; Vejlebib modules
+projects[environment_indicator][subdir] = "contrib"
+projects[environment_indicator][version] = "2.8"
+
 projects[entityqueue][subdir] = "contrib"
 projects[entityqueue][version] = "1.1"
 
