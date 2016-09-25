@@ -495,6 +495,7 @@ projects[mailchimp][version] = "2.12"
 projects[panelizer][subdir] = "contrib"
 projects[panelizer][version] = "3.1"
 
+; TODO: update to newest version and remove patches accordingly.
 projects[wayf_dk_login][type] = "module"
 projects[wayf_dk_login][subdir] = "contrib"
 projects[wayf_dk_login][download][type] = "git"
@@ -515,7 +516,7 @@ projects[wayf_dk_login][patch][] = "https://www.drupal.org/files/issues/pre-logo
 ; Add scoping support (https://www.drupal.org/node/2428847).
 projects[wayf_dk_login][patch][] = "https://www.drupal.org/files/issues/wayf_dk_scoping_support-2428847-2.patch"
 ; Change in metadata end-point and struture (https://www.drupal.org/node/2734715).
-projects[wayf_dk_login][patch][] = "https://www.drupal.org/files/issues/metadata_endpoint_2728389-3.patch"
+;projects[wayf_dk_login][patch][] = "https://www.drupal.org/files/issues/metadata_endpoint_2728389-3.patch"
 
 ; Libraries
 libraries[d3][download][type] = "get"
