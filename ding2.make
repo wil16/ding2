@@ -470,6 +470,11 @@ libraries[jquery.imagesloaded][download][url] = https://github.com/desandro/imag
 libraries[jquery.imagesloaded][directory_name] = "jquery.imagesloaded"
 libraries[jquery.imagesloaded][destination] = "libraries"
 
+libraries[jquery-ui-carousel][download][type] = "get"
+libraries[jquery-ui-carousel][download][url] = "https://github.com/richardscarrott/jquery-ui-carousel/archive/1.0.1.zip"
+libraries[jquery-ui-carousel][directory_name] = "jquery-ui-carousel"
+libraries[jquery-ui-carousel][destination] = "libraries"
+
 ; Vejlebib modules
 projects[environment_indicator][subdir] = "contrib"
 projects[environment_indicator][version] = "2.8"
@@ -539,12 +544,6 @@ projects[ding_wayf_dk][download][type] = "git"
 projects[ding_wayf_dk][download][url] = "git@github.com:vejlebib/ding_wayf_dk.git"
 projects[ding_wayf_dk][download][branch] = "vejlebib"
 projects[ding_wayf_dk][subdir] = "vejlebib_modules"
-
-; Using the Beta from Randers' github for now.
-projects[ting_search_context][type] = "module"
-projects[ting_search_context][download][type] = "git"
-projects[ting_search_context][download][url] = "git@github.com:Arni/ting_search_context.git"
-projects[ting_search_context][download][branch] = "beta"
 
 ; This is an early dev version, but we would like to include it now to start testing
 projects[ting_field_search][type] = "module"
