@@ -1,0 +1,340 @@
+<?php
+
+/**
+ * @file
+ *
+ * Module file for the Vejlebib settings module.
+ *
+ * Contains fixes and settings for the vejlebib instance of DDB CMS.
+ */
+
+include_once 'vejlebib_settings.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function vejlebib_settings_menu() {
+  $items = array();
+
+  $items['admin/config/vejlebib-settings'] = array(
+    'title' => 'Vejlebib settings',
+    'description' => 'Various settings related to the vejlebib instance of DDB CMS.',
+    'position' => 'right',
+    'weight' => 20,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  $items['admin/config/vejlebib-settings/google-site-verification'] = array(
+    'title' => 'Google site verification',
+    'description' => 'Manage settings for Google site verification',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('vejlebib_settings_google_site_verification_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'vejlebib_settings.admin.inc',
+  );
+  $items['admin/config/vejlebib-settings/webtrends'] = array(
+    'title' => 'Vejlebib Webtrends',
+    'description' => 'Manage Vejlebib settings for the Webtrends analytics tool.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('vejlebib_settings_webtrends_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'vejlebib_settings.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function vejlebib_settings_menu_alter(&$items) {
+  // The library app uses this path to collect data about opening hours. During
+  // the transition from ding1 to ding2, all the libraries got new nids. At this
+  // point in time, we are not able to correct the values in the app, so here we
+  // employ a temporary hack, that maps the library nids to the correct ones.
+  // This should be removed, once the values is corrected in the library app or
+  // when the new library app is launched.
+  if (isset($items['opening_hours/instances'])) {
+    $item = &$items['opening_hours/instances'];
+	  $item['page callback'] = 'vejlebib_settings_opening_hours_crud_api_page';
+  }
+
+  // Change node clone menu item to a tab instead of an action
+  if(isset($items['node/%node/clone/%clone_token'])) {
+    $items['node/%node/clone/%clone_token']['type'] = MENU_LOCAL_TASK;
+  }
+  else if (isset($items['node/%node/clone'])) {
+    $items['node/%node/clone']['type'] = MENU_LOCAL_TASK;
+  }
+
+  // Fix the search-blank menu-entry from Ting search.
+  if (isset($items['search-blank'])) {
+    $items['search-blank']['access callback'] = TRUE;
+    $items['search-blank']['page callback'] = '_vejlebib_blank_page';
+  }
+}
+
+/**
+ * Improve performance of search block form redirect by posting to a blank page
+ * and doing nothing but form related stuff.
+ */
+function _vejlebib_blank_page() {
+  // This will call the submit handlers if a valid form build id was posted.
+  drupal_get_form('search_block_form');
+
+  // If no form; redirect to front to ensure no blank pages.
+  drupal_goto();
+}
+
+/**
+ * Wrapper function for the opening hours page callback.
+ */
+function vejlebib_settings_opening_hours_crud_api_page() {
+  if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // Hard coded mappings from the old library nids to the new ones.
+    $nid_mappings = array(
+  	  1 => 13,  // Vejle
+  	  2 => 16,  // Egtved
+  	  3 => 17,  // Jelling
+  	  35 => 15, // Børkop
+  	  36 => 14, // Give
+  	  37 => 18, // Biblioteksbussen
+    );
+    // Seperate the old nids now for usage further down.
+    $old_nids = array_keys($nid_mappings);
+    // Remember what we mapped, so we can map it back in the output, to make it
+    // look like the library's id is what the caller think.
+    $map_back = array();
+    // The nid parameter might be an array. If it's a single value, it
+    // should still pass these filters with no trouble.
+    // In any case, we want to elimitate bogus values, to see if
+    // there's anything left to fetch.
+    $nids = explode(',', $_REQUEST['nid']);
+    array_filter($nids, 'is_numeric');
+    array_filter($nids);
+    foreach ($nids as $key => $nid) {
+      if (in_array($nid, $old_nids)) {
+        $nids[$key] = $nid_mappings[$nid];
+    	  $map_back[] = $nid_mappings[$nid];
+      }
+    }
+    if (!empty($_REQUEST['from_date']) && !empty($_REQUEST['to_date']) && !empty($nids)) {
+      $output = opening_hours_instance_load_multiple($nids, $_REQUEST['from_date'], $_REQUEST['to_date']);
+    }
+    // Filter out instances on blocked days.
+    // array_values is necessary, since filtered values causes holes
+    // in the key order, which in turns causes json_encode to return a
+    // JavaScript object instead of an array in some cases.
+    $output = array_values(array_filter($output, '_opening_hours_exclude_blocked'));
+    foreach ($output as $opening_hour_instance) {
+    $new_nid = $opening_hour_instance->nid;
+  	  if (in_array($new_nid, $map_back)) {
+  	    // If the id was mapped, map it back in the output.
+  	    $old_nid = array_search($new_nid, $nid_mappings);
+  	    $opening_hour_instance->nid = $old_nid;
+      }
+    }
+    return drupal_json_output($output);
+  }
+  // If it wasn't a GET request we fallback to the original page callback.
+  return opening_hours_crud_api_page();
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function vejlebib_settings_preprocess_html(&$vars) {
+  // Insert Webtrends onsite search parameter if webtrends is congigured.
+  if (variable_get('vejlebib_webtrends_domain', FALSE) && variable_get('vejlebib_webtrends_onsitedoms', FALSE)) {
+    $args = explode('/', current_path());
+
+    // If this is a search page: Add meta-tags for webtrends on-site search.
+    if (!empty($args) && $args[0] == 'search' && count($args) > 2) {
+      $search_engine = $args[1];
+      $search_query = $args[2];
+
+      // Find out which backend is used in the search, so we can get the results
+      switch ($search_engine) {
+        case 'ting':
+          $search_result = drupal_static('ting_search_results');
+          $search_count = $search_result->numTotalObjects;
+          break;
+        case 'tingextra':
+          $search_result = drupal_static('ting_extrasearch_results');
+          $search_count = $search_result->numTotalObjects;
+          break;
+        case 'node':
+          // Take a sneak-peak at the pager to get the search count
+          $search_count = $GLOBALS['pager_total_items'][0];
+          break;
+      }
+
+      // Add the meta-tags
+      $meta_tag['#tag'] = 'meta';
+      $meta_tag['#attributes'] = array(
+        'name' => 'WT.oss',
+        'content' => $search_query,
+      );
+      drupal_add_html_head($meta_tag, 'search_query_meta_tag');
+      $meta_tag['#attributes'] = array(
+        'name' => 'WT.oss_r',
+        'content' => $search_count,
+      );
+      drupal_add_html_head($meta_tag, 'search_count_meta_tag');
+    }
+
+  }
+
+  // Google site verification. TODO: Is this needed anymore?
+  if (drupal_is_front_page()) {
+    $enable = variable_get('google_site_verification_enable', FALSE);
+    $key = variable_get('google_site_verification_key', '');
+    if ($enable && !empty($key)) {
+      $meta_tag = array(
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'content' => $key,
+          'name' => 'google-site-verification',
+        ),
+      );
+      drupal_add_html_head($meta_tag, 'google-site-verification-meta-tag');
+    }
+  }
+}
+
+/**
+ * Implements hook_page_build()
+ *
+ * Load the webtrends script if configured proberly.
+ */
+function vejlebib_settings_page_build(&$page) {
+  // Get configuration variables set in the administration interface.
+  $domain = variable_get('vejlebib_webtrends_domain', FALSE);
+  $dcs_id = variable_get('vejlebib_webtrends_dcs_id', FALSE);
+  $onsitedoms = variable_get('vejlebib_webtrends_onsitedoms', NULL);
+
+  // Check that webtrends have been configured.
+  if (!$domain || !$dcs_id) {
+    watchdog('vejlebib_settings', 'Vejlebib Webtrends not configured.', array(), WATCHDOG_NOTICE);
+    return;
+  }
+
+  // Create custom inline script.
+  $script = <<<EOT
+window.webtrendsAsyncInit=function(){
+  var dcs=new Webtrends.dcs().init({
+    dcsid:"$dcs_id",
+    domain:"statse.webtrendslive.com",
+    timezone:1,
+    i18n:true,
+    adimpressions:true,
+    adsparam:"WT.ac",
+    offsite:true,
+    download:true,
+    downloadtypes:"avi,csv,doc,docx,exe,gzip,mp3,mp4,pdf,ppt,pptx,rar,txt,wav,xls,xlsx,zip",
+    onsitedoms:"$onsitedoms",
+    fpcdom:".$domain",
+    plugins:{
+      hm:{src:"//s.webtrends.com/js/webtrends.hm.js"},
+      facebook:{src:"//s.webtrends.com/js/webtrends.fb.js"},
+      yt:{src:"//s.webtrends.com/js/webtrends.yt.js"}
+    }
+  });
+
+  var count = jQuery('.js-count');
+  if(count.length > 0) {
+    dcs.WT.oss = jQuery('.form-type-textfield input').val();  // search query
+    dcs.WT.oss_r = count.attr('data-js-count'); // search hits
+  }
+
+  dcs.track();
+};
+EOT;
+
+  drupal_add_js($script, array(
+    'type' => 'inline',
+    'scope' => 'footer',
+  ));
+
+  // Load webtrend script after inline configuration with a higher weight.
+  drupal_add_js(drupal_get_path('module', 'vejlebib_settings') . '/js/webtrends.min.js', array(
+    'scope' => 'footer',
+  ));
+
+  $html = '<img alt="dcsimg" id="dcsimg" width="1" height="1" src="//statse.webtrendslive.com/dcs2223b10932ca7afu0mksma_6t5f/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.4.1&amp;dcssip=vejlebib.dk"/>';
+  $page['page_bottom']['webtrends'] = array(
+    '#prefix' => '<noscript><div>',
+    '#suffix' => '</div></noscript>',
+    '#markup' => $html,
+  );
+}
+
+/**
+ * Implements hook_username_alter().
+ *
+ * Look for a staff profile when displaying usernames. If both forename and
+ * surname is set, we change the display to use these instead of the default
+ * behavior that just uses the unique username.
+ *
+ * @see template_preprocess_username().
+ * @see format_username().
+ */
+function vejlebib_settings_username_alter(&$name, $account) {
+  $profile = profile2_load_by_user($account, 'ding_staff_profile');
+  if (!empty($profile)) {
+    $wrapper = entity_metadata_wrapper('profile2', $profile);
+    // No need to sanitize the user input here:
+    // See: template_preprocess_username()
+    $forename = $wrapper->field_ding_staff_forename->value();
+    $surname = $wrapper->field_ding_staff_surname->value();
+    // We require both forename and surname to be non-empty before we go ahead
+    // and change the display of the username.
+    if (!empty($forename) && !empty($surname)) {
+      $name = $forename . ' ' . $surname;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_username().
+ *
+ * Remove the default shortening behavior.
+ *
+ * @see template_preprocess_username().
+ */
+function vejlebib_settings_preprocess_username(&$variables) {
+  $variables['name'] = check_plain($variables['name_raw']);
+}
+
+/**
+ * Implements hook_views_default_views_alter().
+ */
+function vejlebib_settings_views_default_views_alter(&$views) {
+  // Add the clone_action_clone action from the clone (Node clone) module, to
+  // the enabled actions on admin_views node table.
+  if (isset($views['admin_views_node'])) {
+    $views['admin_views_node']->display['default']->display_options['fields']['views_bulk_operations']['vbo_operations'] += array(
+      'action::clone_action_clone' => array(
+        'selected' => 1,
+        'skip_confirmation' => 0,
+        'override_label' => 1,
+        'label' => 'Clone node',
+        'postpone_processing' => 0,
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Fix the search-blank solution.See http://platform.dandigbib.org/issues/372
+ * for more information.
+ *
+ * TODO: Remove this if it gets fixed in or removed from DDB CMS core.
+ */
+function vejlebib_settings_form_search_block_form_alter(&$form, &$form_state) {
+  $form['#action'] = url('search-blank');
+}

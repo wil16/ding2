@@ -1,0 +1,188 @@
+<?php
+
+/**
+ * @file
+ *
+ * Install file for the vejlebib settings module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Updates the database with settings specific to Vejle's instance of the
+ * DDB CMS.
+ */
+function vejlebib_settings_install() {
+	// Update the Footer adresse block with Vejle bib's address and contact info.
+	$block_body = '<p>Vejle Bibliotekerne - Willy Sørensens Plads 1 - 7100 Vejle - tlf 7681&nbsp;3200 - <a href="mailto:vejlebib@vejlebib.dk">vejlebib@vejlebib.dk</a></p>';
+	try {
+	  $count = db_update('block_custom')
+	  	->condition('info', 'Footer adresse')
+	  	->fields(array('body' => $block_body))
+	  	->execute();
+	  if ($count) {
+	  	watchdog('vejlebib_settings',
+	  		'Succesfully updated Footer adresse block with Vejle bib\'s address',
+	  		array(),
+	  		WATCHDOG_INFO);
+	  }
+	}
+	catch (Exception $e) {
+	  watchdog('vejlebib_settings',
+	  	'An error occured while trying to update Footer adresse block with Vejle bib\'s address',
+	  	array(),
+	  	WATCHDOG_ERROR);
+	}
+}
+
+/**
+ * Add the provider role to all provider users.
+ */
+function vejlebib_settings_update_7001(&$sandbox) {
+	set_time_limit(0);
+  // Load user uid's.
+  $query = db_select('users', 'u')
+  	->fields('u', array('uid'));
+  $or_condition = db_or();
+  $or_condition->condition('init', '%@ding_user', 'LIKE');
+  $or_condition->condition('init', '%@alma_user', 'LIKE');
+  $uids = $query->condition($or_condition)->execute();
+
+  // Find provider role id.
+  $roles = user_roles(TRUE);
+  $rid = array_search('provider', $roles);
+
+  // Loop over the accounts and set new roles.
+  foreach ($uids as $uid) {
+    $account = user_load($uid->uid);
+    if (ding_user_is_provider_user($account)) {
+      $edit['roles'] = array(
+        DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+        $rid => 'provider',
+      );
+      user_save($account, $edit);
+    }
+  }
+}
+
+/**
+ * Setup the secondary menu
+ * Setup menu position rule with 'inspiration' path.
+ * Reverts new menu position rule with pages condition
+ * Removed old temaer/[nid]/* aliases and create new with inspiration path.
+ */
+function vejlebib_settings_update_7002(&$sandbox) {
+  // Secondary menu
+	foreach (menu_load_links('menu-secondary-menu') as $menu_link) {
+		menu_link_delete($menu_link['mlid']);
+	}
+	$link = array(
+    'menu_name' => 'menu-secondary-menu',
+    'weight' => 50,
+    'link_title' => 'Kontakt',
+    'link_path' => 'contact',
+    'language' => LANGUAGE_NONE,
+  );
+  menu_link_save($link);
+	$link = array(
+    'menu_name' => 'menu-secondary-menu',
+    'link_title' => 'Facebook',
+    'link_path' => 'https://www.facebook.com/vejlebibliotekerne',
+    'language' => LANGUAGE_NONE,
+  );
+  menu_link_save($link);
+
+  // Menu position rule
+  ding_groups_install_menu_position();
+
+  // Revert new menu position rule with pages condition
+  ding_groups_install_menu_position('revert');
+
+  // We require some of our feature components to be reverted with some of our
+  // new changes in this update, so we revert here to be safe.
+  features_revert(array('ding_groups' => array('page_manager_pages', 'variable')));
+  $nodes = node_load_multiple(array(), array('type' => 'ding_group'));
+  foreach ($nodes as $node) {
+    // First, update the default menu-links for each ding_group OG Menu.
+    _og_menu_default_links_set_default_links('menu-og-' . $node->nid, 'update');
+
+    // Then we go ahead and update aliases for each group and every sub-page in
+    // that group.
+    module_load_include('inc', 'pathauto');
+    // We could have used pathauto_pattern_load_by_entity(), but this is safer
+    // if the feature that sets up the new pattern hasn't been rebuild.
+    $pattern = 'inspiration/[node:title]';
+    $group_alias = token_replace($pattern, array('node' => $node), array(
+      'sanitize' => FALSE,
+      'clear' => TRUE,
+      'callback' => 'pathauto_clean_token_values',
+      'language' => (object) array('language' => LANGUAGE_NONE),
+      'pathauto' => TRUE,
+    ));
+    $group_source = 'node/' . $node->nid;
+    $existing_group_alias = _pathauto_existing_alias_data($group_source, LANGUAGE_NONE);
+    $path = array(
+      'source' => $group_source,
+      'alias' => $group_alias,
+      'language' => LANGUAGE_NONE,
+    );
+    // By passing the existing group alias it will be removed by pathauto, which
+    // provides a handy wrapper around core path_save() for that purpose.
+    _pathauto_set_alias($path, $existing_group_alias);
+
+    foreach (array('nyheder', 'arrangementer') as $slug) {
+      if (!path_load(array('alias' => $alias . '/' . $slug))) {
+        $existing_alias = _pathauto_existing_alias_data('temaer/' . $node->nid . '/' . $slug, LANGUAGE_NONE);
+        $path = array(
+          'source' => 'inspiration/' . $node->nid . '/' . $slug,
+          'alias' => $group_alias . '/' . $slug,
+          'language' => LANGUAGE_NONE,
+        );
+
+        // Set the alias or update it.
+        _pathauto_set_alias($path, $existing_alias);
+      }
+
+      // Create alias for news and event terms.
+      if ($slug == 'nyheder') {
+        $vocabulary = taxonomy_vocabulary_machine_name_load ('news_category');
+      }
+      else {
+        $vocabulary = taxonomy_vocabulary_machine_name_load('event_category');
+      }
+      $terms = taxonomy_term_load_multiple(array(), array('vid' => $vocabulary->vid));
+
+      foreach ($terms as $term) {
+        $existing_alias = _pathauto_existing_alias_data('temaer/' . $node->nid . '/' . $slug . '/' . $term->tid, LANGUAGE_NONE);
+        $alias = $group_alias . '/' . $slug . '/' . $term->name;
+        $alias = pathauto_cleanstring($alias);
+        $alias = pathauto_clean_alias($alias);
+        pathauto_alias_uniquify($alias, $source, LANGUAGE_NONE);
+
+        if ($alias != $existing_alias['alias']) {
+          $path = array(
+            'source' => 'inspiration/' . $node->nid . '/' . $slug . '/' . $term->tid,
+            'alias' => $alias,
+            'language' => LANGUAGE_NONE,
+          );
+
+          // Set the alias or update it.
+          _pathauto_set_alias($path, $existing_alias);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Enable the Profile2 i18n integration module.
+ * Enable Ting search context.
+ * Enable Ting field search.
+ */
+function vejlebib_settings_update_7003(&$sandbox) {
+  module_enable(array(
+    'profile2_i18n',
+    'ting_search_context',
+    'ting_field_search',
+  ));
+}

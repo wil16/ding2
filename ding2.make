@@ -480,11 +480,6 @@ projects[panelizer][version] = "3.1"
 projects[entityqueue][subdir] = "contrib"
 projects[entityqueue][version] = "1.1"
 
-projects[vejlebib_settings][type] = "module"
-projects[vejlebib_settings][download][type] = "git"
-projects[vejlebib_settings][download][url] = "git@github.com:vejlebib/vejlebib_settings.git"
-projects[vejlebib_settings][download][branch] = "7.x-1.x"
-
 projects[vejlebib_views_panels][type] = "module"
 projects[vejlebib_views_panels][download][type] = "git"
 projects[vejlebib_views_panels][download][url] = "git@github.com:vejlebib/vejlebib_views_panels.git"
