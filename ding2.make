@@ -552,9 +552,3 @@ projects[ting_field_search][download][type] = "git"
 projects[ting_field_search][download][url] = "git@github.com:vejlebib/ting_field_search.git"
 projects[ting_field_search][download][branch] = "master"
 projects[ting_field_search][subdir] = "vejlebib_modules"
-
-; Vejlebib theme
-projects[wellejus][type] = "theme"
-projects[wellejus][download][type] = "git"
-projects[wellejus][download][url] = "git@github.com:vejlebib/wellejus.git"
-projects[wellejus][download][branch] = "7.x-1.x"

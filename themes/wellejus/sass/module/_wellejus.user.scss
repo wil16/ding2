@@ -1,0 +1,146 @@
+/**
+ * User styling for wellejus theme
+ *
+ * @author wiredloose
+ */
+
+
+/* User login and user info panel in header
+   ========================================================================== */
+
+.header-wrapper  {
+  overflow: hidden; /* Prevent margin from child elements flowing outside */
+
+  .user {
+    padding: 0;
+
+    .form-item {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 24px;
+      @include large-x-large() {
+        width: 68%;
+        float: none; /* Remove the floats DDBasic */
+        margin-bottom: 0;
+      }
+    }
+
+    .form-item-pass {
+      padding: 0; /* Override padding set in DDBAsic, which are problematic in our design (stop using padding for spacing fss) */
+      @include medium() {
+        padding-left: 5px; /* Should probably use zen-grids for these, but it's good for now. */
+      }
+    }
+
+    .form-item-name {
+      padding-left: 0;
+      @include medium() {
+        padding-right: 5px; /* Should probably use zen-grids for these, but it's good for now. */
+      }
+      @include large-x-large() {
+        margin-bottom: 5px;
+      }
+    }
+
+    &.pane-user-login {
+      margin-top: 24px;
+      margin-bottom: 24px;
+      @include large-x-large() {
+        margin-top: 40px;
+        margin-bottom: 0;
+        padding: 0 10px;
+      }
+    }
+
+    .form-submit {
+      @include border-radius(0px);
+      margin: 0;
+      background-image: linear-gradient(to bottom right, #7d7e7d, #0e0e0e);
+      color: $white;
+      text-transform: uppercase;
+      padding: 0;
+      width: 100%;
+
+      &:focus,
+      &:hover,
+      &:active {
+        background: none;
+        background-color: $black;
+      }
+
+      @include large-x-large() {
+        min-height: 65px;
+      }
+    }
+  }
+
+  @include large-x-large() {
+    ul {
+      padding-left: 0;
+    }
+
+    overflow: visible;
+
+    [class^="icon-"] {
+      left: 16px;
+      bottom: 5px;
+      font-size: 120%;
+    }
+
+    .form-text {
+      min-height: 30px;
+    }
+  }
+
+  .form-text {
+    @include border-radius(0px);
+  }
+
+  .vejlebib-user-info {
+    ul {
+      padding: 0;
+    }
+
+    li {
+      float: left;
+      width: 50%;
+    }
+
+    @include large-x-large() {
+      margin-top: 10px;
+    }
+
+    .button {
+      @include box-sizing(border-box);
+      @include border-radius(0px);
+      white-space: nowrap; /* Fix broken user-panel on smaller screens */
+      line-height: 19px; /* To get the same height as search and vertically align text */
+      display: inline-block;
+      color: $white;
+      text-align: center;
+      padding: 7px;
+      width: 100%;
+      background-image: linear-gradient(to bottom right, #7d7e7d, #0e0e0e);
+
+      &:focus,
+      &:hover,
+      &:active {
+        background: none;
+        background-color: $black;
+      }
+    }
+
+    .username {
+      margin-bottom: 5px;
+
+      a {
+        color: #FFFFFF;
+        font-size: $font-size-large;
+        font-weight: bold;
+      }
+    }
+  }
+
+}

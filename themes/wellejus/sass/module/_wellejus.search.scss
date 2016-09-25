@@ -1,0 +1,179 @@
+/**
+ * Search for wellejus theme
+ *
+ *
+ * @author wiredloose
+ */
+
+
+/* Search in header
+   ========================================================================== */
+.header-wrapper {
+  .search {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 0;
+
+    @include large-x-large() {
+      padding: 0 10px;
+      margin-top: 40px;
+      margin-bottom: 0;
+    }
+
+    .form-item-search-block-form label {
+      display: none;
+    }
+
+    .form-text {
+      @include border-radius(0px);
+
+      @include large-x-large() {
+        min-height: 66px;
+      }
+    }
+
+    .form-submit {
+      @include border-radius(0px);
+      margin: 0;
+      color: $white;
+      text-transform: uppercase;
+      background-image: linear-gradient(to bottom right, #7d7e7d, #0e0e0e);
+
+      &:focus,
+      &:hover,
+      &:active {
+        background: none;
+        background-color: $black;
+      }
+
+      @include small-medium() {
+        margin-top: 24px;
+      }
+
+      @include large-x-large() {
+        min-height: 66px;
+      }
+
+    }
+
+    @include large-x-large() {
+      [class^="icon-"] {
+        font-size: 180%;
+        left: 14px;
+        top: 18px;
+      }
+    }
+
+  }
+}
+
+.ting-collection-inner-wrapper > h2 {
+  display: none;
+}
+
+.search-result--availability-link:before {
+  content: "\f0c8\0a";
+  font-family: FontAwesome;
+}
+
+.pane-ting-collection,
+.pane-ting-object {
+
+  /* Material Details - Collapsible */
+  .collapsible .field-group-format-title,
+  .ding-periodical-fold {
+    &:before {
+      color: $link-color;
+    }
+  }
+
+  .field-type-ting-subjects {
+    a.subject {
+      background-color: $green;
+      color: white;
+
+      &:hover {
+        background-color: darken($green, 10%);
+        text-decoration: none;
+      }
+    }
+  }
+
+  li {
+    &.pending {
+      @include availability($availability-pending);
+    }
+
+    &.availability.processed {
+      @include availability($availability-processed);
+    }
+
+    &.availability.available {
+      @include availability($availability-available);
+    }
+
+    &.availability.reservable {
+      @include availability($availability-reservable);
+    }
+
+    &.availability.available.reservable {
+      @include availability($availability-available-reservable);
+    }
+
+    &.availability.available.not-reservable {
+      @include availability($availability-available-not-reservable);
+    }
+
+    &.availability.unavailable.reservable {
+      @include availability($availability-reservable);
+    }
+
+    &.availability.unavailable.not-reservable {
+      @include availability($availability-available-not-reservable);
+    }
+
+  }
+}
+
+.pane-ding-facetbrowser,
+.pane-search-backends {
+  a:visited {
+    // Ensure that links maintain color when visited.
+    // We neeed to set this here, since _search partial from ddbasic is using a
+    // more specific rule than _wellejus.base partial.
+    color: $link-color;
+  }
+}
+
+/**
+ * Bibliotek.dk link plugin on search page
+ */
+.pane-bibliotek-dk-link {
+  text-align: center;
+  background: url('../images/pw_maze_white.png');
+  padding: 15px;
+
+  .pane-content {
+    padding: 20px;
+    background-color: transparentize($white, .1);
+  }
+
+  @include large-x-large() {
+    text-align: left;
+    position: relative;
+
+    .pane-content {
+
+      & > a {
+        position: absolute;
+        right: 25px;
+        top: 25px;
+      }
+
+      & > p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}

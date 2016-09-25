@@ -1,0 +1,156 @@
+/**
+ * Event styling for wellejus theme
+ *
+ * @author wiredloose
+ */
+
+
+/* Event list
+   ========================================================================== */
+
+.pane-vejlebib-ding-event-vejlebib-ding-event-list,
+.pane-vejlebib-ding-event-vejlebib-ding-event-library-list,
+.pane-vejlebib-ding-event-vejlebib-ding-event-groups-list {
+  .pane-title {
+    background-image: linear-gradient(to bottom right, $left, $right);
+    color: $white;
+    font-size: 1em;
+    padding: 0.2em 0.5em;
+    text-transform: uppercase;
+  }
+}
+
+.event-list-date-wrapper {
+  display: inline-block;
+  font-size: 75%;
+  min-width: 75px !important;
+  box-shadow: 2px 2px 2px;
+  position: absolute;
+  left: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+
+  // using library colors
+  &.vejle {
+    border: 1px solid $vejle-color;
+    .event-list-day {
+      background-color: $vejle-color;
+    }
+  }
+
+  &.borkop {
+    border: 1px solid $borkop-color;
+    .event-list-day {
+      background-color: $borkop-color;
+    }
+  }
+
+  &.egtved {
+    border: 1px solid $egtved-color;
+    .event-list-day {
+      background-color: $egtved-color;
+    }
+  }
+
+  &.give {
+    border: 1px solid $give-color;
+    .event-list-day {
+      background-color: $give-color;
+    }
+  }
+
+  &.jelling {
+    border: 1px solid $jelling-color;
+    .event-list-day {
+      background-color: $jelling-color;
+    }
+  }
+
+  .event-list-day {
+    color: $white;
+    background-color: $vejle-color;
+    text-shadow: none;
+    display: block;
+    line-height: $base-line-height; /* DDBasic override */
+  }
+
+  .event-list-date {
+    display: block;
+    font-size: 280%;
+    padding-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .event-list-inner-wrapper {
+    color: $black;
+  }
+}
+
+.event-list-item,
+.event-list-leaf {
+  min-height: 85px;
+  position: relative;
+
+  .event-list-fulldate {
+    margin-top: 0;
+    margin-left: 85px;
+  }
+}
+
+.view-vejlebib-ding-event {
+  .event-list-item {
+    padding-left: 97px; // + the box-shadow (see below)
+
+  }
+
+  .event-list-heading {
+    margin-bottom: 0;
+    font-size: 130%;
+  }
+
+  .event-list-location {
+    display: block;
+  }
+
+  .event-list-time:before {
+    content: "\f017  ";
+    font-family: FontAwesome;
+  }
+}
+
+.event-list {
+  .event-list-item:nth-child(odd) {
+    background-color: $list-item-background-color-odd;
+  }
+
+  .event-list-item:nth-child(even) {
+    background-color: $list-item-background-color-even;
+  }
+}
+
+/* Event
+   ========================================================================== */
+
+.event {
+
+  .event-info {
+    div {
+      border-left: 5px solid $gray-light;
+    }
+  }
+
+  /* Media queries */
+  @include small-medium {
+    .event-info {
+      div {
+        background-color: $gray-light;
+        border-left: 0;
+        border-bottom: 1px solid $gray;
+        padding-top: 12px;
+        padding-bottom: $medium-spacing;
+      }
+    }
+  }
+
+}

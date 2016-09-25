@@ -1,0 +1,45 @@
+/**
+ * Layout for wellejus theme
+ *
+ * @author holt83
+ */
+
+@include large-x-large() {
+  .pane-search-form {
+    @include zen-clear();
+    @include zen-grid-item(8, 1);
+  }
+
+  .pane-user-login,
+  .vejlebib-user-info {
+    @include zen-grid-item(4, 9);
+  }
+
+  .pane-wayf-dk-login {
+    @include zen-grid-item(2, 9);
+  }
+
+  .pane-ding-wayf-dk-create-user {
+    @include zen-grid-item(2, 11);
+  }
+
+  // We want a bigger main menu
+  .main-menu-wrapper {
+    @include zen-grid-item(9, 1);
+  }
+
+  // - and a smaller secondary menu
+  .secondary-menu-wrapper {
+    @include zen-grid-item(3, 1, right);
+  }
+}
+
+.information-menu-wrapper {
+  // TODO: Show information-menu on smaller screens.
+  display: none;
+  @include large-x-large() {
+    display: block;
+    @include zen-clear();
+    @include zen-grid-item(8, 1);
+  }
+}

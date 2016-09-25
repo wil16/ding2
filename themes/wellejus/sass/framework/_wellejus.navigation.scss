@@ -1,0 +1,255 @@
+/**
+ * Navigation for wellejus theme
+ *
+ * @author wiredloose
+ */
+
+
+/* Topbar menu
+   ========================================================================== */
+
+.topbar-menu {
+  display: block;
+
+  .menu-item {
+    @include text-shadow(1px 1px 0 rgba(0, 0, 0, .2));
+
+    color: $black;
+
+    &.active {
+      background-color: $header-background-color;
+      @include rgba-background($header-background-color, $default-transparency);
+    }
+  }
+
+  /* Media queries */
+  @include large-x-large() {
+    display: none;
+  }
+}
+
+/* Information menu
+   ========================================================================== */
+
+.information-menu {
+  padding-left: 10px;
+
+  > li {
+    display: inline;
+    color: white;
+    font-weight: bold;
+
+    &:before {
+      content: "|";
+      padding-right: 5px;
+    }
+
+    /* Remove seperator before the first element. */
+    &:first-child:before {
+      content: "";
+      padding-right: 0;
+    }
+  }
+
+  .menu-item {
+    color: inherit;
+    font-weight: inherit;
+  }
+}
+
+.information-menu-wrapper {
+  margin-top: 15px;
+  margin-bottom: 25px;
+
+  ul {
+    padding: 0; // Removed default padding on lists.
+  }
+}
+
+/* Main menu
+   ========================================================================== */
+
+.navigation-wrapper {
+  @include rgba-background($header-background-color, $default-transparency);
+
+  @include large-x-large() {
+    background-color: $white;
+  }
+}
+
+// Desktop
+@include large-x-large() {
+  .main-menu {
+
+    li {
+      border-right: 1px solid $gray;
+    }
+
+    i {
+      text-decoration: none;
+    }
+
+    .menu-item {
+      font-size: 95%;
+      padding: 10px 7px;
+      margin: 10px 0;
+      color: #959594;
+    }
+
+    .menu-item.active,
+    li.active-trail .menu-item {
+      color: #000002;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Secondary menu
+   ========================================================================== */
+.secondary-menu span,
+.main-menu span {
+  margin: 0 5px; // Adjustment of FA icons
+}
+
+/* Nav helper links
+   ========================================================================== */
+.nav-helpers {
+  float: right;
+  padding: 0;
+  width: 30%;
+
+  li {
+    float: right;
+  }
+
+  a {
+    display: inline-block;
+    margin: 10px;
+    padding: 6px 0;
+  }
+
+  a:before {
+    font-family: FontAwesome;
+    color: #000;
+  }
+
+  .facebook:before {
+    content: "\f082\0a"
+  }
+
+  .print:before {
+    content: "\f017\0a";
+  }
+
+  .read:before {
+    content: "\f028\0a";
+  }
+
+  .english:before {
+    content: "\f024\0a";
+  }
+}
+
+
+/* Media queries */
+@include small-medium() {
+
+  .nav-helpers {
+    clear: left;
+    padding: 0;
+    margin: $medium-spacing;
+    width: 100%;
+
+    li {
+      margin: 0;
+      height: 40px;
+      line-height: 40px;
+      width: 95%;
+    }
+
+    a {
+      margin: 0;
+    }
+
+    a,
+    a:before {
+      color: white;
+    }
+  }
+
+}
+
+
+/* Sub menu
+   ========================================================================== */
+
+.sub-menu-title {
+  font-family: $base-font-family;
+  font-weight: $base-font-weight-normal;
+}
+
+.sub-menu {
+
+  > li {
+
+    a {
+      color: $link-color;
+
+      &.active {
+        font-family: $font-bold;
+        font-weight: $base-font-weight-bold;
+      }
+
+      &:hover {
+        text-decoration: underline;
+        color: $link-color-hover;
+      }
+    }
+  }
+
+  li {
+    &:before {
+      color: $link-color;
+    }
+  }
+
+}
+
+
+/* Footer menus
+   ========================================================================== */
+
+.footer {
+  .pane-title {
+    color: $black;
+    border-bottom: none;
+  }
+
+  .menu {
+
+    li {
+      margin-bottom: 0;
+
+      &:before {
+        color: $black;
+      }
+
+      a,
+      a.active {
+        color: $black;
+      }
+    }
+  }
+}
+
+/* Action Links
+   ========================================================================== */
+
+.action-links {
+  li {
+    a {
+      font-family: $base-font-family;
+    }
+  }
+}
+

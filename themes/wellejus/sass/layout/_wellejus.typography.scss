@@ -1,0 +1,33 @@
+/**
+ * Typography for wellejus
+ *
+ * @author wiredloose
+ */
+
+
+/* Header variants
+   ========================================================================== */
+
+.page-title {
+  @include font-bold();
+  
+  font-size: $font-size-giga;
+
+  @include small() {
+    font-size: $font-size-large;
+  }
+}
+
+.pane-title {
+  @include font-bold();
+
+  font-size: $font-size-larger;
+}
+
+
+/* Content and elements
+   ========================================================================== */
+
+.page-lead {
+  @include font-bold();
+}

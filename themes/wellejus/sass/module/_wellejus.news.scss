@@ -1,0 +1,58 @@
+/**
+ * News for wellejus theme
+ *
+ * Uses shared %article @extends
+ *
+ * @author wiredloose
+ */
+
+.news {
+  .image-container {
+    margin-bottom: 10px;
+  }
+}
+
+.news-list {
+
+  .news-list-item:nth-child(odd) {
+    background-color: $list-item-background-color-odd;
+  }
+
+  .news-list-item:nth-child(even) {
+    background-color: $list-item-background-color-even;
+  }
+
+  // DDBasic override
+  .news-label {
+    @extend .label;
+    margin-right: 5px;
+  }
+}
+
+.view-display-id-ding_news_library_list {
+  // DDBasic override; we have no image on library news list.
+  .news-list-item {
+    > div, > h3, > p, > span {
+      margin-left: 0;
+    }
+  }
+}
+
+// DDBasic sets inline on labels in super-heading in _news partial. We
+// override this here so that our label-padding has effect.
+.super-heading .label {
+  display: inline-block;
+}
+
+.pane-ding-news-ding-news-frontpage-list,
+.pane-ding-news-ding-news-groups-list,
+.pane-vejlebib-ding-news-ding-news-library-list {
+  .pane-title {
+    background-image: linear-gradient(to bottom right, #7d7e7d, #0e0e0e);
+    //background: $gray-darkest;
+    color: $white;
+    font-size: 1em;
+    padding: 0.2em 0.5em;
+    text-transform: uppercase;
+  }
+}

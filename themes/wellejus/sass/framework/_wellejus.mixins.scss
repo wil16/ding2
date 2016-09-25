@@ -1,0 +1,215 @@
+/**
+ * Mixins for wellejus theme
+ *
+ * @author wiredloose
+ */
+
+
+// -----------------------------------------------------------------------------
+// Mixin for transparent backgrounds, maing it cross browser compatible
+// -----------------------------------------------------------------------------
+//
+// including IE8+. (https://gist.github.com/1949202)
+//
+// $color - The color of the background.
+// $alpha - The alpha value for transparency.
+//
+@mixin rgba-background($color, $alpha) {
+  $rgba: rgba($color, $alpha);
+  // IE fallback
+  background-color: $color;
+  background-color: $rgba;
+}
+
+
+/* Media query
+   ========================================================================== */
+
+@mixin respond-to($media) {
+  // Sizes
+  @if $media == small {
+    @media only screen and (max-width: $breakpoint-small) { @content; }
+  }
+
+  @else if $media == small-medium {
+    @media only screen and (max-width: $breakpoint-medium) { @content; }
+  }
+
+  @if $media == small-medium-low {
+    @media only screen and (max-height: $breakpoint-low) and (max-width: $breakpoint-medium) { @content; }
+  }
+
+  @else if $media == medium {
+    @media only screen and (min-width: $breakpoint-small + 1) and (max-width: $breakpoint-medium) { @content; }
+  }
+
+  @else if $media == medium-large {
+    @media only screen and (min-width: $breakpoint-small + 1) and (max-width: $breakpoint-large) { @content; }
+  }
+
+  @else if $media == large {
+    @media only screen and (min-width: $breakpoint-medium + 1) and (max-width: $breakpoint-large) { @content; }
+  }
+
+  @else if $media == x-large {
+    @media only screen and (min-width: $breakpoint-x-large + 1) { @content; }
+  }
+
+  @else if $media == large-x-large {
+    @media only screen and (min-width: $breakpoint-medium + 1) { @content; }
+  }
+
+  @else if $media == large-and-x-large {
+    @media only screen and (min-width: $breakpoint-large + 1) { @content; }
+  }
+
+}
+
+
+/* Breakpoints
+   ========================================================================== */
+
+@mixin small {
+  @include respond-to(small) { @content; }
+}
+
+@mixin small-medium {
+  @include respond-to(small-medium) { @content; }
+}
+
+@mixin small-medium-low {
+  @include respond-to(small-medium-low) { @content; }
+}
+
+@mixin medium {
+  @include respond-to(medium) { @content; }
+}
+
+@mixin medium-large {
+  @include respond-to(medium-large) { @content; }
+}
+
+@mixin large {
+  @include respond-to(large) { @content; }
+}
+
+@mixin x-large {
+  @include respond-to(x-large) { @content; }
+}
+
+@mixin large-x-large {
+  @include respond-to(large-x-large) { @content; }
+}
+
+@mixin large-and-x-large {
+  @include respond-to(large-and-x-large) { @content; }
+}
+
+/* Typography mixins
+ *
+ * These are mixins to allow for use in media queries
+   ========================================================================== */
+
+@mixin font-normal() {
+  font-family: $base-font-family;
+  font-weight: $base-font-weight-normal;
+}
+
+@mixin font-bold() {
+  font-family: $font-bold;
+  font-weight: $base-font-weight-bold;
+}
+
+@mixin font-italic() {
+  font-family: $font-regular-italic;
+  font-weight: $base-font-weight-normal;
+}
+
+
+/* Availability
+   ========================================================================== */
+
+@mixin availability($bg-color) {
+  background-color: $bg-color;
+  color: #fff;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+
+  a {
+    color: #fff;
+    display: block;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* Buttons
+   ========================================================================== */
+
+%button {
+  @include border-radius($button-border-radius);
+
+  display: inline-block;
+  font-size: 100%;
+  padding: $button-padding;
+  position: relative;
+
+  box-shadow: $button-box-shadow;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100%;
+
+  &:focus,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+
+  // Disabled state
+  &.disabled,
+  &[disabled] {
+    @include opacity(0.65);
+    @include box-shadow(none);
+
+    cursor: default;
+  }
+}
+
+@mixin create-gradient-button($text-color, $bg-start-color, $bg-end-color, $border: 0) {
+  @include background-image(linear-gradient($bg-start-color, $bg-end-color));
+  @extend %button;
+
+  /* Make sure buttons get a background color in IE */
+  background-color: $bg-start-color;
+  border: $border;
+
+  @if $text-color != "" {
+    color: $text-color;
+
+    &:link,
+    &:visited {
+      color: $text-color;
+    }
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    @include background-image(linear-gradient(darken($bg-start-color, 5%), darken($bg-end-color, 5%)));
+
+    background-color: $bg-end-color;
+  }
+}
+
+// Truncate text with an ellipsis.
+// Source: https://gist.github.com/Shipow/7167056
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

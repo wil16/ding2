@@ -1,0 +1,22 @@
+;----------// Theme Information
+  name        = Wellejus
+  description = Sub-theme based on DDBasic containing theme adjustments for Vejle Bibliotekerne
+  core        = 7.x
+  release     = 7.x-1.x
+  base theme  = ddbasic
+
+;----------// Stylesheets
+; Import stylesheets.
+stylesheets[all][] = css/wellejus.styles.css
+stylesheets[print][]  = css/wellejusprint.css
+
+;----------// JavaScripts
+; Override javascripts
+scripts[] = scripts/ddbasic.common.js
+scripts[] = scripts/ddbasic.common.min.js
+scripts[] = scripts/ddbasic.search.min.js
+scripts[] = scripts/ddbasic.search.js
+scripts[] = scripts/ddbasic.topbar.menu.min.js
+scripts[] = scripts/wellejus.common.js
+scripts[] = scripts/wellejus.topbar.menu.js
+scripts[] = scripts/wellejus.search.js

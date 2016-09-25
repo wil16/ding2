@@ -1,0 +1,15 @@
+/**
+ * Static pages
+ *
+ * @author Simon Holt
+ */
+
+.page {
+	.super-heading {
+		border-top: 1px solid #EFEFEF;
+		padding: 0;
+		margin-top: 10px;
+		padding-top: 10px;
+		clear: both; // This is right after a body field, which may have floats applied
+	}
+}
