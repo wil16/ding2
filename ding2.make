@@ -475,7 +475,8 @@ libraries[jquery-ui-carousel][download][url] = "https://github.com/richardscarro
 libraries[jquery-ui-carousel][directory_name] = "jquery-ui-carousel"
 libraries[jquery-ui-carousel][destination] = "libraries"
 
-; Vejlebib modules
+; Vejlebib additions
+; Contrib
 projects[d3][subdir] = "contrib"
 projects[d3][version] = "1.x-dev"
 
@@ -494,11 +495,13 @@ projects[mailchimp][version] = "2.12"
 projects[panelizer][subdir] = "contrib"
 projects[panelizer][version] = "3.1"
 
+; Libraries
 libraries[d3][download][type] = "get"
 libraries[d3][download][url] = "https://github.com/mbostock/d3/zipball/master"
 libraries[d3][directory_name] = "d3"
 libraries[d3][destination] = "libraries"
 
+; External modules that we still have to keep separate from the main repo
 projects[ding_zerohit_form][type] = "module"
 projects[ding_zerohit_form][download][type] = "git"
 projects[ding_zerohit_form][download][url] = "git@github.com:vejlebib/ding_zerohit_form.git"
@@ -553,7 +556,6 @@ projects[ding_wayf_dk][download][url] = "git@github.com:vejlebib/ding_wayf_dk.gi
 projects[ding_wayf_dk][download][branch] = "vejlebib"
 projects[ding_wayf_dk][subdir] = "vejlebib_modules"
 
-; This is an early dev version, but we would like to include it now to start testing
 projects[ting_field_search][type] = "module"
 projects[ting_field_search][download][type] = "git"
 projects[ting_field_search][download][url] = "git@github.com:vejlebib/ting_field_search.git"
