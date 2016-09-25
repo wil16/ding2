@@ -471,14 +471,14 @@ libraries[jquery.imagesloaded][directory_name] = "jquery.imagesloaded"
 libraries[jquery.imagesloaded][destination] = "libraries"
 
 ; Vejlebib modules
+projects[entityqueue][subdir] = "contrib"
+projects[entityqueue][version] = "1.1"
+
 projects[mailchimp][subdir] = "contrib"
 projects[mailchimp][version] = "2.12"
 
 projects[panelizer][subdir] = "contrib"
 projects[panelizer][version] = "3.1"
-
-projects[entityqueue][subdir] = "contrib"
-projects[entityqueue][version] = "1.1"
 
 projects[ding_zerohit_form][type] = "module"
 projects[ding_zerohit_form][download][type] = "git"
