@@ -480,6 +480,11 @@ projects[panelizer][version] = "3.1"
 projects[entityqueue][subdir] = "contrib"
 projects[entityqueue][version] = "1.1"
 
+projects[ding_zerohit_form][type] = "module"
+projects[ding_zerohit_form][download][type] = "git"
+projects[ding_zerohit_form][download][url] = "git@github.com:vejlebib/ding_zerohit_form.git"
+projects[ding_zerohit_form][download][branch] = "7.x-1.x"
+
 projects[vejlebib_mobilepay][type] = "module"
 projects[vejlebib_mobilepay][download][type] = "git"
 projects[vejlebib_mobilepay][download][url] = "git@github.com:vejlebib/vejlebib_mobilepay.git"
