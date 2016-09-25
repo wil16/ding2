@@ -24,7 +24,6 @@ dependencies[] = menu_position
 dependencies[] = eu_cookie_compliance
 dependencies[] = view_unpublished
 dependencies[] = redirect
-dependencies[] = panelizer
 dependencies[] = pagepreview
 
 ; Ding modules.
@@ -43,6 +42,11 @@ dependencies[] = ding_varnish
 dependencies[] = maintenance_mode_api
 
 ; Vejlebib
+
+; Contrib
+dependencies[] = panelizer
+
+; External modules
 dependencies[] = vejlebib_settings
 dependencies[] = vejlebib_views_panels
 dependencies[] = vejlebib_features_overrides
