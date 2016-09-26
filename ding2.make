@@ -524,6 +524,11 @@ libraries[d3][download][url] = "https://github.com/mbostock/d3/zipball/master"
 libraries[d3][directory_name] = "d3"
 libraries[d3][destination] = "libraries"
 
+libraries[mailchimp][download][type] = "get"
+libraries[mailchimp][download][url] = "http://apidocs.mailchimp.com/api/downloads/mailchimp-api-class.zip"
+libraries[mailchimp][directory_name] = "mailchimp"
+libraries[mailchimp][destination] = "libraries"
+
 ; External modules that we still have to keep separate from the main repo
 projects[ding_zerohit_form][type] = "module"
 projects[ding_zerohit_form][download][type] = "git"
