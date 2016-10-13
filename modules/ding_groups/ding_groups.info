@@ -2,6 +2,8 @@ name = Ding groups
 description = Ding groups are used to group content together themepages
 core = 7.x
 package = Ding!
+
+
 dependencies[] = cs_adaptive_image
 dependencies[] = ctools
 dependencies[] = ding_base
@@ -13,6 +15,7 @@ dependencies[] = list
 dependencies[] = manualcrop
 dependencies[] = media
 dependencies[] = menu_position
+dependencies[] = metatag_panels
 dependencies[] = node
 dependencies[] = nodequeue
 dependencies[] = og_context
