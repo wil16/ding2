@@ -186,3 +186,13 @@ function vejlebib_settings_update_7003(&$sandbox) {
     'ting_field_search',
   ));
 }
+
+/**
+ * Disable Profile2 i18n module.
+ * Delete the old 'administrator' role.
+ */
+function vejlebib_settings_update_7004(&$sandbox) {
+  module_disable('profile2_i18n');
+
+  user_role_delete('administrator');
+}
