@@ -194,5 +194,7 @@ function vejlebib_settings_update_7003(&$sandbox) {
 function vejlebib_settings_update_7004(&$sandbox) {
   module_disable('profile2_i18n');
 
-  user_role_delete('administrator');
+  if (user_role_load_by_name('administrator')) {
+    user_role_delete('administrator');
+  }
 }
