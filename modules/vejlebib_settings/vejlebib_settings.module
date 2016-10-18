@@ -338,3 +338,15 @@ function vejlebib_settings_views_default_views_alter(&$views) {
 function vejlebib_settings_form_search_block_form_alter(&$form, &$form_state) {
   $form['#action'] = url('search-blank');
 }
+
+function vejlebib_settings_field_default_field_bases_alter(&$data) {
+  if (isset($data['field_bpi_workflow'])) {
+    $field = &$data['field_bpi_workflow'];
+
+    // https://www.drupal.org/node/2152435
+    $wid = array_search('BPI', workflow_get_workflow_names());
+    if ($wid) {
+      $field['settings']['wid'] = $wid;
+    }
+  }
+}
