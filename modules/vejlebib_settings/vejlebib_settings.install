@@ -197,4 +197,9 @@ function vejlebib_settings_update_7004(&$sandbox) {
   if (user_role_load_by_name('administrator')) {
     user_role_delete('administrator');
   }
+
+  $wid = array_search('BPI', workflow_get_workflow_names());
+  $field = field_info_field('field_bpi_workflow');
+  $field['settings']['wid'] = $wid;
+  field_update_field($field);
 }
