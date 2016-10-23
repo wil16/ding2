@@ -200,11 +200,7 @@ function vejlebib_settings_update_7004(&$sandbox) {
 }
 
 /**
- * Enable admin_menu modules.
- *
- * Note this is a copy of upstream identical update function from ding_base.
- * Since this is added after another update which we don't, it's easier to just
- * replicate it here and avoid nasty conflicts in future merges.
+ * Enable admin_menu modules for vejlebib branch.
  */
 function vejlebib_settings_7005() {
   if (module_exists('toolbar')) {
@@ -213,4 +209,11 @@ function vejlebib_settings_7005() {
   module_enable(array('admin_menu', 'admin_menu_toolbar'));
 
   ding2_admin_menu_shortcuts();
+}
+
+/**
+ * Enable htmlmail for vejlebib branch.
+ */
+function vejlebib_settings_7006() {
+  module_enable(array('htmlmail'));
 }
