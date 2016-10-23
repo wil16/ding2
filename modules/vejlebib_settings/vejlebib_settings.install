@@ -198,3 +198,19 @@ function vejlebib_settings_update_7004(&$sandbox) {
     user_role_delete('administrator');
   }
 }
+
+/**
+ * Enable admin_menu modules.
+ *
+ * Note this is a copy of upstream identical update function from ding_base.
+ * Since this is added after another update which we don't, it's easier to just
+ * replicate it here and avoid nasty conflicts in future merges.
+ */
+function vejlebib_settings_7005() {
+  if (module_exists('toolbar')) {
+    module_disable(array('toolbar'), TRUE);
+  }
+  module_enable(array('admin_menu', 'admin_menu_toolbar'));
+
+  ding2_admin_menu_shortcuts();
+}
