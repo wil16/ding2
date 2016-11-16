@@ -58,6 +58,7 @@ features[variable][] = ding_wagnerguide_debug
 features[variable][] = ding_wagnerguide_linkbase
 features[variable][] = ding_wagnerguide_transformation_array_Vej
 features[variable][] = ding_zerohit_form
+features[variable][] = environment_indicator_integration
 features[variable][] = file_temporary_path
 features[variable][] = panelizer_defaults_node_ding_page
 features[variable][] = panelizer_node:ding_page_allowed_layouts
