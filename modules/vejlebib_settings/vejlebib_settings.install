@@ -212,8 +212,11 @@ function vejlebib_settings_update_7005() {
 }
 
 /**
- * Enable htmlmail for vejlebib branch.
+ * Enable htmlmail, mmeu for vejlebib branch.
  */
 function vejlebib_settings_update_7006() {
-  module_enable(array('htmlmail'));
+  module_enable(array('htmlmail', 'mmeu'));
 }
+
+
+
