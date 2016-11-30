@@ -1,0 +1,25 @@
+/**
+ * Wellejus styling for libraries.
+ */
+
+#ding-library-front .pane-node-field-ding-library-links {
+  @include zen-clear(left);
+  @include zen-grid-item(6, 1);
+  padding-left: 0;
+
+  .pane-title {
+    @include font-bold();
+
+    font-size: $font-size-reset;
+    margin-bottom: $small-spacing;
+  }
+
+  @include small-medium() {
+    @include zen-clear();
+    @include zen-grid-item(12, 1);
+
+    padding: 20px;
+
+    background-color: $gray-light;
+  }
+}
