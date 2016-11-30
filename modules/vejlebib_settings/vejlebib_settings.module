@@ -320,3 +320,16 @@ function vejlebib_settings_views_default_views_alter(&$views) {
     );
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Temporar fix to disable the pathauto hack added in:
+ * https://github.com/ding2/ding2/pull/153
+ */
+function vejlebib_settings_form_ding_library_node_form_alter(&$form, &$form_state) {
+  $key = array_search('ding_library_disable_custom_alias', $form['#after_build']);
+  if ($key !== FALSE) {
+    unset($form['#after_build'][$key]);
+  }
+}
