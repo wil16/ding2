@@ -68,12 +68,6 @@ function vejlebib_settings_menu_alter(&$items) {
   else if (isset($items['node/%node/clone'])) {
     $items['node/%node/clone']['type'] = MENU_LOCAL_TASK;
   }
-
-  // Fix the search-blank menu-entry from Ting search.
-  if (isset($items['search-blank'])) {
-    $items['search-blank']['access callback'] = TRUE;
-    $items['search-blank']['page callback'] = '_vejlebib_blank_page';
-  }
 }
 
 /**
@@ -325,16 +319,4 @@ function vejlebib_settings_views_default_views_alter(&$views) {
       ),
     );
   }
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- *
- * Fix the search-blank solution.See http://platform.dandigbib.org/issues/372
- * for more information.
- *
- * TODO: Remove this if it gets fixed in or removed from DDB CMS core.
- */
-function vejlebib_settings_form_search_block_form_alter(&$form, &$form_state) {
-  $form['#action'] = url('search-blank');
 }
