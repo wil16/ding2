@@ -159,7 +159,7 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
           'shown' => TRUE,
           'access' => array(),
           'configuration' => array(
-            'override_title' => 0,
+            'override_title' => 1,
             'override_title_text' => '',
             'override_title_heading' => 'h2',
           ),

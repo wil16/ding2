@@ -1,0 +1,32 @@
+/**
+ * Wellejust styling for gtranslate module.
+ */
+
+.pane-gtranslate-gtranslate {
+
+  select {
+    min-width: 0;
+    border-radius: 0;
+    padding: 0;
+    height: 26px;
+    margin: 0 15px;
+    position: relative;
+    top: -2px;
+
+    option {
+      // Have to use important since gtranslate uses inline styling.
+      background-color: white !important;
+    }
+
+    @include small-medium() {
+      width: 80%;
+      margin: 15px;
+    }
+  }
+
+  a {
+    padding: 0 !important;
+    vertical-align: middle;
+  }
+
+}
