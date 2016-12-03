@@ -442,6 +442,7 @@ function ding_permissions_secure_permissions($role) {
       'manage features',
       'manipulate all queues',
       'manipulate queues',
+      'Modify GTranslate settings',
       'move all blocks',
       'notify of path changes',
       'participate in workflow',
