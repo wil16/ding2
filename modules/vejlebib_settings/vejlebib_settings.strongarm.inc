@@ -13,6 +13,88 @@ function vejlebib_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'ask_vopros_agency_mail';
+  $strongarm->value = 'info@vejlebib.dk';
+  $export['ask_vopros_agency_mail'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ask_vopros_answer_preference';
+  $strongarm->value = 'mail';
+  $export['ask_vopros_answer_preference'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ask_vopros_color';
+  $strongarm->value = '#95c11f';
+  $export['ask_vopros_color'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ask_vopros_opening_hours';
+  $strongarm->value = array(
+    'open' => array(
+      0 => '10:00',
+      1 => '10:00',
+      2 => '10:00',
+      3 => '10:00',
+      4 => '10:00',
+      5 => '10:00',
+      6 => '10:00',
+    ),
+    'close' => array(
+      0 => '19:00',
+      1 => '19:00',
+      2 => '19:00',
+      3 => '19:00',
+      4 => '19:00',
+      5 => '19:00',
+      6 => '19:00',
+    ),
+  );
+  $export['ask_vopros_opening_hours'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ask_vopros_right';
+  $strongarm->value = '';
+  $export['ask_vopros_right'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ask_vopros_secondary_uri';
+  $strongarm->value = 'https://adm.biblioteksvagten.dk';
+  $export['ask_vopros_secondary_uri'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ask_vopros_uri';
+  $strongarm->value = 'https://adm.biblioteksvagten.dk';
+  $export['ask_vopros_uri'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ask_vopros_visibility_pages';
+  $strongarm->value = '<front>';
+  $export['ask_vopros_visibility_pages'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ask_vopros_visibility_type';
+  $strongarm->value = 'on';
+  $export['ask_vopros_visibility_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'cards_supported';
   $strongarm->value = array(
     'Dankort' => 'Dankort',
