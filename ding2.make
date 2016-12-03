@@ -511,6 +511,9 @@ projects[entityqueue][version] = "1.1"
 projects[features_override][subdir] = "contrib"
 projects[features_override][version] = 2.0-rc2
 
+projects[gtranslate][subdir] = "contrib"
+projects[gtranslate][version] = "1.14"
+
 projects[mailchimp][subdir] = "contrib"
 projects[mailchimp][version] = "2.12"
 
