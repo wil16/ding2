@@ -68,6 +68,12 @@ function vejlebib_settings_menu_alter(&$items) {
   else if (isset($items['node/%node/clone'])) {
     $items['node/%node/clone']['type'] = MENU_LOCAL_TASK;
   }
+
+  // Correct placement of gtranslate menu-item
+  if (isset($items['admin/settings/gtranslate'])) {
+    $items['admin/config/regional/gtranslate'] = $items['admin/settings/gtranslate'];
+    unset($items['admin/settings/gtranslate']);
+  }
 }
 
 /**
