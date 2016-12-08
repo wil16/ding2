@@ -50,7 +50,24 @@ function vejlebib_settings_image_default_styles() {
     'name' => 'vejlebib_list',
     'label' => 'Vejlebib list',
     'effects' => array(
-      1 => array(
+      15 => array(
+        'label' => 'Manual Crop: Custom crop',
+        'help' => 'Crop a freely user-selected area.',
+        'effect callback' => 'manualcrop_crop_effect',
+        'form callback' => 'manualcrop_crop_form',
+        'summary theme' => 'manualcrop_crop_summary',
+        'module' => 'manualcrop',
+        'name' => 'manualcrop_crop',
+        'data' => array(
+          'width' => 150,
+          'height' => 150,
+          'keepproportions' => 1,
+          'reuse_crop_style' => '',
+          'style_name' => 'vejlebib_list',
+        ),
+        'weight' => 0,
+      ),
+      14 => array(
         'label' => 'Skalér og beskær',
         'help' => 'Skalering og beskæring bevarer billedets højde-bredde-forhold og beskærer derefter den største dimension. Det er nyttigt til at generere kvadratiske thumbnails uden at forvrænge billedet.',
         'effect callback' => 'image_scale_and_crop_effect',
