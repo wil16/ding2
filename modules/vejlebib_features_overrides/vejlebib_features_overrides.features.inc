@@ -25,9 +25,6 @@ function vejlebib_features_overrides_field_default_field_instances_alter(&$data)
   if (isset($data['node-ding_news-field_ding_news_title_image'])) {
     $data['node-ding_news-field_ding_news_title_image']['required'] = 1; /* WAS: 0 */
   }
-  if (isset($data['node-ding_news-field_bpi_workflow'])) {
-    $data['node-ding_news-field_bpi_workflow']['display']['default']['type'] = 'hidden'; /* WAS: 'list_default' */
-  }
 }
 
 /**

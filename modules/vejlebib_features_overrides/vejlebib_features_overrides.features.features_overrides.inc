@@ -19,7 +19,6 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["field_instance.node-ding_news-field_ding_news_list_image.widget|settings|manualcrop_styles_list|ding_list_large"]["DELETED"] = TRUE;
   $overrides["field_instance.node-ding_news-field_ding_news_list_image.widget|settings|manualcrop_styles_list|vejlebib_list"] = 'vejlebib_list';
   $overrides["field_instance.node-ding_news-field_ding_news_title_image.required"] = 1;
-  $overrides["field_instance.node-ding_news-field_bpi_workflow.display|default|type"] = 'hidden';
 
   // Exported overrides for: page_manager_handlers
   $overrides["page_manager_handlers.node_view_panel_context_5.conf|display|content|new-162f6ba7-45ad-44f3-8ef6-5302990b1842"] = (object) array(
