@@ -388,7 +388,10 @@ function vejlebib_features_overrides_strongarm_alter(&$data) {
 function vejlebib_features_overrides_views_default_views_alter(&$data) {
   if (isset($data['ding_news'])) {
     $data['ding_news']->display['ding_news_frontpage_list']->display_options['fields']['field_ding_news_list_image']['settings']['image_style'] = 'vejlebib_list'; /* WAS: '' */
+    $data['ding_news']->display['ding_news_groups_list']->display_options['fields']['field_ding_news_list_image']['settings']['image_style'] = 'vejlebib_list'; /* WAS: '' */
     unset($data['ding_news']->display['ding_news_frontpage_list']->display_options['fields']['field_ding_news_list_image']['settings']['styles']);
     unset($data['ding_news']->display['ding_news_frontpage_list']->display_options['fields']['field_ding_news_list_image']['type']);
+    unset($data['ding_news']->display['ding_news_groups_list']->display_options['fields']['field_ding_news_list_image']['settings']['styles']);
+    unset($data['ding_news']->display['ding_news_groups_list']->display_options['fields']['field_ding_news_list_image']['type']);
   }
 }

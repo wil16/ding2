@@ -343,6 +343,9 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["views_view.ding_news.display|ding_news_frontpage_list|display_options|fields|field_ding_news_list_image|settings|image_style"] = 'vejlebib_list';
   $overrides["views_view.ding_news.display|ding_news_frontpage_list|display_options|fields|field_ding_news_list_image|settings|styles"]["DELETED"] = TRUE;
   $overrides["views_view.ding_news.display|ding_news_frontpage_list|display_options|fields|field_ding_news_list_image|type"]["DELETED"] = TRUE;
+  $overrides["views_view.ding_news.display|ding_news_groups_list|display_options|fields|field_ding_news_list_image|settings|image_style"] = 'vejlebib_list';
+  $overrides["views_view.ding_news.display|ding_news_groups_list|display_options|fields|field_ding_news_list_image|settings|styles"]["DELETED"] = TRUE;
+  $overrides["views_view.ding_news.display|ding_news_groups_list|display_options|fields|field_ding_news_list_image|type"]["DELETED"] = TRUE;
 
  return $overrides;
 }
