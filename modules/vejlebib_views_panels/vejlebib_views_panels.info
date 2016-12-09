@@ -20,7 +20,6 @@ features[menu_blocks][] = information_menu_block
 features[menu_custom][] = menu-information-menu
 features[page_manager_handlers][] = node_view_panel_context_2
 features[page_manager_handlers][] = node_view_panel_context_6
-features[page_manager_handlers][] = site_template_search_blank
 features[page_manager_pages][] = ding_staff
 features[views_view][] = vejlebib_ding_event
 features[views_view][] = vejlebib_ding_news
