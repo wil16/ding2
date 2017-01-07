@@ -203,9 +203,6 @@ function vejlebib_settings_update_7004(&$sandbox) {
  * Enable admin_menu modules for vejlebib branch.
  */
 function vejlebib_settings_update_7005() {
-  if (module_exists('toolbar')) {
-    module_disable(array('toolbar'), TRUE);
-  }
   module_enable(array('admin_menu', 'admin_menu_toolbar'));
 
   ding2_admin_menu_shortcuts();
