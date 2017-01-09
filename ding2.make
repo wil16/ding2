@@ -504,6 +504,9 @@ libraries[jquery-ui-carousel][destination] = "libraries"
 
 ; Vejlebib additions
 ; Contrib
+projects[chr][subdir] = "contrib"
+projects[chr][version] = "1.8"
+
 projects[d3][subdir] = "contrib"
 projects[d3][version] = "1.x-dev"
 
