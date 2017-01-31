@@ -543,11 +543,8 @@ projects[panelizer][subdir] = "contrib"
 projects[panelizer][version] = "3.1"
 
 ; TODO: update to newest version and remove patches accordingly.
-projects[wayf_dk_login][type] = "module"
 projects[wayf_dk_login][subdir] = "contrib"
-projects[wayf_dk_login][download][type] = "git"
-projects[wayf_dk_login][download][url] = "http://git.drupal.org/project/wayf_dk_login.git"
-projects[wayf_dk_login][download][revision] = "5020f26"
+projects[wayf_dk_login][version] = "1.2-beta1"
 ; Fix index errors in php 5.4 (https://www.drupal.org/node/2414137).
 projects[wayf_dk_login][patch][] = "https://www.drupal.org/files/issues/fix_index_errors-2414137-1.patch"
 ; Allow other modules to take over user creation process (https://www.drupal.org/node/2414173).
