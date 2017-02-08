@@ -269,7 +269,7 @@ function fbs_reservation_branch_name($branch_id) {
 function fbs_reservation_default_options($account) {
   $patron_info = fbs_get_patron_info($account);
   return array(
-    'preferred_branch' => $patron_info['preferred_branch'],
+    'fbs_preferred_branch' => $patron_info['preferred_branch'],
     'interest_period' => variable_get('fbs_default_interest_period', 180),
   );
 }
@@ -285,7 +285,7 @@ function fbs_reservation_default_options($account) {
  * @return array
  *   The reservation options.
  */
-function fbs_reservation_options($account, $default_branch) {
+function fbs_reservation_options($account, $default_branch = NULL) {
   $preferred_branch = NULL;
 
   if (ding_user_is_provider_user($account)) {
@@ -299,7 +299,7 @@ function fbs_reservation_options($account, $default_branch) {
   }
 
   $form = array();
-  $form += ding_reservation_default_options_branch('preferred_branch', $preferred_branch, fbs_branches());
+  $form += ding_reservation_default_options_branch('fbs_preferred_branch', $preferred_branch, fbs_branches());
   $form += ding_reservation_interest_period_selector('interest_period', variable_get('fbs_default_interest_period', 180), fbs_interest_periods());
 
   return $form;
@@ -314,7 +314,7 @@ function fbs_reservation_options($account, $default_branch) {
  *   Form values.
  */
 function fbs_reservation_options_submit($account, $values) {
-  fbs_update_preferred_branch($account, $values['preferred_branch']);
+  fbs_update_preferred_branch($account, $values['fbs_preferred_branch']);
 }
 
 /**
