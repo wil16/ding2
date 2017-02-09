@@ -216,13 +216,6 @@ function vejlebib_settings_update_7006() {
 }
 
 /**
- * Enable htmlmail, mmeu, gtranslate for vejlebib branch.
- */
-function vejlebib_settings_update_7006() {
-  module_enable(array('htmlmail', 'mmeu', 'gtranslate'));
-}
-
-/**
  * Enable vejlebib_fbs
  */
 function vejlebib_settings_update_7007() {
