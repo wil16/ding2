@@ -17,4 +17,4 @@ projects[drupal][patch][] = http://drupal.org/files/issues/translate_role_names-
 projects[ding2][type] = "profile"
 projects[ding2][download][type] = "git"
 projects[ding2][download][url] = "git@github.com:vejlebib/ding2.git"
-projects[ding2][download][branch] = "vejlebib"
+projects[ding2][download][tag] = "7.x-2.5.0-vejlebib"
