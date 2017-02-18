@@ -194,12 +194,6 @@ function ting_search_context_secure_permissions($role) {
       'edit own ding_search_context_link content',
       'edit any ding_search_context_link content',
     ),
-    'local editor' => array(
-      'delete own ding_search_context_link content',
-      'create ding_search_context_link content',
-      'edit own ding_search_context_link content',
-      'edit any ding_search_context_link content',
-    ),
   );
   if (isset($permissions[$role])) {
     return $permissions[$role];
