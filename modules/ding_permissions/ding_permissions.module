@@ -1,4 +1,4 @@
-<?php
+  <?php
 /**
  * @file
  * Module file for secure permissions in code.
@@ -449,7 +449,7 @@ function ding_permissions_secure_permissions($role) {
       'pay using dibs',
       'post comments',
       'revert revisions',
-      'schedule (un)publishing of nodes',
+      'schedule publishing of nodes',
       'schedule workflow transitions',
       'search content',
       'select account cancellation method',
@@ -492,6 +492,7 @@ function ding_permissions_secure_permissions($role) {
       'view pane admin links',
       'view private files',
       'view revisions',
+      'view scheduled content',
       'view the administration theme',
     ),
     'editor' => array(
@@ -605,7 +606,7 @@ function ding_permissions_secure_permissions($role) {
       'notify of path changes',
       'participate in workflow',
       'revert revisions',
-      'schedule (un)publishing of nodes',
+      'schedule publishing of nodes',
       'show workflow state form',
       'switch shortcut sets',
       'use manualcrop',
@@ -635,7 +636,6 @@ function ding_permissions_secure_permissions($role) {
       'edit own document files',
       'edit own image files',
       'edit own video files',
-      'schedule (un)publishing of nodes',
       'show workflow state form',
       'use text format ding_wysiwyg',
       'view own private files',
@@ -789,7 +789,7 @@ function ding_permissions_secure_permissions($role) {
       'notify of path changes',
       'participate in workflow',
       'revert revisions',
-      'schedule (un)publishing of nodes',
+      'schedule publishing of nodes',
       'show workflow state form',
       'switch shortcut sets',
       'translate admin strings',
@@ -808,6 +808,7 @@ function ding_permissions_secure_permissions($role) {
       'view pane admin links',
       'view private files',
       'view revisions',
+      'view scheduled content',
       'view the administration theme',
     ),
     'local editor' => array(
