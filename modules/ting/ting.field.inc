@@ -373,6 +373,19 @@ function ting_field_formatter_view($entity_type, $entity, $field, $instance, $la
 
         if ($link) {
           $url = entity_uri($type, $entity);
+
+          if (isset($collection)) {
+            $objects = $collection->getEntities();
+            $types = array();
+            foreach ($objects as $object) {
+              $type = $object->getType();
+              if (!in_array($type, $types)) {
+                $types[] = $type;
+              }
+            }
+            $url['options']['query']['types'] = $types;
+          }
+
           $title = l($title, $url['path'], $url['options']);
         }
         else {
