@@ -36,7 +36,13 @@ function ting_get_object($object_id, $collection = FALSE, $with_relations = FALS
     $cache_key = $object_id;
     if ($collection) {
       $type = TING_CACHE_COLLECTION;
-      $cache_key = ting_cache_collection_key($object_id);
+      if (!empty($_GET['types'])) {
+        $types = $_GET['types'];
+        $cache_key = ting_cache_collection_key($object_id, $types);
+      }
+      else {
+        $cache_key = ting_cache_collection_key($object_id);
+      }
     }
     $object = ting_cache_get($cache_key, $type, $with_relations);
     if ($object != TING_CACHE_EMPTY_ENTRY && !$object) {
@@ -428,7 +434,18 @@ function ting_execute_cache($request) {
             }
             ting_cache_set($object->id, $object, $type);
           }
-          ting_cache_set(ting_cache_collection_key($collection->objects[0]->id), $collection, TING_CACHE_COLLECTION);
+          $object_id = $collection->objects[0]->id;
+          $types = array();
+          foreach ($collection->objects as $key => $object) {
+            // Borrowed from TingEntity:getType().
+            $type = !empty($object->record['dc:type']['dkdcplus:BibDK-Type'][0]) ? $object->record['dc:type']['dkdcplus:BibDK-Type'][0] : FALSE;
+            if ($type && !in_array($type, $types)) {
+              $types[] = $type;
+            }
+          }
+          _ting_collection_types_parameter_normalization($types);
+
+          ting_cache_set(ting_cache_collection_key($object_id, $types), $collection, TING_CACHE_COLLECTION);
         }
       }
     }
@@ -564,12 +581,11 @@ function ting_cache_set($id, $value, $type = TING_CACHE_TING_OBJECT) {
  * @return string
  *   Cache key to retrieve and set data in the cache,
  */
-function ting_cache_collection_key($object_id) {
+function ting_cache_collection_key($object_id, $types = FALSE) {
   $cache_key = $object_id;
-  if (!empty($_GET['facets'])) {
-    $cache_key .= ':' . md5(serialize($_GET['facets']));
+  if ($types) {
+    $cache_key .= ':' . md5(serialize($types));
   }
-
   return $cache_key;
 }
 

@@ -1080,3 +1080,11 @@ function _ting_anchor_name($type) {
   $name = strtolower($name);
   return $name;
 }
+
+function _ting_collection_types_parameter_normalization(&$types) {
+  foreach ($types as $key => $type) {
+    $type = mb_strtolower($type);
+    $type = preg_replace('/[ ]+/', '-', $type);
+    $types[$key] = $type;
+  }
+}
