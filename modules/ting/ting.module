@@ -1084,6 +1084,8 @@ function _ting_anchor_name($type) {
 function _ting_collection_types_parameter_normalization(&$types) {
   foreach ($types as $key => $type) {
     $type = mb_strtolower($type);
+    $type = trim($type);
+    $type = preg_replace('/\(|\)/', '' , $type);
     $type = preg_replace('/[ ]+/', '-', $type);
     $types[$key] = $type;
   }
