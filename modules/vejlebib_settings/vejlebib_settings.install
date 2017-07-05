@@ -221,3 +221,11 @@ function vejlebib_settings_update_7006() {
 function vejlebib_settings_update_7007() {
   module_enable(array('vejlebib_fbs'));
 }
+
+/**
+ * Disable dynamic_background
+ */
+function vejlebib_settings_update_7008() {
+  module_disable(array('dynamic_background'));
+  drupal_uninstall_modules(array('dynamic_background'));
+}
