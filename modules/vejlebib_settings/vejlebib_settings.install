@@ -33,6 +33,91 @@ function vejlebib_settings_install() {
 	  	array(),
 	  	WATCHDOG_ERROR);
 	}
+
+  // Install our shortcut set.
+  _vejlebib_settings_install_default_shortcut_set();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function vejlebib_settings_uninstall() {
+  variable_del('vejlebib_default_shortcut_set');
+}
+
+/**
+ * Setup and remember the default shortcut set for vejlebib. By separating our
+ * shortcuts in our set we have bette control over what's added and removed.
+ */
+function _vejlebib_settings_install_default_shortcut_set() {
+  // Indempotent functions are nice!
+  if ($set_name = variable_get('vejlebib_default_shortcut_set', FALSE)) {
+    $shortcut_set = shortcut_set_load($set_name);
+    if (!shortcut_set_delete($shortcut_set)) {
+      return;
+    }
+  }
+
+  $shortcut_set = new stdClass();
+  $shortcut_set->title = 'Vejlebib shortcut set';
+
+  $shortcut_set->links = array(
+    array(
+      'link_path' => 'node/add/ding-news',
+      'link_title' => 'Opret nyhed',
+      'weight' => -17,
+    ),
+    array(
+      'link_path' => 'node/add/ding-event',
+      'link_title' => 'Opret begivenhed',
+      'weight' => -16,
+    ),
+    array(
+      'link_path' => 'node/add/ding-page',
+      'link_title' => 'Opret side',
+      'weight' => -15,
+    ),
+    array(
+      'link_path' => 'admin/content',
+      'link_title' => 'Find indhold',
+      'weight' => -14,
+    ),
+    array(
+      'link_path' => 'node/add/ding-rolltab',
+      'link_title' => 'Rullefane',
+      'weight' => -13,
+    ),
+    array(
+      'link_path' => 'admin/structure/nodequeue',
+      'link_title' => 'Nodekø',
+      'weight' => -12,
+    ),
+    array(
+      'link_path' => 'admin/config/content/scheduler/list',
+      'link_title' => 'Scheduler',
+      'weight' => -11,
+    ),
+    array(
+      'link_path' => 'admin/config/ting/ting_search_carousel',
+      'link_title' => 'Karrusel',
+      'weight' => -10,
+    ),
+    array(
+      'link_path' => 'admin/config/regional/translate/translate',
+      'link_title' => 'Oversæt',
+      'weight' => -9,
+    ),
+    array(
+      'link_path' => 'admin/config/ting/ting-field-search/profiles',
+      'link_title' => 'Søgeprofiler',
+      'weight' => -8
+    ),
+  );
+
+  if (SAVED_NEW == shortcut_set_save($shortcut_set) && !empty($shortcut_set->set_name)) {
+    // So we can remember what to use in hook_shortcut_default_set.
+    variable_set('vejlebib_default_shortcut_set', $shortcut_set->set_name);
+  }
 }
 
 /**
@@ -224,8 +309,10 @@ function vejlebib_settings_update_7007() {
 
 /**
  * Disable dynamic_background
+ * Install our own shortcut set.
  */
 function vejlebib_settings_update_7008() {
   module_disable(array('dynamic_background'));
   drupal_uninstall_modules(array('dynamic_background'));
+  _vejlebib_settings_install_default_shortcut_set();
 }

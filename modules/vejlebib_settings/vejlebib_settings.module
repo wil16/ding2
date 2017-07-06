@@ -352,3 +352,10 @@ function vejlebib_settings_form_ding_wayf_dk_create_user_form_alter(&$form, &$fo
     $form['branch']['#default_value'] = 'DK-763000';
   }
 }
+
+/**
+ * Implements hook_shortcut_default_set().
+ */
+function vejlebib_settings_shortcut_default_set($account) {
+  return variable_get('vejlebib_default_shortcut_set', FALSE);
+}
