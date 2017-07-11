@@ -345,25 +345,30 @@ function bpi_form_node_form_alter(&$form, &$form_state, $form_id) {
       return;
     }
 
-    // Get the 'Sent to BPI' (Save and push) state id.
-    $workflows = workflow_get_workflow_names();
-    $workflows_reversed = array_flip($workflows);
-    $wid = $workflows_reversed['BPI'];
-    $states = workflow_get_workflow_state_names($wid);
-    $states_reversed = array_flip($states);
-    $push_sid = $states_reversed['Sent to BPI'];
-    $delete_sid = $states_reversed['Deleted from BPI'];
-    $created_sid = $states_reversed['Created from BPI'];
+    // Get state ids from our workflow, so that we can act accordingly.
+    $states = bpi_workflow_by_machine_names(array(
+      'sent_to_bpi',
+      'deleted_bpi',
+      'created_bpi',
+    ));
+    $push_sid = $states['sent_to_bpi']->sid;
+    $delete_sid = $states['deleted_bpi']->sid;
+    $created_sid = $states['created_bpi']->sid;
+
+    // Get the current state of the node. Need to pass by reference, so field
+    // name needs a variable.
+    $field_name = 'field_bpi_workflow';
+    $current_sid = workflow_node_current_state($node, 'node', $field_name);
 
     // Remove 'Save and push' button if the current state is already 'Sent to
     // BPI'. We have to do this, because it's not possible to disallow workflow
     // transitions to the current state.
-    if ($form['field_bpi_workflow'][LANGUAGE_NONE][0]['#default_value'] == $push_sid) {
+    if ($current_sid == $push_sid) {
       unset($form['field_bpi_workflow'][LANGUAGE_NONE][0]['workflow']['workflow_sid']['#options'][$push_sid]);
     }
 
     // Remove "Delete from BPI" button, when we have already deleted from BPI.
-    if ($form['field_bpi_workflow'][LANGUAGE_NONE][0]['#default_value'] == $delete_sid) {
+    if ($current_sid == $delete_sid) {
       unset($form['field_bpi_workflow'][LANGUAGE_NONE][0]['workflow']['workflow_sid']['#options'][$delete_sid]);
     }
 
