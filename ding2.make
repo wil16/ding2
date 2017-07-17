@@ -603,8 +603,8 @@ projects[ting_visual_relation][subdir] = "vejlebib_modules"
 
 projects[ting_marc][type] = "module"
 projects[ting_marc][download][type] = "git"
-projects[ting_marc][download][url] = "git@github.com:easyddb/ting_marc"
-projects[ting_marc][download][branch] = "master"
+projects[ting_marc][download][url] = "git@github.com:vejlebib/ting_marc.git"
+projects[ting_marc][download][branch] = "vejlebib"
 projects[ting_marc][subdir] = "vejlebib_modules"
 
 projects[ding_wayf_dk][type] = "module"
