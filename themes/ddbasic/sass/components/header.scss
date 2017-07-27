@@ -288,23 +288,19 @@
         .search-field {
           width: 100%;
           .form-item-search-block-form {
-            width: getColumn(8) + getGutter();
+            width: getColumn(11 of 12) + getGutter(12);
             input[type="text"] {
               &:focus {
                 width: 100%;
               }
             }
 
-            // Tablet
             @include media($tablet) {
               width: 100%;
-              padding-right: 270px;
-            }
-            // Mobile
-            @include media($mobile) {
-              padding-right: 170px;
+              padding-right: 70px;
             }
           }
+
           .form-actions {
             width: getColumn(1);
             float: right;
@@ -353,7 +349,14 @@
 
           // Mobile
           @include media($mobile) {
-            width: 100px;
+            position: static;
+            width: 100%;
+            float: left;
+            margin-top: 10px;
+
+            .select-wrapper {
+              border-radius: $round-corner;
+            }
           }
         }
       }
@@ -430,27 +433,6 @@
       // Mobile search open
       .mobile-search-is-open & {
         top: $header-height;
-      }
-      .search-form-extended.search-form-no-materials & {
-        .search-field {
-          width: 100%;
-          .form-item-search-block-form {
-            width: getColumn(11 of 12) + getGutter(12);
-          }
-          .form-actions {
-            width: getColumn(1 of 12);
-          }
-
-          // Mobile
-          @include media($mobile) {
-            .form-item-search-block-form {
-              width: getColumn(9 of 12) + getGutter(12);
-            }
-            .form-actions {
-              width: getColumn(3 of 12);
-            }
-          }
-        }
       }
     }
   }
