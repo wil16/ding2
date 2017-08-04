@@ -197,9 +197,10 @@ ul.main-menu-second-level {
 }
 
 // ==========================================================================
-// Main menu third level
+// Main menu third level and User menu
 // ==========================================================================
-ul.main-menu-third-level {
+ul.main-menu-third-level,
+ul.system-user-menu {
   li {
     margin-bottom: 20px;
     a {
@@ -438,10 +439,14 @@ ul.topbar-menu {
 // ==========================================================================
 // User menu in Header wrapper
 // ==========================================================================
-.header-wrapper .navigation-inner {
-  > ul.main-menu-third-level {
-    //Mouseover style
+.header-wrapper .pane-system-user-menu {
+  .block-title {
     display: none;
+  }
+  > ul.system-user-menu {
+
+    display: none;
+    //Mouseover style
     width: 292px;
     position: relative;
     border-radius: $round-corner;
