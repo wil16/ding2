@@ -877,35 +877,28 @@ search/node',
     $display->content['new-07dec5bc-64c2-4632-ac67-72598e98d159'] = $pane;
     $display->panels['footer'][5] = 'new-07dec5bc-64c2-4632-ac67-72598e98d159';
     $pane = new stdClass();
-    $pane->pid = 'new-d9c1432b-77cc-432c-987a-eb64569a0b88';
+    $pane->pid = 'new-5492cf55-e77a-4d1d-928f-5d08f143e1c0';
     $pane->panel = 'header';
-    $pane->type = 'user_menu';
-    $pane->subtype = 'user_menu';
+    $pane->type = 'block';
+    $pane->subtype = 'system-user-menu';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'path' => 'user/[user:uid]',
-      'context' => 'logged-in-user',
-      'override_title' => 1,
+      'override_title' => 0,
       'override_title_text' => '',
+      'override_title_heading' => 'h2',
     );
-    $pane->cache = array(
-      'method' => '0',
-      'settings' => array(),
-    );
+    $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'js-mobile-user-menu',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = 'd9c1432b-77cc-432c-987a-eb64569a0b88';
-    $display->content['new-d9c1432b-77cc-432c-987a-eb64569a0b88'] = $pane;
-    $display->panels['header'][0] = 'new-d9c1432b-77cc-432c-987a-eb64569a0b88';
+    $pane->uuid = '5492cf55-e77a-4d1d-928f-5d08f143e1c0';
+    $display->content['new-5492cf55-e77a-4d1d-928f-5d08f143e1c0'] = $pane;
+    $display->panels['header'][0] = 'new-5492cf55-e77a-4d1d-928f-5d08f143e1c0';
     $pane = new stdClass();
     $pane->pid = 'new-f06a4c37-1ed2-4a64-8502-7b8d4d0619b0';
     $pane->panel = 'header';
