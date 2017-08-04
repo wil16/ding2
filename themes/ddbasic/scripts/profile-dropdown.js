@@ -3,7 +3,7 @@
   'use strict';
 
   function dropdown() {
-    return $('.js-mobile-user-menu .navigation-inner > .main-menu-third-level');
+    return $('.pane-system-user-menu ul');
   }
 
   // Profile dropdown
