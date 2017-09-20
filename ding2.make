@@ -544,7 +544,7 @@ projects[mailchimp][subdir] = "contrib"
 projects[mailchimp][version] = "2.12"
 
 projects[panelizer][subdir] = "contrib"
-projects[panelizer][version] = "3.1"
+projects[panelizer][version] = "3.4"
 
 projects[wayf_dk_login][subdir] = "contrib"
 projects[wayf_dk_login][version] = "1.2-beta1"
