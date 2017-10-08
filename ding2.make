@@ -587,12 +587,6 @@ projects[ding_opening_hours][download][url] = "git@github.com:vejlebib/ding_open
 projects[ding_opening_hours][download][branch] = "master"
 projects[ding_opening_hours][subdir] = "vejlebib_modules"
 
-projects[ding_eresource][type] = "module"
-projects[ding_eresource][download][type] = "git"
-projects[ding_eresource][download][url] = "git@github.com:vejlebib/ding_eresource.git"
-projects[ding_eresource][download][branch] = "master"
-projects[ding_eresource][subdir] = "vejlebib_modules"
-
 projects[ding_redia_bapp][type] = "module"
 projects[ding_redia_bapp][download][type] = "git"
 projects[ding_redia_bapp][download][url] = "git@github.com:vejlebib/ding_redia_bapp.git"
