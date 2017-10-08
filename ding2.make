@@ -240,9 +240,6 @@ projects[metatag][version] = "1.21"
 projects[mmeu][subdir] = "contrib"
 projects[mmeu][version] = "1.0"
 
-projects[mmeu][subdir] = "contrib"
-projects[mmeu][version] = "1.0"
-
 projects[module_filter][subdir] = "contrib"
 projects[module_filter][version] = "2.0"
 
