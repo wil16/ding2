@@ -1109,21 +1109,6 @@ class AlmaClient {
   }
 
   /**
-<<<<<<< HEAD
-   * Create new user af alma.
-   *
-   * @param $cpr
-   * @param $pin_code
-   * @param $name
-   * @param $mail
-   * @param $branch
-   *
-   * @return \DOMDocument
-   * @throws \AlmaClientBorrCardNotFound
-   * @throws \AlmaClientCommunicationError
-   * @throws \AlmaClientHTTPError
-   * @throws \AlmaClientReservationNotFound
-=======
    * Create new user at alma.
    *
    * @param $cpr
@@ -1140,7 +1125,6 @@ class AlmaClient {
    * @return bool
    *   Always returns TRUE. If any errors happens exception is thrown in the
    *   request function.
->>>>>>> f00856beaad4f5df7f917a24028ad41ebc334115
    */
   public function self_register($cpr, $pin_code, $name, $mail, $branch) {
     $params = array(
