@@ -334,3 +334,13 @@ function vejlebib_settings_update_7009() {
   }
   variable_set('views_defaults', $views_defaults);
 }
+
+/**
+ * Ensure ding_bookmark is uninstalled.
+ */
+function vejlebib_settings_update_7010() {
+  // This is done several places, but do it here also as a precaution.
+  module_disable(array('ding_bookmark'));
+  // The uninstall is not done elsewhere however:
+  drupal_uninstall_modules(array('ding_bookmark'));
+}
