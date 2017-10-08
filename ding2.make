@@ -544,9 +544,6 @@ projects[chr][version] = "1.8"
 projects[d3][subdir] = "contrib"
 projects[d3][version] = "1.x-dev"
 
-projects[environment_indicator][subdir] = "contrib"
-projects[environment_indicator][version] = "2.8"
-
 projects[entityqueue][subdir] = "contrib"
 projects[entityqueue][version] = "1.1"
 
