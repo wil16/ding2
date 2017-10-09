@@ -193,27 +193,6 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
           'locks' => array(),
           'uuid' => 'ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc',
         ); /* WAS: '' */
-    $data['site_template_panel_context']->conf['display']->content['new-b45d93a7-545d-43bb-bfcd-ff1726a0dcfb'] = (object) array(
-          'pid' => 'new-b45d93a7-545d-43bb-bfcd-ff1726a0dcfb',
-          'panel' => 'header',
-          'type' => 'block',
-          'subtype' => 'vejlebib_views_panels-vejlebib-ding-userinfo',
-          'shown' => TRUE,
-          'access' => array(),
-          'configuration' => array(
-            'override_title' => 1,
-            'override_title_text' => '',
-          ),
-          'cache' => array(),
-          'style' => array(
-            'settings' => NULL,
-          ),
-          'css' => array(),
-          'extras' => array(),
-          'position' => 3,
-          'locks' => array(),
-          'uuid' => 'b45d93a7-545d-43bb-bfcd-ff1726a0dcfb',
-        ); /* WAS: '' */
     $data['site_template_panel_context']->conf['display']->content['new-a26c9eef-5076-4e88-8327-3ca9a3acd38f'] = (object) array(
           'pid' => 'new-a26c9eef-5076-4e88-8327-3ca9a3acd38f',
           'panel' => 'header',
@@ -281,7 +260,6 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
         ); /* WAS: '' */
     $data['site_template_panel_context']->conf['display']->panels['bottom'][1] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038'; /* WAS: '' */
     $data['site_template_panel_context']->conf['display']->panels['header'][2] = 'new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc'; /* WAS: 'new-d9c1432b-77cc-432c-987a-eb64569a0b88' */
-    $data['site_template_panel_context']->conf['display']->panels['header'][3] = 'new-b45d93a7-545d-43bb-bfcd-ff1726a0dcfb'; /* WAS: 'new-37d18c98-64ec-448f-ac62-ad0cc199fe06' */
     $data['site_template_panel_context']->conf['display']->panels['header'][4] = 'new-a26c9eef-5076-4e88-8327-3ca9a3acd38f'; /* WAS: 'new-878eb4d9-6377-4af3-ace5-bf3dd3988dad' */
     $data['site_template_panel_context']->conf['display']->panels['header'][5] = 'new-803a4c6a-e633-4507-88b1-0f061d84a298'; /* WAS: 'new-5b25369c-89e4-4f49-857d-6b4b5b0d456a' */
     $data['site_template_panel_context']->conf['display']->panels['header'][6] = 'new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4'; /* WAS: '' */

@@ -199,27 +199,6 @@ function vejlebib_features_overrides_features_override_default_overrides() {
       'locks' => array(),
       'uuid' => 'a26c9eef-5076-4e88-8327-3ca9a3acd38f',
     );
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-b45d93a7-545d-43bb-bfcd-ff1726a0dcfb"] = (object) array(
-      'pid' => 'new-b45d93a7-545d-43bb-bfcd-ff1726a0dcfb',
-      'panel' => 'header',
-      'type' => 'block',
-      'subtype' => 'vejlebib_views_panels-vejlebib-ding-userinfo',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'override_title' => 1,
-        'override_title_text' => '',
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 3,
-      'locks' => array(),
-      'uuid' => 'b45d93a7-545d-43bb-bfcd-ff1726a0dcfb',
-    );
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-d9c1432b-77cc-432c-987a-eb64569a0b88"]["DELETED"] = TRUE;
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc"] = (object) array(
       'pid' => 'new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc',
@@ -266,7 +245,6 @@ function vejlebib_features_overrides_features_override_default_overrides() {
     );
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|bottom|1"] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|2"] = 'new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc';
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|3"] = 'new-b45d93a7-545d-43bb-bfcd-ff1726a0dcfb';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|4"] = 'new-a26c9eef-5076-4e88-8327-3ca9a3acd38f';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|5"] = 'new-803a4c6a-e633-4507-88b1-0f061d84a298';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|6"] = 'new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4';
