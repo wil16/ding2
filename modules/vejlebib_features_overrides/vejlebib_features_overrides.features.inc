@@ -172,27 +172,6 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
           'locks' => array(),
           'uuid' => '54ccde0a-233f-48a8-9b8a-a612fae26038',
         ); /* WAS: '' */
-    $data['site_template_panel_context']->conf['display']->content['new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc'] = (object) array(
-          'pid' => 'new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc',
-          'panel' => 'header',
-          'type' => 'block',
-          'subtype' => 'ding_opening_hours-oho-lib-today',
-          'shown' => TRUE,
-          'access' => array(),
-          'configuration' => array(
-            'override_title' => 0,
-            'override_title_text' => '',
-          ),
-          'cache' => array(),
-          'style' => array(
-            'settings' => NULL,
-          ),
-          'css' => array(),
-          'extras' => array(),
-          'position' => 2,
-          'locks' => array(),
-          'uuid' => 'ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc',
-        ); /* WAS: '' */
     $data['site_template_panel_context']->conf['display']->content['new-a26c9eef-5076-4e88-8327-3ca9a3acd38f'] = (object) array(
           'pid' => 'new-a26c9eef-5076-4e88-8327-3ca9a3acd38f',
           'panel' => 'header',
@@ -259,7 +238,6 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
           'uuid' => 'f87605e1-1c3f-4108-9e89-7f5ac1810ff4',
         ); /* WAS: '' */
     $data['site_template_panel_context']->conf['display']->panels['bottom'][1] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038'; /* WAS: '' */
-    $data['site_template_panel_context']->conf['display']->panels['header'][2] = 'new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc'; /* WAS: 'new-d9c1432b-77cc-432c-987a-eb64569a0b88' */
     $data['site_template_panel_context']->conf['display']->panels['header'][4] = 'new-a26c9eef-5076-4e88-8327-3ca9a3acd38f'; /* WAS: 'new-878eb4d9-6377-4af3-ace5-bf3dd3988dad' */
     $data['site_template_panel_context']->conf['display']->panels['header'][5] = 'new-803a4c6a-e633-4507-88b1-0f061d84a298'; /* WAS: 'new-5b25369c-89e4-4f49-857d-6b4b5b0d456a' */
     $data['site_template_panel_context']->conf['display']->panels['header'][6] = 'new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4'; /* WAS: '' */

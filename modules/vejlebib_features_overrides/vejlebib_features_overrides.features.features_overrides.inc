@@ -200,27 +200,6 @@ function vejlebib_features_overrides_features_override_default_overrides() {
       'uuid' => 'a26c9eef-5076-4e88-8327-3ca9a3acd38f',
     );
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-d9c1432b-77cc-432c-987a-eb64569a0b88"]["DELETED"] = TRUE;
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc"] = (object) array(
-      'pid' => 'new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc',
-      'panel' => 'header',
-      'type' => 'block',
-      'subtype' => 'ding_opening_hours-oho-lib-today',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'override_title' => 0,
-        'override_title_text' => '',
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 2,
-      'locks' => array(),
-      'uuid' => 'ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc',
-    );
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4"] = (object) array(
       'pid' => 'new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4',
       'panel' => 'header',
@@ -244,7 +223,6 @@ function vejlebib_features_overrides_features_override_default_overrides() {
       'uuid' => 'f87605e1-1c3f-4108-9e89-7f5ac1810ff4',
     );
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|bottom|1"] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038';
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|2"] = 'new-ee547b2e-6dfb-4d6c-a0c9-1851b3dfd0fc';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|4"] = 'new-a26c9eef-5076-4e88-8327-3ca9a3acd38f';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|5"] = 'new-803a4c6a-e633-4507-88b1-0f061d84a298';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|6"] = 'new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4';
