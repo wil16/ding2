@@ -172,53 +172,7 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
           'locks' => array(),
           'uuid' => '54ccde0a-233f-48a8-9b8a-a612fae26038',
         ); /* WAS: '' */
-    $data['site_template_panel_context']->conf['display']->content['new-803a4c6a-e633-4507-88b1-0f061d84a298'] = (object) array(
-          'pid' => 'new-803a4c6a-e633-4507-88b1-0f061d84a298',
-          'panel' => 'header',
-          'type' => 'wayf_dk_login',
-          'subtype' => 'wayf_dk_login',
-          'shown' => TRUE,
-          'access' => array(),
-          'configuration' => array(
-            'icon' => 'UK_01.png',
-            'override_title' => 1,
-            'override_title_text' => '',
-          ),
-          'cache' => array(),
-          'style' => array(
-            'settings' => NULL,
-          ),
-          'css' => array(),
-          'extras' => array(),
-          'position' => 5,
-          'locks' => array(),
-          'uuid' => '803a4c6a-e633-4507-88b1-0f061d84a298',
-        ); /* WAS: '' */
-    $data['site_template_panel_context']->conf['display']->content['new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4'] = (object) array(
-          'pid' => 'new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4',
-          'panel' => 'header',
-          'type' => 'ding_wayf_dk_create_user',
-          'subtype' => 'ding_wayf_dk_create_user',
-          'shown' => TRUE,
-          'access' => array(),
-          'configuration' => array(
-            'icon' => NULL,
-            'override_title' => 1,
-            'override_title_text' => '',
-          ),
-          'cache' => array(),
-          'style' => array(
-            'settings' => NULL,
-          ),
-          'css' => array(),
-          'extras' => array(),
-          'position' => 6,
-          'locks' => array(),
-          'uuid' => 'f87605e1-1c3f-4108-9e89-7f5ac1810ff4',
-        ); /* WAS: '' */
     $data['site_template_panel_context']->conf['display']->panels['bottom'][1] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038'; /* WAS: '' */
-    $data['site_template_panel_context']->conf['display']->panels['header'][5] = 'new-803a4c6a-e633-4507-88b1-0f061d84a298'; /* WAS: 'new-5b25369c-89e4-4f49-857d-6b4b5b0d456a' */
-    $data['site_template_panel_context']->conf['display']->panels['header'][6] = 'new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4'; /* WAS: '' */
     unset($data['site_template_panel_context']->conf['display']->content['new-37d18c98-64ec-448f-ac62-ad0cc199fe06']);
     unset($data['site_template_panel_context']->conf['display']->content['new-d9c1432b-77cc-432c-987a-eb64569a0b88']);
   }

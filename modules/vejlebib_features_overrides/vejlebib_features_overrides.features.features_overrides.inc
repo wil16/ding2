@@ -156,54 +156,7 @@ function vejlebib_features_overrides_features_override_default_overrides() {
       'locks' => array(),
       'uuid' => '54ccde0a-233f-48a8-9b8a-a612fae26038',
     );
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-803a4c6a-e633-4507-88b1-0f061d84a298"] = (object) array(
-      'pid' => 'new-803a4c6a-e633-4507-88b1-0f061d84a298',
-      'panel' => 'header',
-      'type' => 'wayf_dk_login',
-      'subtype' => 'wayf_dk_login',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'icon' => 'UK_01.png',
-        'override_title' => 1,
-        'override_title_text' => '',
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 5,
-      'locks' => array(),
-      'uuid' => '803a4c6a-e633-4507-88b1-0f061d84a298',
-    );
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-d9c1432b-77cc-432c-987a-eb64569a0b88"]["DELETED"] = TRUE;
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4"] = (object) array(
-      'pid' => 'new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4',
-      'panel' => 'header',
-      'type' => 'ding_wayf_dk_create_user',
-      'subtype' => 'ding_wayf_dk_create_user',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'icon' => NULL,
-        'override_title' => 1,
-        'override_title_text' => '',
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 6,
-      'locks' => array(),
-      'uuid' => 'f87605e1-1c3f-4108-9e89-7f5ac1810ff4',
-    );
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|bottom|1"] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038';
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|5"] = 'new-803a4c6a-e633-4507-88b1-0f061d84a298';
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|6"] = 'new-f87605e1-1c3f-4108-9e89-7f5ac1810ff4';
 
   // Exported overrides for: page_manager_pages
   $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|content|new-1235d134-3c15-4d11-86e4-a48f9c8737b3"]["DELETED"] = TRUE;
