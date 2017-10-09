@@ -174,7 +174,6 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
         ); /* WAS: '' */
     $data['site_template_panel_context']->conf['display']->panels['bottom'][1] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038'; /* WAS: '' */
     unset($data['site_template_panel_context']->conf['display']->content['new-37d18c98-64ec-448f-ac62-ad0cc199fe06']);
-    unset($data['site_template_panel_context']->conf['display']->content['new-d9c1432b-77cc-432c-987a-eb64569a0b88']);
   }
 }
 
