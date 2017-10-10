@@ -335,5 +335,5 @@ function ding_library_update_7012() {
  */
 function ding_library_update_7013() {
   field_delete_field('field_ding_library_list_image');
-  field_purge_batch(1000);
+  field_purge_batch(10);
 }
