@@ -418,28 +418,28 @@ function ding2_update_7027() {
  * Update our own translations.
  */
 function ding2_update_7028() {
-  ding2_translation_update();
+  // Nothing in vejlebib
 }
 
 /**
  * Update our own translations.
  */
 function ding2_update_7029() {
-  ding2_translation_update();
+  // Nothing in vejlebib
 }
 
 /**
  * Update our own translations.
  */
 function ding2_update_7030() {
-  ding2_translation_update();
+  // Nothing in vejlebib
 }
 
 /**
  * Update our own translations.
  */
 function ding2_update_7031() {
-  ding2_translation_update();
+  // Nothing in vejlebib
 }
 
 /**
@@ -470,14 +470,14 @@ function ding2_update_7035() {
  * Update our own translations.
  */
 function ding2_update_7036() {
-  ding2_translation_update();
+  // Nothing in vejlebib
 }
 
 /**
  * Update our own translations.
  */
 function ding2_update_7037() {
-  ding2_translation_update();
+  // Nothing in vejlebib
 }
 
 /**
