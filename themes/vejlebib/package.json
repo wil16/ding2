@@ -1,0 +1,17 @@
+{
+  "name": "vejlebib_theme",
+  "version": "1.0.0",
+  "description": "A sub-theme of DDBasic V2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vejlebib/ding2.git"
+  },
+  "author": "",
+  "homepage": "https://github.com/vejlebib/ding2#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-help": "^1.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0"
+  }
+}
