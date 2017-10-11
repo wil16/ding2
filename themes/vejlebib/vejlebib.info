@@ -1,0 +1,6 @@
+name = Vejlebib
+description = A sub-theme of DDBasic V2.0
+core = 7.x
+base theme = ddbasic
+
+stylesheets[all][] = css/style.css
