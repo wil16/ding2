@@ -373,7 +373,7 @@ function vejlebib_settings_form_user_login_block_alter(&$form, &$form_state, $fo
       '#path' => 'wayf/consume',
       '#options' => array(
         'attributes' => array(
-          'class' => array('wayf-login-lin button'),
+          'class' => array('wayf-login-link button'),
         ),
         'query' => array(
           drupal_get_destination(),
