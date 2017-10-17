@@ -1,46 +1,49 @@
 /**
- * Styling of WAYF-links (login and create user).
+ * Styling of WAYF-links and related adjustments (login and create user).
  *
  * @author Simon Holt
  */
 
-// Common rules for WAYF-links
-%wayf-link {
-  margin-top: 24px;
-  margin-bottom: 24px;
+// Note: have to make it this specific.
+.pane-user-login .user-login-container .form-actions {
+  width: 100%;
+  // This seems to provide a better vertical rhythm.
+  margin-top: 20px;
 
-  .pane-content {
-    // Align both the text and img (for login link)
-    text-align: center;
+  .submit-button-with-icon {
+    float: right;
+    margin-bottom: 15px;
   }
 
-  a {
-    display: inline-block;
-    width: 100%;
-    padding: 5px;
-    text-decoration: none;
+  .submit-button-with-icon,
+  .wayf-dk-login,
+  .ding-wayf-create-user {
+    width: 48%;
   }
-}
 
-// Specific rules for the login link
-.wayf-dk-login {
-  @extend %wayf-link;
+  .button {
+    padding: 20px 15px 14px 15px;
+    background-color: $black;
+    color: $white;
 
-  img {
-    height: 20px;
-    // Adjust the position of Nem-ID logo:
-    padding-left: 3px;
-    padding-bottom: 2px;
-  }
-}
-
-// Specific rules for the create user link
-.ding-wayf-create-user {
-  @extend %wayf-link;
-
-  a {
     &:hover {
-      background: none;
+      background-color: $grey-dark;
     }
   }
+}
+
+.wayf-dk-login {
+  clear: right;
+  float: right;
+
+  .button img {
+    float: right;
+    // Relative values seems to be to hard to control because of base theme.
+    width: 75px;
+    margin-top: -2px;
+  }
+}
+
+.ding-wayf-create-user {
+  float: left;
 }

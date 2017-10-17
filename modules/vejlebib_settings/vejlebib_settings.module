@@ -385,7 +385,7 @@ function vejlebib_settings_form_user_login_block_alter(&$form, &$form_state, $fo
   $form['user_login_container']['actions']['create-user-link'] = array(
     '#theme' => 'ding_wayf_dk_create_user_link',
     '#link' => l(t('Create user'), 'wayf/create-user/before-page', array(
-      'class' => array('create-user-link'),
+      'attributes' => array('class' => array('create-user-link button')),
     )),
   );
 }
