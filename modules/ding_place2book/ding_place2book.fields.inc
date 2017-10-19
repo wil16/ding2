@@ -492,13 +492,11 @@ function _ding_place2book_create_p2b_entities($entity, array $settings) {
         continue;
       }
 
-      $sale_begin = format_date(strtotime($price['sale_begin_at']), 'custom', 'Y-m-d\TH:i:sO', date_default_timezone());
-      $sale_end = format_date(strtotime($price['sale_end_at']), 'custom', 'Y-m-d\TH:i:sO', date_default_timezone());
       $data = array(
         'name' => $price['name'],
         'value' => $price['value'],
-        'sale_begin_at' => $sale_begin,
-        'sale_end_at' => $sale_end,
+        'sale_begin_at' => date_iso8601(strtotime($price['sale_begin_at'])),
+        'sale_end_at' => date_iso8601(strtotime($price['sale_end_at'])),
       );
 
       try {
@@ -569,13 +567,11 @@ function _ding_place2book_update_p2b_entities($entity, array $settings) {
         continue;
       }
 
-      $sale_begin = format_date(strtotime($price['sale_begin_at']), 'custom', 'Y-m-d\TH:i:sO', date_default_timezone());
-      $sale_end = format_date(strtotime($price['sale_end_at']), 'custom', 'Y-m-d\TH:i:sO', date_default_timezone());
       $data = array(
         'name' => $price['name'],
         'value' => $price['value'],
-        'sale_begin_at' => $sale_begin,
-        'sale_end_at' => $sale_end,
+        'sale_begin_at' => date_iso8601(strtotime($price['sale_begin_at'])),
+        'sale_end_at' => date_iso8601(strtotime($price['sale_end_at'])),
       );
 
       try {
