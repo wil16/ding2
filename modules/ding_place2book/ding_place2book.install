@@ -48,9 +48,8 @@ function ding_place2book_update_7001() {
 }
 
 /**
- * Implements hook_update_N().
- *
- * Adds defaults for each existing event.
+ * Adds defaults for each existing event, deletes the old place2book field and
+ * migrates old settings to new variables.
  */
 function ding_place2book_update_7002(&$sandbox) {
   $query = new EntityFieldQuery();
