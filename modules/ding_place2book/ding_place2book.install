@@ -39,11 +39,20 @@ function ding_place2book_field_schema($field) {
 }
 
 /**
+ * Update ticket_type in all existing place2book-settings to 'Adgang'.
+ */
+function ding_place2book_update_7001() {
+  $num_upd = db_update('ding_place2book')
+    ->fields(array('ticket_type' => 'Adgang'))
+    ->execute();
+}
+
+/**
  * Implements hook_update_N().
  *
  * Adds defaults for each existing event.
  */
-function ding_place2book_update_7001(&$sandbox) {
+function ding_place2book_update_7002(&$sandbox) {
   $query = new EntityFieldQuery();
   $result = $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'ding_event')
@@ -87,6 +96,6 @@ function ding_place2book_update_7001(&$sandbox) {
 /**
  * Enable migration module for existing sites.
  */
-function ding_place2book_update_7002() {
+function ding_place2book_update_7003() {
   module_enable(array('ding_place2book_migrate'));
 }
