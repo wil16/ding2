@@ -82,6 +82,10 @@ function ding_place2book_update_7002(&$sandbox) {
   variable_set('ding_p2b_default_capacity', $ding_place2book_event_nodes['capacity']);
   variable_set('ding_p2b_default_price_name', $ding_place2book_event_nodes['ticket_type']);
 
+  // Migrate kultunaut category and target mappings.
+  variable_set('ding_p2b_kultunaut_export_category', variable_get('ding_place2book_category_mappings'));
+  variable_set('ding_p2b_kultunaut_age_group', variable_get('ding_place2book_target_mappings'));
+
   // Remove old variables.
   variable_del('ding_place2book');
   variable_del('ding_place2book_event_nodes');
