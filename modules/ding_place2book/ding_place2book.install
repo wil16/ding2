@@ -89,6 +89,9 @@ function ding_place2book_update_7002(&$sandbox) {
   // Remove old variables.
   variable_del('ding_place2book');
   variable_del('ding_place2book_event_nodes');
+  variable_del('ding_place2book_category_mappings');
+  variable_del('ding_place2book_target_mappings');
+  variable_del('ding_place2book_kultunaut_categories');
 }
 
 /**
