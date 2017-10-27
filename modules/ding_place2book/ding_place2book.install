@@ -52,23 +52,6 @@ function ding_place2book_update_7001() {
  * migrates old settings to new variables.
  */
 function ding_place2book_update_7002(&$sandbox) {
-  $query = new EntityFieldQuery();
-  $result = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'ding_event')
-    ->execute();
-
-  if (isset($result['node'])) {
-    foreach ($result['node'] as $item) {
-      $node = node_load($item->nid);
-      $node->field_place2book[LANGUAGE_NONE][0] = array(
-        'event_id' => NULL,
-        'event_maker_id' => NULL,
-        'synchronize' => 0,
-      );
-      node_save($node);
-    }
-  }
-
   // Remove field.
   field_delete_field('field_place2book_tickets');
 
