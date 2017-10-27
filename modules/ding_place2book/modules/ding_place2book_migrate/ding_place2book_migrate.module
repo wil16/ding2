@@ -34,16 +34,33 @@ function _ding_place2book_migrate_batch($events, &$context) {
   }
   $part = array_slice($events, $context['sandbox']['progress'], 20);
   $context['sandbox']['progress'] += count($part);
+  // TODO: Load all nodes at once with node_load_multiple.
   foreach ($part as $event) {
     $node = node_load($event->nid);
     $event_maker_id = _ding_place2book_get_event_maker($node);
     if (!empty($event->place2book_id) && $event->place2book_id != -1) {
-      $node->field_place2book[LANGUAGE_NONE][0] = array(
-        'event_id' => $event->place2book_id,
-        'event_maker_id' => $event_maker_id,
-        'synchronize' => $event->maintain_copy,
+      // Using node_save() will invoke our field_presave hook, which will try to
+      // update the event in p2b. The event will be migrated, but a lot of
+      // errors from p2b will be shown in the UI, because of missing data.
+      // Using field_attach_update() on just our field will make Entity
+      // reference destroy our OG references (and will also invoke presave).
+      // So we opt to update the field data tables directly. This shouldn't be
+      // a problem, since we don't want all the normal side effects of saving a
+      // field and should also give considerately better performance.
+      $values = array(
+        'entity_type' => 'node',
+        'bundle' => $node->type,
+        'entity_id' => $node->nid,
+        'revision_id' => $node->vid,
+        'language' => LANGUAGE_NONE,
+        'delta' => 0,
+        'field_place2book_event_id' => $event->place2book_id,
+        'field_place2book_event_maker_id' => $event_maker_id,
+        'field_place2book_synchronize' => $event->maintain_copy,
       );
-      node_save($node);
+
+      drupal_write_record('field_data_field_place2book', $values);
+      drupal_write_record('field_revision_field_place2book', $values);
     }
     $context['message'] = t('Processing: <em>@title</em> (@current/@total).', array(
       '@title' => $node->title,
@@ -66,6 +83,8 @@ function _ding_place2book_migrate_batch($events, &$context) {
 function _ding_place2book_migrate_batch_finished($success, $results, $operations) {
   $message = t('Finished with an error.');
   if ($success) {
+    // TODO: If success we should make sure field_cache and entity_cache is
+    // flushed.
     $message = t('Events migration completed.');
     // Drop table.
     if (db_table_exists('ding_place2book')) {
