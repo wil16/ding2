@@ -36,7 +36,7 @@ function ding_place2book_field_widget_info() {
       'field types' => array('ding_p2b'),
       'behaviors' => array(
         'multiple values' => FIELD_BEHAVIOR_CUSTOM,
-        'default value' => FIELD_BEHAVIOR_CUSTOM,
+        'default value' => FIELD_BEHAVIOR_NONE,
       ),
     ),
   );
