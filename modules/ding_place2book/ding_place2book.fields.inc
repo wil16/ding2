@@ -435,19 +435,23 @@ function ding_place2book_field_formatter_view($entity_type, $entity, $field, $in
   switch ($field['field_name']) {
     case 'field_place2book':
       if ($display['type'] == 'ding_p2b_formatter_default' && !empty($items)) {
-        list($event_id, $event_maker_id) = array_values(reset($items));
+        list($event_id, $event_maker_id, $synchronize) = array_values(reset($items));
 
-        $element[0] = array(
-          '#markup' => "<div data-event-id='{$event_id}' data-event-maker-id='{$event_maker_id}' class='place2book'></div>",
-          '#attached' => array(
-            'css' => array(
-              drupal_get_path('module', 'ding_place2book') . '/css/ding_place2book.css',
+        // There's nothing to show if don't have an event_id from p2b. If we
+        // have one we'll also require the synchronize option to be set.
+        if ($event_id && $synchronize) {
+          $element[0] = array(
+            '#markup' => "<div data-event-id='{$event_id}' data-event-maker-id='{$event_maker_id}' class='place2book'></div>",
+            '#attached' => array(
+              'css' => array(
+                drupal_get_path('module', 'ding_place2book') . '/css/ding_place2book.css',
+              ),
+              'js' => array(
+                drupal_get_path('module', 'ding_place2book') . '/js/ding_place2book.js',
+              ),
             ),
-            'js' => array(
-              drupal_get_path('module', 'ding_place2book') . '/js/ding_place2book.js',
-            ),
-          ),
-        );
+          );
+        }
       }
   }
   return $element;
