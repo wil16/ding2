@@ -112,33 +112,7 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|bottom|1"] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038';
 
   // Exported overrides for: page_manager_pages
-  $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|content|new-1235d134-3c15-4d11-86e4-a48f9c8737b3"]["DELETED"] = TRUE;
-  $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|content|new-803af3cd-d614-46cf-98ba-6b21fb5ad7ac"] = (object) array(
-      'pid' => 'new-803af3cd-d614-46cf-98ba-6b21fb5ad7ac',
-      'panel' => 'tertiary',
-      'type' => 'views_panes',
-      'subtype' => 'vejlebib_ding_event-vejlebib_ding_event_list',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'context' => array(
-          0 => 'empty',
-        ),
-        'override_title' => 0,
-        'override_title_text' => '',
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(),
-      'extras' => array(),
-      'position' => 0,
-      'locks' => array(),
-      'uuid' => '803af3cd-d614-46cf-98ba-6b21fb5ad7ac',
-    );
   $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|content|new-b14f0ccc-f81c-4267-b843-2fd333f260f8"]["DELETED"] = TRUE;
-  $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|panels|tertiary|0"] = 'new-803af3cd-d614-46cf-98ba-6b21fb5ad7ac';
   $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|panels|tertiary|1"]["DELETED"] = TRUE;
   $overrides["page_manager_pages.ding_staff_library.default_handlers|page_ding_staff_library_panel_context|conf|display|content|new-6171a17a-4789-4aac-86de-eb9c76dee003"]["DELETED"] = TRUE;
   $overrides["page_manager_pages.ding_staff_library.default_handlers|page_ding_staff_library_panel_context|conf|display|content|new-ea6b2837-b81a-4750-bb37-0fd27ab49e8e"] = (object) array(

@@ -133,32 +133,6 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
  */
 function vejlebib_features_overrides_default_page_manager_pages_alter(&$data) {
   if (isset($data['ding_frontpage'])) {
-    $data['ding_frontpage']->default_handlers['page_ding_frontpage_panel_context']->conf['display']->content['new-803af3cd-d614-46cf-98ba-6b21fb5ad7ac'] = (object) array(
-          'pid' => 'new-803af3cd-d614-46cf-98ba-6b21fb5ad7ac',
-          'panel' => 'tertiary',
-          'type' => 'views_panes',
-          'subtype' => 'vejlebib_ding_event-vejlebib_ding_event_list',
-          'shown' => TRUE,
-          'access' => array(),
-          'configuration' => array(
-            'context' => array(
-              0 => 'empty',
-            ),
-            'override_title' => 0,
-            'override_title_text' => '',
-          ),
-          'cache' => array(),
-          'style' => array(
-            'settings' => NULL,
-          ),
-          'css' => array(),
-          'extras' => array(),
-          'position' => 0,
-          'locks' => array(),
-          'uuid' => '803af3cd-d614-46cf-98ba-6b21fb5ad7ac',
-        ); /* WAS: '' */
-    $data['ding_frontpage']->default_handlers['page_ding_frontpage_panel_context']->conf['display']->panels['tertiary'][0] = 'new-803af3cd-d614-46cf-98ba-6b21fb5ad7ac'; /* WAS: 'new-1235d134-3c15-4d11-86e4-a48f9c8737b3' */
-    unset($data['ding_frontpage']->default_handlers['page_ding_frontpage_panel_context']->conf['display']->content['new-1235d134-3c15-4d11-86e4-a48f9c8737b3']);
     unset($data['ding_frontpage']->default_handlers['page_ding_frontpage_panel_context']->conf['display']->content['new-b14f0ccc-f81c-4267-b843-2fd333f260f8']);
     unset($data['ding_frontpage']->default_handlers['page_ding_frontpage_panel_context']->conf['display']->panels['tertiary'][1]);
   }
