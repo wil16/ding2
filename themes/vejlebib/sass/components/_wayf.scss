@@ -4,8 +4,14 @@
  * @author Simon Holt
  */
 
-// Note: have to make it this specific.
-.pane-user-login .user-login-container .form-actions {
+// The user login form is sometimes duplicated when submitting form and the
+// structure of the HTML also changes. So we have to apply a different more
+// specific selector when the form is changed.
+// Using a placeholder an extending this seems to be the cleanest way of
+// achieving this. It is not possible to use a more specific selector which can
+// be used in both situations.
+// TODO: Look into why the form is duplicated.
+%vejlebib-user-login-form-actions {
   width: 100%;
   // This seems to provide a better vertical rhythm.
   margin-top: 20px;
@@ -29,6 +35,22 @@
     &:hover {
       background-color: $grey-dark;
     }
+  }
+}
+
+// Target the form-actions before the form is submitted.
+.user-login-form .user-login-container .form-actions {
+  @extend %vejlebib-user-login-form-actions;
+}
+
+// Target the form-actions when the form is rebuild after submit.
+.popupbar .user-login-form .user-login-container .form-actions {
+  @extend %vejlebib-user-login-form-actions;
+
+  // In this mode we also need to correct a display: inline-block, which is
+  // applied with .popupbar class in the selector.
+  a {
+    display: block;
   }
 }
 
