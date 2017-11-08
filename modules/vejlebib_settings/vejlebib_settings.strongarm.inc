@@ -394,5 +394,12 @@ Once the fee is paid, it is not possible to cancel the payment.';
   );
   $export['theme_wellejus_settings'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ting_search_form_style';
+  $strongarm->value = 'extended';
+  $export['ting_search_form_style'] = $strongarm;
+
   return $export;
 }
