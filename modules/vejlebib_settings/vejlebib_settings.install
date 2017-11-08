@@ -344,3 +344,11 @@ function vejlebib_settings_update_7010() {
   // The uninstall is not done elsewhere however:
   drupal_uninstall_modules(array('ding_bookmark'));
 }
+
+/**
+ * Disable and uninstall ding_opening_hours and ting_covers_plus modules.
+ */
+function vejlebib_settings_update_7011() {
+  module_disable(array('ding_opening_hours', 'ting_covers_plus'));
+  drupal_uninstall_modules(array('ding_opening_hours', 'ting_covers_plus'));
+}
