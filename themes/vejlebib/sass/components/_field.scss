@@ -1,0 +1,19 @@
+/**
+ * Styling of fields.
+ */
+
+// ==========================================================================
+// Search fields
+// ==========================================================================
+div.search-field-in-content--message {
+  background-color: $color-primary;
+  color: $color-text-on-primary;
+
+  a,
+  a.active {
+    color: $white;
+    &:hover {
+      color: $white-opacity-dark;
+    }
+  }
+}

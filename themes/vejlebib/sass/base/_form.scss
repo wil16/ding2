@@ -1,0 +1,11 @@
+/**
+ * Styling of form elements.
+ */
+
+input[type="checkbox"]:checked + label::before {
+  background-color: $color-primary;
+}
+
+input[type="radio"]:checked + label::after {
+  background-color: $color-primary;
+}

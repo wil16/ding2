@@ -1,0 +1,89 @@
+/**
+ * Styling of elements difened by a class that are formattet the same way, no
+ * matter what context they appear in.
+ */
+
+// Topbar opening hours
+a.topbar-link-opening-hours {
+  background-color: $white;
+  &::after {
+    color: $color-text-link;
+  }
+}
+
+// Topbar link user account
+a.topbar-link-user-account {
+  background-color: $white;
+}
+
+// Topbar link user login.
+a.topbar-link-user {
+  background-color: $color-secondary;
+}
+
+// Search overlay
+.search-overlay--wrapper {
+  .search-overlay--inner {
+    background-color: $color-primary;
+  }
+  .search-overlay--text {
+    color: $white;
+  }
+  .cancel a {
+    color: $charcoal-opacity-dark;
+  }
+}
+
+.menu-item-count {
+  background-color: $color-primary;
+  color: $color-text-on-primary;
+}
+
+// Color classes
+//
+// Use these classes to apply theme colors to elements
+//
+// Markup:
+// <div class="color-text">Color text</div>
+// <div class="color-text-on-primary background-color-primary">Color text on primary and Background color primary</div>
+// <div class="color-text-on-secondary background-color-secondary">Color text on primary and Background color primary</div>
+//
+//Styleguide 2.1.9
+
+.color-text {
+  color: $color-text;
+}
+
+.color-text-link {
+  color: $color-text-link;
+}
+
+.color-text-on-primary {
+  color: $color-text-on-primary;
+}
+
+.color-text-on-secondary {
+  color: $color-text-on-secondary;
+}
+
+.background-color-primary {
+  background-color: $color-primary;
+}
+
+.background-color-secondary {
+  background-color: $color-secondary;
+}
+
+// Slick slider
+.slick-slider .slick-arrow {
+  &.slick-prev,
+  &.slick-next {
+    &::after {
+      background-color: $color-secondary;
+    }
+  }
+}
+
+.rs-carousel .rs-carousel-items .rs-carousel-action.rs-carousel-action-next::after {
+  background-color: $color-secondary;
+}

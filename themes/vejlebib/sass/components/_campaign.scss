@@ -1,0 +1,10 @@
+/**
+ * Styling of the node type ding_campaign.
+ */
+
+.ding-campaign {
+  &.image-and-text,
+  &.text {
+    background: $color-primary;
+  }
+}

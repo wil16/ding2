@@ -1,0 +1,13 @@
+/**
+ * Styling of node type ding_event.
+ */
+
+.node-ding-event.node-full {
+  > .inner > .left .button {
+    background-color: $color-primary;
+  }
+
+  .field-name-field-ding-event-date {
+    color: $color-primary;
+  }
+}

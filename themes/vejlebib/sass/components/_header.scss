@@ -1,0 +1,18 @@
+/**
+ * Styling of site header.
+ */
+
+// Tablet: site header.
+@media screen and (max-width: 950px) {
+  .site-header {
+    .topbar-inner .topbar-menu,
+    .header.inner .pane-search-form,
+    > .navigation-wrapper .navigation-inner {
+      background-color: $color-primary;
+    }
+  }
+}
+
+.site-header > .navigation-wrapper {
+  background-color: $color-primary;
+}

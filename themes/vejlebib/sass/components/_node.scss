@@ -1,0 +1,18 @@
+/**
+ * Generel styling for all nodes.
+ */
+
+// ==========================================================================
+// View mode search result
+// ==========================================================================
+
+.node.view-mode-search-result {
+  .button {
+    background-color: $grey-medium;
+
+    &:hover {
+      color: $white;
+      background-color: $color-secondary;
+    }
+  }
+}

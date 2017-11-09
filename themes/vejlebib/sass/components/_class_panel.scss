@@ -1,0 +1,7 @@
+/**
+ * General styling for all panels and class specific styling for panels.
+ */
+
+.panel-pane ul.sub-menu li a.active::before {
+  background-color: $color-primary;
+}

@@ -1,0 +1,7 @@
+/**
+ * Styling of ul list in select-list class.
+ */
+
+.select-list ul.list-items li.active::before {
+  background-color: $color-primary;
+}

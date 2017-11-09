@@ -1,0 +1,31 @@
+/**
+ * Styling of datepicker.
+ */
+
+#ui-datepicker-div {
+  .ui-corner-all {
+    .ui-icon {
+      background: $color-primary;
+    }
+
+    &.ui-state-hover .ui-icon {
+      background-color: $white;
+      &::after {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .ui-datepicker-calendar td a {
+    &.ui-state-highlight {
+      border-color: $color-primary;
+      background-color: $color-primary;
+      color: $white;
+    }
+    &:hover {
+      border-color: $color-secondary;
+      background-color: $color-secondary;
+      color: $white;
+    }
+  }
+}

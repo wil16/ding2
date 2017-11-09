@@ -1,0 +1,17 @@
+/**
+ * Styling of cookie popup bar.
+ */
+
+#sliding-popup.sliding-popup-bottom {
+  #popup-buttons {
+    .agree-button,
+    .find-more-button {
+      background: $color-secondary;
+      color: $color-text-on-secondary;
+      .no-touch &:hover {
+        background-color: $grey-dark;
+        color: $white;
+      }
+    }
+  }
+}

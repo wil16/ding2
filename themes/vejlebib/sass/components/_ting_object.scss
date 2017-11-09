@@ -1,0 +1,9 @@
+/**
+ * Styling of ting_object.
+ */
+
+.ting-object.view-mode-teaser > .inner {
+  .field-name-ting-author:hover {
+    color: $color-primary;
+  }
+}

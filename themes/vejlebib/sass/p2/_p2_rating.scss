@@ -1,0 +1,51 @@
+/**
+ * Styling of p2 rating.
+ */
+
+.ding-entity-rating-clear:hover {
+  color: $color-primary;
+}
+
+// Overwrites for font-awsome icons.
+.ding-entity-rating {
+  .fa-star-o {
+    &.active,
+    &.submitted {
+      &::after {
+        color: $color-primary;
+      }
+    }
+
+    .material-item.odd &,
+    .ting-object.view-mode-teaser &,
+    .ting-object.view-mode-search-result & {
+      &.active,
+      &.submitted {
+        &::after {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &.has-submission {
+    .fa-star-o {
+      &.submitted {
+        &::after {
+          color: $color-secondary;
+        }
+      }
+
+      .material-item.odd &,
+      .ting-object.view-mode-teaser &,
+      .ting-object.view-mode-search-result & {
+        &.active,
+        &.submitted {
+          &::after {
+            color: $color-secondary;
+          }
+        }
+      }
+    }
+  }
+}

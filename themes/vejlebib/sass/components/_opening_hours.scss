@@ -1,0 +1,18 @@
+/**
+ * Styling of elements related to opening hours functionality.
+ */
+
+@media screen and (max-width: 950px) {
+  .opening-hours-table td:first-child {
+    color: $color-primary;
+  }
+}
+
+.opening-hours-week {
+  .button-previous,
+  .button-next {
+    &::after {
+      background-color: $color-secondary;
+    }
+  }
+}
