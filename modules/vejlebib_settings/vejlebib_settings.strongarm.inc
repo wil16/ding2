@@ -126,6 +126,41 @@ function vejlebib_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'ding_event_currency_type';
+  $strongarm->value = 'Kr';
+  $export['ding_event_currency_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ding_event_frontpage_items_per_page';
+  $strongarm->value = '18';
+  $export['ding_event_frontpage_items_per_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ding_event_frontpage_promoted';
+  $strongarm->value = 0;
+  $export['ding_event_frontpage_promoted'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ding_event_list_group_by_date';
+  $strongarm->value = 1;
+  $export['ding_event_list_group_by_date'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ding_event_list_items_per_page';
+  $strongarm->value = '20';
+  $export['ding_event_list_items_per_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'ding_wagnerguide_debug';
   $strongarm->value = 0;
   $export['ding_wagnerguide_debug'] = $strongarm;
