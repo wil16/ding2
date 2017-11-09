@@ -19,8 +19,6 @@ function vejlebib_features_overrides_field_group_info_alter(&$data) {
 function vejlebib_features_overrides_field_default_field_instances_alter(&$data) {
   if (isset($data['node-ding_news-field_ding_news_list_image'])) {
     $data['node-ding_news-field_ding_news_list_image']['required'] = 1; /* WAS: 0 */
-    $data['node-ding_news-field_ding_news_list_image']['widget']['settings']['manualcrop_styles_list']['vejlebib_list'] = 'vejlebib_list'; /* WAS: '' */
-    unset($data['node-ding_news-field_ding_news_list_image']['widget']['settings']['manualcrop_styles_list']['ding_list_large']);
   }
   if (isset($data['node-ding_news-field_ding_news_title_image'])) {
     $data['node-ding_news-field_ding_news_title_image']['required'] = 1; /* WAS: 0 */
