@@ -95,4 +95,5 @@ features[variable][] = scheduler_unpublish_revision_ding_rolltab
 features[variable][] = terms_of_sale_da
 features[variable][] = terms_of_sale_en
 features[variable][] = theme_wellejus_settings
+features[variable][] = ting_field_search_search_style
 features[variable][] = ting_search_form_style

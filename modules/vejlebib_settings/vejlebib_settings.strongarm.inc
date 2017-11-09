@@ -432,6 +432,13 @@ Once the fee is paid, it is not possible to cancel the payment.';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'ting_field_search_search_style';
+  $strongarm->value = 'extended_with_profiles';
+  $export['ting_field_search_search_style'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'ting_search_form_style';
   $strongarm->value = 'extended';
   $export['ting_search_form_style'] = $strongarm;
