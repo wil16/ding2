@@ -91,6 +91,20 @@ a.topbar-link-user {
   }
 }
 
-.rs-carousel .rs-carousel-items .rs-carousel-action.rs-carousel-action-next::after {
-  background-color: $color-secondary;
+.rs-carousel {
+  .rs-carousel-items .rs-carousel-action {
+    &.rs-carousel-action-next,
+    &.rs-carousel-action-prev {
+      &::after {
+        background-color: $color-secondary;
+      }
+      .no-touch &:hover::after {
+        background-color: $grey-dark;
+      }
+    }
+
+  }
+  .rs-carousel-tabs .rs-carousel-list-tabs .rs-carousel-item a::after {
+    background-color: $color-secondary;
+  }
 }
