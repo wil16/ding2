@@ -1,0 +1,11 @@
+/**
+ * Ding tabroll styling.
+ */
+
+// Needs to be this specific to override base.
+.ding-tabroll .ui-tabs-nav .ui-tabs-nav-item a {
+  outline: none;
+  &::after {
+    background-color: $color-text-secondary;
+  }
+}
