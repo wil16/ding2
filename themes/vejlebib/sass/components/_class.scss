@@ -6,8 +6,15 @@
 // Topbar opening hours
 a.topbar-link-opening-hours {
   background-color: $white;
+  color: $color-standard-text;
   &::after {
-    color: $color-text-link;
+    color: $color-primary;
+  }
+  .no-touch & {
+    &:hover {
+      background-color: $grey-dark;
+      color: $white;
+    }
   }
 }
 
