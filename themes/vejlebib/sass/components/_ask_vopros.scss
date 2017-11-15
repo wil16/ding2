@@ -1,0 +1,10 @@
+/**
+ * Styling of (related to) Biblioteksvagtens ask-widget button.
+ */
+
+.front {
+  div.ask-vopros-tab {
+    z-index: 1000; /* Ensure widget is not hidden below other elements */
+    right: 0;
+  }
+}
