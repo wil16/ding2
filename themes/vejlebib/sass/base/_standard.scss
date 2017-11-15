@@ -5,3 +5,10 @@
 h1 {
   color: $color-primary;
 }
+
+a {
+  color: $color-text-link;
+  &:hover {
+    color: $charcoal;
+  }
+}
