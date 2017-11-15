@@ -5,3 +5,8 @@
 .panel-pane ul.sub-menu li a.active::before {
   background-color: $color-primary;
 }
+
+.pane-content .pane-title,
+.panel-pane.pane-menu-title h2 {
+  color: $color-text-primary;
+}
