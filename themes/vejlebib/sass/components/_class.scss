@@ -46,6 +46,15 @@ a.topbar-link-user {
   color: $color-text-on-primary;
 }
 
+.more-link a,
+.node-ding-event.node-teaser .background .button {
+  background-color: $color-secondary;
+  color: $white;
+  &:hover {
+    background-color: $grey-dark;
+  }
+}
+
 // Color classes
 //
 // Use these classes to apply theme colors to elements
