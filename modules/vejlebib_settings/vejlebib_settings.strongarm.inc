@@ -28,7 +28,7 @@ function vejlebib_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ask_vopros_color';
-  $strongarm->value = '#95c11f';
+  $strongarm->value = '#005f8c';
   $export['ask_vopros_color'] = $strongarm;
 
   $strongarm = new stdClass();
