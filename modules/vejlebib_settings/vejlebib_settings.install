@@ -352,3 +352,10 @@ function vejlebib_settings_update_7011() {
   module_disable(array('ding_opening_hours', 'ting_covers_plus'));
   drupal_uninstall_modules(array('ding_opening_hours', 'ting_covers_plus'));
 }
+
+/**
+ * Remove old wellejus theme settings.
+ */
+function vejlebib_settings_update_7012() {
+  variable_del('theme_wellejust_settings');
+}
