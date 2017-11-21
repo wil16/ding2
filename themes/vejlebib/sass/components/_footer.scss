@@ -1,0 +1,30 @@
+/**
+ * Styling of footer.
+ */
+
+.footer {
+  color: $color-secondary;
+
+  .pane-content {
+    color: $white;
+  }
+
+  a[href^="mailto"],
+  a[href^="tel"] {
+    color: $color-secondary;
+
+    &:hover {
+      color: $white-opacity-dark;
+    }
+  }
+
+  .pane-block p {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer .pane-block p {
+    line-height: 30px;
+  }
+}
