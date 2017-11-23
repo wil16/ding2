@@ -32,6 +32,7 @@ features[environment_indicator_environment][] = production
 features[environment_indicator_environment][] = staging
 features[entityqueue_queue][] = vejlebib_all_staff_list
 features[entityqueue_queue][] = vejlebib_library_staff_list
+features[fe_block_boxes][] = footer_address
 features[features_api][] = api:2
 features[features_override_items][] = field_group.group_material_details|ting_object|ting_object|default
 features[features_overrides][] = field_group.group_material_details|ting_object|ting_object|default.data|children|27

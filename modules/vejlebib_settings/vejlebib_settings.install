@@ -13,27 +13,6 @@
  * DDB CMS.
  */
 function vejlebib_settings_install() {
-	// Update the Footer adresse block with Vejle bib's address and contact info.
-	$block_body = '<p>Vejle Bibliotekerne - Willy Sørensens Plads 1 - 7100 Vejle - tlf 7681&nbsp;3200 - <a href="mailto:vejlebib@vejlebib.dk">vejlebib@vejlebib.dk</a></p>';
-	try {
-	  $count = db_update('block_custom')
-	  	->condition('info', 'Footer adresse')
-	  	->fields(array('body' => $block_body))
-	  	->execute();
-	  if ($count) {
-	  	watchdog('vejlebib_settings',
-	  		'Succesfully updated Footer adresse block with Vejle bib\'s address',
-	  		array(),
-	  		WATCHDOG_INFO);
-	  }
-	}
-	catch (Exception $e) {
-	  watchdog('vejlebib_settings',
-	  	'An error occured while trying to update Footer adresse block with Vejle bib\'s address',
-	  	array(),
-	  	WATCHDOG_ERROR);
-	}
-
   // Install our shortcut set.
   _vejlebib_settings_install_default_shortcut_set();
 }
