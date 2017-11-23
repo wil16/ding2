@@ -1,0 +1,53 @@
+/**
+ * Vejlebib menu styling.
+ */
+
+.pane-menu-block-menu-block-secondary {
+  // Nested styling.
+  ul li ul {
+    padding: 20px 0 20px 20px;
+  }
+
+  // General styling of list-items in menu-block-secondary.
+  // (needs to be this specific)
+  ul li {
+    margin-bottom: 20px;
+
+    a {
+      margin-bottom: 5px;
+      height: 15px;
+    }
+
+    &.last {
+      margin-bottom: 0;
+    }
+    &.expanded {
+      margin-bottom: 5px;
+
+      &.active-trail > a {
+        color: $black;
+      }
+
+      ul {
+        border-left: 7px solid $grey;
+      }
+    }
+    // This is the active menu link. Place an arrow next to anchor.
+    &.active > a {
+      @include place-icon('arrow-right-small', $color-text-secondary, 18px);
+
+      &::after {
+        // Pathetic attempt to align the arrow with the text.
+        right: -22px;
+        top: -4px;
+      }
+    }
+  }
+}
+
+// On smaller screens the menu in navigation bar will take over.
+@media screen and (max-width: 950px) {
+  .pane-menu-block-menu-block-secondary {
+    display: none;
+  }
+}

@@ -29,6 +29,40 @@ function vejlebib_features_overrides_field_default_field_instances_alter(&$data)
  * Implements hook_default_page_manager_handlers_alter().
  */
 function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data) {
+  if (isset($data['node_view_panel_context_4'])) {
+    $data['node_view_panel_context_4']->conf['display']->content['new-0c1b010b-aad2-4a5e-badd-f2fe5334a80c']->position = 2; /* WAS: 3 */
+    $data['node_view_panel_context_4']->conf['display']->content['new-0d732c8e-6a2e-4993-ba6f-7cb2025bada6']->position = 3; /* WAS: 4 */
+    $data['node_view_panel_context_4']->conf['display']->content['new-1db24070-7658-41fd-abae-0b705dfe8845'] = (object) array(
+          'pid' => 'new-1db24070-7658-41fd-abae-0b705dfe8845',
+          'panel' => 'left_sidebar',
+          'type' => 'block',
+          'subtype' => 'menu_block-menu_block_secondary',
+          'shown' => TRUE,
+          'access' => array(),
+          'configuration' => array(
+            'override_title' => 1,
+            'override_title_text' => '',
+            'override_title_heading' => 'h2',
+          ),
+          'cache' => array(),
+          'style' => array(
+            'settings' => NULL,
+          ),
+          'css' => array(),
+          'extras' => array(),
+          'position' => 0,
+          'locks' => array(),
+          'uuid' => '1db24070-7658-41fd-abae-0b705dfe8845',
+        ); /* WAS: '' */
+    $data['node_view_panel_context_4']->conf['display']->content['new-b2afcfd3-6561-4a08-9b5d-f493ac9c3938']->position = 1; /* WAS: 2 */
+    $data['node_view_panel_context_4']->conf['display']->panels['left_sidebar'][0] = 'new-1db24070-7658-41fd-abae-0b705dfe8845'; /* WAS: 'new-c857a1ef-6bb2-4f95-94ae-d176d79a7265' */
+    $data['node_view_panel_context_4']->conf['display']->panels['left_sidebar'][1] = 'new-b2afcfd3-6561-4a08-9b5d-f493ac9c3938'; /* WAS: 'new-a5810ddf-717b-4560-a63a-1ec30c14060a' */
+    $data['node_view_panel_context_4']->conf['display']->panels['left_sidebar'][2] = 'new-0c1b010b-aad2-4a5e-badd-f2fe5334a80c'; /* WAS: 'new-b2afcfd3-6561-4a08-9b5d-f493ac9c3938' */
+    $data['node_view_panel_context_4']->conf['display']->panels['left_sidebar'][3] = 'new-0d732c8e-6a2e-4993-ba6f-7cb2025bada6'; /* WAS: 'new-0c1b010b-aad2-4a5e-badd-f2fe5334a80c' */
+    unset($data['node_view_panel_context_4']->conf['display']->content['new-a5810ddf-717b-4560-a63a-1ec30c14060a']);
+    unset($data['node_view_panel_context_4']->conf['display']->content['new-c857a1ef-6bb2-4f95-94ae-d176d79a7265']);
+    unset($data['node_view_panel_context_4']->conf['display']->panels['left_sidebar'][4]);
+  }
   if (isset($data['node_view_panel_context_5'])) {
     $data['node_view_panel_context_5']->conf['display']->content['new-162f6ba7-45ad-44f3-8ef6-5302990b1842'] = (object) array(
           'pid' => 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842',
@@ -122,7 +156,15 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
           'uuid' => '54ccde0a-233f-48a8-9b8a-a612fae26038',
         ); /* WAS: '' */
     $data['site_template_panel_context']->conf['display']->panels['bottom'][1] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038'; /* WAS: '' */
+    $data['site_template_panel_context']->conf['display']->content['new-3202a330-fa71-44f2-be0a-265ed734b321']->position = 1; /* WAS: 2 */
+    $data['site_template_panel_context']->conf['display']->panels['navigation'][1] = 'new-3202a330-fa71-44f2-be0a-265ed734b321'; /* WAS: 'new-e0e21892-3602-4e8f-8598-3dd63b46b76a' */
     unset($data['site_template_panel_context']->conf['display']->content['new-37d18c98-64ec-448f-ac62-ad0cc199fe06']);
+    unset($data['site_template_panel_context']->conf['display']->content['new-e0e21892-3602-4e8f-8598-3dd63b46b76a']);
+    unset($data['site_template_panel_context']->conf['display']->panels['header'][2]);
+    unset($data['site_template_panel_context']->conf['display']->panels['navigation'][2]);
+  }
+
+  if (isset($data['site_template_panel_context'])) {
   }
 }
 

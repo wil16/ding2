@@ -19,6 +19,39 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["field_instance.node-ding_news-field_ding_news_title_image.required"] = 1;
 
   // Exported overrides for: page_manager_handlers
+  // Exported overrides for: page_manager_handlers
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|content|new-0c1b010b-aad2-4a5e-badd-f2fe5334a80c|position"] = 2;
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|content|new-0d732c8e-6a2e-4993-ba6f-7cb2025bada6|position"] = 3;
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|content|new-1db24070-7658-41fd-abae-0b705dfe8845"] = (object) array(
+      'pid' => 'new-1db24070-7658-41fd-abae-0b705dfe8845',
+      'panel' => 'left_sidebar',
+      'type' => 'block',
+      'subtype' => 'menu_block-menu_block_secondary',
+      'shown' => TRUE,
+      'access' => array(),
+      'configuration' => array(
+        'override_title' => 1,
+        'override_title_text' => '',
+        'override_title_heading' => 'h2',
+      ),
+      'cache' => array(),
+      'style' => array(
+        'settings' => NULL,
+      ),
+      'css' => array(),
+      'extras' => array(),
+      'position' => 0,
+      'locks' => array(),
+      'uuid' => '1db24070-7658-41fd-abae-0b705dfe8845',
+    );
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|content|new-a5810ddf-717b-4560-a63a-1ec30c14060a"]["DELETED"] = TRUE;
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|content|new-b2afcfd3-6561-4a08-9b5d-f493ac9c3938|position"] = 1;
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|content|new-c857a1ef-6bb2-4f95-94ae-d176d79a7265"]["DELETED"] = TRUE;
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|panels|left_sidebar|0"] = 'new-1db24070-7658-41fd-abae-0b705dfe8845';
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|panels|left_sidebar|1"] = 'new-b2afcfd3-6561-4a08-9b5d-f493ac9c3938';
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|panels|left_sidebar|2"] = 'new-0c1b010b-aad2-4a5e-badd-f2fe5334a80c';
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|panels|left_sidebar|3"] = 'new-0d732c8e-6a2e-4993-ba6f-7cb2025bada6';
+  $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|panels|left_sidebar|4"]["DELETED"] = TRUE;
   $overrides["page_manager_handlers.node_view_panel_context_5.conf|display|content|new-162f6ba7-45ad-44f3-8ef6-5302990b1842"] = (object) array(
       'pid' => 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842',
       'panel' => 'main_content',
@@ -78,6 +111,7 @@ function vejlebib_features_overrides_features_override_default_overrides() {
       'locks' => array(),
       'uuid' => '79cc1770-c0c7-4b00-9938-4312b64282c5',
     );
+  $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-3202a330-fa71-44f2-be0a-265ed734b321|position"] = 1;
   $overrides["page_manager_handlers.node_view_panel_context_6.conf|display|content|new-a03269f4-7286-4752-af8e-239f14bf6182|position"] = 6;
   $overrides["page_manager_handlers.node_view_panel_context_6.conf|display|content|new-ce52c1a0-de29-45b5-83ef-03a71a32ff5d|position"] = 5;
   $overrides["page_manager_handlers.node_view_panel_context_6.conf|display|panels|main_content|3"] = 'new-79cc1770-c0c7-4b00-9938-4312b64282c5';
@@ -85,6 +119,7 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["page_manager_handlers.node_view_panel_context_6.conf|display|panels|main_content|5"] = 'new-ce52c1a0-de29-45b5-83ef-03a71a32ff5d';
   $overrides["page_manager_handlers.node_view_panel_context_6.conf|display|panels|main_content|6"] = 'new-a03269f4-7286-4752-af8e-239f14bf6182';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-37d18c98-64ec-448f-ac62-ad0cc199fe06"]["DELETED"] = TRUE;
+   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-e0e21892-3602-4e8f-8598-3dd63b46b76a"]["DELETED"] = TRUE;
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-54ccde0a-233f-48a8-9b8a-a612fae26038"] = (object) array(
       'pid' => 'new-54ccde0a-233f-48a8-9b8a-a612fae26038',
       'panel' => 'bottom',
@@ -108,6 +143,9 @@ function vejlebib_features_overrides_features_override_default_overrides() {
       'uuid' => '54ccde0a-233f-48a8-9b8a-a612fae26038',
     );
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|bottom|1"] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038';
+  $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|2"]["DELETED"] = TRUE;
+  $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|navigation|1"] = 'new-3202a330-fa71-44f2-be0a-265ed734b321';
+  $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|navigation|2"]["DELETED"] = TRUE;
 
   // Exported overrides for: page_manager_pages
   $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|content|new-b14f0ccc-f81c-4267-b843-2fd333f260f8"]["DELETED"] = TRUE;
