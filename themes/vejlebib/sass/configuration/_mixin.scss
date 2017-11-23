@@ -1,0 +1,40 @@
+/**
+ * Vejlebib theme mixins
+ *
+ * TODO: Look into just inlcude this directly form ddbasic. We need to use
+ * bourbon and possibly neat also, for this to work.
+ */
+
+@mixin place-icon(
+  $icon,
+  $color: $charcoal-opacity-dark,
+  $size: 54px) {
+  position: relative;
+  &::after {
+    @extend %icon-#{$icon};
+    @extend %icomoon-base;
+    font-size: $size;
+    line-height: 1;
+    color: $color;
+    display: block;
+    position: absolute;
+    top: 0;
+  }
+}
+
+@mixin place-icon-before(
+  $icon,
+  $color: #fff,
+  $size: 20px) {
+  position: relative;
+  &::before {
+    @extend %icon-#{$icon};
+    @extend %icomoon-base;
+    font-size: $size;
+    color: $color;
+    line-height: 15px;
+    display: block;
+    position: absolute;
+    top: 0;
+  }
+}
