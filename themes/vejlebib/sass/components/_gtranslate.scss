@@ -1,0 +1,48 @@
+/**
+ * Vejlebib styling for gtranslate module.
+ */
+
+// Needs to be this specific.
+.footer-inner .pane-gtranslate-gtranslate {
+  margin-bottom: 0;
+
+  .gtflag {
+    display: inline-block;
+  }
+
+  // This is basically just overriding/modifying select styling from ddbasic.
+  select {
+    display: block;
+    width: 100%;
+    background-color: $grey;
+    padding: 5px;
+    position: static;
+    height: 28px;
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
+    appearance: menulist;
+  }
+
+  .panel-pane-inner {
+    width: 100%;
+
+    .pane-content {
+      display: block;
+      width: 255px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .footer-inner .pane-gtranslate-gtranslate {
+    position: absolute;
+    right: 0;
+    bottom: 120px;
+    width: auto;
+
+    .panel-pane-inner .pane-content {
+      width: auto;
+    }
+  }
+}

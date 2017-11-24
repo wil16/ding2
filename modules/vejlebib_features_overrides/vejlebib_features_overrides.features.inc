@@ -133,9 +133,10 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
     $data['node_view_panel_context_6']->conf['display']->panels['main_content'][6] = 'new-a03269f4-7286-4752-af8e-239f14bf6182'; /* WAS: '' */
   }
   if (isset($data['site_template_panel_context'])) {
-    $data['site_template_panel_context']->conf['display']->content['new-54ccde0a-233f-48a8-9b8a-a612fae26038'] = (object) array(
-          'pid' => 'new-54ccde0a-233f-48a8-9b8a-a612fae26038',
-          'panel' => 'bottom',
+    $data['site_template_panel_context']->conf['display']->content['new-3202a330-fa71-44f2-be0a-265ed734b321']->position = 1; /* WAS: 2 */
+    $data['site_template_panel_context']->conf['display']->content['new-21663aca-ac35-4ab2-b5d9-6369ccb7e63d'] = (object) array(
+          'pid' => 'new-21663aca-ac35-4ab2-b5d9-6369ccb7e63d',
+          'panel' => 'footer',
           'type' => 'block',
           'subtype' => 'gtranslate-gtranslate',
           'shown' => TRUE,
@@ -151,13 +152,12 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
           ),
           'css' => array(),
           'extras' => array(),
-          'position' => 1,
+          'position' => 6,
           'locks' => array(),
-          'uuid' => '54ccde0a-233f-48a8-9b8a-a612fae26038',
+          'uuid' => '21663aca-ac35-4ab2-b5d9-6369ccb7e63d',
         ); /* WAS: '' */
-    $data['site_template_panel_context']->conf['display']->panels['bottom'][1] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038'; /* WAS: '' */
-    $data['site_template_panel_context']->conf['display']->content['new-3202a330-fa71-44f2-be0a-265ed734b321']->position = 1; /* WAS: 2 */
     $data['site_template_panel_context']->conf['display']->panels['navigation'][1] = 'new-3202a330-fa71-44f2-be0a-265ed734b321'; /* WAS: 'new-e0e21892-3602-4e8f-8598-3dd63b46b76a' */
+    $data['site_template_panel_context']->conf['display']->panels['footer'][6] = 'new-21663aca-ac35-4ab2-b5d9-6369ccb7e63d'; /* WAS: '' */
     unset($data['site_template_panel_context']->conf['display']->content['new-37d18c98-64ec-448f-ac62-ad0cc199fe06']);
     unset($data['site_template_panel_context']->conf['display']->content['new-e0e21892-3602-4e8f-8598-3dd63b46b76a']);
     unset($data['site_template_panel_context']->conf['display']->panels['header'][2]);

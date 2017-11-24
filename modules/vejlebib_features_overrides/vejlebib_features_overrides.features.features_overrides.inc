@@ -119,16 +119,16 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["page_manager_handlers.node_view_panel_context_6.conf|display|panels|main_content|5"] = 'new-ce52c1a0-de29-45b5-83ef-03a71a32ff5d';
   $overrides["page_manager_handlers.node_view_panel_context_6.conf|display|panels|main_content|6"] = 'new-a03269f4-7286-4752-af8e-239f14bf6182';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-37d18c98-64ec-448f-ac62-ad0cc199fe06"]["DELETED"] = TRUE;
-   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-e0e21892-3602-4e8f-8598-3dd63b46b76a"]["DELETED"] = TRUE;
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-54ccde0a-233f-48a8-9b8a-a612fae26038"] = (object) array(
-      'pid' => 'new-54ccde0a-233f-48a8-9b8a-a612fae26038',
-      'panel' => 'bottom',
+  $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-e0e21892-3602-4e8f-8598-3dd63b46b76a"]["DELETED"] = TRUE;
+  $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-21663aca-ac35-4ab2-b5d9-6369ccb7e63d"] = (object) array(
+      'pid' => 'new-21663aca-ac35-4ab2-b5d9-6369ccb7e63d',
+      'panel' => 'footer',
       'type' => 'block',
       'subtype' => 'gtranslate-gtranslate',
       'shown' => TRUE,
       'access' => array(),
       'configuration' => array(
-        'override_title' => 0,
+        'override_title' => 1,
         'override_title_text' => '',
         'override_title_heading' => 'h2',
       ),
@@ -138,14 +138,14 @@ function vejlebib_features_overrides_features_override_default_overrides() {
       ),
       'css' => array(),
       'extras' => array(),
-      'position' => 1,
+      'position' => 6,
       'locks' => array(),
-      'uuid' => '54ccde0a-233f-48a8-9b8a-a612fae26038',
+      'uuid' => '21663aca-ac35-4ab2-b5d9-6369ccb7e63d',
     );
-  $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|bottom|1"] = 'new-54ccde0a-233f-48a8-9b8a-a612fae26038';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|header|2"]["DELETED"] = TRUE;
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|navigation|1"] = 'new-3202a330-fa71-44f2-be0a-265ed734b321';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|navigation|2"]["DELETED"] = TRUE;
+  $overrides["page_manager_handlers.site_template_panel_context.conf|display|panels|footer|6"] = 'new-21663aca-ac35-4ab2-b5d9-6369ccb7e63d';
 
   // Exported overrides for: page_manager_pages
   $overrides["page_manager_pages.ding_frontpage.default_handlers|page_ding_frontpage_panel_context|conf|display|content|new-b14f0ccc-f81c-4267-b843-2fd333f260f8"]["DELETED"] = TRUE;
