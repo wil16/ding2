@@ -51,3 +51,8 @@
     display: none;
   }
 }
+
+// Styling of links under "My account" button.
+.pane-user-menu .navigation-inner li a {
+  color: $color-text-primary;
+}
