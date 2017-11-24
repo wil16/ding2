@@ -21,10 +21,21 @@ a.topbar-link-opening-hours {
 // Topbar link user account
 a.topbar-link-user-account {
   background-color: $white;
+  color: $color-text-primary;
 
   .no-touch &:hover,
   .no-touch &.active {
     background-color: $grey-dark;
+  }
+
+  &::after {
+    color: $color-text-primary;
+    &:hover {
+      color: $white;
+    }
+  }
+  &.active::after {
+    color: $white;
   }
 }
 
