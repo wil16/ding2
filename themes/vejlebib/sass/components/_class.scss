@@ -21,6 +21,11 @@ a.topbar-link-opening-hours {
 // Topbar link user account
 a.topbar-link-user-account {
   background-color: $white;
+
+  .no-touch &:hover,
+  .no-touch &.active {
+    background-color: $grey-dark;
+  }
 }
 
 // Topbar link user login.
