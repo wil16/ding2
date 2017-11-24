@@ -1,0 +1,12 @@
+/**
+ * Styling of ding_list entity buttons.
+ */
+
+.pane-search-query .ding-list-add-button .buttons li a {
+  background-color: $color-secondary;
+  color: $white;
+
+  .no-touch &:hover {
+    background-color: $grey-dark;
+  }
+}
