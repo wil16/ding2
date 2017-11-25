@@ -27,14 +27,15 @@
   stylesheets[all][] = sass_css/components/entity-profile2.css
   stylesheets[all][] = sass_css/components/messages.css
   stylesheets[all][] = sass_css/components/webform.css
-  stylesheets[all][] = sass_css/components/rs-carousel.css
+  stylesheets[all][] = sass_css/components/ding-carousel.css
   stylesheets[all][] = sass_css/components/ding-tabroll.css
   stylesheets[all][] = sass_css/components/user.css
   stylesheets[all][] = sass_css/components/modal-content.css
+  stylesheets[all][] = sass_css/components/ding-list.css
 
   stylesheets[all][] = sass_css/components/form/form-user-login.css
   stylesheets[all][] = sass_css/components/form/form-user-profile.css
-  stylesheets[all][] = sass_css/components/form/form-loans.css
+  stylesheets[all][] = sass_css/components/form/form-status.css
   stylesheets[all][] = sass_css/components/form/form-class.css
 
   stylesheets[all][] = sass_css/components/node/campaign.css
@@ -97,8 +98,6 @@
   scripts[] = scripts/node/news.js
 
   scripts[] = scripts/ting-object/ting-object.js
-
-  scripts[] = scripts/rs-carousel/rs-carousel.js
 
   scripts[] = scripts/view.js
 

@@ -34,6 +34,19 @@ function ddbasic_preprocess_node(&$variables, $hook) {
     }
   }
 
+  // Add updated to variables.
+  $variables['ddbasic_updated'] = format_date($variables['node']->changed, 'long');
+
+  // Modified submitted variable.
+  if ($variables['display_submitted']) {
+    $variables['submitted'] = format_date($variables['node']->changed, 'long');
+  }
+}
+
+/**
+ * Implememnts template_process_node().
+ */
+function ddbasic_process_node(&$variables, $hook) {
   // For search result view mode move title into left col. group.
   if (isset($variables['content']['group_right_col_search'])) {
     $variables['content']['group_right_col_search']['title'] = array(
@@ -49,14 +62,6 @@ function ddbasic_preprocess_node(&$variables, $hook) {
       '#prefix' => '<h2>',
       '#suffix' => '</h2>',
     );
-  }
-
-  // Add updated to variables.
-  $variables['ddbasic_updated'] = format_date($variables['node']->changed, 'long');
-
-  // Modified submitted variable.
-  if ($variables['display_submitted']) {
-    $variables['submitted'] = format_date($variables['node']->changed, 'long');
   }
 }
 
@@ -118,6 +123,37 @@ function ddbasic_preprocess__node__ding_news(&$variables) {
         $variables['news_teaser_image'] = '<div class="ding-news-list-image background-image-styling-16-9"></div>';
       }
       break;
+
+    case 'teaser_no_overlay':
+      array_push($variables['classes_array'], 'node-teaser-no-overlay');
+
+      if (!empty($variables['field_ding_news_list_image'][0]['uri'])) {
+        // Get image url to use as background image.
+        $uri = $variables['field_ding_news_list_image'][0]['uri'];
+
+        $image_title = $variables['field_ding_news_list_image'][0]['title'];
+
+        // If in view with large first teaser and first in view.
+        $current_view = $variables['view']->current_display;
+        $views_with_large_first = array('ding_news_frontpage_list');
+        if (in_array($current_view, $views_with_large_first) && $variables['view']->result[0]->nid == $variables['nid']) {
+          $img_url = image_style_url('ding_panorama_list_large_wide', $uri);
+          $variables['classes_array'][] = 'ding-news-highlighted';
+        }
+        else {
+          $img_url = image_style_url('ding_panorama_list_large', $uri);
+        }
+        if (!empty($image_title)) {
+          $variables['news_teaser_image'] = '<div class="ding-news-list-image background-image-styling-16-9" style="background-image:url(' . $img_url . ')" title="' . $image_title . '"></div>';
+        }
+        else {
+          $variables['news_teaser_image'] = '<div class="ding-news-list-image background-image-styling-16-9" style="background-image:url(' . $img_url . ')"></div>';
+        }
+      }
+      else {
+        $variables['news_teaser_image'] = '<div class="ding-news-list-image background-image-styling-16-9"></div>';
+      }
+      break;
   }
 }
 
@@ -125,11 +161,12 @@ function ddbasic_preprocess__node__ding_news(&$variables) {
  * Ding event.
  */
 function ddbasic_preprocess__node__ding_event(&$variables) {
+
   $date = field_get_items('node', $variables['node'], 'field_ding_event_date');
 
   $price = field_get_items('node', $variables['node'], 'field_ding_event_price');
   if (!empty($price)) {
-    $variables['event_price'] = $price[0]['value'] . ' kr.';
+    $variables['event_price'] = $price[0]['value'] . ' ' . variable_get('ding_event_currency_type', 'Kr');
   }
   else {
     $variables['event_price'] = t('Free');
@@ -301,6 +338,15 @@ function ddbasic_preprocess__node__ding_group(&$variables) {
       }
       break;
 
+    case 'teaser_no_overlay':
+      array_push($variables['classes_array'], 'node-teaser-no-overlay');
+
+      $img_field = field_get_items('node', $variables['node'], 'field_ding_group_list_image', 'uri');
+      if (!empty($img_field)) {
+        $variables['background_image'] = image_style_url('ding_panorama_list_large', $img_field[0]['uri']);
+      }
+      break;
+
     case 'full':
       array_push($variables['classes_array'], 'node-full');
       break;
@@ -313,6 +359,7 @@ function ddbasic_preprocess__node__ding_group(&$variables) {
 function ddbasic_preprocess__node__ding_eresource(&$variables) {
   switch ($variables['view_mode']) {
     case 'teaser':
+    case 'full':
       if (!empty($variables['field_ding_eresource_link'][0]['url'])) {
         $variables['link_url'] = $variables['field_ding_eresource_link'][0]['url'];
       }

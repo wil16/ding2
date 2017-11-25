@@ -137,7 +137,7 @@ function fbs_get_patron_info($account = NULL) {
     return $account->creds;
   }
 
-  $creds = ding_user_get_creds($user);
+  $creds = ding_user_get_creds();
   return $creds;
 }
 
@@ -246,8 +246,8 @@ function fbs_settings_form() {
     '#default_value' => variable_get('fbs_password', ''),
   );
 
-  // Add the option to select default interest period, which default as default
-  // to 180 days.
+  // Add the option to select default interest period, which defaults to 180
+  // days.
   $periods = fbs_interest_periods();
   $default = variable_get('fbs_default_interest_period', 180);
   $form['fbs'] += ding_reservation_interest_period_selector('fbs_default_interest_period', $default, $periods);
@@ -262,8 +262,10 @@ function fbs_settings_form() {
   // Branches and blacklisted branches.
   $form['branches'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Holdings Branches Blacklist'),
+    '#title' => t('Search Branches Blacklist'),
     '#description' => t('Choose which branches to blacklist from searches'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
   );
 
   $form['branches']['fbs_branches_blacklist'] = array(
@@ -277,6 +279,8 @@ function fbs_settings_form() {
     '#type' => 'fieldset',
     '#title' => t('User Branches Blacklist'),
     '#description' => t('Choose which branches to blacklist from user profile.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
   );
 
   $form['user_branches']['fbs_user_branches_blacklist'] = array(
@@ -284,6 +288,21 @@ function fbs_settings_form() {
     '#title' => t('User branch blacklist'),
     '#options' => fbs_branches(),
     '#default_value' => variable_get('fbs_user_branches_blacklist', array()),
+  );
+
+  $form['holding_branches'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Holdings Branches Blacklist'),
+    '#description' => t('Choose which branches to blacklist from availability lists.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['holding_branches']['fbs_holdings_branches_blacklist'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Holdings branch blacklist'),
+    '#options' => fbs_branches(),
+    '#default_value' => variable_get('fbs_holdings_branches_blacklist', array()),
   );
 
   return system_settings_form($form);
@@ -317,7 +336,7 @@ function fbs_profile2_presave($entity) {
     // we wont try to update.
     return;
   }
-  $patron = ding_user_get_creds($user);
+  $patron = ding_user_get_creds();
   $wrapper = entity_metadata_wrapper('profile2', $entity);
 
   $current_on_hold = array();
@@ -333,6 +352,16 @@ function fbs_profile2_presave($entity) {
     'receiveEmail' => (bool) $wrapper->field_fbs_mail_notification->value(),
     'preferredPickupBranch' => $wrapper->field_fbs_preferred_branch->value(),
   );
+
+  // Opt out of messages if unsetting phone number.
+  if (empty($current['phoneNumber'])) {
+    $current['receiveSms'] = FALSE;
+  }
+
+  // Same for emails.
+  if (empty($current['emailAddress'])) {
+    $current['receiveEmail'] = FALSE;
+  }
 
   if ($patron['on_hold']) {
     $existing_on_hold = $patron['on_hold'];
@@ -426,6 +455,11 @@ function fbs_branches() {
     try {
       $res = fbs_service()->Placement->getBranches(fbs_service()->agencyId);
     }
+    catch (FBSMisconfiguredException $e) {
+      // Be quiet and use an empty list if we're not configured yet.
+      $branches = array();
+      return $branches;
+    }
     catch (Exception $e) {
       watchdog_exception('fbs', $e);
     }
@@ -495,6 +529,54 @@ function fbs_form_profile2_form_alter(&$form, &$form_state) {
     '#markup' => $fee_sms,
     '#weight' => 3,
   );
+
+  // Add validation to email.
+  $form['profile_provider_fbs']['field_fbs_mail']['#element_validate'] = array('fbs_form_profile2_mail_validate');
+  // Add validation to phone.
+  $form['profile_provider_fbs']['field_fbs_phone']['#element_validate'] = array('fbs_form_profile2_phone_validate');
+  // Add submit handler, to redirect to same URL.
+  $form['#submit'][] = 'fbs_form_profile2_rebuild_submit';
+}
+
+/**
+ * Mail validation for fbs_form_profile2
+ */
+function fbs_form_profile2_mail_validate($element, $form_state) {
+  $email = $form_state['input']['profile_provider_fbs']['field_fbs_mail']['und'][0]['value'];
+  if (!empty($email)) {
+    if (!valid_email_address($email)) {
+      form_set_error('profile_provider_fbs][field_fbs_mail', t('Please fill in a valid email'));
+    }
+  }
+}
+
+/**
+ * Phone validation for fbs_form_profile2
+ */
+function fbs_form_profile2_phone_validate($element, $form_state) {
+  $phone = $form_state['input']['profile_provider_fbs']['field_fbs_phone']['und'][0]['value'];
+
+  if (!empty($phone)) {
+    // Preg match for danish phonenumbers
+    // Pass:
+    // (+45) 35 35 35 35 ||| +45 35 35 35 35 ||| 35 35 35 35 ||| 35353535
+    // Fail:
+    // (45)35353535 ||| 4535353535.
+    $re = '/^((\(?\+45\)?)?)(\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2})$/';
+    preg_match_all($re, $phone, $matches, PREG_SET_ORDER, 0);
+
+    if (empty($matches)) {
+      form_set_error('profile_provider_fbs][field_fbs_phone', t('Please fill in a valid phonenumber'));
+    }
+  }
+}
+
+/**
+ * Submit handler for fbs_form_profile2
+ */
+function fbs_form_profile2_rebuild_submit($form, &$form_state) {
+  // Rebuilds form and stay on same page.
+  $form_state['rebuild'] = TRUE;
 }
 
 /**
@@ -533,7 +615,7 @@ function fbs_form_ding_availability_admin_holdings_settings_alter(&$form, &$form
     '#type' => 'radios',
     '#title' => t('Holdings suffix'),
     '#description' => t('Select which type of suffix to use for holdings. Simple shows a mix between DK5 and inverted creator, while Shelf mark simulates the shelf mark from ALMA using marc-data from the well.'),
-    '#default_value' => variable_get('fbs_holdings_suffix_type', 'simple'),
+    '#default_value' => variable_get('fbs_holdings_suffix_type', 'shelf_mark'),
     '#options' => array(
       'simple' => t('Simple'),
       'shelf_mark' => t('Shelf mark'),

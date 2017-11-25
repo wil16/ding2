@@ -206,6 +206,10 @@
     @include transition(opacity $speed $ease);
     opacity: 0;
 
+    @include media($mobile) {
+      opacity: 1;
+    }
+
     &.is-masonry-complete {
       opacity: 1;
     }
@@ -556,14 +560,15 @@
 // ==========================================================================
 
 .view-node-search-result {
-  ul.search-result {
-    > li {
-      width: 100%;
-      float: left;
-      list-style: none;
-      margin-left: 0;
-      margin-bottom: 10px;
-    }
+  .search-results {
+    margin: 0;
+  }
+  .search-result {
+    width: 100%;
+    float: left;
+    list-style: none;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
 
@@ -598,5 +603,15 @@
   // Mobile
   @include media($mobile) {
     width: 100%;
+  }
+}
+
+// ==========================================================================
+// View Public lists
+// ==========================================================================
+
+.view-public-lists {
+  .views-row {
+    margin-bottom: 60px;
   }
 }

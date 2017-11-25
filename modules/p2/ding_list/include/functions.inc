@@ -510,7 +510,7 @@ function ding_list_update_historical_loans($account = NULL) {
   $save_list = FALSE;
   if (ding_user_is_provider_user($account)) {
     try {
-      $creds = ding_user_get_creds($account);
+      $creds = ding_user_get_creds();
       if (!empty($creds['name'])) {
         // Create a timestamp representing today.
         $today = mktime(0, 0, 0);
@@ -802,8 +802,8 @@ function ding_list_get_permission_permissions($permission = FALSE) {
 /**
  * Check if a user has access to a list, with the given permissions.
  *
- * @param object $list
- *   List entity.
+ * @param object|int $list
+ *   List entity or the lists id.
  * @param string $permission
  *   The permission to check against.
  * @param object $account
@@ -823,6 +823,16 @@ function ding_list_user_has_access($list, $permission = DING_LIST_PERMISSION_VIE
   $access_key = md5(serialize(func_get_args()));
   if (isset($access[$access_key])) {
     return $access[$access_key];
+  }
+
+  if (user_access('administer all lists')) {
+    $access[$access_key] = TRUE;
+    return $access[$access_key];
+  }
+
+  // If used as menu access callback the list have to be loaded.
+  if (is_numeric($list)) {
+    $list = ding_list_get_list($list);
   }
 
   if (ding_base_get_value('ding_type', $list, 'field_list_type') == DING_LIST_TYPE_LOAN_HISTORY

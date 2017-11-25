@@ -11,6 +11,10 @@ $plugin = array(
   'content_types' => array('list'),
   'required context' => new ctools_context_required(t('User'), 'user'),
   'category' => t('User'),
+  'defaults' => array(
+    'overdue' => FALSE,
+    'regular' => TRUE,
+  ),
 );
 
 /**
@@ -28,16 +32,23 @@ function ding_loan_loans_content_type_render($subtype, $conf, $panel_args, $cont
   $account = isset($context->data) ? $context->data : NULL;
 
   $loans = FALSE;
+  $cache_key = 'list-' . $conf['overdue'] . '-' . $conf['regular'];
   if (module_exists('ding_session_cache')) {
-    $loans = ding_session_cache_get('ding_loan', 'list');
+    $loans = ding_session_cache_get('ding_loan', $cache_key);
   }
 
   if (!$loans) {
     $loans = ding_provider_invoke_page('loan', 'list', $account);
+    $today = date('Y-m-d', REQUEST_TIME);
 
     // Pre-load all entities to speed up the page.
     $ids = array();
-    foreach ($loans as $item) {
+    foreach ($loans as $key => $item) {
+      if (!$conf['overdue'] && $item->expiry < $today || !$conf['regular'] && $item->expiry >= $today) {
+        unset($loans[$key]);
+        continue;
+      }
+
       $ids[] = $item->ding_entity_id;
     }
     ding_entity_load_multiple($ids);
@@ -51,7 +62,7 @@ function ding_loan_loans_content_type_render($subtype, $conf, $panel_args, $cont
 
     // Store the loans into ding session cache.
     if (module_exists('ding_session_cache')) {
-      ding_session_cache_set('ding_loan', 'list', $loans);
+      ding_session_cache_set('ding_loan', 'list', $cache_key);
     }
   }
 
@@ -67,7 +78,37 @@ function ding_loan_loans_content_type_render($subtype, $conf, $panel_args, $cont
  * Adding the admin form, to be able to control the required context.
  */
 function ding_loan_loans_content_type_edit_form($form, &$form_state) {
+  $form['include'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Include loans in output'),
+  );
+
+  $form['include']['overdue'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Overdue loans'),
+    '#description' => t('Include overdue loans'),
+    '#default_value' => $form_state['conf']['overdue'],
+  );
+
+  $form['include']['regular'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Loans'),
+    '#description' => t('Include regular loans'),
+    '#default_value' => $form_state['conf']['regular'],
+  );
+
   return $form;
+}
+
+/**
+ * Implements hook_content_type_edit_form_submit().
+ */
+function ding_loan_loans_content_type_edit_form_submit($form, &$form_state) {
+  foreach (array_keys($form_state['plugin']['defaults']) as $key) {
+    if (isset($form_state['values'][$key])) {
+      $form_state['conf'][$key] = $form_state['values'][$key];
+    }
+  }
 }
 
 /**
@@ -295,12 +336,13 @@ function ding_loan_loans_form_submit($form, &$form_state) {
 
   $result = ding_provider_invoke('loan', 'renew', $form_state['values']['account'], $ids);
   foreach ($result as $id => $status) {
+    $item = $form_state['values']['items'][$id];
     // Try to get entity for the item.
-    $entity = $form_state['values']['items'][$id]->entity;
+    $entity = $item->entity;
     if (!is_object($entity) || $entity->reply == FALSE) {
       // Build pseudo entity based on provider information.
       $entity = ding_provider_get_pseudo_entity($item->ding_entity_id);
-      $title = $entity->getTitle() ? $entity->getTitle() : $item->display_name;
+      $title = $entity->getTitle() ?: $item->display_name;
     }
     else {
       // Create title from entity object.

@@ -669,18 +669,15 @@ function ding_user_default_authname($name, $user_id = NULL) {
   // it.
   require_once DRUPAL_ROOT . '/' . variable_get('password_inc', 'includes/password.inc');
 
-  $hash = hash('sha512', drupal_get_private_key() . $name, TRUE);
+  // A sha512 is 64 bytes, which becomes 128 hexadecimal chars, which is
+  // exactly the size of the authname field in the database. So we ask hash
+  // for binary data and lets _password_base64_encode base64 encode it to 86
+  // characters, leaving enough room for our suffix.
+  $hash = hash('sha512', ding_user_get_private_key() . $name, TRUE);
 
   // The string length of the hash have been changed in the line below and we
   // need to update the accounts with new hash values, hence this function call.
   _ding_user_update_old_accounts($hash);
-
-  /**
-   * A sha512 is 64 bytes, which becomes 128 hexadecimal chars, which is
-   * exactly the size of the authname field in the database. So we ask hash
-   * for binary data and lets _password_base64_encode base64 encode it to 86
-   * characters, leaving enough room for our suffix.
-   */
   $hash_encoded = _password_base64_encode($hash, drupal_strlen($hash)) . '@ding_user';
 
   if ($user_id) {
@@ -750,6 +747,31 @@ function _ding_user_update_migrated_accounts($auth_name_new, $uid) {
   watchdog('ding_user', 'Updated user migrated from previous ding (uid @uid) with authname @auth_name_new', array('@auth_name_new' => $auth_name_new, '@uid' => $uid), WATCHDOG_DEBUG);
 
   return;
+}
+
+/**
+ * Private key variable used to generate tokens.
+ *
+ * Apparently the key generated in drupal_get_private_key() may change,
+ * so we'll get it from 'ding_user_private_key' variable instead.
+ * Preferably set the 'ding_user_private_key' variable in local.settings.php
+ *
+ * @see https://www.drupal.org/node/487366
+ *
+ * @return string
+ *   The private key.
+ */
+function ding_user_get_private_key() {
+  if ($key = variable_get('ding_user_private_key', 0)) {
+    return $key;
+  }
+  watchdog(
+    'ding_user',
+    'ding_user_private_key not found',
+    array(),
+    WATCHDOG_CRITICAL
+  );
+  throw new Exception(t('ding_user_private_key not found'));
 }
 
 /**
@@ -1131,20 +1153,13 @@ function ding_user_authenticate_form_callback($form, &$form_state) {
 /**
  * Retrieves the users credentials from the current session.
  *
- * @param stdClass $user
- *   A user object. The the current logged in user will be used if non is given.
- *
  * @return array
  *   Array with the user credentials.
  *
  * @throws DingProviderAuthException
  *   Throws DingProviderAuthException if not authenticated.
  */
-function ding_user_get_creds($user = NULL) {
-  if (is_null($user)) {
-    global $user;
-  }
-
+function ding_user_get_creds() {
   if (isset($_SESSION['ding_user'])) {
     // User has not timed out by auto logout module so return credentials.
     return $_SESSION['ding_user']['creds'];
@@ -1177,7 +1192,7 @@ function ding_user_name() {
     if (ding_provider_implements('user', 'get_name')) {
       return ding_provider_invoke('user', 'get_name', $user);
     }
-    $creds = ding_user_get_creds($user);
+    $creds = ding_user_get_creds();
     if (isset($creds['name'])) {
       return $creds['name'];
     }

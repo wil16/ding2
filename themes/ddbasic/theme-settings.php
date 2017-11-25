@@ -20,6 +20,39 @@ function ddbasic_form_system_theme_settings_alter(&$form, $form_state) {
     '#default_value' => theme_get_setting('ting_object_disable_overlay'),
   );
 
+  $form['ddbasic_settings']['ding_news_overlay'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Ding news overlay'),
+  );
+  $form['ddbasic_settings']['ding_news_overlay']['ding_news_disable_overlay'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable overlay'),
+    '#description' => t('Disable gradient overlay with text on Ding news teasers'),
+    '#default_value' => theme_get_setting('ding_news_disable_overlay'),
+  );
+
+  $form['ddbasic_settings']['ding_group_overlay'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Ding group overlay'),
+  );
+  $form['ddbasic_settings']['ding_group_overlay']['ding_group_disable_overlay'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable overlay'),
+    '#description' => t('Disable gradient overlay with text on Ding group teasers'),
+    '#default_value' => theme_get_setting('ding_group_disable_overlay'),
+  );
+
+  $form['ddbasic_settings']['ding_rolltab_overlay'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Ding tabroll overlay'),
+  );
+  $form['ddbasic_settings']['ding_rolltab_overlay']['ding_rolltab_disable_overlay'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable overlay'),
+    '#description' => t('Disable gradient overlay with text on Ding tabroll teasers'),
+    '#default_value' => theme_get_setting('ding_rolltab_disable_overlay'),
+  );
+
   $form['#validate'][] = 'ddbasic_form_system_theme_settings_validate';
   $form['#submit'][] = 'ddbasic_form_system_theme_settings_submit';
 }
@@ -40,6 +73,13 @@ function ddbasic_form_system_theme_settings_validate($form, &$form_state) {
       break;
 
     case 'secondary': $form_state['values']['palette']['text_link'] = $form_state['values']['palette']['secondary'];
+      break;
+  }
+  switch ($form_state['values']['palette']['text_link_on_dark']) {
+    case 'primary': $form_state['values']['palette']['text_link_on_dark'] = $form_state['values']['palette']['primary'];
+      break;
+
+    case 'secondary': $form_state['values']['palette']['text_link_on_dark'] = $form_state['values']['palette']['secondary'];
       break;
   }
 }
