@@ -506,7 +506,7 @@ function ding2_update_7037() {
  * Update our own translations.
  */
 function ding2_update_7038() {
-  ding2_translation_update();
+  // Nothing to in vejlebib.
 }
 
 /**
@@ -520,7 +520,7 @@ function ding2_update_7039() {
  * Update our own translations.
  */
 function ding2_update_7040() {
-  ding2_translation_update();
+  // Nothing to in vejlebib.
 }
 
 /**
