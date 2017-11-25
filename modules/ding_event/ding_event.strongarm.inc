@@ -118,12 +118,6 @@ function ding_event_strongarm() {
         'redirect' => array(
           'weight' => '30',
         ),
-        'flag' => array(
-          'weight' => '10',
-        ),
-        'metatags' => array(
-          'weight' => '40',
-        ),
       ),
       'display' => array(
         'webform' => array(
