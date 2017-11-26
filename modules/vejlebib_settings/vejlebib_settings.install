@@ -346,3 +346,15 @@ function vejlebib_settings_update_7012() {
   module_disable(array('chr'));
   drupal_uninstall_modules(array('chr'));
  }
+
+/**
+ * Properly disable and uninstall some old leftover modules.
+ * For more information see: https://www.drupal.org/node/2487215
+ */
+function vejlebib_settings_update_7014() {
+  module_disable(array('openlayers', 'taxonomy_menu'), TRUE);
+  drupal_uninstall_modules(array('openlayers', 'taxonomy_menu'), TRUE);
+
+  ding2_remove_module('ting_extrasearch');
+  ding2_remove_module('smartqueue_nodetypes');
+}

@@ -553,9 +553,6 @@ libraries[masonry][destination] = "libraries"
 
 ; Vejlebib additions
 ; Contrib
-projects[chr][subdir] = "contrib"
-projects[chr][version] = "1.8"
-
 projects[d3][subdir] = "contrib"
 projects[d3][version] = "1.x-dev"
 
@@ -640,3 +637,14 @@ projects[ding_wayf_dk][download][type] = "git"
 projects[ding_wayf_dk][download][url] = "git@github.com:vejlebib/ding_wayf_dk.git"
 projects[ding_wayf_dk][download][branch] = "vejlebib"
 projects[ding_wayf_dk][subdir] = "vejlebib_modules"
+
+; Modules included for easy deployment of removal. Should be removed after
+; disable and uninstall hooks have been run properly.
+projects[openlayers][subdir] = "contrib"
+projects[openlayers][version] = "2.0-beta7"
+
+projects[taxonomy_menu][subdir] = "contrib"
+projects[taxonomy_menu][version] = "1.4"
+
+projects[chr][subdir] = "contrib"
+projects[chr][version] = "1.8"
