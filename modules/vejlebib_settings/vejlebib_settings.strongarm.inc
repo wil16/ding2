@@ -155,7 +155,7 @@ function vejlebib_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ding_event_list_items_per_page';
-  $strongarm->value = '20';
+  $strongarm->value = '16';
   $export['ding_event_list_items_per_page'] = $strongarm;
 
   $strongarm = new stdClass();
