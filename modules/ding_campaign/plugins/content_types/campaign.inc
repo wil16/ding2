@@ -27,6 +27,7 @@ $plugin = array(
  */
 function ding_campaign_campaign_content_type_render($subtype, $conf, $panel_args, $context) {
   $block = new stdClass();
+  $block->content = '';
   $context_data = array(
     'page' => isset($context[0]->data) ? $context[0]->data : NULL,
     'library' => isset($context[1]->data) ? $context[1]->data : NULL,
@@ -38,8 +39,9 @@ function ding_campaign_campaign_content_type_render($subtype, $conf, $panel_args
   // Set default value if it was not set in panel settings.
   $style = (!empty($conf['ding_campaign_style'])) ? $conf['ding_campaign_style'] : 'ding_campaign_full_width';
 
-  $output = ding_campaign_display($context_data, $count, $offset, $style);
-  $block->content['#markup'] = drupal_render($output);
+  if ($output = ding_campaign_display($context_data, $count, $offset, $style)) {
+    $block->content['#markup'] = drupal_render($output);
+  }
 
   return $block;
 }
