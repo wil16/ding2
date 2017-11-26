@@ -358,3 +358,11 @@ function vejlebib_settings_update_7014() {
   ding2_remove_module('ting_extrasearch');
   ding2_remove_module('smartqueue_nodetypes');
 }
+
+/**
+ * Disable and uninstall Ding IPE filter.
+ */
+function vejlebib_settings_update_7015() {
+  module_disable(array('ding_ipe_filter', 'panels_ipe'));
+  drupal_uninstall_modules(array('ding_ipe_filter', 'panels_ipe'));
+}
