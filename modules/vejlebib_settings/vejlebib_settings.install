@@ -338,3 +338,11 @@ function vejlebib_settings_update_7011() {
 function vejlebib_settings_update_7012() {
   variable_del('theme_wellejust_settings');
 }
+
+/**
+ * Disable and uninstall chr.
+ */
+ function vejlebib_settings_update_7013() {
+  module_disable(array('chr'));
+  drupal_uninstall_modules(array('chr'));
+ }

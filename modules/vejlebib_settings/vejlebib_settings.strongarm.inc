@@ -226,13 +226,6 @@ function vejlebib_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'drupal_http_request_function';
-  $strongarm->value = 'chr_curl_http_request';
-  $export['drupal_http_request_function'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'environment_indicator_integration';
   $strongarm->value = array(
     'toolbar' => 'toolbar',
