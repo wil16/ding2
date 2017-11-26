@@ -11,9 +11,6 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   // This code is only used for UI in features. Exported alters hooks do the magic.
   $overrides = array();
 
-  // Exported overrides for: field_group
-  $overrides["field_group.group_holdings_available|ting_object|ting_object|default.data|format_settings|formatter"] = 'collapsible';
-
   // Exported overrides for: field_instance
   $overrides["field_instance.node-ding_news-field_ding_news_list_image.required"] = 1;
   $overrides["field_instance.node-ding_news-field_ding_news_title_image.required"] = 1;
