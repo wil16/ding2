@@ -33,12 +33,12 @@ function vejlebib_settings_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function vejlebib_settings_field_group_info_alter(&$data) {
   if (isset($data['group_material_details|ting_object|ting_object|default'])) {
-    $data['group_material_details|ting_object|ting_object|default']->data['children'][27] = 'all_lix_tal'; /* WAS: '' */
+    $data['group_material_details|ting_object|ting_object|default']->data['children'][26] = 'all_anvendelighed'; /* WAS: '' */
+    $data['group_material_details|ting_object|ting_object|default']->data['children'][27] = 'all_hvor'; /* WAS: '' */
     $data['group_material_details|ting_object|ting_object|default']->data['children'][28] = 'all_let_tal'; /* WAS: '' */
-    $data['group_material_details|ting_object|ting_object|default']->data['children'][29] = 'all_anvendelighed'; /* WAS: '' */
-    $data['group_material_details|ting_object|ting_object|default']->data['children'][30] = 'all_hvor'; /* WAS: '' */
-    $data['group_material_details|ting_object|ting_object|default']->data['children'][31] = 'all_note'; /* WAS: '' */
-    $data['group_material_details|ting_object|ting_object|default']->data['children'][32] = 'cd_musik_529u'; /* WAS: '' */
+    $data['group_material_details|ting_object|ting_object|default']->data['children'][29] = 'all_lix_tal'; /* WAS: '' */
+    $data['group_material_details|ting_object|ting_object|default']->data['children'][30] = 'all_note'; /* WAS: '' */
+    $data['group_material_details|ting_object|ting_object|default']->data['children'][31] = 'cd_musik_529u'; /* WAS: '' */
   }
 }
 
