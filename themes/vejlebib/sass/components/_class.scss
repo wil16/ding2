@@ -131,6 +131,10 @@ a.topbar-link-user {
   }
 }
 
+.carousel-tabs .carousel-list-tabs .carousel-item a::after {
+  background-color: $color-text-secondary;
+}
+
 .rs-carousel {
   .rs-carousel-items .rs-carousel-action {
     &.rs-carousel-action-next,
