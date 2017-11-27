@@ -85,44 +85,6 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
     $data['node_view_panel_context_5']->conf['display']->panels['main_content'][2] = 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842'; /* WAS: 'new-3bc42ce7-ca5f-4e5c-9176-2bcbaecc961a' */
     unset($data['node_view_panel_context_5']->conf['display']->content['new-3bc42ce7-ca5f-4e5c-9176-2bcbaecc961a']);
   }
-  if (isset($data['node_view_panel_context_6'])) {
-    $data['node_view_panel_context_6']->conf['display']->content['new-26f08b87-616d-45db-97f9-6bf0ec2e0ca1']->position = 4; /* WAS: 3 */
-    $data['node_view_panel_context_6']->conf['display']->content['new-79cc1770-c0c7-4b00-9938-4312b64282c5'] = (object) array(
-          'pid' => 'new-79cc1770-c0c7-4b00-9938-4312b64282c5',
-          'panel' => 'main_content',
-          'type' => 'entity_field',
-          'subtype' => 'node:field_ding_library_links',
-          'shown' => TRUE,
-          'access' => array(),
-          'configuration' => array(
-            'label' => 'title',
-            'formatter' => 'link_default',
-            'delta_limit' => 0,
-            'delta_offset' => 0,
-            'delta_reversed' => 0,
-            'formatter_settings' => array(),
-            'context' => 'argument_entity_id:node_1',
-            'override_title' => 1,
-            'override_title_text' => 'Links',
-            'override_title_heading' => 'h2',
-          ),
-          'cache' => array(),
-          'style' => array(
-            'settings' => NULL,
-          ),
-          'css' => array(),
-          'extras' => array(),
-          'position' => 3,
-          'locks' => array(),
-          'uuid' => '79cc1770-c0c7-4b00-9938-4312b64282c5',
-        ); /* WAS: '' */
-    $data['node_view_panel_context_6']->conf['display']->content['new-a03269f4-7286-4752-af8e-239f14bf6182']->position = 6; /* WAS: 5 */
-    $data['node_view_panel_context_6']->conf['display']->content['new-ce52c1a0-de29-45b5-83ef-03a71a32ff5d']->position = 5; /* WAS: 4 */
-    $data['node_view_panel_context_6']->conf['display']->panels['main_content'][3] = 'new-79cc1770-c0c7-4b00-9938-4312b64282c5'; /* WAS: 'new-26f08b87-616d-45db-97f9-6bf0ec2e0ca1' */
-    $data['node_view_panel_context_6']->conf['display']->panels['main_content'][4] = 'new-26f08b87-616d-45db-97f9-6bf0ec2e0ca1'; /* WAS: 'new-ce52c1a0-de29-45b5-83ef-03a71a32ff5d' */
-    $data['node_view_panel_context_6']->conf['display']->panels['main_content'][5] = 'new-ce52c1a0-de29-45b5-83ef-03a71a32ff5d'; /* WAS: 'new-a03269f4-7286-4752-af8e-239f14bf6182' */
-    $data['node_view_panel_context_6']->conf['display']->panels['main_content'][6] = 'new-a03269f4-7286-4752-af8e-239f14bf6182'; /* WAS: '' */
-  }
   if (isset($data['site_template_panel_context'])) {
     $data['site_template_panel_context']->conf['display']->content['new-3202a330-fa71-44f2-be0a-265ed734b321']->position = 1; /* WAS: 2 */
     $data['site_template_panel_context']->conf['display']->content['new-21663aca-ac35-4ab2-b5d9-6369ccb7e63d'] = (object) array(
