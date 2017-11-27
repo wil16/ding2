@@ -274,7 +274,7 @@ function ding_library_default_page_manager_handlers() {
     $pane->locks = array();
     $pane->uuid = '5b23f685-d00f-45e2-98eb-ebc8c13c5d07';
     $display->content['new-5b23f685-d00f-45e2-98eb-ebc8c13c5d07'] = $pane;
-    $display->panels['left_sidebar'][1] = 'new-5b23f685-d00f-45e2-98eb-ebc8c13c5d07';
+    $display->panels['left_sidebar'][2] = 'new-5b23f685-d00f-45e2-98eb-ebc8c13c5d07';
     $pane = new stdClass();
     $pane->pid = 'new-acf0a41a-33dc-41d3-8f5f-a539f1c2dddd';
     $pane->panel = 'main_content';
@@ -317,7 +317,7 @@ function ding_library_default_page_manager_handlers() {
       'css_class' => 'ding-library-image',
     );
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 2;
     $pane->locks = array();
     $pane->uuid = 'acf0a41a-33dc-41d3-8f5f-a539f1c2dddd';
     $display->content['new-acf0a41a-33dc-41d3-8f5f-a539f1c2dddd'] = $pane;
