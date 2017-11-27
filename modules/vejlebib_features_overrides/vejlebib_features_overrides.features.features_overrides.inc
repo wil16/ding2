@@ -198,7 +198,10 @@ function vejlebib_features_overrides_features_override_default_overrides() {
       'style' => array(
         'settings' => NULL,
       ),
-      'css' => array(),
+      'css' => array(
+        'css_id' => '',
+        'css_class' => 'grid-medium',
+      ),
       'extras' => array(),
       'position' => 1,
       'locks' => array(),

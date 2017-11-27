@@ -218,7 +218,10 @@ function vejlebib_features_overrides_default_page_manager_pages_alter(&$data) {
           'style' => array(
             'settings' => NULL,
           ),
-          'css' => array(),
+          'css' => array(
+            'css_id' => '',
+            'css_class' => 'grid-medium',
+          ),
           'extras' => array(),
           'position' => 1,
           'locks' => array(),
