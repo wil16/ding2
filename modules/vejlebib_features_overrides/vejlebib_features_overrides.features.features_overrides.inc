@@ -49,35 +49,6 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|panels|left_sidebar|2"] = 'new-0c1b010b-aad2-4a5e-badd-f2fe5334a80c';
   $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|panels|left_sidebar|3"] = 'new-0d732c8e-6a2e-4993-ba6f-7cb2025bada6';
   $overrides["page_manager_handlers.node_view_panel_context_4.conf|display|panels|left_sidebar|4"]["DELETED"] = TRUE;
-  $overrides["page_manager_handlers.node_view_panel_context_5.conf|display|content|new-162f6ba7-45ad-44f3-8ef6-5302990b1842"] = (object) array(
-      'pid' => 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842',
-      'panel' => 'main_content',
-      'type' => 'views_panes',
-      'subtype' => 'vejlebib_ding_event-vejlebib_ding_event_groups_list',
-      'shown' => TRUE,
-      'access' => array(),
-      'configuration' => array(
-        'context' => array(
-          0 => 'argument_entity_id:node_1',
-        ),
-        'override_title' => 0,
-        'override_title_text' => '',
-      ),
-      'cache' => array(),
-      'style' => array(
-        'settings' => NULL,
-      ),
-      'css' => array(
-        'css_id' => '',
-        'css_class' => 'ding-group-events',
-      ),
-      'extras' => array(),
-      'position' => 2,
-      'locks' => array(),
-      'uuid' => '162f6ba7-45ad-44f3-8ef6-5302990b1842',
-    );
-  $overrides["page_manager_handlers.node_view_panel_context_5.conf|display|content|new-3bc42ce7-ca5f-4e5c-9176-2bcbaecc961a"]["DELETED"] = TRUE;
-  $overrides["page_manager_handlers.node_view_panel_context_5.conf|display|panels|main_content|2"] = 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842';
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-37d18c98-64ec-448f-ac62-ad0cc199fe06"]["DELETED"] = TRUE;
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-e0e21892-3602-4e8f-8598-3dd63b46b76a"]["DELETED"] = TRUE;
   $overrides["page_manager_handlers.site_template_panel_context.conf|display|content|new-21663aca-ac35-4ab2-b5d9-6369ccb7e63d"] = (object) array(

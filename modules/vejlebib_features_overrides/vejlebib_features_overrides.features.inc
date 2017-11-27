@@ -54,37 +54,6 @@ function vejlebib_features_overrides_default_page_manager_handlers_alter(&$data)
     unset($data['node_view_panel_context_4']->conf['display']->content['new-c857a1ef-6bb2-4f95-94ae-d176d79a7265']);
     unset($data['node_view_panel_context_4']->conf['display']->panels['left_sidebar'][4]);
   }
-  if (isset($data['node_view_panel_context_5'])) {
-    $data['node_view_panel_context_5']->conf['display']->content['new-162f6ba7-45ad-44f3-8ef6-5302990b1842'] = (object) array(
-          'pid' => 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842',
-          'panel' => 'main_content',
-          'type' => 'views_panes',
-          'subtype' => 'vejlebib_ding_event-vejlebib_ding_event_groups_list',
-          'shown' => TRUE,
-          'access' => array(),
-          'configuration' => array(
-            'context' => array(
-              0 => 'argument_entity_id:node_1',
-            ),
-            'override_title' => 0,
-            'override_title_text' => '',
-          ),
-          'cache' => array(),
-          'style' => array(
-            'settings' => NULL,
-          ),
-          'css' => array(
-            'css_id' => '',
-            'css_class' => 'ding-group-events',
-          ),
-          'extras' => array(),
-          'position' => 2,
-          'locks' => array(),
-          'uuid' => '162f6ba7-45ad-44f3-8ef6-5302990b1842',
-        ); /* WAS: '' */
-    $data['node_view_panel_context_5']->conf['display']->panels['main_content'][2] = 'new-162f6ba7-45ad-44f3-8ef6-5302990b1842'; /* WAS: 'new-3bc42ce7-ca5f-4e5c-9176-2bcbaecc961a' */
-    unset($data['node_view_panel_context_5']->conf['display']->content['new-3bc42ce7-ca5f-4e5c-9176-2bcbaecc961a']);
-  }
   if (isset($data['site_template_panel_context'])) {
     $data['site_template_panel_context']->conf['display']->content['new-3202a330-fa71-44f2-be0a-265ed734b321']->position = 1; /* WAS: 2 */
     $data['site_template_panel_context']->conf['display']->content['new-21663aca-ac35-4ab2-b5d9-6369ccb7e63d'] = (object) array(
