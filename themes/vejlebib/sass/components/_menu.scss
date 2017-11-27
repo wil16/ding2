@@ -56,3 +56,8 @@
 .pane-user-menu .navigation-inner li a {
   color: $color-text-primary;
 }
+
+// Included as a fast fix to target og-menu on libraries.
+ul.main-menu-third-level li a {
+  color: $color-primary;
+}
