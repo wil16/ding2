@@ -642,6 +642,7 @@ projects[ding_wayf_dk][subdir] = "vejlebib_modules"
 ; disable and uninstall hooks have been run properly.
 projects[openlayers][subdir] = "contrib"
 projects[openlayers][version] = "2.0-beta7"
+projects[openlayers][patch][] = "patches/openlayers-7.x-2.0-beta7-remove-make-file.ding2.patch"
 
 projects[taxonomy_menu][subdir] = "contrib"
 projects[taxonomy_menu][version] = "1.4"

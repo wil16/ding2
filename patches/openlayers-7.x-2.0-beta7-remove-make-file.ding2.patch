@@ -1,0 +1,13 @@
+diff --git a/openlayers.make b/openlayers.make
+deleted file mode 100644
+index b983144..0000000
+--- a/openlayers.make
++++ /dev/null
+@@ -1,7 +0,0 @@
+-api = 2
+-core = 7.x
+-
+-libraries[openlayers][download][type] = "file"
+-libraries[openlayers][download][url] = http://openlayers.org/download/OpenLayers-2.12.tar.gz
+-libraries[openlayers][directory_name] = openlayers
+-libraries[openlayers][destination] = "libraries"
