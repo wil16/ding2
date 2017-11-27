@@ -453,7 +453,7 @@
         @include omega();
       }
       &:nth-child(n+3) {
-        @include span-columns(3);
+        @include span-columns(6);
       }
       &:nth-child(4n+6) {
         @include omega();
@@ -484,15 +484,19 @@
   }
   &.view-display-id-ding_group_overview_simple {
     .views-row {
-      &:nth-child(1),
+      // Temporary fix before grid system is added to vejlebib.
+      @include span-columns(6);
+      // Mobile
+      @include media($mobile) {
+        @include span-columns(12);
+      }
+      &:nth-child(2n+2) {
+        margin-right: 0;
+      }
+      /*&:nth-child(1),
       &:nth-child(2),
       &:nth-child(3),
       &:nth-child(4) {
-        @include span-columns(6);
-        // Mobile
-        @include media($mobile) {
-          @include span-columns(12);
-        }
       }
       &:nth-child(2),
       &:nth-child(4) {
@@ -506,7 +510,7 @@
       }
       &:nth-child(4n+9) {
         clear: left;
-      }
+      }*/
     }
 
     // Tablet
