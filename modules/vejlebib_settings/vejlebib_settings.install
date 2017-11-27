@@ -366,3 +366,14 @@ function vejlebib_settings_update_7015() {
   module_disable(array('ding_ipe_filter', 'panels_ipe'));
   drupal_uninstall_modules(array('ding_ipe_filter', 'panels_ipe'));
 }
+
+/**
+ * Disable ting_visual_relation and ting_oembed_features.
+ */
+function vejlebib_settings_update_7016() {
+  // The field group features contained in these modules where causing issues
+  // with the new layout of ting objects. Needs to be fixed before cam enable
+  // again.
+  // Currently only ding_ekurser makes use of ting_oembed?
+  module_disable(array('ting_visual_relation', 'ting_oembed_features'));
+}
