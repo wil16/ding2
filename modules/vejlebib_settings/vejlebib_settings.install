@@ -392,3 +392,13 @@ function vejlebib_settings_update_7017() {
     path_delete(array('source' => 'node/' . $node->nid));
   }
 }
+
+/**
+ * Disable and uninstall Panelizer.
+ */
+function vejlebib_settings_update_7018() {
+  // We currently have no use for this and it's causing annoying warnings,
+  // because Panels < 3.6. And upgrade of Panels is not an option right now.
+  module_disable(array('panelizer'));
+  drupal_uninstall_modules(array('panelizer'));
+}

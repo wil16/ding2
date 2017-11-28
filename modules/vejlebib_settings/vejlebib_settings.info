@@ -17,7 +17,6 @@ dependencies[] = image
 dependencies[] = mailchimp_lists
 dependencies[] = menu
 dependencies[] = menu_block
-dependencies[] = panelizer
 dependencies[] = strongarm
 dependencies[] = ting_marc
 dependencies[] = ting_material_details
