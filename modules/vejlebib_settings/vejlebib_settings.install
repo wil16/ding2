@@ -377,3 +377,18 @@ function vejlebib_settings_update_7016() {
   // Currently only ding_ekurser makes use of ting_oembed?
   module_disable(array('ting_visual_relation', 'ting_oembed_features'));
 }
+
+
+/**
+ * Disable old (panelized) inspiration page if it's present.
+ */
+function vejlebib_settings_update_7017() {
+  $node  = node_load(5664);
+  // A specific node id and title should be safe enough.
+  if ($node && strtolower(trim($node->title)) == 'inspiration') {
+    // We still like to keep it so we just unpublish and remove URL-alias.
+    $node->status = 0;
+    node_save($node);
+    path_delete(array('source' => 'node/' . $node->nid));
+  }
+}

@@ -644,12 +644,23 @@ function ding_groups_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Groups listing';
   $page->admin_description = '';
-  $page->path = 'inspiration-list';
+  $page->path = 'inspiration';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
   );
-  $page->menu = array();
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Inspiration',
+    'name' => 'main-menu',
+    'weight' => '-46',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
   $page->arguments = array();
   $page->conf = array(
     'admin_paths' => FALSE,
@@ -677,7 +688,7 @@ function ding_groups_default_page_manager_pages() {
       'enabled' => 1,
       'metatags' => array(
         'title' => array(
-          'value' => 'Themes | [current-page:pager][site:name]',
+          'value' => 'Inspiration | [current-page:pager][site:name]',
         ),
       ),
     ),
@@ -715,7 +726,10 @@ function ding_groups_default_page_manager_pages() {
     $pane->subtype = 'ding_groups-ding_group_overview_simple';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Inspiration',
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
