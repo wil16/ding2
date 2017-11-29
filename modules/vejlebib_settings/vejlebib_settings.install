@@ -402,3 +402,12 @@ function vejlebib_settings_update_7018() {
   module_disable(array('panelizer'));
   drupal_uninstall_modules(array('panelizer'));
 }
+
+/**
+ * Install new theme and disable old.
+ */
+function vejlebib_settings_update_7019() {
+  theme_enable(array('vejlebib'));
+  variable_set('theme_default', 'vejlebib');
+  theme_disable(array('wellejus'));
+}
