@@ -12,3 +12,7 @@ a {
     color: $charcoal;
   }
 }
+
+ul, ol {
+  list-style-position: outside;
+}
