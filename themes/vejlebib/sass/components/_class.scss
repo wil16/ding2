@@ -3,6 +3,15 @@
  * matter what context they appear in.
  */
 
+body {
+  &.topbar-is-open,
+  &.overlay-is-active,
+  &.popupbar-is-open {
+    width: 100%;
+    position: fixed !important;
+  }
+}
+
 // Topbar opening hours
 a.topbar-link-opening-hours {
   background-color: $white;
