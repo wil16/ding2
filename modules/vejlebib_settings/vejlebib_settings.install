@@ -411,3 +411,10 @@ function vejlebib_settings_update_7019() {
   variable_set('theme_default', 'vejlebib');
   theme_disable(array('wellejus'));
 }
+
+/**
+ * Disable toolbar in vejlebib.
+ */
+function vejlebib_settings_update_7044() {
+  module_disable(array('toolbar'));
+}
