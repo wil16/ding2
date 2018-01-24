@@ -195,9 +195,14 @@ function vejlebib_features_overrides_strongarm_alter(&$data) {
  * Implements hook_views_default_views_alter().
  */
 function vejlebib_features_overrides_views_default_views_alter(&$data) {
+  if (isset($data['ding_groups'])) {
+    $data['ding_groups']->display['panel_pane_frontpage']->display_options['link_url'] = 'inspiration'; /* WAS: 'temaer' */
+    $data['ding_groups']->display['panel_pane_frontpage']->display_options['use_more_text'] = 'Mere inspiration'; /* WAS: 'See all themes' */
+  }
   if (isset($data['ding_news'])) {
     $data['ding_news']->display['ding_news_frontpage_list']->display_options['fields']['field_ding_news_list_image']['settings']['image_style'] = 'vejlebib_list'; /* WAS: '' */
     $data['ding_news']->display['ding_news_groups_list']->display_options['fields']['field_ding_news_list_image']['settings']['image_style'] = 'vejlebib_list'; /* WAS: '' */
+    $data['ding_news']->display['ding_news_groups_list']->display_options['link_url'] = 'inspiration/!1/nyheder'; /* WAS: 'temaer/!1/nyheder' */
     unset($data['ding_news']->display['ding_news_frontpage_list']->display_options['fields']['field_ding_news_list_image']['settings']['styles']);
     unset($data['ding_news']->display['ding_news_frontpage_list']->display_options['fields']['field_ding_news_list_image']['type']);
     unset($data['ding_news']->display['ding_news_groups_list']->display_options['fields']['field_ding_news_list_image']['settings']['styles']);
