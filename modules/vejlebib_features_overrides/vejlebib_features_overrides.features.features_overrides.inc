@@ -158,6 +158,7 @@ function vejlebib_features_overrides_features_override_default_overrides() {
   $overrides["variable.ding_varnish_paths.value"] = '';
 
   // Exported overrides for: views_view
+  $overrides["views_view.ding_event.display|ding_event_groups_list|display_options|link_url"] = 'inspiration/!1/arrangementer';
   $overrides["views_view.ding_groups.display|panel_pane_frontpage|display_options|link_url"] = 'inspiration';
   $overrides["views_view.ding_groups.display|panel_pane_frontpage|display_options|use_more_text"] = 'Mere inspiration';
   $overrides["views_view.ding_news.display|ding_news_frontpage_list|display_options|fields|field_ding_news_list_image|settings|image_style"] = 'vejlebib_list';
