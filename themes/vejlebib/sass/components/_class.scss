@@ -80,6 +80,13 @@ a.topbar-link-user {
   }
 }
 
+// Lists in body-field on ndoes.
+.field-type-text-long {
+  ul, ol {
+    padding-left: 40px;
+  }
+}
+
 // Color classes
 //
 // Use these classes to apply theme colors to elements
