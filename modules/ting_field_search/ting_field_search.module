@@ -1292,6 +1292,9 @@ function ting_field_search_config_default() {
       'facet_count' => 5,
       'term_count' => 5,
     ),
+    'profile_page' => array(
+      'enabled' => 0,
+    ),
   );
 }
 
