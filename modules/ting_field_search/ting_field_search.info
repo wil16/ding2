@@ -4,3 +4,9 @@ package = Ding!
 core = 7.x
 
 dependencies[] = ting_search
+dependencies[] = ctools
+dependencies[] = page_manager
+
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:2
+features[page_manager_pages][] = ting_field_search_profile_page
