@@ -28,7 +28,7 @@ function ting_field_search_schema() {
         'current_version' => 1,
       ),
       // Take full control of the export workflow.
-      //'subrecords callback' => 'ting_field_search_subrecords_callback',
+      'subrecords callback' => 'ting_field_search_subrecords_callback',
       'load callback' => 'ting_field_search_profiles_load',
       'load multiple callback' => 'ting_field_search_profiles_load_mutliple',
       'load all callback' => 'ting_field_search_profiles_load_all',
@@ -144,8 +144,6 @@ function ting_field_search_schema() {
     ),
   );
 
-  $schema['ting_field_search_guide'] = _ting_field_search_guide_table();
-
   return $schema;
 }
 
@@ -158,67 +156,6 @@ function _ting_field_search_load_profiles_7000() {
     ->fields('tp')
     ->execute()
     ->fetchAllAssoc('name');
-}
-
-/**
- * Holds the initial version of the search guide table.
- *
- * Note: It's factored out into it's own function to avoid issues in future
- * updates.
- * See: https://www.drupal.org/node/150220
- */
-function _ting_field_search_guide_table() {
-  return array(
-    'description' => 'Holds the search guides for the profile page.',
-    'fields' => array(
-      'name' => array(
-        'type' => 'varchar',
-        'length' => 64,
-        'not null' => TRUE,
-        'description' => 'The machine name of the search guide.',
-      ),
-      'pid' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'unsigned' => TRUE,
-        'description' => 'Foreign key: ID of the associated profile.',
-      ),
-      'title' => array(
-        'type' => 'varchar',
-        'length' => 64,
-        'not null' => TRUE,
-        'default' => '',
-        'description' => 'The title of the search guide',
-      ),
-      'content' => array(
-        'type' => 'text',
-        'size' => 'big',
-        'not null' => TRUE,
-        'description' => 'The main content of the search guide.',
-      ),
-      'config' => array(
-        'type' => 'blob',
-        'size' => 'big',
-        'not null' => TRUE,
-        'serialize' => TRUE,
-        'description' => 'Additional configuration that do not warrant a single column.',
-      ),
-      'weight' => array(
-        'type' => 'int',
-        'size' => 'small',
-        'not null' => TRUE,
-        'default' => 1,
-        'description' => 'Facet weight: Used to order facets in the UI.',
-      ),
-    ),
-    'primary key' => array('name'),
-    'foreign keys' => array(
-      'profile' => array(
-        'table' => 'ting_field_search_profile',
-        'columns' => array('profile' => 'pid'),
-      )
-    ),
-  );
 }
 
 /**
@@ -397,32 +334,23 @@ function ting_field_search_update_7002() {
 }
 
 /**
- * Adds serialized config for fields and fielg groups to profile table.
- * Adds new table for search guides.
+ * Add serialized db field for field configuration on search profiles.
  */
 function ting_field_search_update_7003() {
-  if (!db_field_exists('ting_field_search_profile', 'fields')) {
-    db_add_field('ting_field_search_profile', 'fields', array(
-      'type' => 'blob',
-      'size' => 'big',
-      'not null' => TRUE,
-      'serialize' => TRUE,
-      'description' => 'Serialized field configuration',
-      'initial' =>  serialize(array()),
-    ));
-  }
-  if (!db_field_exists('ting_field_search_profile', 'groups')) {
-    db_add_field('ting_field_search_profile', 'groups', array(
-      'type' => 'blob',
-      'size' => 'big',
-      'not null' => TRUE,
-      'serialize' => TRUE,
-      'description' => 'Serialized groups configuration',
-      'initial' =>  serialize(array()),
-    ));
-  }
-  if (!db_table_exists('ting_field_search_guide')) {
-    $table = _ting_field_search_guide_table();
-    db_create_table('ting_field_search_guide', $table);
-  }
+  db_add_field('ting_field_search_profile', 'fields', array(
+    'type' => 'blob',
+    'size' => 'big',
+    'not null' => TRUE,
+    'serialize' => TRUE,
+    'description' => 'Serialized field configuration',
+    'initial' =>  serialize(array()),
+  ));
+  db_add_field('ting_field_search_profile', 'groups', array(
+    'type' => 'blob',
+    'size' => 'big',
+    'not null' => TRUE,
+    'serialize' => TRUE,
+    'description' => 'Serialized groups configuration',
+    'initial' =>  serialize(array()),
+  ));
 }

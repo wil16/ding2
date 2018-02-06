@@ -510,3 +510,122 @@ function ting_field_search_group_exists($group_name) {
 
   return array_key_exists($group_name, $profile->groups);
 }
+
+function ting_field_search_guide_form($form, &$form_state, $profile, $guide = FALSE) {
+  $form = array();
+
+  // Search guide defaults.
+  $guide_defaults = array(
+    'name' => '',
+    'title' => '',
+    'content' => '',
+  );
+
+  if (!$guide) {
+    $guide = $guide_defaults;
+  }
+
+  $form_state['existing'] = !empty($guide['name']);
+  $form_state['profile'] = $profile;
+  $form_state['guide'] = $guide;
+
+  $form['title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title'),
+    '#description' => t('Enter the search guide title.'),
+    '#maxlength' => 128,
+    '#default_value' => $guide['title'],
+    '#required' => TRUE,
+  );
+  $form['name'] = array(
+    '#type' => 'machine_name',
+    '#title' => t('Search guide machine-name'),
+    '#description' => t('Enter a unique machine-name for the search guide.'),
+    '#maxlength' => 64,
+    '#default_value' => $guide['name'],
+    '#disabled' => !empty($guide['name']),
+    '#machine_name' => array(
+      'exists' => 'ting_field_search_guide_exists',
+      'source' => array('title'),
+      'label' => t('Name'),
+    ),
+  );
+  $form['content'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Content'),
+    '#description' => t('Main content of the search guide'),
+    '#default_value' => $guide['content'],
+    '#format' => 'ding_wysiwyg',
+  );
+
+  // Form actions.
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+  );
+  // Delete button
+  if (!empty($group['name'])) {
+    $form['actions']['delete'] = array(
+      '#type' => 'submit',
+      '#value' => t('Delete'),
+      '#submit' => array('ting_field_search_guide_form_delete'),
+    );
+  }
+  $form['actions']['cancel'] = array(
+    '#type' => 'submit',
+    '#value' => t('Back'),
+    '#submit' => array('ting_field_search_form_cancel'),
+    // Bypass form-validation since this is a cancel-button.
+    '#limit_validation_errors' => array(),
+    '#weight' => 40,
+  );
+
+  $path = drupal_get_path('module', 'ting_field_search');
+  $form['#attached']['css'][] = $path . '/css/ting_field_search.admin.css';
+
+  return $form;
+}
+
+function ting_field_search_guide_form_submit($form, &$form_state) {
+  $guide = $form_state['guide'];
+  $guide['name'] = $form_state['values']['name'];
+  $guide['title'] = $form_state['values']['title'];
+
+  // Main content.
+  $content = $form_state['values']['content'];
+  $guide['config']['format'] = $content['format'];
+  $guide['content'] = $content['value'];
+
+  $guide['content'] = $content['value'];
+
+  $existing = $form_state['existing'];
+  $profile = $form_state['profile'];
+  if (!$existing) {
+    $guide['pid'] = $profile->pid;
+  }
+
+  $operation = $existing ? t('updated') : t('added');
+  if (ting_field_search_guide_save($guide)) {
+    drupal_set_message(t('Search guide %guide was !operation successfully!', array(
+      '!operation' => $operation,
+      '%guide' => $guide['title'],
+    )));
+  }
+  else {
+    drupal_set_message(t('Something went wrong. No search guide was !operation', array(
+      '!operation' => $operation,
+    )), 'error');
+  }
+
+  $path = 'admin/config/ting/ting-field-search-profiles/list/' . $profile->name . '/edit';
+  $form_state['redirect'] = array($path, array('fragment' => 'edit-config-fields'));
+}
+
+function ting_field_search_guide_form_delete($form, &$form_state) {
+
+}
+
+function ting_field_search_guide_exists() {
+
+}

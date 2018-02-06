@@ -80,6 +80,32 @@ function ting_field_search_menu() {
     'file' => 'ting_field_search.admin.inc',
   );
 
+    // Guides
+  $items[$base . '/guides/add'] = array(
+    'title' => 'Add search guide',
+    'description' => 'Add a new search guide to a profile.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ting_field_search_guide_form_add', 4),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'ting_field_search.admin.inc',
+  );
+  $items[$base . '/guides/%ting_field_search_guide/edit'] = array(
+    'title' => 'Edit field group',
+    'description' => 'Edit an existing field group on a profile.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ting_field_search_guide_form_edit', 4, 6),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'ting_field_search.admin.inc',
+  );
+  $items[$base . '/guides/%ting_field_search_guide/delete'] = array(
+    'title' => 'Delete field group',
+    'description' => 'Delete an existing field grouo on a profile.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ting_field_search_guide_delete_confirm_form', 4, 6),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'ting_field_search.admin.inc',
+  );
+
   return $items;
 }
 
@@ -99,6 +125,12 @@ function ting_field_search_forms() {
   );
   $forms['ting_field_search_group_form_edit'] = array(
     'callback' => 'ting_field_search_group_form',
+  );
+  $forms['ting_field_search_guide_form_add'] = array(
+    'callback' => 'ting_field_search_guide_form',
+  );
+  $forms['ting_field_search_guide_form_edit'] = array(
+    'callback' => 'ting_field_search_guide_form',
   );
   return $forms;
 }
@@ -1162,6 +1194,68 @@ function ting_field_search_profile_delete($profile) {
   }
   catch (Exception $e) {
     $transaction->rollback();
+    watchdog_exception('ting_field_search', $e);
+    return FALSE;
+  }
+}
+
+/**
+ * Saves a single search guide.
+ *
+ * @param array $guide
+ *   An array representing the search guide record to be saved.
+ */
+function ting_field_search_guide_save($guide) {
+  $key = array('name' => $guide['name']);
+  unset($guide['name']);
+
+  try {
+    return db_merge('ting_field_search_guide')
+      ->key($key)
+      ->fields($guide)
+      ->execute();
+  }
+  catch (Exception $e) {
+    watchdog_exception('ting_field_search', $e);
+    return FALSE;
+  }
+}
+
+/**
+ * Loads all search guides accociated with the specified profile.
+ */
+function ting_field_search_guides_load($pid) {
+  $query = db_select('ting_field_search_guide', 'tg')
+    ->fields('tg')
+    ->condition('pid', $pid)
+    ->orderBy('weight');
+
+  return $query->execute()->fetchAllAssoc('name');
+}
+
+/**
+ * Loads a singe search guide specified by name.
+ */
+function ting_field_search_guide_load($name) {
+  $query = db_select('ting_field_search_guide', 'tg')
+    ->fields('tg')
+    ->condition('name', $name)
+    ->orderBy('weight');
+
+  return $query->execute()->fetchAssoc();
+}
+
+/**
+ * Delete a single search guide by name.
+ */
+function ting_field_search_guide_delete($name) {
+  try {
+    $query = db_delete('ting_field_search_guide')
+      ->condition('name', $name);
+
+    return $query->execute();
+  }
+  catch (Exception $e) {
     watchdog_exception('ting_field_search', $e);
     return FALSE;
   }

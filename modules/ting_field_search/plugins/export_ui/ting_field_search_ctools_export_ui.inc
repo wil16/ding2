@@ -431,6 +431,23 @@ function ting_field_search_profile_export_form(&$form, &$form_state) {
     )),
     '#access' => $profile->config['profile_page']['enabled'],
   );
+  $form['config']['profile_page']['search_guides'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search guides'),
+    '#collapsible' => TRUE,
+  );
+  $form['config']['profile_page']['search_guides']['add_guide'] = array(
+    '#prefix' => '<ul class="action-links"><li>',
+    '#type' => 'link',
+    '#title' => t('Add search guide'),
+    '#href' => $base . '/guides/add',
+    '#suffix' => '</li></ul>',
+  );
+
+  // Search guides
+  if ($profile->export_type & EXPORT_IN_DATABASE) {
+    $search_guides = ting_field_search_guides_load($profile->pid);
+  }
 
   // Add some correcting CSS.
   $path = drupal_get_path('module', 'ting_field_search');
@@ -454,17 +471,21 @@ function ting_field_search_profile_export_form_submit($form, &$form_state) {
   }
 
   // Enable direct editing of field groups on the profile form.
-  $group_config = $form_state['values']['config']['fields'];
-  // We don't wan't these carried over to profile config.
-  unset($form_state['values']['config']['fields']);
-  foreach ($group_config as $group_name => $group_config) {
-    $profile->groups[$group_name]['weight'] = $group_config['weight'];
+  if (isset($form_state['values']['config']['fields'])) {
+    $group_config = $form_state['values']['config']['fields'];
+    // We don't wan't these carried over to profile config.
+    unset($form_state['values']['config']['fields']);
+    foreach ($group_config as $group_name => $group_config) {
+      $profile->groups[$group_name]['weight'] = $group_config['weight'];
+    }
   }
 
   // Update field weights.
-  foreach ($form_state['values']['field-weights'] as $index => $value) {
-    if (isset($profile->fields[$index])) {
-      $profile->fields[$index]['weight'] = $value['weight'];
+  if (isset($form_state['values']['field-weights'])) {
+    foreach ($form_state['values']['field-weights'] as $index => $value) {
+      if (isset($profile->fields[$index])) {
+        $profile->fields[$index]['weight'] = $value['weight'];
+      }
     }
   }
 
