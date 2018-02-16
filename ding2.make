@@ -578,6 +578,9 @@ projects[wayf_dk_login][patch][] = "https://www.drupal.org/files/issues/wayf_dk_
 ; Change in metadata end-point and struture (https://www.drupal.org/node/2734715).
 projects[wayf_dk_login][patch][] = "https://www.drupal.org/files/issues/metdata_endpoint_2728389-1.diff"
 
+projects[webform_remote_post][subdir] = "contrib"
+projects[webform_remote_post][version] = "1.23"
+
 ; Libraries
 libraries[d3][download][type] = "get"
 libraries[d3][download][url] = "https://github.com/d3/d3/releases/download/v3.5.17/d3.zip"
