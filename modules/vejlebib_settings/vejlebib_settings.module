@@ -389,3 +389,26 @@ function vejlebib_settings_form_user_login_block_alter(&$form, &$form_state, $fo
     )),
   );
 }
+
+/**
+ * Implements hook_webform_remote_post_repost_alter().
+ */
+function vejlebib_settings_webform_remote_post_repost_alter(&$payload, $target) {
+  // Collect the group-keyes from the different fieldsets and combine them into
+  // one keys parameter that gruppe-sms gate will accept. This also serves the
+  // purpose of transforming keys values into an array, so
+  // drupal_http_build_query() will build correct post data.
+  // See: webform_remote_post_webform_submission_insert().
+  if (strpos($target['url'], 'https://gruppe-sms.dk/gate/') === 0) {
+    $keys = array();
+    foreach (array('keys_adult', 'keys_children', 'keys_course') as $key) {
+      if (!empty($payload[$key])) {
+        $keys = array_merge($keys, explode(', ', $payload[$key]));
+      }
+      unset($payload[$key]);
+    }
+    if (count($keys) > 1) {
+      $payload['keys'] = $keys;
+    }
+  }
+}
